@@ -52,8 +52,9 @@ const Form = ({ fields, onSubmit, onFileChange, onRemoveFile }: FormProps) => {
                 </div>
             ))}
             <button type="button" onClick={() => addProject({ title: "" })}>+</button>
-
-            <button type="submit">제출</button>
+            <div>
+                <button type="submit">제출</button>
+            </div>
         </form>
     );
 };

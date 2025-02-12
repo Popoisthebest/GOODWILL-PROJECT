@@ -142,11 +142,11 @@ const RecruitmentForm = () => {
         ))}
       </select>
 
-      {/* 총 업로드된 파일 용량 표시 */}
-      <p>📂 현재 파일 용량: <strong>{totalFileSize.toFixed(2)} MB</strong> / {MAX_UPLOAD_SIZE_MB} MB</p>
-
       {/* 지원서 폼 */}
       <Form fields={recruitmentFields} onSubmit={handleRecruitmentSubmit} onFileChange={handleFileChange} onRemoveFile={handleRemoveFile} />
+
+      {/* 총 업로드된 파일 용량 표시 */}
+      <p>📂 현재 파일 용량: <strong>{totalFileSize.toFixed(2)} MB</strong> / {MAX_UPLOAD_SIZE_MB} MB</p>
     </div>
   );
 };
