@@ -1,0 +1,14 @@
+# Node.js 관련
+node_modules/
+.yarn/
+.pnp.*
+.yarnrc.yml
+
+# 환경 변수 파일
+.env
+.env.local
+.env.*.local
+
+# 빌드 결과물
+dist/
+out/
