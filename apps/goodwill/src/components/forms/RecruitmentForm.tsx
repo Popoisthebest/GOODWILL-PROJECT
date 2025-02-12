@@ -1,8 +1,8 @@
 import Form from "./Form";
-import { db, storage } from "/src/firebaseConfig.ts";
+import { db, storage } from "@/firebaseConfig.ts";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { generateApplicationId } from "/src/utils/generateApplicationId";
+import { generateApplicationId } from "@/utils/generateApplicationId";
 import { useState } from "react";
 
 const recruitmentFields = [
@@ -40,7 +40,7 @@ const RecruitmentForm = () => {
   };
 
   // **파일 크기 업데이트 핸들러**
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (_event: React.ChangeEvent<HTMLInputElement>) => {
       updateTotalFileSize(); // 💡 파일 추가 시에도 전체 파일 크기를 다시 계산
   };
 

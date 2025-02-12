@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <h1>GoodWill 채용 지원</h1>
-      <Popup imageUrl="assets/29ed93aab6b48083-sticker.png" />
+      <Popup imageUrl="/29ed93aab6b48083-sticker.png" />
       <RecruitmentForm />
     </div>
   );
