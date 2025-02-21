@@ -31,7 +31,8 @@ const inputContainerStyle = css`
   position: relative;
   margin-bottom: 16px;
   width: 100%;
-  margin-bottom: 35px;
+  margin-top: 45px;
+  margin-bottom: 1rem;
 `;
 
 const textstyle = css`
@@ -59,7 +60,8 @@ const labelStyle = css`
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  margin-bottom: 10rem;
+  margin-top: -7px;
+  margin-left: -9px;
 `;
 
 const inputStyle = css`
@@ -89,7 +91,7 @@ const titleWithRequiredStyle = css`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
 `;
 
 const requiredStyle = css`
