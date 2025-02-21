@@ -6,7 +6,7 @@ const containerStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3f4f6;
+  background-color: white;
   padding: 1.5;
   margin-top: -2rem;
 `;
@@ -32,7 +32,6 @@ const headingStyle = css`
 `;
 
 const textStyle = css`
-  color: #4b5563;
   margin-bottom: 1rem;
   line-height: 1.6;
   width: 100%;
@@ -40,16 +39,21 @@ const textStyle = css`
 `;
 
 const buttonStyle = css`
-  margin-top: 2rem;
+  margin-top: 5rem;
   width: 100%;
-  background-color: #1e40af;
+  background-color: rgba(5, 48, 140, 1);
   color: white;
   padding: 1rem;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
   max-width: 700px;
+  border-width: 1px;
+  border-color: rgba(5, 48, 140, 1);
   &:hover {
-    background-color: #2563eb;
+    background-color: white;
+    color: rgba(5, 48, 140, 1);
+    border-color: rgba(5, 48, 140, 1);
+    border-width: 1px;
   }
 `;
 
