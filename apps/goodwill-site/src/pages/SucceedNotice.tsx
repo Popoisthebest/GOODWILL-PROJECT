@@ -58,19 +58,20 @@ const RejectionNotice = () => {
     <div css={containerStyle}>
       <div css={cardStyle}>
         <h1 css={headingStyle}>
-          불합격을 <br /> 안내드립니다.
+          합격을 <br /> 축하드립니다.
         </h1>
         <p css={textStyle}>안녕하세요 홍길동님.</p>
         <p css={textStyle}>
           GOODWILL Corp. 2025 Design 직군에 지원해주셔서 감사합니다.
         </p>
         <p css={textStyle}>
-          모든 전형 과정에서 보여주신 노력과 열정에 진심으로 감사드리며,
-          안타깝게도 이번에는 합격 소식을 전해드리지 못하게 되었습니다.
+          GOODWILL Corp. 2025 Deisgn 직군에 <br /> 최종 합격하셨습니다
         </p>
         <p css={textStyle}>
-          앞으로 더 좋은 기회가 있기를 바라며, GOODWILL Corp.와 함께 할 수 있는
-          날을 기대하겠습니다.
+          모든 전형 과정에서 보여주신 노력과 열정에 진심으로 감사드리며, <br />
+          GOODWILL Corp.와 함께 무한한 가능성을 꽃피우시길 바랍니다. 'GOODWILL{" "}
+          <br />
+          Corp.의 동료'로서 만나뵙게 될 첫 만남을 기대합니다. :
         </p>
         <p css={textStyle}>감사합니다.</p>
         <button css={buttonStyle} onClick={() => (window.location.href = "/")}>
