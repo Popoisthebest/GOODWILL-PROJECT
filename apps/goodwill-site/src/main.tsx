@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import RejectionNotice from "./pages/RejectionNotice";
+import CheckCarrer from "./pages/CheckCareer";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RejectionNotice />
+    <CheckCarrer />
   </StrictMode>
 );
