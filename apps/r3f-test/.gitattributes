@@ -1,0 +1,2 @@
+apps/r3f-test/public/models/forest/texture/*.png filter=lfs diff=lfs merge=lfs -text
+apps/r3f-test/public/models/forest/*.bin filter=lfs diff=lfs merge=lfs -text
