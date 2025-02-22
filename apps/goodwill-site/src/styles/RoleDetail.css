@@ -1,0 +1,168 @@
+.role-detail {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin: 0 79px 0 87px;
+}
+
+.left-content {
+  margin-right: 1rem;
+}
+
+.role-name,
+.main-title {
+  font-family: Pretendard;
+  font-weight: 600;
+}
+
+.role-name {
+  font-size: 56px;
+}
+
+.main-title {
+  font-size: 36px;
+  margin-top: 16px;
+}
+
+.requirement {
+  margin-top: 12px;
+}
+
+.uxui-designer{
+  margin-top: 48px;
+}
+
+.sub-title-section{
+  margin-top: 46px;
+}
+
+.subtitle {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.75;
+  line-height: 140%;
+}
+
+.description {
+  margin-top: 12px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.75;
+  line-height: 160%;
+}
+
+.process {
+  margin-top: 48px;
+}
+
+.process_toworkwith{
+  margin-left: 87px;
+  margin-top: 48px;
+}
+
+.process-title {
+  display: flex;
+  align-items: center;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.75;
+  line-height: 140%;
+}
+
+.caret-icon {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.process-steps {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.step {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.caret-icon {
+  margin-left: 6px;
+  margin-right: 6px;
+  width: 16px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.right-card {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.card {
+  border: 1px solid #d9d9d9;
+  width: 355px;
+  border-radius: 8px;
+}
+
+.card-content {
+  padding: 10px 20px 16px 20px;
+}
+
+.card-item {
+  display: flex;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 17px 0;
+}
+
+.card-item-last {
+  display: flex;
+  padding: 17px 0 0 0;
+}
+
+.card-label {
+  margin: 0 64px 0 5px;
+  color: #9d9d9d;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.card-value {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-image {
+  margin-top: 16px;
+  width: 315px;
+  height: 147px;
+  border-radius: 4px;
+  background: #d9d9d9;
+}
+
+.apply-button {
+  box-sizing: border-box;
+  margin-top: 20px;
+  display: flex;
+  height: 50px;
+  padding: 18px 20px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #05308c;
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 140%;
+}
