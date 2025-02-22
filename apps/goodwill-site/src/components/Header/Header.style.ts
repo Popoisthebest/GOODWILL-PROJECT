@@ -20,36 +20,37 @@ export const careerButtonStyle = css`
   border: 2px solid transparent;
   border-radius: 30px;
   cursor: pointer;
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 160px;
+  height: 54px;
+  width: 135px;
   overflow: hidden;
 `;
 
 export const careerButtonTextContainerStyle = css`
+  position: relative;
   display: flex;
   align-items: center;
+  margin-left: 10px;
 `;
 
 export const careerButtonTextStyle = css`
-  color: var(--gray-scale-white-0, #fff);
-  font-family: Pretendard;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 200;
-  line-height: 140%; /* 33.6px */
+  color: #ffffff;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 19.5px;
+  font-weight: 400;
 `;
 
 export const careerButtonArrowStyle = css`
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
 `;
 
 export const careerButtonDotStyle = css`
-  width: 3px;
-  height: 3px;
+  margin-left: 12px;
+  width: 4.5px;
+  height: 4.5px;
 `;
 
 export const menuButtonStyle = css`
@@ -61,7 +62,10 @@ export const menuButtonStyle = css`
   border: 2px solid transparent; /* 기본적으로 border를 투명하게 설정 */
   border-radius: 30px; /* 양쪽 둥근 직사각형 */
   cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
   box-sizing: border-box; /* ✅ 요소 크기 유지 */
 
   &:hover {
