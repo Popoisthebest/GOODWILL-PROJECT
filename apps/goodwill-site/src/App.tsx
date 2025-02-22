@@ -1,12 +1,5 @@
-import Careeer from "./pages/career"
+import Role from "./pages/Role";
 
-function App() {
+const App = () => <Role />;
 
-  return (
-    <>
-      <Careeer />
-    </>
-  )
-}
-
-export default App
+export default App;
