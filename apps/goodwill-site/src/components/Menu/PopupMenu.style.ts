@@ -33,3 +33,13 @@ export const ItemText = css`
   overflow: hidden;
   height: 30px;
 `;
+
+export const IconDiv = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Dot = css`
+    position: absolute;
+`;
