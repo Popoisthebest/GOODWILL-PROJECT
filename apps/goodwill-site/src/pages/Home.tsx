@@ -1,5 +1,4 @@
 // src/pages/Home.tsx
-import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 
 const Home = () => (

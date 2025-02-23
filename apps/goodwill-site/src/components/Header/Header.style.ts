@@ -21,9 +21,10 @@ export const careerButtonStyle = css`
   border-radius: 30px;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: 54px;
   width: 135px;
+  height: 54px;
   overflow: hidden;
 `;
 
@@ -31,14 +32,16 @@ export const careerButtonTextContainerStyle = css`
   position: relative;
   display: flex;
   align-items: center;
-  margin-left: 10px;
 `;
 
 export const careerButtonTextStyle = css`
   color: #ffffff;
-  font-family: "Pretendard-Regular", Helvetica;
-  font-size: 19.5px;
+  text-align: center;
+  font-family: Pretendard, fangsong;
+  font-size: 19px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 140%; /* 18.2px */
 `;
 
 export const careerButtonArrowStyle = css`
@@ -49,28 +52,41 @@ export const careerButtonArrowStyle = css`
 
 export const careerButtonDotStyle = css`
   margin-left: 12px;
-  width: 4.5px;
-  height: 4.5px;
+  width: 4px;
+  height: 4px;
 `;
 
 export const menuButtonStyle = css`
   background-color: #05308c;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 24px;
-  border: 2px solid transparent; /* 기본적으로 border를 투명하게 설정 */
+  border: 2px solid #05308c; /* 기본적으로 border를 투명하게 설정 */
   border-radius: 30px; /* 양쪽 둥근 직사각형 */
   cursor: pointer;
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box; /* ✅ 요소 크기 유지 */
+  height: 54px;
+  width: 128px;
+`;
 
-  &:hover {
-    background-color: #ffffff;
-    color: #05308c;
-    border-color: #05308c; /* ✅ 투명한 border에서 색상만 변경 */
-  }
+export const menuButtonTextContainerStyle = css`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+export const menuButtonTextStyle = css`
+  color: #ffffff;
+  text-align: center;
+  font-family: Pretendard, fangsong;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 18.2px */
+`;
+
+export const menuTwoCircleStyle = css`
+  margin-left: 11px;
+  width: 12px;
+  height: 6px;
 `;
