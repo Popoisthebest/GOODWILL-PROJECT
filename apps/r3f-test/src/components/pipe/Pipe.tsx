@@ -4,10 +4,10 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 // 📌 3D 모델 파일 경로
-const MODEL_PATH = "/models/car/car.gltf"; // 👉 여기에 glb 또는 glTF 파일 경로 지정
+const MODEL_PATH = "/models/moon/space.glb"; // 👉 여기에 glb 또는 glTF 파일 경로 지정
 
 // 📌 모델 개수 및 자석 효과 설정
-const MODEL_COUNT = 5;
+const MODEL_COUNT = 1;
 const CENTER_FORCE = 0.001; // 📌 자석 효과 (복원력)
 const DAMPING = 0.99; // 📌 점진적 감속 비율
 const MIN_DISTANCE = 3; // 📌 모델 간 최소 거리
