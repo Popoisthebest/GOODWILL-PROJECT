@@ -21,15 +21,14 @@ export const careerButtonStyle = css`
   border-radius: 30px;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding-left: 18px;
   width: 135px;
   height: 54px;
   overflow: hidden;
 `;
 
 export const careerButtonTextContainerStyle = css`
-  position: relative;
   display: flex;
   align-items: center;
 `;
@@ -51,42 +50,47 @@ export const careerButtonArrowStyle = css`
 `;
 
 export const careerButtonDotStyle = css`
-  margin-left: 12px;
+  margin-left: 16px;
   width: 4px;
   height: 4px;
 `;
+
+
 
 export const menuButtonStyle = css`
   background-color: #05308c;
   border: 2px solid #05308c; /* 기본적으로 border를 투명하게 설정 */
   border-radius: 30px; /* 양쪽 둥근 직사각형 */
+  padding: 20px;
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box; /* ✅ 요소 크기 유지 */
   height: 54px;
   width: 128px;
 `;
 
-export const menuButtonTextContainerStyle = css`
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
 export const menuButtonTextStyle = css`
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   font-family: Pretendard, fangsong;
   font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 18.2px */
+    display: flex;
+    flex-direction: column;
+    height: 26px;
+    overflow: hidden;
 `;
 
 export const menuTwoCircleStyle = css`
-  margin-left: 11px;
   width: 12px;
   height: 6px;
+`;
+
+export const menuDivStyle = css`
+  display: flex;
+  justify-content: right;
 `;

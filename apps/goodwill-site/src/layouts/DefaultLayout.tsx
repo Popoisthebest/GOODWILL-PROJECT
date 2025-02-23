@@ -1,6 +1,6 @@
 // src/layouts/DefaultLayout.tsx
 import React from "react";
-import { Header } from "../components/Header";
+import { Header } from "../components";
 import { globalStyle } from "../styles/GlobalStyle";
 
 type LayoutProps = {

@@ -10,13 +10,15 @@ import {
 import ArrowRightIcon from "../../assets/headerButtonIcon/ArrowRight.svg";
 import Dot from "../../assets/headerButtonIcon/Dot.svg";
 
-interface CareerButtonProps {
-  onClick?: () => void;
-}
-
-const CareerButton: React.FC<CareerButtonProps> = ({ onClick }) => {
+const CareerButton: React.FC = () => {
   return (
-    <motion.button css={careerButtonStyle} onClick={onClick} whileHover="hover">
+    <motion.button
+      css={careerButtonStyle}
+      onClick={() => {
+        alert("CAREER 버튼 눌림");
+      }}
+      whileHover="hover"
+    >
       <div>
         <div css={careerButtonTextContainerStyle}>
           <motion.img
@@ -27,27 +29,26 @@ const CareerButton: React.FC<CareerButtonProps> = ({ onClick }) => {
               hover: { opacity: 1 },
             }}
             initial={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
           />
           <motion.span
             css={careerButtonTextStyle}
             variants={{
-              hover: { x: 20 }, // 부모가 hover 상태일 때 자식들이 같이 이동
+              hover: { x: 25 }, // 부모가 hover 상태일 때 자식들이 같이 이동
             }}
-            transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
           >
             CAREER
           </motion.span>
-            <motion.img
-                src={Dot}
-                alt="Dot"
-                css={careerButtonDotStyle}
-                variants={{
-                    hover: { opacity: 0 },
-                }}
-                initial={{ opacity: 1 }}
-            />
+          <motion.img
+            src={Dot}
+            alt="Dot"
+            css={careerButtonDotStyle}
+            variants={{
+              hover: { opacity: 0 },
+            }}
+            initial={{ opacity: 1 }}
+          />
         </div>
-
       </div>
     </motion.button>
   );
