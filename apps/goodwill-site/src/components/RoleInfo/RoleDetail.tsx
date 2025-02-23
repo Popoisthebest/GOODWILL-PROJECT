@@ -4,12 +4,11 @@ import '../../styles/RoleDetail.css';
 
 const RoleDetail = () => {
   return (
-    <div>
+    <div className='wrapper'>
     <div className="role-detail">
       <div className="left-content">
         <div className="role-name">역할명</div>
         <div className="main-title">대제목</div>
-
         <div className="requirement">
           <div className="subtitle">굿윌은 이런 인재가 필요합니다.</div>
           <div className="description">

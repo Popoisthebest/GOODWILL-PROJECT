@@ -1,8 +1,12 @@
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+}
+
 .role-detail {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  margin: 0 79px 0 87px;
 }
 
 .left-content {
@@ -58,7 +62,6 @@
 }
 
 .process_toworkwith{
-  margin-left: 87px;
   margin-top: 48px;
 }
 
