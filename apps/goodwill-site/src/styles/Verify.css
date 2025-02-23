@@ -89,5 +89,11 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 25.2px */
+  line-height: 140%;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: white;
+    color: rgba(5, 48, 140, 1);
+    border: 1px solid #05308c;
+  }
 }
