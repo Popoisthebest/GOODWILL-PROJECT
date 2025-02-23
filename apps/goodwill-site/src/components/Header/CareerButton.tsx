@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 import {
   careerButtonStyle,
   careerButtonTextContainerStyle,
@@ -11,12 +12,16 @@ import ArrowRightIcon from "../../assets/headerButtonIcon/ArrowRight.svg";
 import Dot from "../../assets/headerButtonIcon/Dot.svg";
 
 const CareerButton: React.FC = () => {
+  const navigate = useNavigate();  // useNavigate를 컴포넌트 최상단에 배치
+
+  const handleClick = () => {
+    navigate("/career");  // 이벤트 핸들러에서 navigate 사용
+  };
+
   return (
     <motion.button
       css={careerButtonStyle}
-      onClick={() => {
-        alert("CAREER 버튼 눌림");
-      }}
+      onClick={handleClick}
       whileHover="hover"
     >
       <div>
