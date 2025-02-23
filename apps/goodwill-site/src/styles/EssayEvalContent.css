@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+}
+
+.timer {
+  margin-left: 116px;
+  margin-top: 110px;
+}
+
+.timer_text {
+  text-align: center;
+  font-family: Mona-Sans;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.main_content {
+  margin-left: 125px;
+}
+
+.memo_section {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f8f8f8; /* Figma 스타일처럼 회색 배경 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+}
