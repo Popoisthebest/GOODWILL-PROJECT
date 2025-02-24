@@ -63,25 +63,19 @@ export const mobileButtonDotContainer = css`
   gap: 6px; /* 점 사이 간격 */
 `;
 
-export const buttonContainerStyle = css`
-  display: flex;
-  align-items: center;
-  gap: 24px;
-`;
-
 export const careerButtonStyle = css`
-  background-color: #262626;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  overflow: hidden;
+    background-color: #262626;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px 25px 10px 20px;
+    overflow: hidden;
 
-  @media (max-width: 768px) {
-    display: none; /* 모바일에서는 숨김 */
-  }
+    @media (max-width: 768px) {
+        display: none; /* 모바일에서는 숨김 */
+    }
 `;
 
 export const careerButtonTextContainerStyle = css`
