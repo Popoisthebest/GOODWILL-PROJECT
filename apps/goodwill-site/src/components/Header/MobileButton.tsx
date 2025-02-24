@@ -1,13 +1,10 @@
 // src/components/Header/MobileButton.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
-import PopupMenu from "../Menu/PopupMenu.tsx";
 import {
   mobileButtonStyle,
   mobileButtonDotContainer,
-  mobileButtonDot,
   menuTwoCircleStyle,
-  menuDivStyle,
 } from "./Header.style";
 
 const MobileButton = () => {
@@ -47,12 +44,6 @@ const MobileButton = () => {
           </motion.svg>
         </div>
       </motion.button>
-      <motion.div
-        css={menuDivStyle}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? -65 : -50 }}
-      >
-        {isOpen && <PopupMenu />}
-      </motion.div>
     </div>
   );
 };

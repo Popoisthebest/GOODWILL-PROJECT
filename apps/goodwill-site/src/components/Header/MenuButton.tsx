@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import {
   menuButtonStyle,
   menuButtonTextDivStyle,
   menuButtonTextStyle,
   menuTwoCircleStyle,
-  menuDivStyle,
-  mobileButtonContainerStyle,
   mobileButtonStyle,
   mobileButtonDotContainer,
-  mobileButtonDot,
+  mobileButtonContainerStyle,
 } from "./Header.style";
-import PopupMenu from "../Menu/PopupMenu.tsx";
-import MobileButton from "./MobileButton.tsx";
 
 interface MenuButtonProps {
-  onClick?: () => void;
+  isOpen: boolean;
+  setIsOpen: (state: boolean) => void;
 }
 
-const MenuButton: React.FC<MenuButtonProps> = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const MenuButton: React.FC<MenuButtonProps> = ({ isOpen, setIsOpen }) => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div>
+      {/* 데스크탑 메뉴 버튼 */}
       <motion.button
         css={menuButtonStyle}
         onClick={toggleMenu}
@@ -99,8 +95,8 @@ const MenuButton: React.FC<MenuButtonProps> = () => {
           />
         </motion.svg>
       </motion.button>
-
-      <div>
+      {/* 모바일 전용 메뉴 버튼 */}
+      <div css={mobileButtonContainerStyle}>
         <motion.button
           onClick={toggleMenu}
           css={mobileButtonStyle}
@@ -129,20 +125,7 @@ const MenuButton: React.FC<MenuButtonProps> = () => {
             </motion.svg>
           </div>
         </motion.button>
-        <motion.div
-          css={menuDivStyle}
-          animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? -65 : -50 }}
-        >
-          {isOpen && <PopupMenu />}
-        </motion.div>
       </div>
-
-      <motion.div
-        css={menuDivStyle}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? -65 : -50 }}
-      >
-        {isOpen && <PopupMenu />}
-      </motion.div>
     </div>
   );
 };
