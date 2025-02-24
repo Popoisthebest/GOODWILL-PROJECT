@@ -15,7 +15,7 @@ const CareerButton: React.FC = () => {
   const navigate = useNavigate(); // useNavigate를 컴포넌트 최상단에 배치
 
   const handleClick = () => {
-    navigate("/career"); // 이벤트 핸들러에서 navigate 사용
+    navigate("/role-select"); // 이벤트 핸들러에서 navigate 사용
   };
 
   return (

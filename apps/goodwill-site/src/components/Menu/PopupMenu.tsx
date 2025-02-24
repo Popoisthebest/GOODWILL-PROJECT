@@ -60,6 +60,9 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         <MenuItem onClick={() => navigate("/")} path="/">
           HOME
         </MenuItem>
+        <MenuItem onClick={() => navigate("/role-select")} path="/role-select">
+          CAREER
+        </MenuItem>
         <MenuItem onClick={() => navigate("/about")} path="/about">
           ABOUT US
         </MenuItem>
