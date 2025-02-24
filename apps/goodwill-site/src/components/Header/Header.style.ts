@@ -5,7 +5,7 @@ export const headerStyle = css`
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 왼쪽(로고) ↔ 오른쪽(버튼) */
+  justify-content: space-between;
   color: white;
   box-sizing: border-box;
 `;
@@ -55,8 +55,6 @@ export const careerButtonDotStyle = css`
   height: 4px;
 `;
 
-
-
 export const menuButtonStyle = css`
   background-color: #05308c;
   border: 2px solid #05308c; /* 기본적으로 border를 투명하게 설정 */
@@ -79,10 +77,10 @@ export const menuButtonTextStyle = css`
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 18.2px */
-    display: flex;
-    flex-direction: column;
-    height: 26px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 26px;
+  overflow: hidden;
 `;
 
 export const menuTwoCircleStyle = css`
