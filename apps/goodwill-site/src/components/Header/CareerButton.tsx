@@ -12,10 +12,10 @@ import ArrowRightIcon from "../../assets/headerButtonIcon/ArrowRight.svg";
 import Dot from "../../assets/headerButtonIcon/Dot.svg";
 
 const CareerButton: React.FC = () => {
-  const navigate = useNavigate();  // useNavigate를 컴포넌트 최상단에 배치
+  const navigate = useNavigate(); // useNavigate를 컴포넌트 최상단에 배치
 
   const handleClick = () => {
-    navigate("/career");  // 이벤트 핸들러에서 navigate 사용
+    navigate("/career"); // 이벤트 핸들러에서 navigate 사용
   };
 
   return (

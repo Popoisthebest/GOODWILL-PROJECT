@@ -5,41 +5,82 @@ export const headerStyle = css`
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 왼쪽(로고) ↔ 오른쪽(버튼) */
+  justify-content: space-between;
   color: white;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 0 16px;
-    height: 50px;
+    padding: 0 0px;
+    height: 30px;
   }
+`;
+
+export const headerLogoStyle = css`
+  width: 186px;
+
+  @media (max-width: 768px) {
+    width: 100px;
+  }
+`;
+
+/* ✅ 데스크탑 버튼 컨테이너 */
+export const desktopButtonContainerStyle = css`
+  display: flex;
+  gap: 24px;
+`;
+
+/* ✅ 모바일 버튼 컨테이너 */
+export const mobileButtonContainerStyle = css`
+  display: none; /* 기본적으로 숨김 */
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+/* ✅ 모바일 전용 버튼 스타일 */
+export const mobileButtonStyle = css`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* 원형 버튼 */
+  background-color: #e4e6ef; /* 버튼 색상 */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+export const mobileButtonDotContainer = css`
+  display: flex;
+  gap: 6px; /* 점 사이 간격 */
 `;
 
 export const buttonContainerStyle = css`
   display: flex;
+  align-items: center;
   gap: 24px;
-
-  @media (max-width: 768px) {
-    gap: 16px;
-  }
 `;
 
 export const careerButtonStyle = css`
   background-color: #262626;
-  border: 2px solid transparent;
-  border-radius: 30px;
+  border-radius: 100px;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding-left: 18px;
-  width: 135px;
-  height: 54px;
+  padding: 10px 20px;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    width: 120px;
-    height: 48px;
-    padding-left: 14px;
+    display: none; /* 모바일에서는 숨김 */
   }
 `;
 
@@ -53,10 +94,14 @@ export const careerButtonTextStyle = css`
   text-align: center;
   font-family: Pretendard, fangsong;
   /* clamp(min, preferred, max)로 글자 크기를 유동적으로 조절 */
-  font-size: clamp(16px, 2vw, 19px);
+  font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 18.2px */
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 `;
 
 export const careerButtonArrowStyle = css`
@@ -77,26 +122,37 @@ export const careerButtonDotStyle = css`
 
   @media (max-width: 768px) {
     margin-left: 12px;
+    width: 3px;
+    height: 3px;
   }
 `;
 
 export const menuButtonStyle = css`
   background-color: #05308c;
-  border: 2px solid #05308c; /* 기본적으로 border를 투명하게 설정 */
+  border: 2px solid #05308c;
   border-radius: 30px; /* 양쪽 둥근 직사각형 */
-  padding: 20px;
+  padding: 10px 20px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box; /* ✅ 요소 크기 유지 */
-  height: 54px;
-  width: 128px;
 
   @media (max-width: 768px) {
-    height: 48px;
-    width: 110px;
-    padding: 16px;
+    padding: 5px 10px;
+    border: 1px solid #05308c;
+    display: none; /* 모바일에서는 숨김 */
+  }
+`;
+
+export const menuButtonTextDivStyle = css`
+  display: flex;
+  flex-direction: column;
+  height: 26px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 11px;
   }
 `;
 
@@ -104,14 +160,15 @@ export const menuButtonTextStyle = css`
   color: #ffffff;
   text-align: left;
   font-family: Pretendard, fangsong;
-  font-size: clamp(16px, 2vw, 19px);
+  font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  display: flex;
-  flex-direction: column;
-  height: 26px;
-  overflow: hidden;
+  padding-right: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 `;
 
 export const menuTwoCircleStyle = css`
@@ -119,7 +176,7 @@ export const menuTwoCircleStyle = css`
   height: 6px;
 
   @media (max-width: 768px) {
-    width: 10px;
+    width: 15px;
     height: 5px;
   }
 `;

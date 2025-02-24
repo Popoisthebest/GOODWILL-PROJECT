@@ -9,6 +9,11 @@ export const MenuContainer = css`
   width: 265px;
   position: absolute;
   top: 80px;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 export const Item = css`
@@ -35,11 +40,11 @@ export const ItemText = css`
 `;
 
 export const IconDiv = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Dot = css`
-    position: absolute;
+  position: absolute;
 `;
