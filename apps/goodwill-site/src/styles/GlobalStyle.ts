@@ -2,5 +2,5 @@
 import { css } from "@emotion/react";
 
 export const globalStyle = css`
-  padding: 0 72px;
+  padding: 30px 72px;
 `;
