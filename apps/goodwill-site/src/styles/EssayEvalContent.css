@@ -1,10 +1,18 @@
+* {
+  margin: 0;
+}
+
 .wrapper {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 요소들의 수직 정렬을 맞춤 */
+  padding: 50px 55px 0 116px;
+  padding-bottom: 10rem; /* 화면 맨 아래와 여백을 50px 추가 */
 }
 
 .timer {
-  margin-left: 116px;
-  margin-top: 110px;
+  flex-shrink: 0;
+  margin-top: 80px;
 }
 
 .timer_text {
@@ -17,26 +25,189 @@
 }
 
 .main_content {
-  margin-left: 125px;
+  flex-grow: 1;
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .memo_section {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #f8f8f8; /* Figma 스타일처럼 회색 배경 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-shrink: 0;
 }
 
-textarea {
+.memo_textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 250px;
+  background-color: #f5f5f5;
   resize: vertical;
-  width: 100%;
+  min-height: 250px;
   padding: 10px;
   border: none;
   outline: none;
-  background-color: transparent;
   font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  font-family: Pretendard;
 }
+
+.progress_bar {
+  text-align: center;
+}
+
+.progress_text {
+  color: var(--Gray-Scale-500, #7b7b7b);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.progress_bar_detail {
+  width: 100%;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: var(--Spacing-spacing-96, 96px);
+  background: var(--Brand-Primary-50, #e6e9f5);
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.progress_content {
+  margin-top: 61px;
+}
+
+.text_box {
+  display: flex;
+  align-items: flex-end;
+}
+
+.main_text {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 2.7rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 89.6px */
+}
+
+.sub_text {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  margin: 0 0 9px 10px;
+}
+
+.main_content_box {
+  margin-top: 45px;
+}
+
+.title_text {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 50.4px */
+}
+
+.presenta {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 32px */
+  letter-spacing: -0.06px;
+  margin-top: 28px;
+}
+
+.question {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  margin-top: 36px;
+}
+
+.question_content {
+  color: var(--gray-scale-black-900, #000);
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 120% */
+  letter-spacing: -0.06px;
+}
+
+.text_many {
+  text-align: end;
+  color: var(--Gray-Scale-500, #7b7b7b);
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 22.4px */
+}
+
+.solution_input {
+  margin-top: 35px;
+  resize: vertical;
+  width: 100%;
+  border-radius: var(--Spacing-spacing-4, 4px);
+  background: var(--Gray-Scale-50, #f5f5f5);
+  border: none;
+  padding: 12px 0 10px 10px;
+}
+
+.solution_input::placeholder {
+  color: var(--Gray-Scale-600, #555);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.048px;
+}
+
+.solution_input:focus-visible {
+  outline: none;
+}
+
+.next_btn {
+  margin-top: 108px;
+  width: 100%;
+  height: 64px;
+  padding: 18px 20px;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: var(--Spacing-spacing-8, 8px);
+  background: var(--brand-primary-primary-800, #05308c);
+  border: none;
+  color: var(--gray-scale-white-0, #fff);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: white;
+    color: rgba(5, 48, 140, 1);
+    border: 1px solid #05308c;
+  }
+}
+
+
