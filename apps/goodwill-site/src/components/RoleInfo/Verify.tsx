@@ -1,6 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import '../../styles/Verify.css'
 
 const Verify = () => {
+
+  const navigate = useNavigate();
+
+  const startbtn = () => {
+    navigate('/evalcontent')
+  }
+
   return (
     <>
       <div className="main_box">
@@ -12,7 +20,7 @@ const Verify = () => {
           <div className="sec_child_text">신원확인</div>
           <input className='sec_child_ipb' placeholder='수험번호' type="text" />
         </div>
-          <button className="start_btn">시작하기</button>
+          <button onClick={startbtn} className="start_btn">시작하기</button>
       </div>
     </>
   )

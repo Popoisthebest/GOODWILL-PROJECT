@@ -7,12 +7,18 @@
   justify-content: space-between;
   align-items: flex-start; /* 요소들의 수직 정렬을 맞춤 */
   padding: 50px 55px 0 116px;
-  padding-bottom: 10rem; /* 화면 맨 아래와 여백을 50px 추가 */
+  height: 92vh;
+  padding-bottom: 0 !important;
+}
+
+.main_content{
+  height: 100%;
 }
 
 .timer {
   flex-shrink: 0;
   margin-top: 80px;
+  margin-right: 50px;
 }
 
 .timer_text {
@@ -28,7 +34,7 @@
   flex-grow: 1;
 }
 
-.content {
+.content-re {
   width: 80%;
   margin: 0 auto;
 }
@@ -40,10 +46,10 @@
 .memo_textarea {
   border: 1px solid #ccc;
   padding: 10px;
-  width: 250px;
+  width: 180px;
   background-color: #f5f5f5;
   resize: vertical;
-  min-height: 250px;
+  min-height: 180px;
   padding: 10px;
   border: none;
   outline: none;
@@ -78,8 +84,27 @@
   margin-top: 5px;
 }
 
+.progress_bar_filled{
+  height: 10px;
+  border-radius: var(--Spacing-spacing-96, 96px);
+  background-color: #05308C;
+  transition: width 0.5s ease-out;
+}
+
+
+
 .progress_content {
   margin-top: 61px;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 61px;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.progress_content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .text_box {
@@ -117,6 +142,10 @@
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 50.4px */
+}
+
+.section_form{
+  max-width: 100%;
 }
 
 .presenta {
@@ -168,7 +197,13 @@
   border-radius: var(--Spacing-spacing-4, 4px);
   background: var(--Gray-Scale-50, #f5f5f5);
   border: none;
-  padding: 12px 0 10px 10px;
+  padding: 12px 0 0 10px;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.048px;
 }
 
 .solution_input::placeholder {
@@ -186,7 +221,7 @@
 }
 
 .next_btn {
-  margin-top: 108px;
+  margin-top: 50px;
   width: 100%;
   height: 64px;
   padding: 18px 20px;
@@ -195,6 +230,7 @@
   flex-shrink: 0;
   border-radius: var(--Spacing-spacing-8, 8px);
   background: var(--brand-primary-primary-800, #05308c);
+  outline: none;
   border: none;
   color: var(--gray-scale-white-0, #fff);
   font-family: Pretendard;
@@ -204,10 +240,14 @@
   line-height: 140%;
   transition: background-color 0.3s ease;
   &:hover {
+    outline: none;
     background-color: white;
     color: rgba(5, 48, 140, 1);
-    border: 1px solid #05308c;
+    border: 1px solid rgba(5, 48, 140, 1);
   }
 }
 
-
+.blank{
+  width: 100%;
+  height: 60px;
+}

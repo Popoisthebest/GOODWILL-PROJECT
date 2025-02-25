@@ -1,6 +1,14 @@
 import '../../styles/EssayEval.css'
+import { useNavigate } from 'react-router-dom';
 
 const EssayEval = () => {
+
+  const navigate = useNavigate();
+
+  const confirmbtn = () => {
+    navigate("/verify")
+  }
+
   return (
     <>
       <div className='start_box'>
@@ -30,7 +38,7 @@ const EssayEval = () => {
         </div>
 
         <div className="btn_section">
-          <button className="start_btn">시작하기</button>
+          <button onClick={confirmbtn} className="start_btn">시작하기</button>
         </div>
       </div>
     </>
