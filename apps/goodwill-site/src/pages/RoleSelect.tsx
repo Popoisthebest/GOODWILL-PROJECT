@@ -1,6 +1,9 @@
 // src/pages/Home.tsx
+import { useForm, SubmitHandler } from "react-hook-form";
 import DefaultLayout from "../layouts/DefaultLayout";
 import mainImg from "../assets/role-select-page/main-img.jpg";
+import RoleSelectSearchBar from "../components/RoleSelect/RoleSelectSearchBar";
+import RoleSelectList from "../components/RoleSelect/RoleSelectList";
 import {
   CheckBox,
   ImgContainer,
@@ -9,9 +12,19 @@ import {
   MainImg,
   Overlay,
   RoleSelectContainer,
-  RoleSelectTitle,
+  KategorieSelectContainer,
+  RoleSelectTitleContainer,
   TextContainer,
+  KategorieContainer,
+  SearchContainer,
+  SearchImgStyle,
+  SearchBar,
 } from "../components/RoleSelect/RoleSelect.style.ts";
+
+type Inputs = {
+  example: string;
+  exampleRequired: string;
+};
 
 const RoleSelectPage = () => {
   const categoryList = [
@@ -20,6 +33,14 @@ const RoleSelectPage = () => {
     { name: "Engineer" },
     { name: "Content" },
   ];
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
     <DefaultLayout>
@@ -34,19 +55,23 @@ const RoleSelectPage = () => {
         </div>
       </div>
       <div css={RoleSelectContainer}>
-        <div css={KategorieTitleText}>직군</div>
-        <div css={RoleSelectTitle}>
-          {categoryList.map((item) => {
-            return (
-              <label className="checkboxLabel" key={item.name}>
-                <input type="checkbox" id={item.name} css={CheckBox} />
-                <label htmlFor={item.name}>
-                  <span css={KategorieRoleText}>{item.name}</span>
+        <div css={KategorieSelectContainer}>
+          <div css={KategorieTitleText}>직군</div>
+          <div css={RoleSelectTitleContainer}>
+            {categoryList.map((item) => {
+              return (
+                <label key={item.name} css={KategorieContainer}>
+                  <input type="checkbox" id={item.name} css={CheckBox} />
+                  <label htmlFor={item.name}>
+                    <span css={KategorieRoleText}>{item.name}</span>
+                  </label>
                 </label>
-              </label>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
+        <RoleSelectSearchBar />
+        <RoleSelectList />
       </div>
     </DefaultLayout>
   );
