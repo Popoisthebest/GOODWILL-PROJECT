@@ -2,24 +2,15 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import DefaultLayout from "../layouts/DefaultLayout";
 import mainImg from "../assets/role-select-page/main-img.jpg";
-import RoleSelectSearchBar from "../components/RoleSelect/RoleSelectSearchBar";
-import RoleSelectList from "../components/RoleSelect/RoleSelectList";
+import RoleSelectSearchBar from "../components/RoleSelect/RoleSelect/RoleSelectSearchBar.tsx";
 import {
-  CheckBox,
   ImgContainer,
-  KategorieRoleText,
-  KategorieTitleText,
   MainImg,
   Overlay,
   RoleSelectContainer,
-  KategorieSelectContainer,
-  RoleSelectTitleContainer,
   TextContainer,
-  KategorieContainer,
-  SearchContainer,
-  SearchImgStyle,
-  SearchBar,
-} from "../components/RoleSelect/RoleSelect.style.ts";
+} from "../components/RoleSelect/RoleSelect/RoleSelect.style.ts";
+import KategorieSelect from "../components/RoleSelect/Kategorie/KategorieSelect.tsx";
 
 type Inputs = {
   example: string;
@@ -27,13 +18,6 @@ type Inputs = {
 };
 
 const RoleSelectPage = () => {
-  const categoryList = [
-    { name: "Product" },
-    { name: "Design" },
-    { name: "Engineer" },
-    { name: "Content" },
-  ];
-
   const {
     register,
     handleSubmit,
@@ -55,23 +39,8 @@ const RoleSelectPage = () => {
         </div>
       </div>
       <div css={RoleSelectContainer}>
-        <div css={KategorieSelectContainer}>
-          <div css={KategorieTitleText}>직군</div>
-          <div css={RoleSelectTitleContainer}>
-            {categoryList.map((item) => {
-              return (
-                <label key={item.name} css={KategorieContainer}>
-                  <input type="checkbox" id={item.name} css={CheckBox} />
-                  <label htmlFor={item.name}>
-                    <span css={KategorieRoleText}>{item.name}</span>
-                  </label>
-                </label>
-              );
-            })}
-          </div>
-        </div>
+        <KategorieSelect />
         <RoleSelectSearchBar />
-        <RoleSelectList />
       </div>
     </DefaultLayout>
   );

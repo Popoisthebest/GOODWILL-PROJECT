@@ -5,7 +5,7 @@ import {
   roleTitle,
   roleSubtitle,
   divider,
-} from "./RoleSelectList.style";
+} from "./RoleSelectList.style.ts";
 
 interface Role {
   id: number;

@@ -2,9 +2,6 @@
 import { css } from "@emotion/react";
 
 export const roleListContainer = css`
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
 `;
 
 export const roleItem = css`
