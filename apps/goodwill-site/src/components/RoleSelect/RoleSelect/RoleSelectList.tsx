@@ -25,7 +25,7 @@ const RoleSelectList: React.FC = () => {
     <div css={roleListContainer}>
       {roles.map((role, index) => (
         <div key={role.id}>
-          <div css={roleItem}>
+          <div>
             <h2 css={roleTitle}>{role.roleName}</h2>
             <p css={roleSubtitle}>{role.jobGroup}</p>
           </div>

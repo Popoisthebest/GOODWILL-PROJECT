@@ -1,11 +1,16 @@
 import { css } from "@emotion/react";
 
+export const RoleSelectDiv = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const ImgContainer = css`
+  display: flex;
   position: relative;
   width: 100vw;
   height: 250px;
-  left: 50%;
-  transform: translateX(-50%);
 `;
 
 export const MainImg = css`
@@ -39,4 +44,6 @@ export const RoleSelectContainer = css`
   display: flex;
   justify-content: space-between;
   padding: 67px 50px 0px 50px;
+  width: 100%;
+  max-width: 700px;
 `;

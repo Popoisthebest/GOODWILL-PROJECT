@@ -9,7 +9,7 @@ import {
 
 const KategorieSelect = () => {
   const categoryList = [
-    { name: "Product" },
+    { name: "Product/Marketing" },
     { name: "Design" },
     { name: "Engineer" },
     { name: "Content" },

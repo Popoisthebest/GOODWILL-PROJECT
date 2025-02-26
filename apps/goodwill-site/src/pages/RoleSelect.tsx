@@ -7,7 +7,7 @@ import {
   ImgContainer,
   MainImg,
   Overlay,
-  RoleSelectContainer,
+  RoleSelectContainer, RoleSelectDiv,
   TextContainer,
 } from "../components/RoleSelect/RoleSelect/RoleSelect.style.ts";
 import KategorieSelect from "../components/RoleSelect/Kategorie/KategorieSelect.tsx";
@@ -28,19 +28,21 @@ const RoleSelectPage = () => {
 
   return (
     <DefaultLayout>
-      <div css={ImgContainer}>
-        <img src={mainImg} alt="role-select-page-main-img" css={MainImg} />
-        <div css={Overlay}>
-          <div css={TextContainer}>
-            자신의 일에
-            <br />
-            진심인 분을 찾습니다.
+      <div css={RoleSelectDiv}>
+        <div css={ImgContainer}>
+          <img src={mainImg} alt="role-select-page-main-img" css={MainImg} />
+          <div css={Overlay}>
+            <div css={TextContainer}>
+              자신의 일에
+              <br />
+              진심인 분을 찾습니다.
+            </div>
           </div>
         </div>
-      </div>
-      <div css={RoleSelectContainer}>
-        <KategorieSelect />
-        <RoleSelectSearchBar />
+        <div css={RoleSelectContainer}>
+          <KategorieSelect />
+          <RoleSelectSearchBar />
+        </div>
       </div>
     </DefaultLayout>
   );

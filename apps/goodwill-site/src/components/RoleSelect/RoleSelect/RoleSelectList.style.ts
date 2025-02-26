@@ -2,10 +2,16 @@
 import { css } from "@emotion/react";
 
 export const roleListContainer = css`
+    padding-top: 20px;
+    width: 450px;
+
+    @media (max-width: 768px) {
+        width: 200px;
+      
+    }
 `;
 
 export const roleItem = css`
-  padding: 16px 0;
 `;
 
 export const roleTitle = css`
