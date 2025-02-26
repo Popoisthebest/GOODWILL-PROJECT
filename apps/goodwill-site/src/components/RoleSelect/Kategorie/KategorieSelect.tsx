@@ -1,3 +1,4 @@
+import React from "react";
 import {
   CheckBox,
   KategorieContainer,
@@ -7,30 +8,37 @@ import {
   RoleSelectTitleContainer,
 } from "../Kategorie/Kategorie.style.ts";
 
-const KategorieSelect = () => {
-  const categoryList = [
-    { name: "Product/Marketing" },
-    { name: "Design" },
-    { name: "Engineer" },
-    { name: "Content" },
-  ];
+interface KategorieSelectProps {
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
+}
+
+const KategorieSelect: React.FC<KategorieSelectProps> = ({ selectedCategories, setSelectedCategories }) => {
+  const categoryList = ["Product/Marketing", "Design", "Engineer", "Content"];
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories((prev) =>
+        prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
+    );
+  };
 
   return (
-    <div css={KategorieSelectContainer}>
-      <div css={KategorieTitleText}>직군</div>
-      <div css={RoleSelectTitleContainer}>
-        {categoryList.map((item) => {
-          return (
-            <label key={item.name} css={KategorieContainer}>
-              <input type="checkbox" id={item.name} css={CheckBox} />
-              <label htmlFor={item.name}>
-                <span css={KategorieRoleText}>{item.name}</span>
+      <div css={KategorieSelectContainer}>
+        <div css={KategorieTitleText}>직군</div>
+        <div css={RoleSelectTitleContainer}>
+          {categoryList.map((category) => (
+              <label key={category} css={KategorieContainer}>
+                <input
+                    type="checkbox"
+                    checked={selectedCategories.includes(category)}
+                    onChange={() => handleCategoryChange(category)}
+                    css={CheckBox}
+                />
+                <span css={KategorieRoleText}>{category}</span>
               </label>
-            </label>
-          );
-        })}
+          ))}
+        </div>
       </div>
-    </div>
   );
 };
 

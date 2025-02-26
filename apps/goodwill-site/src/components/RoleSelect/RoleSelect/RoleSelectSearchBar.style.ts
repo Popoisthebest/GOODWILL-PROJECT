@@ -1,10 +1,5 @@
 import { css } from "@emotion/react";
 
-export const RoleSelectDiv = css`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const searchContainer = css`
   display: flex;
   align-items: center;
@@ -14,6 +9,11 @@ export const searchContainer = css`
   border-radius: 8px;
   border: 1px solid #ccc;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    padding: 5px 20px;
+  }
 `;
 
 export const searchInput = css`
@@ -23,4 +23,7 @@ export const searchInput = css`
   outline: none;
   font-size: 16px;
   background: transparent;
+  @media (max-width: 768px) {
+    padding: 20px 5px;
+  }
 `;

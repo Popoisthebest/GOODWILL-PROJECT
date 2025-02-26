@@ -34,7 +34,7 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         ref={menuRef}
         css={MenuContainer}
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 10 }}
+        animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
         transition={{ duration: 0.3 }}
       >
         {/* 모바일 모드에서 X 버튼 */}
@@ -60,7 +60,14 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         <MenuItem onClick={() => navigate("/")} path="/">
           HOME
         </MenuItem>
-        <MenuItem onClick={() => navigate("/role-select")} path="/role-select">
+        <MenuItem
+          onClick={() =>
+            setTimeout(() => {
+              navigate("/role-select");
+            }, 500)
+          }
+          path="/role-select"
+        >
           CAREER
         </MenuItem>
         <MenuItem onClick={() => navigate("/about")} path="/about">

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   roleListContainer,
-  roleItem,
   roleTitle,
   roleSubtitle,
   divider,
@@ -14,26 +13,36 @@ interface Role {
 }
 
 const roles: Role[] = [
-  { id: 1, roleName: "역할명", jobGroup: "직군" },
-  { id: 2, roleName: "역할명", jobGroup: "직군" },
-  { id: 3, roleName: "역할명", jobGroup: "직군" },
-  { id: 4, roleName: "역할명", jobGroup: "직군" },
+  { id: 1, roleName: "디자이너", jobGroup: "Design" },
+  { id: 2, roleName: "프론트엔드 개발자", jobGroup: "Engineer" },
+  { id: 3, roleName: "마케터", jobGroup: "Product/Marketing" },
+  { id: 4, roleName: "콘텐츠 기획자", jobGroup: "Content" },
 ];
 
-const RoleSelectList: React.FC = () => {
+interface RoleSelectListProps {
+  searchQuery: string;
+  selectedCategories: string[];
+}
+
+const RoleSelectList: React.FC<RoleSelectListProps> = ({ searchQuery, selectedCategories }) => {
+  const filteredRoles = roles.filter(
+      (role) =>
+          role.roleName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          (selectedCategories.length === 0 || selectedCategories.includes(role.jobGroup))
+  );
+
   return (
-    <div css={roleListContainer}>
-      {roles.map((role, index) => (
-        <div key={role.id}>
-          <div>
-            <h2 css={roleTitle}>{role.roleName}</h2>
-            <p css={roleSubtitle}>{role.jobGroup}</p>
-          </div>
-          {index !== roles.length - 1 && <div css={divider} />}{" "}
-          {/* 마지막 항목에는 구분선 표시 안 함 */}
-        </div>
-      ))}
-    </div>
+      <div css={roleListContainer}>
+        {filteredRoles.map((role, index) => (
+            <div key={role.id}>
+              <div>
+                <h2 css={roleTitle}>{role.roleName}</h2>
+                <p css={roleSubtitle}>{role.jobGroup}</p>
+              </div>
+              {index !== filteredRoles.length - 1 && <div css={divider} />} {/* 마지막 항목에는 구분선 표시 안 함 */}
+            </div>
+        ))}
+      </div>
   );
 };
 
