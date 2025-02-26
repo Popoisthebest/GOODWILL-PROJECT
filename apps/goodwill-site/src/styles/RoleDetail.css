@@ -56,6 +56,11 @@
   font-weight: 500;
   opacity: 0.75;
   line-height: 160%;
+  display: flex;
+}
+
+.description_text{
+  margin-left: 10px;
 }
 
 .process {
