@@ -1,4 +1,4 @@
-import RoleDetail from "../components/RoleInfo/RoleDetail";
+import RoleDetail from "../components/RoleInfo/RoleDetail_Front-end Engineer";
 
 const Role = () => <RoleDetail />;
 
