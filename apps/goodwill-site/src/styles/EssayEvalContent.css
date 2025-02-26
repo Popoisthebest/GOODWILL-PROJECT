@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* 요소들의 수직 정렬을 맞춤 */
-  padding: 50px 55px 0 116px;
+  padding: 50px 55px 0 80px;
   height: 92vh;
   padding-bottom: 0 !important;
 }
@@ -17,8 +17,33 @@
 
 .timer {
   flex-shrink: 0;
-  margin-top: 80px;
-  margin-right: 50px;
+  margin-top: 50px;
+}
+
+.circle-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scaleX(-1); /* 좌우 반전 */
+}
+
+.circle {
+  transform: rotate(-90deg); 
+}
+
+.background {
+  stroke: black; 
+  background-color: transparent;/* 원의 배경 색 */
+}
+
+.foreground {
+  stroke: white; /* 기본 진행 색 (초록) */
+  transition: stroke-dashoffset 1s linear;
+}
+
+.foreground.completed {
+  stroke: #000; /* 타이머 완료 후 원 색 (검정) */
 }
 
 .timer_text {
@@ -28,6 +53,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  position: absolute;
+  transform: scaleX(-1);
 }
 
 .main_content {
@@ -250,4 +277,14 @@
 .blank{
   width: 100%;
   height: 60px;
+}
+
+.warn_text{
+  margin-top: 10px;
+  color: red;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
 }
