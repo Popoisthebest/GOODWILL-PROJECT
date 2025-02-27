@@ -1,5 +1,5 @@
-import ArticleMainPage from "./pages/ArticleMain.tsx";
+import TextSection from "./pages/SubmissionFinished.tsx";
 
-const App = () => <ArticleMainPage />;
+const App = () => <TextSection />;
 
 export default App;
