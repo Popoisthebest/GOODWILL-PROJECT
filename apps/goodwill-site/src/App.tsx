@@ -1,5 +1,5 @@
-import Role from "./pages/Role";
+import ArticleMainPage from "./pages/ArticleMain.tsx";
 
-const App = () => <Role />;
+const App = () => <ArticleMainPage />;
 
 export default App;
