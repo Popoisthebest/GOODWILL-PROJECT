@@ -1,4 +1,6 @@
+import { useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
+import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   ApplicationInformation,
@@ -8,10 +10,10 @@ import {
   FormContainer,
   FormTitle,
   RoleName,
-  summitDoc,
 } from "../components/ApplicationForm/ApplicationForm.style.ts";
 import ApplicationFormTextInput from "../components/ApplicationForm/ApplicationFormTextInput.tsx";
 import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
+import SpecialFileUpload from "../components/ApplicationForm/SpecialFileUpload/SpecialFileUpload.tsx";
 
 interface FormValues {
   name: string;
@@ -23,6 +25,8 @@ interface FormValues {
 }
 
 const ApplicationFormPage = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -82,10 +86,10 @@ const ApplicationFormPage = () => {
               errorMessage={errors.phone?.message}
             />
           </form>
-          <div css={summitDoc}>제출 서류</div>
+          <div css={ApplicationInformation}>제출 서류</div>
           <div css={{ height: "32px" }}></div>
           <DocAdd />
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             <ApplicationFormTextInput
               name="coverLetter"
               placeholder="자기소개서"
@@ -93,6 +97,30 @@ const ApplicationFormPage = () => {
               register={register}
               errorMessage={errors.coverLetter?.message}
             />
+          </form>
+          <div css={ApplicationInformation}>리틀 전형</div>
+          <div css={{ height: "32px" }}></div>
+          <div
+            css={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div css={BasicInformation}>리틀 정주영 전형</div>
+            <RoundedCheckbox
+              checked={true}
+              onChange={(checked) => {
+                setIsChecked(!checked);
+              }}
+            />
+          </div>
+          {isChecked ? (
+            <div css={{ paddingTop: "32px" }}>
+              <SpecialFileUpload />
+            </div>
+          ) : null}
+          <form onSubmit={handleSubmit(onSubmit)}>
             <ApplicationFormTextInput
               name="questions"
               placeholder="질문사항"

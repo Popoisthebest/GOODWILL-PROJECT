@@ -35,6 +35,7 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
   errorMessage,
 }) => {
   const [inputValue, setInputValue] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div css={containerStyle}>
@@ -48,8 +49,11 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
           placeholder=""
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           css={textareaStyle}
-          whileHover={{ borderColor: "#1e40af" }}
+          animate={isFocused ? { borderColor: "#05308C" } : {}}
+          whileHover={isFocused ? {} : { borderColor: "#6D80C5" }}
         />
       ) : (
         <motion.input
@@ -77,8 +81,11 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
           placeholder=""
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           css={inputStyle}
-          whileHover={{ borderColor: "#1e40af" }}
+          animate={isFocused ? { borderColor: "#05308C" } : {}}
+          whileHover={isFocused ? {} : { borderColor: "#6D80C5" }}
         />
       )}
       {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}

@@ -9,7 +9,7 @@ import {
   fileNameDisplay,
   fileInput,
   uploadButton,
-} from "./FileUpload.style.ts";
+} from "./SpecialFileUpload.style.ts";
 import fileDeleteIcon from "../../../assets/fileUpload/fileUploadDelete.svg";
 import { docAddContainerList } from "../DocAdd.style.ts";
 
@@ -22,7 +22,6 @@ interface FileUploadProps {
 const FileUpload: React.FC<FileUploadProps> = ({
   id,
   removeFileUpload,
-  isContest,
 }) => {
   const fileCookieKey = `file-${id}`;
   const titleCookieKey = `title-${id}`;

@@ -1,6 +1,10 @@
 import { css } from "@emotion/react";
 
-export const docContainer = css``;
+export const docButtonContainer = css`
+    display: flex;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+`;
 
 export const docAddButton = css`
   color: #fff;
@@ -19,11 +23,12 @@ export const docAddButton = css`
 
 export const docAddContainer = css`
   display: flex;
-    flex-direction: column;
-    background-color: #f5f5f5;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #f5f5f5;
   border-radius: 4px;
-  padding: 20px;
-align-content: center;
+  padding: 7px;
+  align-content: center;
 `;
 
 export const docAddContainerList = css`
@@ -31,10 +36,10 @@ export const docAddContainerList = css`
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   padding: 20px;
+  margin-bottom: 7px;
 `;
 
 export const docAddContainerButton = css`
   border: none;
-    padding: 0;
-    background: none;
+  background: none;
 `;

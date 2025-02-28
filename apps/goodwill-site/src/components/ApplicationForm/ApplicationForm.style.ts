@@ -77,7 +77,8 @@ export const labelStyle = css`
 export const inputStyle = css`
   display: flex;
   border-radius: 8px;
-  border: 1px solid #d9d9d9;
+  border: 2px solid #d9d9d9;
+  outline: none;
   height: 20px;
   padding: 10px 16px;
   font-size: 14px;
@@ -92,13 +93,4 @@ export const errorMessageStyle = css`
   color: red;
   font-size: 14px;
   margin-top: 4px;
-`;
-
-export const summitDoc = css`
-  color: #000000;
-  font-family: Pretendard;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 50.4px */
 `;
