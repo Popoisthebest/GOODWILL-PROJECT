@@ -6,7 +6,7 @@ import {
   KategorieSelectContainer,
   KategorieTitleText,
   RoleSelectTitleContainer,
-} from "../Kategorie/Kategorie.style.ts";
+} from "./Kategorie.style.ts";
 
 interface KategorieSelectProps {
   selectedCategories: string[];
@@ -17,8 +17,10 @@ const KategorieSelect: React.FC<KategorieSelectProps> = ({ selectedCategories, s
   const categoryList = ["Product/Marketing", "Design", "Engineer", "Content"];
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategories((prev) =>
-        prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
+    setSelectedCategories(
+        selectedCategories.includes(category)
+            ? selectedCategories.filter((c) => c !== category)
+            : [...selectedCategories, category]
     );
   };
 

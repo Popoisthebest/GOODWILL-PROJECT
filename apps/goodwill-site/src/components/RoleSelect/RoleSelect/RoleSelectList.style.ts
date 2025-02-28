@@ -10,7 +10,12 @@ export const roleListContainer = css`
   }
 `;
 
-export const roleItem = css``;
+export const roleItemButton = css`
+    border: none;
+    background: none;
+    text-align: left;
+    width: 100%;
+`;
 
 export const roleTitle = css`
   font-size: 20px;
