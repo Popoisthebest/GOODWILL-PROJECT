@@ -19,10 +19,7 @@ interface FileUploadProps {
   isContest: boolean;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({
-  id,
-  removeFileUpload,
-}) => {
+const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
   const fileCookieKey = `file-${id}`;
   const titleCookieKey = `title-${id}`;
 
@@ -63,11 +60,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           <div css={fileNameContainer}>
             {/* 지원자가 직접 입력하는 제목 (쿠키에 저장됨) */}
             <input
-              placeholder={
-                isContest
-                  ? "대회 이름을 입력해 주세요."
-                  : "프로젝트 이름을 입력해 주세요."
-              }
+              placeholder="추천인 이름을 입력해 주세요."
               css={fileUploadNameInput}
               value={title}
               onChange={handleTitleChange}

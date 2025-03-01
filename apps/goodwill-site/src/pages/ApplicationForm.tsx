@@ -9,11 +9,13 @@ import {
   BasicInformationText,
   FormContainer,
   FormTitle,
+  greyLine,
   RoleName,
+  summitButton,
 } from "../components/ApplicationForm/ApplicationForm.style.ts";
 import ApplicationFormTextInput from "../components/ApplicationForm/ApplicationFormTextInput.tsx";
 import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
-import SpecialFileUpload from "../components/ApplicationForm/SpecialFileUpload/SpecialFileUpload.tsx";
+import SpecialDocAdd from "../components/ApplicationForm/SpecialFileUpload/SpecialDoc.tsx";
 
 interface FormValues {
   name: string;
@@ -64,20 +66,23 @@ const ApplicationFormPage = () => {
               register={register}
               errorMessage={errors.name?.message}
             />
+            <div css={{ height: "24px" }}></div>
             <ApplicationFormTextInput
               name="studentId"
               placeholder="학번"
               inputType="text"
               register={register}
               errorMessage={errors.studentId?.message}
-            />
+            />{" "}
+            <div css={{ height: "24px" }}></div>
             <ApplicationFormTextInput
               name="email"
               placeholder="이메일"
               inputType="text"
               register={register}
               errorMessage={errors.email?.message}
-            />
+            />{" "}
+            <div css={{ height: "24px" }}></div>
             <ApplicationFormTextInput
               name="phone"
               placeholder="전화번호 (010-0000-0000)"
@@ -86,6 +91,7 @@ const ApplicationFormPage = () => {
               errorMessage={errors.phone?.message}
             />
           </form>
+          <div css={{height:"48px"}}></div>
           <div css={ApplicationInformation}>제출 서류</div>
           <div css={{ height: "32px" }}></div>
           <DocAdd />
@@ -98,6 +104,7 @@ const ApplicationFormPage = () => {
               errorMessage={errors.coverLetter?.message}
             />
           </form>
+          <div css={{height:"36px"}}></div>
           <div css={ApplicationInformation}>리틀 전형</div>
           <div css={{ height: "32px" }}></div>
           <div
@@ -117,9 +124,12 @@ const ApplicationFormPage = () => {
           </div>
           {isChecked ? (
             <div css={{ paddingTop: "32px" }}>
-              <SpecialFileUpload />
+              <SpecialDocAdd />
             </div>
           ) : null}
+          <div css={{ height: "48px" }}></div>
+          <div css={ApplicationInformation}>기타 사항</div>
+          <div css={{ height: "32px" }}></div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ApplicationFormTextInput
               name="questions"
@@ -128,8 +138,13 @@ const ApplicationFormPage = () => {
               register={register}
               errorMessage={errors.questions?.message}
             />
-            <button type="submit">제출</button>
           </form>
+          <div css={{height:"108px"}}></div>
+          <div css={greyLine}></div>
+          <div css={{ height: "67px" }}></div>
+          <button type="submit" css={summitButton}>
+            제출하기
+          </button>
         </div>
       </div>
     </DefaultLayout>

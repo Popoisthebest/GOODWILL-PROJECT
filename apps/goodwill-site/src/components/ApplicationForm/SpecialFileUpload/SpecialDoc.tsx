@@ -3,13 +3,13 @@ import Cookies from "js-cookie";
 import {
   docAddContainer,
   docAddContainerButton,
-} from "./DocAdd.style.ts";
+} from "./SpecialDoc.style.ts";
 import FileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
-import fileAddFormAdd from "../../assets/fileUpload/PlusCircle.svg";
+import fileAddFormAdd from "../../../assets/fileUpload/PlusCircle.svg";
 
 const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
 
-const DocAdd = () => {
+const SpecialDocAdd = () => {
   const [specialFiles, setSpecialFiles] = useState<
     { id: number; name: string }[]
   >([]);
@@ -62,4 +62,4 @@ const DocAdd = () => {
   );
 };
 
-export default DocAdd;
+export default SpecialDocAdd;

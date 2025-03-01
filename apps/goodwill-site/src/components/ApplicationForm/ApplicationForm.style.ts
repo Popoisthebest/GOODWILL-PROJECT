@@ -61,7 +61,10 @@ export const containerStyle = css`
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
+`;
+
+export const applicationFormDiv = css`
+    gap: 24px;
 `;
 
 export const labelStyle = css`
@@ -93,4 +96,30 @@ export const errorMessageStyle = css`
   color: red;
   font-size: 14px;
   margin-top: 4px;
+`;
+
+export const greyLine = css`
+  display: flex;
+  background-color: #d9d9d9;
+  height: 1px;
+  width: 100%;
+`;
+
+export const summitButton = css`
+  color: #FFFFFF;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 25.2px */
+  
+  background-color: #05308C;
+  border: none;
+  border-radius: 8px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 100%;
 `;
