@@ -7,8 +7,9 @@ import {
   BasicInformation,
   BasicInformationContainer,
   BasicInformationText,
+  emailButtonDiv,
   emailDiv,
-  FormContainer,
+  FormContainer, formContainerDiv,
   FormTitle,
   greyLine,
   RoleName,
@@ -18,6 +19,7 @@ import ApplicationFormTextInput from "../components/ApplicationForm/ApplicationF
 import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
 import SpecialDocAdd from "../components/ApplicationForm/SpecialFileUpload/SpecialDoc.tsx";
 import EmailAuthenticationButton from "../components/ApplicationForm/EmailAuthentication/EmailAuthenticationButton.tsx";
+import AgreeButton from "../components/ApplicationForm/Agree/AgreeButton/AgreeButton.tsx";
 
 interface FormValues {
   name: string;
@@ -48,114 +50,135 @@ const ApplicationFormPage = () => {
 
   return (
     <DefaultLayout>
-      <div css={FormContainer}>
-        <div>
-          <div css={FormTitle}>지원서 작성하기</div>
-          <div css={RoleName}>UI/UX Designer</div>
-          <div css={{ height: "48px" }}></div>
-          <div css={ApplicationInformation}>지원자 정보</div>
-          <div css={{ height: "32px" }}></div>
-          <div css={BasicInformationContainer}>
-            <div css={BasicInformation}>기본 정보</div>
-            <div css={{ width: "10px" }}></div>
-            <div css={BasicInformationText}>필수</div>
-          </div>
-          <div css={{ height: "32px" }}></div>
-          <form>
-            <ApplicationFormTextInput
-              name="name"
-              placeholder="이름"
-              register={register}
-              errorMessage={errors.name?.message}
-            />
-            <div css={{ height: "24px" }}></div>
-            <ApplicationFormTextInput
-              name="studentId"
-              placeholder="학번"
-              inputType="text"
-              register={register}
-              errorMessage={errors.studentId?.message}
-            />{" "}
-            <div css={{ height: "24px" }}></div>
-            <div>
+      <div css={formContainerDiv}>
+        <div css={FormContainer}>
+          <div>
+            <div css={FormTitle}>지원서 작성하기</div>
+            <div css={RoleName}>UI/UX Designer</div>
+            <div css={{ height: "48px" }}></div>
+            <div css={ApplicationInformation}>지원자 정보</div>
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>기본 정보</div>
+              <div css={{ width: "10px" }}></div>
+              <div css={BasicInformationText}>필수</div>
+            </div>
+            <div css={{ height: "32px" }}></div>
+            <form>
               <ApplicationFormTextInput
-                name="email"
-                placeholder="이메일"
-                inputType="text"
-                register={register}
-                errorMessage={errors.email?.message}
+                  name="name"
+                  placeholder="이름"
+                  register={register}
+                  errorMessage={errors.name?.message}
+              />
+              <div css={{ height: "24px" }}></div>
+              <ApplicationFormTextInput
+                  name="studentId"
+                  placeholder="학번"
+                  inputType="text"
+                  register={register}
+                  errorMessage={errors.studentId?.message}
               />{" "}
-              <div css={{ height: "11px" }}></div>
+              <div css={{ height: "24px" }}></div>
               <div css={emailDiv}>
-                <EmailAuthenticationButton />
+                <ApplicationFormTextInput
+                    name="email"
+                    placeholder="이메일"
+                    inputType="text"
+                    register={register}
+                    errorMessage={errors.email?.message}
+                />{" "}
+                <div css={{ height: "11px" }}></div>
+                <div css={emailButtonDiv}>
+                  <EmailAuthenticationButton />
+                </div>
               </div>
-            </div>
+              <div css={{ height: "60px" }}></div>
+              <ApplicationFormTextInput
+                  name="phone"
+                  placeholder="전화번호 (010-0000-0000)"
+                  inputType="text"
+                  register={register}
+                  errorMessage={errors.phone?.message}
+              />
+            </form>
+            <div css={{ height: "48px" }}></div>
+            <form>
+              <ApplicationFormTextInput
+                  name="coverLetter"
+                  placeholder="자기소개서"
+                  inputType="textarea"
+                  register={register}
+                  errorMessage={errors.coverLetter?.message}
+              />
+            </form>
+            <div css={{ height: "48px" }}></div>
+            <div css={ApplicationInformation}>제출 서류</div>
+            <div css={{ height: "32px" }}></div>
+            <DocAdd />
+
             <div css={{ height: "36px" }}></div>
-            <ApplicationFormTextInput
-              name="phone"
-              placeholder="전화번호 (010-0000-0000)"
-              inputType="text"
-              register={register}
-              errorMessage={errors.phone?.message}
-            />
-          </form>
-          <div css={{ height: "48px" }}></div>
-          <div css={ApplicationInformation}>제출 서류</div>
-          <div css={{ height: "32px" }}></div>
-          <DocAdd />
-          <form>
-            <ApplicationFormTextInput
-              name="coverLetter"
-              placeholder="자기소개서"
-              inputType="textarea"
-              register={register}
-              errorMessage={errors.coverLetter?.message}
-            />
-          </form>
-          <div css={{ height: "36px" }}></div>
-          <div css={ApplicationInformation}>리틀 전형</div>
-          <div css={{ height: "32px" }}></div>
-          <div
-            css={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <div css={BasicInformation}>리틀 정주영 전형</div>
-            <RoundedCheckbox
-              checked={true}
-              onChange={(checked) => {
-                setIsChecked(!checked);
-              }}
-            />
-          </div>
-          {isChecked ? (
-            <div css={{ paddingTop: "32px" }}>
-              <SpecialDocAdd />
+            <div css={ApplicationInformation}>리틀 전형</div>
+            <div css={{ height: "32px" }}></div>
+            <div
+                css={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+            >
+              <div css={BasicInformation}>리틀 정주영 전형</div>
+              <RoundedCheckbox
+                  checked={true}
+                  onChange={(checked) => {
+                    setIsChecked(!checked);
+                  }}
+              />
             </div>
-          ) : null}
-          <div css={{ height: "48px" }}></div>
-          <div css={ApplicationInformation}>기타 사항</div>
-          <div css={{ height: "32px" }}></div>
-          <form>
-            <ApplicationFormTextInput
-              name="questions"
-              placeholder="질문사항"
-              inputType="textarea"
-              register={register}
-              errorMessage={errors.questions?.message}
+            {isChecked ? (
+                <div css={{ paddingTop: "32px" }}>
+                  <SpecialDocAdd />
+                </div>
+            ) : null}
+            <div css={{ height: "48px" }}></div>
+            <div css={ApplicationInformation}>기타 사항</div>
+            <div css={{ height: "32px" }}></div>
+            <form>
+              <ApplicationFormTextInput
+                  name="questions"
+                  placeholder="질문사항"
+                  inputType="textarea"
+                  register={register}
+                  errorMessage={errors.questions?.message}
+              />
+            </form>
+            <div css={{ height: "100px" }}></div>
+            <AgreeButton
+                agreeType="전체 동의"
+                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
             />
-          </form>
-          <div css={{ height: "108px" }}></div>
-          <div css={greyLine}></div>
-          <div css={{ height: "67px" }}></div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <button type="submit" css={summitButton}>
-              제출하기
-            </button>
-          </form>
+            <div css={{ height: "27px" }}></div>
+            <div css={greyLine}></div>
+            <div css={{ height: "40px" }}></div>
+            <AgreeButton
+                agreeType="필수"
+                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+            />
+            <div css={{ height: "10px" }}></div>
+            <AgreeButton
+                agreeType="선택"
+                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+            />
+
+            <div css={{ height: "106px" }}></div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <button type="submit" css={summitButton}>
+                제출하기
+              </button>
+            </form>
+          </div>
         </div>
+
       </div>
     </DefaultLayout>
   );

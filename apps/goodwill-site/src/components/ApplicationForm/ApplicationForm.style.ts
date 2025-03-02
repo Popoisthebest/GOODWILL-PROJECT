@@ -1,8 +1,12 @@
 import { css } from "@emotion/react";
 
+export const formContainerDiv = css`
+  display: flex;
+  justify-content: center;
+`;
+
 export const FormContainer = css`
-  flex-direction: column;
-  align-items: center;
+  width: 690px;
 `;
 
 export const FormTitle = css`
@@ -71,6 +75,7 @@ export const labelStyle = css`
   font-weight: 400;
   line-height: 24px; /* 150% */
   letter-spacing: -0.048px;
+  
 `;
 
 export const inputStyle = css`
@@ -84,18 +89,37 @@ export const inputStyle = css`
 `;
 
 export const emailDiv = css`
-  display: flex;
-  justify-content: end;
+  flex-direction: column;
+  position: relative;
+`;
+
+export const emailButtonDiv = css`
+  position: absolute;
+  right: 0;
+  top: 75px;
 `;
 
 export const textareaStyle = css`
   ${inputStyle};
+  height: 80px;
   resize: vertical;
 `;
 
 export const errorMessageStyle = css`
   color: red;
   font-size: 14px;
+  margin-top: 4px;
+`;
+
+export const letterCount = css`
+  color:  #7B7B7B;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: -0.042px;
   margin-top: 4px;
 `;
 
