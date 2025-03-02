@@ -63,10 +63,6 @@ export const containerStyle = css`
   flex-direction: column;
 `;
 
-export const applicationFormDiv = css`
-    gap: 24px;
-`;
-
 export const labelStyle = css`
   color: #555;
   font-family: Pretendard;
@@ -85,6 +81,11 @@ export const inputStyle = css`
   height: 20px;
   padding: 10px 16px;
   font-size: 14px;
+`;
+
+export const emailDiv = css`
+  display: flex;
+  justify-content: end;
 `;
 
 export const textareaStyle = css`
@@ -106,17 +107,17 @@ export const greyLine = css`
 `;
 
 export const summitButton = css`
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 25.2px */
-  
-  background-color: #05308C;
+
+  background-color: #05308c;
   border: none;
   border-radius: 8px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
