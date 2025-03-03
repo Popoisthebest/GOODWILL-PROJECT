@@ -1,5 +1,4 @@
-.wrapper{
-  width: 90%;
+.wrapper {
   margin: 0 auto;
   margin-bottom: 50px;
 }
@@ -8,6 +7,10 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .left-content {
@@ -33,11 +36,11 @@
   margin-top: 46px;
 }
 
-.uxui-designer{
+.uxui-designer {
   margin-top: 48px;
 }
 
-.sub-title-section{
+.sub-title-section {
   margin-top: 46px;
 }
 
@@ -59,7 +62,7 @@
   display: flex;
 }
 
-.description_text{
+.description_text {
   margin-left: 10px;
 }
 
@@ -67,7 +70,7 @@
   margin-top: 48px;
 }
 
-.process_toworkwith{
+.process_toworkwith {
   margin-top: 48px;
 }
 
@@ -110,14 +113,20 @@
 }
 
 .right-card {
-  flex-shrink: 0;
-  margin-left: auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .card {
   border: 1px solid #d9d9d9;
   width: 355px;
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 40px;
+  }
 }
 
 .card-content {
@@ -126,28 +135,47 @@
 
 .card-item {
   display: flex;
+  align-items: center;
   border-bottom: 1px solid #d9d9d9;
+  margin-left: 5px;
   padding: 17px 0;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 }
 
 .card-item-last {
   display: flex;
+  margin-left: 5px;
   padding: 17px 0 0 0;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 }
 
 .card-label {
-  margin: 0 64px 0 5px;
+  width: 100px;
+  white-space: nowrap;
   color: #9d9d9d;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+
+
 }
 
 .card-value {
+  width: 200px;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
 }
 
 .card-image {
@@ -156,22 +184,27 @@
   height: 147px;
   border-radius: 4px;
   background: #d9d9d9;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .apply-button {
-  box-sizing: border-box;
-  margin-top: 20px;
-  display: flex;
-  height: 50px;
-  padding: 18px 20px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: #05308c;
   color: #fff;
   font-family: Pretendard;
   font-size: 18px;
+  font-style: normal;
   font-weight: 300;
-  line-height: 140%;
+  line-height: 140%; /* 25.2px */
+
+  margin-top: 20px;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background: #05308c;
 }

@@ -9,8 +9,7 @@ export const MenuContainer = css`
   padding: 10px 10px;
   border-radius: 8px;
   border: 2px solid #000000;
-    z-index: 1000;
-    
+  z-index: 1000;
 
   @media (max-width: 768px) {
     background: blue;
