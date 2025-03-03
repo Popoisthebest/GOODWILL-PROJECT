@@ -46,8 +46,7 @@ const RoleSelectList: React.FC<RoleSelectListProps> = ({
         <div key={role.id}>
           <button
             onClick={() => {
-              navigate(`/role-select`);
-              alert("Role Select Page");
+              navigate(`/write-application`);
             }}
             css={roleItemButton}
           >
