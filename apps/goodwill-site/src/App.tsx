@@ -5,6 +5,7 @@ import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetailBackendEngineer.tsx";
 import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetailFrontendEngineer.tsx";
 import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetailFullstackEngineer.tsx";
+import Project from "./pages/Project.tsx";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           path="/Full-Stack Engineer(FS)"
           element={<RoleDetailFullStackEngineer />}
         />
+        <Route path="/projects" element={<Project />} />
+
       </Routes>
     </Router>
   );
