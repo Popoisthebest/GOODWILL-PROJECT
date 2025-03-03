@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
@@ -48,6 +48,10 @@ const ApplicationFormPage = () => {
   const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
   const littleProgramName = getLittleProgramName(jobGroup);
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     register,
