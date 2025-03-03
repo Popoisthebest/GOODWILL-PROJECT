@@ -2,13 +2,13 @@
 import {
   headerStyle,
   desktopButtonContainerStyle,
-  headerLogoStyle,
+
 } from "./Header.style";
-import goodwillLogo from "../../assets/logo/GOODWILL-logo.svg";
 import CareerButton from "./CareerButton.tsx";
 import MenuButton from "./MenuButton.tsx";
 import PopupMenu from "../Menu/PopupMenu.tsx";
 import { useState } from "react";
+import Logo from "../Logo/Logo.tsx";
 
 const Header = () => {
   // 🔥 메뉴의 Open 상태를 여기에서 관리
@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header css={headerStyle}>
-      <img src={goodwillLogo} alt="GOODWILL logo" css={headerLogoStyle} />
+      <Logo/>
       <div css={desktopButtonContainerStyle}>
         <CareerButton />
         {/* MenuButton에 상태 전달 */}
