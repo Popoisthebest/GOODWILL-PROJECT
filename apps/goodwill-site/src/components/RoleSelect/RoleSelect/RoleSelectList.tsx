@@ -15,9 +15,9 @@ interface Role {
 }
 
 const roles: Role[] = [
-  { id: 1, roleName: "Front-End Engineer(FE)", jobGroup: "Engineer" },
-  { id: 2, roleName: "Back-End Engineer(BE)", jobGroup: "Engineer" },
-  { id: 3, roleName: "Full-Stack Engineer(FS)", jobGroup: "Engineer" },
+  { id: 1, roleName: "Front-End Engineer(FE)", jobGroup: "Engineering" },
+  { id: 2, roleName: "Back-End Engineer(BE)", jobGroup: "Engineering" },
+  { id: 3, roleName: "Full-Stack Engineer(FS)", jobGroup: "Engineering" },
   { id: 4, roleName: "콘텐츠 기획자", jobGroup: "Content" },
 ];
 
@@ -43,10 +43,12 @@ const RoleSelectList: React.FC<RoleSelectListProps> = ({
   return (
     <div css={roleListContainer}>
       {filteredRoles.map((role, index) => (
+
         <div key={role.id}>
           <button
             onClick={() => {
-              navigate(`/${role.roleName}`);
+              const jobGroup = role.jobGroup;
+              navigate(`/${role.roleName}`, { state: {jobGroup} });
             }}
             css={roleItemButton}
           >

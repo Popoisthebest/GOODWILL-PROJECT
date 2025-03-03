@@ -38,7 +38,7 @@ const fullStackEngineerData: RoleDetailProps = {
     { label: "직군", value: "Full-Stack Engineer(FS)" },
     { label: "경력사항", value: "경력 3년 이상" },
     { label: "고용형태", value: "정규직" },
-    { label: "사무실", value: "부산 해운대구 센텀로 456" },
+    { label: "사무실", value: "대전대신고등학교 대전광역시 서구 오량1길 98" },
   ],
 };
 

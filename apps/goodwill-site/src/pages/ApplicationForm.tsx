@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -9,7 +10,8 @@ import {
   BasicInformationText,
   emailButtonDiv,
   emailDiv,
-  FormContainer, formContainerDiv,
+  FormContainer,
+  formContainerDiv,
   FormTitle,
   greyLine,
   RoleName,
@@ -30,7 +32,21 @@ interface FormValues {
   questions: string;
 }
 
+const getLittleProgramName = (jobGroup: string) => {
+  const jobGroupToProgramMap: Record<string, string> = {
+    "Business & Marketing": "리틀 정주영 전형",
+    Design: "리틀 도널드 노먼 전형",
+    Engineering: "리틀 빌게이츠 전형",
+    Content: "리틀 도널드 노먼 전형",
+  };
+  return jobGroupToProgramMap[jobGroup] || "리틀 특별 전형"; // 기본값
+};
+
 const ApplicationFormPage = () => {
+  const location = useLocation();
+  const roleName = location.state?.roleName || "직군 선택 없음";
+  const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
+  const littleProgramName = getLittleProgramName(jobGroup);
   const [isChecked, setIsChecked] = useState(false);
 
   const {
@@ -54,7 +70,7 @@ const ApplicationFormPage = () => {
         <div css={FormContainer}>
           <div>
             <div css={FormTitle}>지원서 작성하기</div>
-            <div css={RoleName}>UI/UX Designer</div>
+            <div css={RoleName}>{roleName}</div>
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>지원자 정보</div>
             <div css={{ height: "32px" }}></div>
@@ -66,27 +82,27 @@ const ApplicationFormPage = () => {
             <div css={{ height: "32px" }}></div>
             <form>
               <ApplicationFormTextInput
-                  name="name"
-                  placeholder="이름"
-                  register={register}
-                  errorMessage={errors.name?.message}
+                name="name"
+                placeholder="이름"
+                register={register}
+                errorMessage={errors.name?.message}
               />
               <div css={{ height: "24px" }}></div>
               <ApplicationFormTextInput
-                  name="studentId"
-                  placeholder="학번"
-                  inputType="text"
-                  register={register}
-                  errorMessage={errors.studentId?.message}
+                name="studentId"
+                placeholder="학번"
+                inputType="text"
+                register={register}
+                errorMessage={errors.studentId?.message}
               />{" "}
               <div css={{ height: "24px" }}></div>
               <div css={emailDiv}>
                 <ApplicationFormTextInput
-                    name="email"
-                    placeholder="이메일"
-                    inputType="text"
-                    register={register}
-                    errorMessage={errors.email?.message}
+                  name="email"
+                  placeholder="이메일"
+                  inputType="text"
+                  register={register}
+                  errorMessage={errors.email?.message}
                 />{" "}
                 <div css={{ height: "11px" }}></div>
                 <div css={emailButtonDiv}>
@@ -95,21 +111,21 @@ const ApplicationFormPage = () => {
               </div>
               <div css={{ height: "60px" }}></div>
               <ApplicationFormTextInput
-                  name="phone"
-                  placeholder="전화번호 (010-0000-0000)"
-                  inputType="text"
-                  register={register}
-                  errorMessage={errors.phone?.message}
+                name="phone"
+                placeholder="전화번호 (010-0000-0000)"
+                inputType="text"
+                register={register}
+                errorMessage={errors.phone?.message}
               />
             </form>
             <div css={{ height: "48px" }}></div>
             <form>
               <ApplicationFormTextInput
-                  name="coverLetter"
-                  placeholder="자기소개서"
-                  inputType="textarea"
-                  register={register}
-                  errorMessage={errors.coverLetter?.message}
+                name="coverLetter"
+                placeholder="자기소개서"
+                inputType="textarea"
+                register={register}
+                errorMessage={errors.coverLetter?.message}
               />
             </form>
             <div css={{ height: "48px" }}></div>
@@ -121,53 +137,53 @@ const ApplicationFormPage = () => {
             <div css={ApplicationInformation}>리틀 전형</div>
             <div css={{ height: "32px" }}></div>
             <div
-                css={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
+              css={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
-              <div css={BasicInformation}>리틀 정주영 전형</div>
+              <div css={BasicInformation}>{littleProgramName}</div>
               <RoundedCheckbox
-                  checked={true}
-                  onChange={(checked) => {
-                    setIsChecked(!checked);
-                  }}
+                checked={true}
+                onChange={(checked) => {
+                  setIsChecked(!checked);
+                }}
               />
             </div>
             {isChecked ? (
-                <div css={{ paddingTop: "32px" }}>
-                  <SpecialDocAdd />
-                </div>
+              <div css={{ paddingTop: "32px" }}>
+                <SpecialDocAdd />
+              </div>
             ) : null}
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>기타 사항</div>
             <div css={{ height: "32px" }}></div>
             <form>
               <ApplicationFormTextInput
-                  name="questions"
-                  placeholder="질문사항"
-                  inputType="textarea"
-                  register={register}
-                  errorMessage={errors.questions?.message}
+                name="questions"
+                placeholder="질문사항"
+                inputType="textarea"
+                register={register}
+                errorMessage={errors.questions?.message}
               />
             </form>
             <div css={{ height: "100px" }}></div>
             <AgreeButton
-                agreeType="전체 동의"
-                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              agreeType="전체 동의"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
             />
             <div css={{ height: "27px" }}></div>
             <div css={greyLine}></div>
             <div css={{ height: "40px" }}></div>
             <AgreeButton
-                agreeType="필수"
-                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              agreeType="필수"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
             />
             <div css={{ height: "10px" }}></div>
             <AgreeButton
-                agreeType="선택"
-                agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              agreeType="선택"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
             />
 
             <div css={{ height: "106px" }}></div>
@@ -178,7 +194,6 @@ const ApplicationFormPage = () => {
             </form>
           </div>
         </div>
-
       </div>
     </DefaultLayout>
   );

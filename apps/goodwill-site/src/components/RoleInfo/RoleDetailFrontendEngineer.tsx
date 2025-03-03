@@ -36,7 +36,7 @@ const frontEndEngineerData: RoleDetailProps = {
     { label: "직군", value: "Front-End Engineer(FE)" },
     { label: "경력사항", value: "경력 1년 이상" },
     { label: "고용형태", value: "정규직" },
-    { label: "사무실", value: "대전대신고등학교 \n 대전광역시 서구 오량1길 98" }
+    { label: "사무실", value: "대전대신고등학교 대전광역시 서구 오량1길 98" }
   ]
 };
 

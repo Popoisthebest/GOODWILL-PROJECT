@@ -3,6 +3,7 @@ import React from "react";
 import "../../styles/RoleDetail.css";
 import { RoleDetailProps } from "./RoleDetail.types";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const RoleDetail = ({
   roleName,
@@ -15,6 +16,10 @@ const RoleDetail = ({
   processSteps,
   jobDetails, // 추가된 직군 정보
 }: RoleDetailProps) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
+
   return (
     <DefaultLayout>
       <div className="wrapper">
@@ -90,7 +95,14 @@ const RoleDetail = ({
                 <div className="card-image"></div>
               </div>
             </div>
-            <button onClick={() => alert("hello")} className="apply-button">
+            <button
+              onClick={() =>
+                navigate("/write-application", {
+                  state: { roleName, jobGroup },
+                })
+              }
+              className="apply-button"
+            >
               지원하기
             </button>
           </div>
