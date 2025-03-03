@@ -1,0 +1,80 @@
+.announcemnet_box {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.announcement_header {
+  width: 100%;
+}
+
+.header_text {
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.header_inputbox {
+  position: relative; /* 이 부분 추가 */
+  width: 600px;
+  margin: 48px auto 0;
+}
+
+.header_input {
+  padding: 0 0 12px 0;
+  display: block;
+  width: 100%; /* 너비를 부모에 맞추기 */
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  text-align: center;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.announcemnet_magnify_icon {
+  position: absolute;
+  top: 50%;
+  left: 0px; /* 우측 여백 */
+  transform: translateY(-50%); /* 수직 가운데 정렬 */
+  width: 30px; /* 아이콘 크기 */
+  height: 30px;
+  margin-top: -6px;
+}
+
+.announcement_content_select {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.select_content {
+  display: flex;
+  margin: 36px 36px 0 0;
+}
+
+.text {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.count {
+  color: var(--Gray-Scale-500, #7b7b7b);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  line-height: 2;
+}
