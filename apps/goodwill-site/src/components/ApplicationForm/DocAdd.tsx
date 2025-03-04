@@ -90,6 +90,7 @@ const DocAdd = () => {
                         <FileUpload
                             key={file.id}
                             id={file.id}
+                            applicationId={}
                             removeFileUpload={() => removeFileUpload(file.id, true)}
                             isContest={true}
                         />
@@ -98,6 +99,7 @@ const DocAdd = () => {
                         <FileUpload
                             key={file.id}
                             id={file.id}
+                            applicationId={}
                             removeFileUpload={() => removeFileUpload(file.id, false)}
                             isContest={false}
                         />
