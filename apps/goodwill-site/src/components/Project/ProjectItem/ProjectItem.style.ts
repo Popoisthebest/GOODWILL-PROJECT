@@ -1,7 +1,13 @@
 import { css } from "@emotion/react";
 
+export const itemContainer = css`
+  display: flex;
+  flex-direction: column;
+  justify-self: stretch;
+`;
+
 export const itemImgDiv = css`
-  width: 636px;
+  width: 100%;
   height: 400px;
   border-radius: 20px;
   background: #d9d9d9;

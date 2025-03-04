@@ -1,6 +1,7 @@
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import {
   arrow,
+  itemDiv,
   mainDiv,
   mainText,
   subText,
@@ -29,11 +30,44 @@ const ProjectPage = () => {
           합니다.
         </div>
       </div>
-      <ProjectItem
-        itemImgSrc=""
-        date="2025-02-18"
-        title="제목을 입력해 주세요."
-      />
+      <div css={{ height: "32px" }}></div>
+      <div css={itemDiv}>
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+        <ProjectItem
+          itemImgSrc=""
+          date="2025-02-18"
+          title="제목을 입력해 주세요."
+        />
+      </div>
     </DefaultLayout>
   );
 };

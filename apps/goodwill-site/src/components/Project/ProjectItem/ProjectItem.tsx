@@ -1,8 +1,8 @@
 import {
-  dateText,
-  itemImg,
-  itemImgDiv,
-  titleText,
+    dateText, itemContainer,
+    itemImg,
+    itemImgDiv,
+    titleText,
 } from "./ProjectItem.style.ts";
 
 interface ProjectItemProps {
@@ -17,7 +17,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   title,
 }) => {
   return (
-    <div>
+    <div css={itemContainer}>
       <div css={itemImgDiv}>
         <img src={itemImgSrc} alt="ItemImg" css={itemImg} />
       </div>
