@@ -7,7 +7,7 @@ const Announcement = () => {
   const navigate = useNavigate();
 
   const announcements = [
-    { category: "이벤트", classific: "이벤트", title: "점검 안내", content: "안녕하세요, 굿윌입니다. 서버 점검으로 인해 아래의 시간 동안 서비스가 일시 중단됩니다. 서버 점검 시간: 2022년 7월 21일(목) 00:00 ~ 06:00 긴급 문의는 [고객 지원 이메일 또는 연락처] 로 부탁드립니다. 이용에 불편을 드려 죄송합니다. 더욱 안정적인 서비스 제공을 위해 최선을 다하겠습니다. 감사합니다." ,date: "2024-03-01", views: "100" },
+    { category: "이벤트", classific: "이벤트", title: "점검 안내", content: "안녕하세요, 굿윌입니다. 서버 점검으로 인해 아래의 시간 동안 서비스가 일시 중단됩니다. 서버 점검 시간: 2022년 7월 21일(목) 00:00 ~ 06:00 긴급 문의는 [고객 지원 이메일 또는 연락처] 로 부탁드립니다. 이용에 불편을 드려 죄송합니다. 더욱 안정적인 서비스 제공을 위해 최선을 다하겠습니다. 감사합니다." ,date: "2024년 03월 01일", views: "100" },
     { category: "이벤트", classific: "이벤트", title: "이벤트 소식 2", content: "섹스" ,date: "2024-03-02", views: "150" },
     { category: "아티클", classific: "아티클", title: "아티클 1", content: "섹스1" ,date: "2024-03-03", views: "200" },
     { category: "아티클", classific: "아티클", title: "아티클 2",content: "섹스2" , date: "2024-03-04", views: "250" },
@@ -27,14 +27,30 @@ const Announcement = () => {
   ];
 
   const [selectedCategory, setSelectedCategory] = useState<string>("전체");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredAnnouncements =
     selectedCategory === "전체"
-      ? announcements
-      : announcements.filter((item) => item.category === selectedCategory);
+      ? announcements.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      : announcements
+          .filter((item) => item.category === selectedCategory)
+          .filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  const handleRowClick = (category: string, title : string, date : string, views : string, content:string) => {
+  const handleRowClick = (category: string, title: string, date: string, views: string, content: string) => {
     navigate(`/notice/${category}/${encodeURIComponent(title)}/${encodeURIComponent(date)}/${encodeURIComponent(views)}/${encodeURIComponent(content)}`);
+  };
+
+  // 검색 실행 함수
+  const handleSearch = () => {
+    // 검색어가 바뀌면 자동으로 필터링됨
+    setSearchQuery(searchQuery);
+  };
+
+  // 엔터키로 검색
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -42,8 +58,20 @@ const Announcement = () => {
       <div className="announcement_header">
         <div className="header_text">ANNOUNCEMENT</div>
         <div className="header_inputbox">
-          <input type="text" className="header_input" />
-          <img src={magnifyIcon} className="announcement_magnify_icon" alt="" />
+          <input
+            type="text"
+            className="header_input"
+            placeholder="제목으로 검색"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress} // 엔터키로 검색
+          />
+          <img 
+            src={magnifyIcon} 
+            className="announcement_magnify_icon" 
+            alt="검색 아이콘" 
+            onClick={handleSearch} // 클릭으로 검색
+          />
         </div>
       </div>
 
