@@ -33,13 +33,13 @@
   text-align: center;
   color: #000;
   font-family: Pretendard;
-  font-size: 17px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
 }
 
-.announcemnet_magnify_icon {
+.announcement_magnify_icon {
   position: absolute;
   top: 50%;
   left: 0px; /* 우측 여백 */
@@ -61,7 +61,6 @@
 }
 
 .text {
-  color: #000;
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
@@ -77,4 +76,37 @@
   font-weight: 400;
   line-height: 140%;
   line-height: 2;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px auto 0;
+  width: 80%;
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+th {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  border-top: 2px solid #000;
+  vertical-align: top;
+  vertical-align: bottom;
+  vertical-align: middle;
+}
+
+td {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  border-top: 1px solid #d9d9d9;
+  vertical-align: top;
+  vertical-align: bottom;
+  vertical-align: middle;
 }
