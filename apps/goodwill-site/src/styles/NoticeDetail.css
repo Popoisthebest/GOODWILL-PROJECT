@@ -1,0 +1,41 @@
+.header_text {
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.notice_header {
+  margin-top: 72px;
+}
+
+.title {
+  text-align: center;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.dotdotdot {
+  display: grid;
+  place-items: center;
+  margin: 0 10px 0 10px;
+  color: var(--Gray-Scale-300, #c4c4c4);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.notice_date {
+}
+
+.notice_graytext {
+  display: flex;
+}

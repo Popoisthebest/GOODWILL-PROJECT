@@ -110,3 +110,18 @@ td {
   vertical-align: bottom;
   vertical-align: middle;
 }
+
+th:first-child, td:first-child {
+  text-align: center;
+  width: 20%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  text-align: center;
+  width: 40%;
+}
+
+th:last-child, td:last-child {
+  text-align: center;
+  width: 20%;
+}
