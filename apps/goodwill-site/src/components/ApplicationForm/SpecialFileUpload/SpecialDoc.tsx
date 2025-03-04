@@ -4,7 +4,7 @@ import {
   docAddContainer,
   docAddContainerButton,
 } from "./SpecialDoc.style.ts";
-import FileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
+import SpecialFileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
 import fileAddFormAdd from "../../../assets/fileUpload/PlusCircle.svg";
 
 const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
@@ -45,7 +45,7 @@ const SpecialDocAdd = () => {
     <div>
       <div css={docAddContainer}>
         {specialFiles.map((file) => (
-          <FileUpload
+          <SpecialFileUpload
             key={file.id}
             id={file.id}
             removeFileUpload={() => removeFileUpload(file.id)}

@@ -18,37 +18,37 @@ interface AgreeButtonProps {
 }
 
 const AgreeButton: FC<AgreeButtonProps> = ({
-                                             agreeType,
-                                             agreeDescription,
-                                             isChecked,
-                                             onToggle,
-                                           }) => {
+  agreeType,
+  agreeDescription,
+  isChecked,
+  onToggle,
+}) => {
   return (
-      <div css={agreeButtonDiv}>
-        <div css={checkBoxDiv}>
-          <input
-              type="checkbox"
-              css={checkBox}
-              checked={isChecked}
-              onChange={onToggle}
-          />
-          <div css={{ width: "20px" }}></div>
-          <div css={checkItemDiv}>
-            <div
-                css={
-                  agreeType === "선택"
-                      ? checkItemTitleOption
-                      : checkItemTitleRequired
-                }
-            >
-              {agreeType}
-            </div>
-            <div css={{ width: "20px" }}></div>
-            <div css={checkItemDescription}>{agreeDescription}</div>
+    <div css={agreeButtonDiv}>
+      <div css={checkBoxDiv}>
+        <input
+          type="checkbox"
+          css={checkBox}
+          checked={isChecked}
+          onChange={onToggle}
+        />
+        <div css={{ width: "20px" }}></div>
+        <div css={checkItemDiv}>
+          <div
+            css={
+              agreeType === "선택"
+                ? checkItemTitleOption
+                : checkItemTitleRequired
+            }
+          >
+            {agreeType}
           </div>
+          <div css={{ width: "20px" }}></div>
+          <div css={checkItemDescription}>{agreeDescription}</div>
         </div>
-        <div css={moreDetailButton}>보기</div>
       </div>
+      <div css={moreDetailButton}>보기</div>
+    </div>
   );
 };
 

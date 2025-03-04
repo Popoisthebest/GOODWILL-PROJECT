@@ -5,6 +5,7 @@ import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetailBackendEngineer.tsx";
 import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetailFrontendEngineer.tsx";
 import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetailFullstackEngineer.tsx";
+import VerifyEmailPage from "./components/ApplicationForm/EmailAuthentication/VerifyEmail/VerifyEmailPage.tsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           path="/Full-Stack Engineer(FS)"
           element={<RoleDetailFullStackEngineer />}
         />
+        <Route path="/verify-email" element={<VerifyEmailPage />}></Route>
       </Routes>
     </Router>
   );

@@ -19,7 +19,7 @@ interface FileUploadProps {
   isContest: boolean;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
+const SpecialFileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
   const fileCookieKey = `file-${id}`;
   const titleCookieKey = `title-${id}`;
 
@@ -95,4 +95,4 @@ const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
   );
 };
 
-export default FileUpload;
+export default SpecialFileUpload;

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Cookies from "js-cookie";
+// import { isEmailVerified } from "../firebase/auth"; // 🔥 인증 여부 확인 함수 가져오기
 import {
   ApplicationInformation,
   BasicInformation,
@@ -22,6 +24,7 @@ import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
 import SpecialDocAdd from "../components/ApplicationForm/SpecialFileUpload/SpecialDoc.tsx";
 import EmailAuthenticationButton from "../components/ApplicationForm/EmailAuthentication/EmailAuthenticationButton.tsx";
 import AgreeButton from "../components/ApplicationForm/Agree/AgreeButton/AgreeButton.tsx";
+import { submitApplication, uploadFileToStorage } from "../firebase/firestore"; // Firestore 저장 함수 불러오기
 
 interface FormValues {
   name: string;
@@ -30,6 +33,11 @@ interface FormValues {
   phone: string;
   coverLetter: string;
   questions: string;
+}
+
+interface UploadedFile {
+  title: string;
+  file: File;
 }
 
 const getLittleProgramName = (jobGroup: string) => {
@@ -47,12 +55,37 @@ const ApplicationFormPage = () => {
   const roleName = location.state?.roleName || "직군 선택 없음";
   const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
   const littleProgramName = getLittleProgramName(jobGroup);
+
   const [isChecked, setIsChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
   const [requiredChecked, setRequiredChecked] = useState(false);
   const [optionalChecked, setOptionalChecked] = useState(false);
 
-  // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const emailValue = watch("email");
+
+  // 🔥 쿠키에서 파일 데이터 가져오기
+  const [awardFiles, setAwardFiles] = useState<UploadedFile[]>([]);
+  const [portfolioFiles, setPortfolioFiles] = useState<UploadedFile[]>([]);
+  const [specialFiles, setSpecialFiles] = useState<UploadedFile[]>([]);
+
+  useEffect(() => {
+    const savedAwardFiles = Cookies.get("contestFiles");
+    const savedPortfolioFiles = Cookies.get("portfolioFiles");
+    const savedSpecialFiles = Cookies.get("specialFiles");
+
+    if (savedAwardFiles) setAwardFiles(JSON.parse(savedAwardFiles));
+    if (savedPortfolioFiles) setPortfolioFiles(JSON.parse(savedPortfolioFiles));
+    if (savedSpecialFiles) setSpecialFiles(JSON.parse(savedSpecialFiles));
+  }, []);
+
+  // ✅ 전체 동의 체크 시 모든 체크박스 변경
   const handleAllCheck = () => {
     const newCheckState = !allChecked;
     setAllChecked(newCheckState);
@@ -60,47 +93,100 @@ const ApplicationFormPage = () => {
     setOptionalChecked(newCheckState);
   };
 
-  // 필수 동의 체크박스 변경 시 처리
+  // ✅ 필수 동의 체크박스 변경 시 처리
   const handleRequiredCheck = () => {
-    const newRequiredState = !requiredChecked;
-    setRequiredChecked(newRequiredState);
-
-    if (!newRequiredState || !optionalChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
+    setRequiredChecked((prev) => {
+      const newRequiredState = !prev;
+      if (!newRequiredState || !optionalChecked) {
+        setAllChecked(false);
+      } else {
+        setAllChecked(true);
+      }
+      return newRequiredState;
+    });
   };
 
-  // 선택 동의 체크박스 변경 시 처리
+  // ✅ 선택 동의 체크박스 변경 시 처리
   const handleOptionalCheck = () => {
-    const newOptionalState = !optionalChecked;
-    setOptionalChecked(newOptionalState);
-
-    if (!newOptionalState || !requiredChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
+    setOptionalChecked((prev) => {
+      const newOptionalState = !prev;
+      if (!newOptionalState || !requiredChecked) {
+        setAllChecked(false);
+      } else {
+        setAllChecked(true);
+      }
+      return newOptionalState;
+    });
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>();
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    if (!requiredChecked) {
+      alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
+      return;
+    }
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    // 학번을 숫자로 변환하여 처리
-    const formattedData = {
-      ...data,
-      studentId: Number(data.studentId), // 문자열을 숫자로 변환
-    };
-    alert(JSON.stringify(formattedData, null, 2));
+    if (!data.email) {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
+
+    try {
+      // 🔥 특별전형 파일 업로드
+      const specialApplicationFiles = await Promise.all(
+          specialFiles.map(async (file: UploadedFile) => {
+            if (!file || !file.file) return null;
+            return {
+              title: file.title,
+              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/specialApplication/${file.title}`)
+            };
+          })
+      ).then(results => results.filter(file => file !== null)); // 🔥 `null` 제거
+
+      // 🔥 수상 내역 파일 업로드
+      const formattedAwards = await Promise.all(
+          awardFiles.map(async (file: UploadedFile) => {
+            if (!file || !file.file) return null;
+            return {
+              title: file.title,
+              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/awards/${file.title}`)
+            };
+          })
+      ).then(results => results.filter(file => file !== null));
+
+      // 🔥 포트폴리오 파일 업로드
+      const formattedProjects = await Promise.all(
+          portfolioFiles.map(async (file: UploadedFile) => {
+            if (!file || !file.file) return null;
+            return {
+              title: file.title,
+              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/projects/${file.title}`)
+            };
+          })
+      ).then(results => results.filter(file => file !== null));
+
+      const formattedData = {
+        ...data,
+        studentId: Number(data.studentId),
+        jobType: jobGroup,
+        specialApplication: isChecked && specialApplicationFiles.length > 0 ? { files: specialApplicationFiles } : null,
+        awards: formattedAwards.length > 0 ? formattedAwards : [],
+        projects: formattedProjects.length > 0 ? formattedProjects : [],
+        application_status: "대기",
+        timestamp: new Date().toISOString(),
+      };
+
+      await submitApplication(formattedData);
+      alert("지원서 제출이 완료되었습니다!");
+    } catch (error) {
+      console.error("지원서 제출 실패:", error);
+      alert("지원서 제출 중 오류가 발생했습니다.");
+    }
   };
+
 
   return (
     <DefaultLayout>
@@ -123,6 +209,7 @@ const ApplicationFormPage = () => {
                 name="name"
                 placeholder="이름"
                 register={register}
+                watch={watch}
                 errorMessage={errors.name?.message}
               />
               <div css={{ height: "24px" }}></div>
@@ -131,6 +218,7 @@ const ApplicationFormPage = () => {
                 placeholder="학번"
                 inputType="text"
                 register={register}
+                watch={watch}
                 errorMessage={errors.studentId?.message}
               />{" "}
               <div css={{ height: "24px" }}></div>
@@ -140,11 +228,12 @@ const ApplicationFormPage = () => {
                   placeholder="이메일"
                   inputType="text"
                   register={register}
+                  watch={watch}
                   errorMessage={errors.email?.message}
                 />{" "}
                 <div css={{ height: "11px" }}></div>
                 <div css={emailButtonDiv}>
-                  <EmailAuthenticationButton />
+                  <EmailAuthenticationButton email={emailValue} />
                 </div>
               </div>
               <div css={{ height: "60px" }}></div>
@@ -153,6 +242,7 @@ const ApplicationFormPage = () => {
                 placeholder="전화번호 (010-0000-0000)"
                 inputType="text"
                 register={register}
+                watch={watch}
                 errorMessage={errors.phone?.message}
               />
             </form>
@@ -163,6 +253,7 @@ const ApplicationFormPage = () => {
                 placeholder="자기소개서"
                 inputType="textarea"
                 register={register}
+                watch={watch}
                 errorMessage={errors.coverLetter?.message}
               />
             </form>
@@ -203,6 +294,7 @@ const ApplicationFormPage = () => {
                 placeholder="질문사항"
                 inputType="textarea"
                 register={register}
+                watch={watch}
                 errorMessage={errors.questions?.message}
               />
             </form>
