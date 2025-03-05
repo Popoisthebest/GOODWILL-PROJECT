@@ -5,7 +5,7 @@ import {
   mobileButtonStyle,
   mobileButtonDotContainer,
   menuTwoCircleStyle,
-} from "./Header.style";
+} from "../Header.style.ts";
 
 const MobileButton = () => {
   const [isOpen, setIsOpen] = useState(false);

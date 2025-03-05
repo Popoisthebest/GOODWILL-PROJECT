@@ -20,11 +20,14 @@ import {
   summitButton,
 } from "../components/ApplicationForm/ApplicationForm.style.ts";
 import ApplicationFormTextInput from "../components/ApplicationForm/ApplicationFormTextInput.tsx";
-import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
+import DocAdd from "../components/ApplicationForm/DocAdd/DocAdd.tsx";
 import SpecialDocAdd from "../components/ApplicationForm/SpecialFileUpload/SpecialDoc.tsx";
 import EmailAuthenticationButton from "../components/ApplicationForm/EmailAuthentication/EmailAuthenticationButton.tsx";
-import AgreeButton from "../components/ApplicationForm/Agree/AgreeButton/AgreeButton.tsx";
-import { submitApplication, uploadFileToStorage } from "../firebase/firestore"; // Firestore 저장 함수 불러오기
+import AgreeButton from "../components/ApplicationForm/AgreeButton/AgreeButton.tsx";
+import { submitApplication } from "../hooks/submitApplication.ts"; // Firestore 저장 함수 불러오기
+import { uploadFileToStorage } from "../hooks/uploadFileToStorage.ts";
+import { getApplicationCount } from "../hooks/getApplicationCount.ts";
+import { generateApplicationId } from "../hooks/generateApplicationId.ts";
 
 interface FormValues {
   name: string;
@@ -53,7 +56,7 @@ const getLittleProgramName = (jobGroup: string) => {
 const ApplicationFormPage = () => {
   const location = useLocation();
   const roleName = location.state?.roleName || "직군 선택 없음";
-  const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
+  const jobGroup = location.state?.jobGroup; // 기본 jobGroup 설정
   const littleProgramName = getLittleProgramName(jobGroup);
 
   const [isChecked, setIsChecked] = useState(false);
@@ -61,29 +64,58 @@ const ApplicationFormPage = () => {
   const [requiredChecked, setRequiredChecked] = useState(false);
   const [optionalChecked, setOptionalChecked] = useState(false);
 
+  useEffect(() => {
+    const savedContestFiles = Cookies.get("contestFiles");
+    const savedPortfolioFiles = Cookies.get("portfolioFiles");
+    const savedSpecialFiles = Cookies.get("specialFiles");
+
+    const parseFiles = (savedFiles: string | undefined) => {
+      if (!savedFiles) return [];
+
+      const parsedFiles = JSON.parse(savedFiles);
+      return parsedFiles.map((file: any) => ({
+        ...file,
+        file: file.fileName
+          ? new File([], file.fileName, { type: "application/octet-stream" }) // ✅ File 객체 변환
+          : undefined,
+      }));
+    };
+
+    // console.log("불러온 contestFiles:", parseFiles(savedContestFiles));
+    // console.log("불러온 portfolioFiles:", parseFiles(savedPortfolioFiles));
+    // console.log("불러온 specialFiles:", parseFiles(savedSpecialFiles));
+  }, []);
+
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>();
 
   const emailValue = watch("email");
 
-  // 🔥 쿠키에서 파일 데이터 가져오기
-  const [awardFiles, setAwardFiles] = useState<UploadedFile[]>([]);
-  const [portfolioFiles, setPortfolioFiles] = useState<UploadedFile[]>([]);
-  const [specialFiles, setSpecialFiles] = useState<UploadedFile[]>([]);
+  useEffect(() => {
+    const savedData = Cookies.get("applicationForm");
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        Object.keys(parsedData).forEach((key) => {
+          setValue(key as keyof FormValues, parsedData[key]);
+        });
+      } catch (error) {
+        console.error("쿠키 데이터 파싱 오류:", error);
+      }
+    }
+  }, [setValue]);
 
   useEffect(() => {
-    const savedAwardFiles = Cookies.get("contestFiles");
-    const savedPortfolioFiles = Cookies.get("portfolioFiles");
-    const savedSpecialFiles = Cookies.get("specialFiles");
-
-    if (savedAwardFiles) setAwardFiles(JSON.parse(savedAwardFiles));
-    if (savedPortfolioFiles) setPortfolioFiles(JSON.parse(savedPortfolioFiles));
-    if (savedSpecialFiles) setSpecialFiles(JSON.parse(savedSpecialFiles));
-  }, []);
+    const subscription = watch((value) => {
+      Cookies.set("applicationForm", JSON.stringify(value), { expires: 1 });
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
   // ✅ 전체 동의 체크 시 모든 체크박스 변경
   const handleAllCheck = () => {
@@ -124,69 +156,111 @@ const ApplicationFormPage = () => {
   }, []);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    if (!requiredChecked) {
-      alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
-      return;
-    }
-
-    if (!data.email) {
-      alert("이메일을 입력해주세요.");
-      return;
-    }
-
     try {
-      // 🔥 특별전형 파일 업로드
-      const specialApplicationFiles = await Promise.all(
-          specialFiles.map(async (file: UploadedFile) => {
-            if (!file || !file.file) return null;
+      if (!requiredChecked) {
+        alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
+        return;
+      }
+
+      if (!data.email) {
+        alert("이메일을 입력해주세요.");
+        return;
+      }
+
+      console.log(`잡것들: ${jobGroup}`);
+      const applicationCount = await getApplicationCount(jobGroup);
+      const userId = generateApplicationId(jobGroup, applicationCount);
+      console.log("생성된 사용자 ID:", userId);
+
+      // ✅ 파일 업로드 진행 (파일이 없으면 업로드 스킵)
+      const uploadFiles = async (files: UploadedFile[], fileType: string) => {
+        return await Promise.all(
+          files.map(async (file) => {
+            console.log(`📤 업로드할 파일 확인:`, file);
+            console.log(`📌 file.file의 타입:`, typeof file.file);
+            console.log(
+              `📌 file.file의 데이터 구조:`,
+              JSON.stringify(file.file),
+            );
+            console.log(
+              `📌 file.file instanceof File:`,
+              file.file instanceof File,
+            );
+
+            if (
+              !file.file ||
+              Object.keys(file.file).length === 0 ||
+              !(file.file instanceof File)
+            ) {
+              console.warn(`⚠️ 파일 업로드 스킵됨 (잘못된 파일 데이터):`, file);
+              return null;
+            }
             return {
               title: file.title,
-              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/specialApplication/${file.title}`)
+              fileUrl: await uploadFileToStorage(
+                userId,
+                file.file,
+                fileType,
+                file.file.name, // ✅ 올바른 파일명 전달
+              ),
             };
-          })
-      ).then(results => results.filter(file => file !== null)); // 🔥 `null` 제거
-
-      // 🔥 수상 내역 파일 업로드
-      const formattedAwards = await Promise.all(
-          awardFiles.map(async (file: UploadedFile) => {
-            if (!file || !file.file) return null;
-            return {
-              title: file.title,
-              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/awards/${file.title}`)
-            };
-          })
-      ).then(results => results.filter(file => file !== null));
-
-      // 🔥 포트폴리오 파일 업로드
-      const formattedProjects = await Promise.all(
-          portfolioFiles.map(async (file: UploadedFile) => {
-            if (!file || !file.file) return null;
-            return {
-              title: file.title,
-              fileUrl: await uploadFileToStorage(file.file, `applications/${data.email}/projects/${file.title}`)
-            };
-          })
-      ).then(results => results.filter(file => file !== null));
-
-      const formattedData = {
-        ...data,
-        studentId: Number(data.studentId),
-        jobType: jobGroup,
-        specialApplication: isChecked && specialApplicationFiles.length > 0 ? { files: specialApplicationFiles } : null,
-        awards: formattedAwards.length > 0 ? formattedAwards : [],
-        projects: formattedProjects.length > 0 ? formattedProjects : [],
-        application_status: "대기",
-        timestamp: new Date().toISOString(),
+          }),
+        ).then((results) => results.filter((file) => file !== null));
       };
 
-      await submitApplication(formattedData);
+      const contestFiles = JSON.parse(Cookies.get("contestFiles") || "[]");
+      const portfolioFiles = JSON.parse(Cookies.get("portfolioFiles") || "[]");
+      const specialApplicationFile = JSON.parse(
+        Cookies.get("specialFiles") || "null",
+      );
+
+      const uploadedContestFiles = await uploadFiles(contestFiles, "contest");
+      const uploadedPortfolioFiles = await uploadFiles(
+        portfolioFiles,
+        "portfolio",
+      );
+      const uploadedSpecialFile = specialApplicationFile
+        ? await uploadFileToStorage(
+            userId,
+            specialApplicationFile.file,
+            "specialApplication",
+            File.name,
+          )
+        : null;
+
+      // ✅ 3️⃣ Firestore에 저장할 데이터
+      const formattedData = {
+        student_id: Number(data.studentId),
+        name: data.name,
+        email: data.email,
+        user_id: userId,
+        contact: data.phone,
+        self_introduction: data.coverLetter,
+        questions: data.questions || null,
+        application_status: "Pending",
+        timestamp: new Date().toISOString(),
+        special_application: uploadedSpecialFile
+          ? { type: jobGroup, proof_file: uploadedSpecialFile }
+          : null,
+        additional_documents: uploadedContestFiles.concat(
+          uploadedPortfolioFiles,
+        ),
+      };
+
+      await submitApplication(formattedData, jobGroup);
+
+      // ✅ 4️⃣ 제출 완료 후 쿠키 삭제
+      Cookies.remove("applicationForm");
+      Cookies.remove("contestFiles");
+      Cookies.remove("portfolioFiles");
+      Cookies.remove("specialFiles");
+
       alert("지원서 제출이 완료되었습니다!");
     } catch (error) {
       console.error("지원서 제출 실패:", error);
       alert("지원서 제출 중 오류가 발생했습니다.");
     }
   };
-
 
   return (
     <DefaultLayout>

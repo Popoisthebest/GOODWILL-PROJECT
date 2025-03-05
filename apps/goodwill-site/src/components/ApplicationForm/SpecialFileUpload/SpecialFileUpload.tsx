@@ -10,8 +10,8 @@ import {
   fileInput,
   uploadButton,
 } from "./SpecialFileUpload.style.ts";
-import fileDeleteIcon from "../../../assets/fileUpload/fileUploadDelete.svg";
-import { docAddContainerList } from "../DocAdd.style.ts";
+import fileDeleteIcon from "../../../assets/fileUpload/file-upload-delete.svg";
+import { docAddContainerList } from "../DocAdd/DocAdd.style.ts";
 
 interface FileUploadProps {
   id: number;

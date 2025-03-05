@@ -7,9 +7,9 @@ import {
   careerButtonTextStyle,
   careerButtonArrowStyle,
   careerButtonDotStyle,
-} from "./Header.style";
-import ArrowRightIcon from "../../assets/headerButtonIcon/ArrowRight.svg";
-import Dot from "../../assets/headerButtonIcon/Dot.svg";
+} from "../Header.style.ts";
+import ArrowRightIcon from "../../../assets/headerButtonIcon/arrow-right.svg";
+import Dot from "../../../assets/headerButtonIcon/dot.svg";
 
 const CareerButton: React.FC = () => {
   const navigate = useNavigate(); // useNavigate를 컴포넌트 최상단에 배치

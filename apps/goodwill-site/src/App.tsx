@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import RoleSelect from "./pages/RoleSelect.tsx";
 import ApplicationFormPage from "./pages/ApplicationForm.tsx";
-import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetailBackendEngineer.tsx";
-import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetailFrontendEngineer.tsx";
-import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetailFullstackEngineer.tsx";
+import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetailPages/RoleDetailBackendEngineer.tsx";
+import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetailPages/RoleDetailFrontendEngineer.tsx";
+import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetailPages/RoleDetailFullstackEngineer.tsx";
 import VerifyEmailPage from "./components/ApplicationForm/EmailAuthentication/VerifyEmail/VerifyEmailPage.tsx";
 
 function App() {

@@ -4,10 +4,10 @@ import {
   desktopButtonContainerStyle,
   headerLogoStyle,
 } from "./Header.style";
-import goodwillLogo from "../../assets/logo/GOODWILL-logo.svg";
-import CareerButton from "./CareerButton.tsx";
-import MenuButton from "./MenuButton.tsx";
-import PopupMenu from "../Menu/PopupMenu.tsx";
+import goodwillLogo from "../../assets/logo/goodwill-logo.svg";
+import CareerButton from "./Button/CareerButton.tsx";
+import MenuButton from "./Button/MenuButton.tsx";
+import PopupMenu from "../Menu/PopupMenu/PopupMenu.tsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

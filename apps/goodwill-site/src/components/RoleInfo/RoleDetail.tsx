@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
-import "../../styles/RoleDetail.css";
-import { RoleDetailProps } from "./RoleDetail.types";
+import "./RoleDetail.css";
+import { RoleDetailProps } from "./RoleDetail.types.ts";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RoleDetail = ({
   roleName,
@@ -17,8 +17,6 @@ const RoleDetail = ({
   jobDetails, // 추가된 직군 정보
 }: RoleDetailProps) => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
 
   return (
     <DefaultLayout>
@@ -98,7 +96,7 @@ const RoleDetail = ({
             <button
               onClick={() =>
                 navigate("/write-application", {
-                  state: { roleName, jobGroup },
+                  state: { roleName },
                 })
               }
               className="apply-button"

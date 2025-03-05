@@ -8,7 +8,7 @@ import {
   mobileButtonStyle,
   mobileButtonDotContainer,
   mobileButtonContainerStyle,
-} from "./Header.style";
+} from "../Header.style.ts";
 
 interface MenuButtonProps {
   isOpen: boolean;

@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import { motion } from "motion/react";
 import {
@@ -27,6 +27,7 @@ interface ApplicationFormTextInputProps {
   register: UseFormRegister<ApplicationFormData>;
   watch: UseFormWatch<ApplicationFormData>; // 🔥 watch 추가
   errorMessage?: string;
+  onInputChange?: (field: string, value: string) => void;
 }
 
 const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
@@ -36,9 +37,16 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
   register,
   watch,
   errorMessage,
+  onInputChange,
 }) => {
   const inputValue = watch(name) || "";
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if (onInputChange) {
+      onInputChange(name, inputValue);
+    }
+  }, [inputValue, name, onInputChange]);
 
   return (
     <div css={containerStyle}>

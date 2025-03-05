@@ -1,60 +1,27 @@
-import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
-import {
-  docAddContainer,
-  docAddContainerButton,
-} from "./SpecialDoc.style.ts";
-import SpecialFileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
-import fileAddFormAdd from "../../../assets/fileUpload/PlusCircle.svg";
-
-const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
+import FileUploader from "../FileUpload/FileUploader.tsx";
+import { docAddContainer, docAddContainerButton } from "./SpecialDoc.style.ts";
+import fileAddFormAdd from "../../../assets/fileUpload/plus-circle.svg";
+import { useFileUpload } from "../../../hooks/useFileUpload.ts";
 
 const SpecialDocAdd = () => {
-  const [specialFiles, setSpecialFiles] = useState<
-    { id: number; name: string }[]
-  >([]);
-
-  // 쿠키에서 파일 목록 불러오기
-  useEffect(() => {
-    const savedSpecialFiles = Cookies.get("specialFiles");
-
-    if (savedSpecialFiles) setSpecialFiles(JSON.parse(savedSpecialFiles));
-  }, []);
-
-  // 새로운 FileUpload 추가
-  const addFileUpload = () => {
-    const newFile = { id: Date.now(), name: "" };
-
-    const updatedFiles = [...specialFiles, newFile];
-    setSpecialFiles(updatedFiles);
-    Cookies.set("specialFiles", JSON.stringify(updatedFiles), {
-      expires: COOKIE_EXPIRATION_DAYS,
-    });
-  };
-
-  // 특정 FileUpload 삭제
-  const removeFileUpload = (id: number) => {
-    const updatedFiles = specialFiles.filter((file) => file.id !== id);
-    setSpecialFiles(updatedFiles);
-    Cookies.set("contestFiles", JSON.stringify(updatedFiles), {
-      expires: COOKIE_EXPIRATION_DAYS,
-    });
-  };
+  const { files, addFile, removeFile, updateFileDetails } = useFileUpload("specialFiles");
 
   return (
     <div>
       <div css={docAddContainer}>
-        {specialFiles.map((file) => (
-          <SpecialFileUpload
-            key={file.id}
-            id={file.id}
-            removeFileUpload={() => removeFileUpload(file.id)}
-            isContest={true}
-          />
+        {files.map((file) => (
+            <FileUploader
+                key={file.id}
+                id={file.id}
+                removeFileUpload={() => removeFile(file.id)}
+                type="special"
+                onUpdateFile={updateFileDetails}
+                fileData={file} // ✅ 파일 데이터 전달
+            />
         ))}
 
         {/* 추가 버튼 */}
-        <button onClick={addFileUpload} css={docAddContainerButton}>
+        <button onClick={() => addFile()} css={docAddContainerButton}>
           <img src={fileAddFormAdd} alt="fileAdd" />
         </button>
       </div>

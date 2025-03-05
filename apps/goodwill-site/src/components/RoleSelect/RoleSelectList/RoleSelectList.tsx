@@ -39,16 +39,14 @@ const RoleSelectList: React.FC<RoleSelectListProps> = ({
         selectedCategories.includes(role.jobGroup)),
   );
 
-
   return (
     <div css={roleListContainer}>
       {filteredRoles.map((role, index) => (
-
         <div key={role.id}>
           <button
             onClick={() => {
               const jobGroup = role.jobGroup;
-              navigate(`/${role.roleName}`, { state: {jobGroup} });
+              navigate(`/${role.roleName}`, { state: jobGroup });
             }}
             css={roleItemButton}
           >

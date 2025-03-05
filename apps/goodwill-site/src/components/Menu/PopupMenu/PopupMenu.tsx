@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import MenuItem from "./MenuItem";
+import MenuItem from "../MenuItem.tsx";
 import { MenuContainer, CloseButton, Overlay } from "./PopupMenu.style.ts";
 import { motion } from "framer-motion";
 

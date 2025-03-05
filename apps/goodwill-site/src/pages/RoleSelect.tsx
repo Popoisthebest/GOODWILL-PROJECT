@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import DefaultLayout from "../layouts/DefaultLayout";
 import mainImg from "../assets/role-select-page/main-img.jpg";
-import RoleSelectSearchBar from "../components/RoleSelect/RoleSelect/RoleSelectSearchBar";
-import RoleSelectList from "../components/RoleSelect/RoleSelect/RoleSelectList";
+import RoleSelectSearchBar from "../components/RoleSelect/RoleSelectSeachBar/RoleSelectSearchBar.tsx";
+import RoleSelectList from "../components/RoleSelect/RoleSelectList/RoleSelectList.tsx";
 import KategorieSelect from "../components/RoleSelect/Kategorie/KategorieSelect";
 import {
   ImgContainer,
@@ -13,7 +13,7 @@ import {
   RoleSelectDiv,
   TextContainer,
   RoleSearchSelectDiv,
-} from "../components/RoleSelect/RoleSelect/RoleSelect.style";
+} from "../components/RoleSelect/RoleSelect.style.ts";
 
 const RoleSelectPage = () => {
   const [searchQuery, setSearchQuery] = useState("");

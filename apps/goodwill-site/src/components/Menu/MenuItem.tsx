@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Item, ItemText, IconDiv, Dot } from "./PopupMenu.style.ts";
+import { Item, ItemText, IconDiv, Dot } from "./MenuItem.style.ts";
 import { motion } from "motion/react";
 
 interface MenuItemProps {
