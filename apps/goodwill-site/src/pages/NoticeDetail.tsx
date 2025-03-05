@@ -6,7 +6,7 @@ import instaIcon from "../icons/insta.svg"
 import copyIcon from "../icons/copy.svg"
 
 const NoticeDetail = () => {
-  const { title, views, date, content
+  const { title, views, date, category, content
   } = useParams();
 
   const [linkCopied, setLinkCopied] = useState(false);
