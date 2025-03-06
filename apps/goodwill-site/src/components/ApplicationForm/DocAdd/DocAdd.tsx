@@ -10,10 +10,15 @@ import fileAddFormAdd from "../../../assets/fileUpload/plus-circle.svg";
 import FileUploader from "../FileUpload/FileUploader.tsx";
 import { useFileUpload } from "../../../hooks/useFileUpload.ts";
 
-const DocAdd = () => {
+const DocAdd = (props) => {
     const contest = useFileUpload("contestFiles");
     const portfolio = useFileUpload("portfolioFiles");
     const [isContest, setContest] = useState(true); // 여기에 선택 UI 추가하면 됨
+    const [title, setTitle] = useState('');
+
+    const getTitle = (fileTitle) => {
+        setTitle(fileTitle);
+    }
 
     return (
         <div>
@@ -50,6 +55,8 @@ const DocAdd = () => {
                 {isContest
                     ? contest.files.map((file) => (
                         <FileUploader
+                            getTitle={getTitle}
+                            title={title}
                             key={file.id}
                             id={file.id}
                             removeFileUpload={() => contest.removeFile(file.id)}
