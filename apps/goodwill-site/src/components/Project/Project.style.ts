@@ -39,6 +39,6 @@ export const subText = css`
 
 export const itemDiv = css`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-    gap: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
 `;
