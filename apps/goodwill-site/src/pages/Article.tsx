@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import BlogCard from "./blog_card";
+import BlogCard from "../components/article/ArticleCard.tsx";
+import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
-const BlogMainTextSection: React.FC = () => {
+const Article: React.FC = () => {
   const BlogIcon = "../assets/blog_icon/light_arrow-left.svg?react";
   const SearchIcon = "../assets/blog_icon/MagnifyingGlass.svg";
 
@@ -150,78 +151,80 @@ const BlogMainTextSection: React.FC = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      {/* 타이틀 */}
-      <div style={titleRowStyle}>
-        <h1 style={titleStyle}>OUR ARTICLES</h1>
-        <div style={countAndIconStyle}>
-          <span style={countStyle}>{blogCards.length}</span>
-          <span style={iconStyle}>
-            <img src={BlogIcon} alt="blog-icon" width={40} height={30} />
-          </span>
+    <DefaultLayout>
+      <div style={containerStyle}>
+        {/* 타이틀 */}
+        <div style={titleRowStyle}>
+          <h1 style={titleStyle}>OUR ARTICLES</h1>
+          <div style={countAndIconStyle}>
+            <span style={countStyle}>{blogCards.length}</span>
+            <span style={iconStyle}>
+              <img src={BlogIcon} alt="blog-icon" width={40} height={30} />
+            </span>
+          </div>
+        </div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "700",
+            color: "#000",
+            textAlign: "center",
+            marginTop: "40px",
+            marginBottom: "0",
+          }}
+        >
+          "Goodwill Article | 새로운 시선, 깊이 있는 인사이트"
+        </p>
+
+        {/* 설명 */}
+        <p style={descriptionStyle}>
+          지금, Goodwill이 전하는 다양한 이야기를 만나보세요.
+          <br />
+          트렌드, 디자인, 비즈니스 인사이트까지—놓치기 아까운 아티클을
+          소개합니다. 💡
+        </p>
+
+        {/* 검색창 */}
+        <div style={searchContainerStyle}>
+          <img
+            src={SearchIcon}
+            alt="search-icon"
+            width={25}
+            height={25}
+            style={{ position: "absolute", left: "10px", zIndex: 1 }}
+          />
+          <input
+            type="text"
+            placeholder="GOODWILL 아티클 검색하기"
+            style={searchInputStyle}
+          />
+        </div>
+
+        {/* 카테고리 버튼 리스트 */}
+        <div style={categoryContainerStyle}>
+          {categories.map((category) => (
+            <button
+              key={category}
+              style={categoryButtonStyle(category)}
+              onClick={() => handleCategoryClick(category)}
+              onMouseEnter={() => setHoveredCategory(category)}
+              onMouseLeave={() => setHoveredCategory(null)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* 블로그 카드 */}
+        <div style={cardRowStyle}>
+          {blogCards.map((blog, index) => (
+            <BlogCard key={index} title={blog.title} date={blog.date} />
+          ))}
         </div>
       </div>
-
-      <p
-        style={{
-          fontSize: "24px",
-          fontWeight: "700",
-          color: "#000",
-          textAlign: "center",
-          marginTop: "40px",
-          marginBottom: "0",
-        }}
-      >
-        "Goodwill Article | 새로운 시선, 깊이 있는 인사이트"
-      </p>
-
-      {/* 설명 */}
-      <p style={descriptionStyle}>
-        지금, Goodwill이 전하는 다양한 이야기를 만나보세요.
-        <br />
-        트렌드, 디자인, 비즈니스 인사이트까지—놓치기 아까운 아티클을 소개합니다.
-        💡
-      </p>
-
-      {/* 검색창 */}
-      <div style={searchContainerStyle}>
-        <img
-          src={SearchIcon}
-          alt="search-icon"
-          width={25}
-          height={25}
-          style={{ position: "absolute", left: "10px", zIndex: 1 }}
-        />
-        <input
-          type="text"
-          placeholder="GOODWILL 아티클 검색하기"
-          style={searchInputStyle}
-        />
-      </div>
-
-      {/* 카테고리 버튼 리스트 */}
-      <div style={categoryContainerStyle}>
-        {categories.map((category) => (
-          <button
-            key={category}
-            style={categoryButtonStyle(category)}
-            onClick={() => handleCategoryClick(category)}
-            onMouseEnter={() => setHoveredCategory(category)}
-            onMouseLeave={() => setHoveredCategory(null)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* 블로그 카드 */}
-      <div style={cardRowStyle}>
-        {blogCards.map((blog, index) => (
-          <BlogCard key={index} title={blog.title} date={blog.date} />
-        ))}
-      </div>
-    </div>
+    </DefaultLayout>
   );
 };
 
-export default BlogMainTextSection;
+export default Article;

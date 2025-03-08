@@ -1,6 +1,6 @@
 import React from "react";
 
-const BlogCard: React.FC<{ title: string; date: string }> = ({ title, date }) => {
+const ArticleCard: React.FC<{ title: string; date: string }> = ({ title, date }) => {
   const cardStyle: React.CSSProperties = {
     backgroundColor: "#f0f0f0",  // 카드 배경색
     borderRadius: "10px",  // 카드 모서리 둥글게
@@ -42,4 +42,4 @@ const BlogCard: React.FC<{ title: string; date: string }> = ({ title, date }) =>
   );
 };
 
-export default BlogCard;
+export default ArticleCard;
