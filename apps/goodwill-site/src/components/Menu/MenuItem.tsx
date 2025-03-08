@@ -27,6 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ onClick, children, path }) => {
     >
       <div css={ItemText}>
         <motion.div
+          css={{ display: "inline-block",  whiteSpace: "pre" }}
           variants={{
             hover: { y: isActive ? 0 : -30 },
           }}
@@ -34,6 +35,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ onClick, children, path }) => {
           {children}
         </motion.div>
         <motion.div
+          css={{ display: "inline-block",  whiteSpace: "pre" }}
           variants={{
             hover: { y: isActive ? 0 : -30 },
           }}

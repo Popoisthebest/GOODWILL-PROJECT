@@ -2,15 +2,14 @@ import { css } from "@emotion/react";
 
 export const MenuContainer = css`
   position: absolute;
-  width: 255px;
+  width: 283px;
   top: 70px;
   right: 0;
   background: white;
   padding: 10px 10px;
   border-radius: 8px;
   border: 2px solid #000000;
-    z-index: 1000;
-    
+  z-index: 1000;
 
   @media (max-width: 768px) {
     background: blue;
@@ -75,7 +74,7 @@ export const Item = css`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    width: 200px;
+    width: 250px;
   }
 `;
 
