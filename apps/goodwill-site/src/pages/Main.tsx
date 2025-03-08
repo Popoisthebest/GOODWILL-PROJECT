@@ -7,6 +7,7 @@ import HeadText from '../components/Main/HeadText';
 import Footer from '../components/Main/Footer';
 import FeaturedWork from '../components/Main/FeaturedWorkSection';
 import GoodWillSection from '../components/Main/Footer'
+import InfosSection from '../components/Main/Infos'
 
 
 
@@ -78,7 +79,7 @@ const App: React.FC = () => {
         <HeroSection />
         <AboutSection/>
         <FeaturedWork projects={projects} />
-        <GoodWillSection></GoodWillSection>
+        <InfosSection/>
         <Footer />
       </DefaultLayout>
       
