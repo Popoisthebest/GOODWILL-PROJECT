@@ -12,12 +12,14 @@ import {
 } from "./FileUpload.style.ts";
 import fileDeleteIcon from "../../../assets/fileUpload/fileUploadDelete.svg";
 import { docAddContainerList } from "../DocAdd.style.ts";
+import { fileSend } from "../../../hooks/fileSend.ts";
 
 interface FileUploadProps {
   id: number;
   removeFileUpload: () => void;
   isContest: boolean;
   isSubmitting: boolean;
+  applicationId: string;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
@@ -25,6 +27,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   removeFileUpload,
   isContest,
   isSubmitting,
+  applicationId,
 }) => {
   const fileCookieKey = `file-${id}`;
   const titleCookieKey = `title-${id}`;
@@ -32,15 +35,24 @@ const FileUpload: React.FC<FileUploadProps> = ({
   // 지원자가 입력한 제목 (쿠키에서 불러옴)
   const [title, setTitle] = useState(() => Cookies.get(titleCookieKey) || "");
   // 지원자 파일 저장
-  const [file, setFile] = useState<File | null>(null); // 초기값은 null
+  const [file, setFile] = useState<File>(); // 초기값은 null
 
   console.log(file);
 
   // isSubmitting 값이 변경될 때 업로드 실행
   useEffect(() => {
-    if (isSubmitting) {
-      console.log("나 파일인데 전달 받았다.");
-    }
+    const uploadFile = async () => {
+      if (isSubmitting) {
+        const result = await fileSend(
+          file!,
+          isContest ? "contest" : "portfolio",
+          applicationId,
+        );
+        console.log("파일 업로드", result);
+      }
+    };
+
+    uploadFile(); // 비동기 함수 실행
   }, [isSubmitting]); // isSubmitting이 변경될 때 실행
 
   // 쿠키에서 제목 및 파일 이름 불러오기

@@ -12,7 +12,13 @@ import fileAddFormAdd from "../../assets/fileUpload/PlusCircle.svg";
 
 const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
 
-const DocAdd = ({ isSubmitting }: { isSubmitting: boolean }) => {
+const DocAdd = ({
+  isSubmitting,
+  applicationId,
+}: {
+  isSubmitting: boolean;
+  applicationId: string;
+}) => {
   const [isContest, setContest] = useState(true);
   const [contestFiles, setContestFiles] = useState<
     { id: number; name: string }[]
@@ -112,6 +118,7 @@ const DocAdd = ({ isSubmitting }: { isSubmitting: boolean }) => {
                 removeFileUpload={() => removeFileUpload(file.id, true)}
                 isContest={true}
                 isSubmitting={isSubmitting}
+                applicationId={applicationId}
               />
             ))
           : portfolioFiles.map((file) => (
@@ -121,6 +128,7 @@ const DocAdd = ({ isSubmitting }: { isSubmitting: boolean }) => {
                 removeFileUpload={() => removeFileUpload(file.id, false)}
                 isContest={false}
                 isSubmitting={isSubmitting}
+                applicationId={applicationId}
               />
             ))}
 

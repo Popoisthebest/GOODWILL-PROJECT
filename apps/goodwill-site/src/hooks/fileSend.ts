@@ -19,10 +19,12 @@ export const fileSend = async (
   const fileUrl = file
     ? await uploadFileToStorage(
         file,
-        `${applicationId}/${fileType}/${file.name}`,
+        `/${applicationId}/${fileType}/${file.name}`,
       )
     : "";
   return {
     fileUrl,
   };
 };
+
+
