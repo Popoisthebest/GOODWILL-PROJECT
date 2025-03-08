@@ -1,0 +1,189 @@
+import React from 'react';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
+
+// 로고 데이터
+const logos = {
+  firstRow: [
+    { id: 1, name: 'Google', imageUrl: 'imgs/logos/image 16.png' },
+    { id: 2, name: 'Microsoft', imageUrl: 'imgs/logos/image 17.png' },
+    { id: 3, name: 'AWS', imageUrl: 'imgs/logos/image 18.png' },
+    { id: 4, name: 'NC', imageUrl: 'imgs/logos/image 19.png' },
+    { id: 5, name: 'KSF', imageUrl: 'imgs/logos/image 20.png' },
+  ],
+  secondRow: [
+    { id: 6, name: 'NC', imageUrl: 'imgs/logos/image 21.png' },
+    { id: 7, name: 'STP', imageUrl: 'imgs/logos/image 22.png' },
+    { id: 8, name: 'Hunet', imageUrl: 'imgs/logos/image 23.png' },
+    { id: 9, name: 'YEEP', imageUrl: 'imgs/logos/image 24.png' },
+    { id: 10, name: 'JA Korea', imageUrl: 'imgs/logos/image 16.png' },
+  ],
+  thirdRow: [
+    { id: 11, name: 'Hunet', imageUrl: 'imgs/logos/image 17.png' },
+    { id: 12, name: 'AWS', imageUrl: 'imgs/logos/image 18.png' },
+    { id: 13, name: 'JA Korea', imageUrl: 'imgs/logos/image 19.png' },
+    { id: 14, name: 'KSF', imageUrl: 'imgs/logos/image 20.png' },
+    { id: 15, name: 'Microsoft', imageUrl: 'imgs/logos/image 21.png' },
+  ]
+};
+
+// 애니메이션 키프레임
+const scrollLeft = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+`;
+
+const scrollRight = keyframes`
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+`;
+
+// 스타일 컴포넌트
+const Container = styled.section`
+  background-color: #000;
+  color: #fff;
+  padding: 60px 0;
+  overflow: hidden;
+  width: 100%;
+  height: 1000px;
+  position: relative;
+`;
+
+const Title = styled.h2`
+  font-size: 72px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 80px;
+  margin-left: 80px;
+  letter-spacing: 1px;
+`;
+
+const LogoMarquee = styled.div<{ direction: 'left' | 'right' }>`
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 60px;
+  position: relative;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #000, rgba(0,0,0,0));
+  }
+  
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #000, rgba(0,0,0,0));
+  }
+`;
+
+const LogoTrack = styled.div<{ direction: 'left' | 'right' }>`
+  display: flex;
+  animation: ${({ direction }) => direction === 'left' ? scrollLeft : scrollRight} 30s linear infinite;
+  animation-play-state: running;
+   
+`;
+
+const LogoContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  height: 200px;
+  gap: 180px;
+  padding: 0 40px;
+`;
+
+const LogoItem = styled.div`
+  flex: 0 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const Logo = styled.img`
+  max-height: 150px;
+  max-width: 330px;
+  object-fit: contain;
+  filter: brightness(1);
+  transition: filter 0.3s;
+  &:hover {
+    filter: brightness(1.2);
+  }
+`;
+
+
+
+// 로고 슬라이더 컴포넌트
+const InfiniteLogoScroll: React.FC = () => {
+  // 반복 횟수에 따라 각 행의 로고 복제
+  const duplicateLogos = (logoArray: typeof logos.firstRow, count: number = 5) => {
+    let duplicated = [...logoArray];
+    
+    for (let i = 0; i < count - 1; i++) {
+      duplicated = [...duplicated, ...logoArray.map(logo => ({ ...logo, id: logo.id + ((i+1) * 100) }))];
+    }
+    
+    return duplicated;
+  };
+
+  return (
+    <Container>
+      <Title>CLIENTS WE WORK WITH</Title>
+      
+      
+      <LogoMarquee direction="left">
+        <LogoTrack direction="left">
+          <LogoContainer>
+            {duplicateLogos(logos.firstRow).map(logo => (
+              <LogoItem key={logo.id}>
+                <Logo src={logo.imageUrl} alt={logo.name} />
+              </LogoItem>
+            ))}
+          </LogoContainer>
+        </LogoTrack>
+      </LogoMarquee>
+      
+      <LogoMarquee direction="left">
+        <LogoTrack direction="left">
+          <LogoContainer>
+            {duplicateLogos(logos.secondRow).map(logo => (
+              <LogoItem key={logo.id}>
+                <Logo src={logo.imageUrl} alt={logo.name} />
+              </LogoItem>
+            ))}
+          </LogoContainer>
+        </LogoTrack>
+      </LogoMarquee>
+      
+      <LogoMarquee direction="left">
+        <LogoTrack direction="left">
+          <LogoContainer>
+            {duplicateLogos(logos.thirdRow).map(logo => (
+              <LogoItem key={logo.id}>
+                <Logo src={logo.imageUrl} alt={logo.name} />
+              </LogoItem>
+            ))}
+          </LogoContainer>
+        </LogoTrack>
+      </LogoMarquee>
+    </Container>
+  );
+};
+
+export default InfiniteLogoScroll;

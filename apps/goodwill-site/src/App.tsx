@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import CheckCareer from "./pages/CheckCareer.tsx";
 import RoleSelectPage from "./pages/RoleSelect.tsx";
-import About from "./pages/About.tsx";
+import About from "./pages/MainAbout.tsx";
 
 function App() {
   return (

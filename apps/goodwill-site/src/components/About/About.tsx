@@ -1,18 +1,19 @@
-import AboutBackgroundImg from "../assets/about/aboutBackgroundImg.jpeg";
-import DefaultLayout from "../layouts/DefaultLayout.tsx";
+import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 import {
   aboutDiv,
   backgroundImg,
   mainTextDiv,
   sloganText,
   subText,
-} from "../components/About/About.style.ts";
+} from "./About.style.ts";
+
+const imageUrl = "imgs/img/unsplash_3fPXt37X6UQ.png";
 
 const About = () => {
   return (
     <div>
       <img
-        src={AboutBackgroundImg}
+        src={imageUrl}
         alt="about-background-img"
         css={backgroundImg}
       />
