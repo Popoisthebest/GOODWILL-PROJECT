@@ -9,9 +9,10 @@ export const headerStyle = css`
   box-sizing: border-box;
   position: relative;
   width: 100%;
+  padding-bottom: 30px;
 
   @media (max-width: 768px) {
-    padding: 0 0px;
+    padding-bottom: 30px;
   }
 `;
 
@@ -19,7 +20,7 @@ export const headerLogoStyle = css`
   width: 186px;
 
   @media (max-width: 768px) {
-    width: 100px;
+    width: 140px;
   }
 `;
 

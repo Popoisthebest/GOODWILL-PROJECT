@@ -5,7 +5,7 @@ export const globalStyle = css`
   box-sizing: border-box;
   padding: 30px 72px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 880px) {
     padding: 20px;
   }
 `;

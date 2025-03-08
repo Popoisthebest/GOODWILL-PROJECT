@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const containerStyle = css`
   min-height: 100vh;
@@ -71,7 +72,9 @@ const inputStyle = css`
   font-size: 16px;
   outline: none;
   background: transparent;
-  transition: border-color 0.2s, border-bottom-width 0.2s;
+  transition:
+    border-color 0.2s,
+    border-bottom-width 0.2s;
 
   &:focus + label,
   &:not(:placeholder-shown) + label {
@@ -146,6 +149,8 @@ const ExamResultChecker: React.FC = () => {
   const [examNumber, setExamNumber] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate(); // useNavigate를 컴포넌트 최상단에 배치
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !examNumber) {
@@ -153,6 +158,7 @@ const ExamResultChecker: React.FC = () => {
     } else {
       setError("");
       alert(`이름: ${name}, 수험번호: ${examNumber}`);
+      navigate("/application-form"); // 이벤트 핸들러에서 navigate 사용
     }
   };
 
