@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Main from "./pages/Main";
+import Main from "./pages/Main.tsx";
 
 function App() {
   return (
