@@ -1,0 +1,98 @@
+.main_box{
+  position: relative;
+  text-align: center;
+}
+
+/* first content 스타일일 */
+
+.first_content_title {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 84px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 84px */
+}
+
+.first_content_subtitle {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 28px */
+  margin-top: 64px;
+}
+
+.first_content_subtitlemini {
+  color: var(--Gray-Scale-600, #555);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 25.6px */
+  margin-top: 16px;
+}
+
+.first_content_subtitle1 {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 28px */
+  margin-top: 40px;
+}
+
+.partners_images {
+  display: flex;
+  margin-top: 21px;
+  justify-content: center;
+  gap: 16px;
+}
+
+.join_btn {
+  cursor: pointer;
+  color: var(--gray-scale-white-0, #fff);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 25.2px */
+  border-radius: var(--Spacing-spacing-96, 96px);
+  background: var(--gray-scale-black-900, #000);
+  display: flex;
+  width: 330px;
+  height: 32px;
+  padding: 18px 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin: 62px auto 0;
+}
+
+/* 메인 사진 컨텐츠 */
+.last_content {
+  display: flex;
+  gap: 36px;  /* 이미지 간격 설정 */
+  overflow-x: auto;  /* 스크롤 활성화 */
+  justify-content: flex-start;  /* 왼쪽 정렬 설정 */
+  scroll-snap-type: x mandatory;  /* 스크롤 시 항목들이 스냅되게 설정 */
+  -webkit-overflow-scrolling: touch;  
+  margin-top: 113px;
+}
+
+.last_content::-webkit-scrollbar {
+  display: none;  /* 스크롤바를 숨깁니다 */
+}
+
+.content_iiiiii {
+  width: 1074px;  /* 고정된 이미지 너비 */
+  flex-shrink: 0;  /* 이미지 크기 축소 방지 */
+}
+
+.main_box {
+  position: relative;
+  overflow: hidden;  /* 부모 요소에서 스크롤 숨기기 */
+}
