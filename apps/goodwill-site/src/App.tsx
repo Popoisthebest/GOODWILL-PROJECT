@@ -1,10 +1,10 @@
 import React from "react";
-import BlogMainTextSection from "./blog_main/blog_main_page";
+import ArticleDetailPage from "./article_detailed/article_detailed_page";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <BlogMainTextSection />
+      <ArticleDetailPage />
     </div>
   );
 }
