@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import BlogCard from "./blog_card";
-import BlogIcon from "../assets/blog_icon/light_arrow-left.svg?react";
-import SearchIcon from "../assets/blog_icon/MagnifyingGlass.svg?react";
 
 const BlogMainTextSection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>("All"); 
+  const BlogIcon = "../assets/blog_icon/light_arrow-left.svg?react";
+  const SearchIcon = "../assets/blog_icon/MagnifyingGlass.svg";
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    "All",
+  );
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const blogCards = [
@@ -26,16 +29,16 @@ const BlogMainTextSection: React.FC = () => {
   ];
 
   const categories = [
-    "All", 
-    "Engineering", 
-    "Design", 
-    "Business & Sales", 
-    "Daily", 
-    "Weekly", 
-    "Monthly", 
+    "All",
+    "Engineering",
+    "Design",
+    "Business & Sales",
+    "Daily",
+    "Weekly",
+    "Monthly",
     "Yearly",
-    "인기", 
-    "추천", 
+    "인기",
+    "추천",
   ];
 
   const handleCategoryClick = (category: string) => {
@@ -76,11 +79,10 @@ const BlogMainTextSection: React.FC = () => {
     fontWeight: 500,
     color: "#000",
   };
-  
+
   const iconStyle: React.CSSProperties = {
     display: "flex", // 아이콘을 flex로 설정하여 제대로 배치
   };
-  
 
   const descriptionStyle: React.CSSProperties = {
     textAlign: "center",
@@ -127,7 +129,11 @@ const BlogMainTextSection: React.FC = () => {
     border: "1px solid #000",
     cursor: "pointer",
     backgroundColor:
-      selectedCategory === category ? "#000" : hoveredCategory === category ? "#d3d3d3" : "transparent",
+      selectedCategory === category
+        ? "#000"
+        : hoveredCategory === category
+          ? "#d3d3d3"
+          : "transparent",
     color: selectedCategory === category ? "#fff" : "#000",
     transition: "background-color 0.3s, color 0.3s",
     flexShrink: 0,
@@ -147,30 +153,50 @@ const BlogMainTextSection: React.FC = () => {
     <div style={containerStyle}>
       {/* 타이틀 */}
       <div style={titleRowStyle}>
-    <h1 style={titleStyle}>OUR ARTICLES</h1>
-    <div style={countAndIconStyle}>
-      <span style={countStyle}>{blogCards.length}</span>
-      <span style={iconStyle}>
-        <BlogIcon width={40} height={30} />
-      </span>
-    </div>
-  </div>
+        <h1 style={titleStyle}>OUR ARTICLES</h1>
+        <div style={countAndIconStyle}>
+          <span style={countStyle}>{blogCards.length}</span>
+          <span style={iconStyle}>
+            <img src={BlogIcon} alt="blog-icon" width={40} height={30} />
+          </span>
+        </div>
+      </div>
 
-      <p style={{ fontSize: "24px", fontWeight: "700", color: "#000", textAlign: "center", marginTop: "40px", marginBottom: "0" }}>
-  "Goodwill Article | 새로운 시선, 깊이 있는 인사이트"
-</p>
+      <p
+        style={{
+          fontSize: "24px",
+          fontWeight: "700",
+          color: "#000",
+          textAlign: "center",
+          marginTop: "40px",
+          marginBottom: "0",
+        }}
+      >
+        "Goodwill Article | 새로운 시선, 깊이 있는 인사이트"
+      </p>
 
       {/* 설명 */}
       <p style={descriptionStyle}>
         지금, Goodwill이 전하는 다양한 이야기를 만나보세요.
         <br />
-        트렌드, 디자인, 비즈니스 인사이트까지—놓치기 아까운 아티클을 소개합니다. 💡
+        트렌드, 디자인, 비즈니스 인사이트까지—놓치기 아까운 아티클을 소개합니다.
+        💡
       </p>
 
       {/* 검색창 */}
       <div style={searchContainerStyle}>
-        <SearchIcon width={25} height={25} style={{ position: "absolute", left: "10px", zIndex: 1 }} />
-        <input type="text" placeholder="GOODWILL 아티클 검색하기" style={searchInputStyle} />
+        <img
+          src={SearchIcon}
+          alt="search-icon"
+          width={25}
+          height={25}
+          style={{ position: "absolute", left: "10px", zIndex: 1 }}
+        />
+        <input
+          type="text"
+          placeholder="GOODWILL 아티클 검색하기"
+          style={searchInputStyle}
+        />
       </div>
 
       {/* 카테고리 버튼 리스트 */}
@@ -194,7 +220,6 @@ const BlogMainTextSection: React.FC = () => {
           <BlogCard key={index} title={blog.title} date={blog.date} />
         ))}
       </div>
-
     </div>
   );
 };
