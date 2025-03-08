@@ -13,8 +13,6 @@ const MenuItem: React.FC<MenuItemProps> = ({ onClick, children, path }) => {
   const location = useLocation();
   const isActive = location.pathname === path; // 현재 경로와 메뉴 아이템의 경로 비교
 
-  console.log(location.pathname);
-
   return (
     <motion.div
       css={Item}

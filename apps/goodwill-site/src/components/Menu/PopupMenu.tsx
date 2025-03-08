@@ -46,28 +46,40 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
             viewBox="-0.5 -0.5 16 16"
             fill="none"
             stroke="#FFFFFF"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-x"
             id="X--Streamline-Feather"
             whileHover={{ scale: 1.1, rotate: 180 }}
           >
             <desc>X Streamline Icon: https://streamlinehq.com</desc>
-            <path d="M11.25 3.75 3.75 11.25" stroke-width="1"></path>
-            <path d="m3.75 3.75 7.5 7.5" stroke-width="1"></path>
+            <path d="M11.25 3.75 3.75 11.25" strokeWidth="1"></path>
+            <path d="m3.75 3.75 7.5 7.5" strokeWidth="1"></path>
           </motion.svg>
         </button>
         <MenuItem onClick={() => navigate("/")} path="/">
           HOME
         </MenuItem>
         <MenuItem onClick={() => navigate("/about")} path="/about">
-          ABOUT US
+          ABOUT
         </MenuItem>
-        <MenuItem onClick={() => navigate("/projects")} path="/projects">
-          PROJECTS
+        <MenuItem onClick={() => navigate("/team-and-culture")} path="/projects">
+          TEAM & CULTURE
         </MenuItem>
-        <MenuItem onClick={() => navigate("/contact")} path="/contact">
-          CONTACT
+        <MenuItem onClick={() => navigate("/project")} path="/projects">
+          PROJECT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/announcement")} path="/contact">
+          ANNOUNCEMENT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/article")} path="/contact">
+          ARTICLE
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/event")} path="/contact">
+          EVENT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/login")} path="/contact">
+          LOGIN
         </MenuItem>
       </motion.div>
     </>
