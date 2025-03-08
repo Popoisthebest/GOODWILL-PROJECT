@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import { motion } from "motion/react";
 import {
   containerStyle,
@@ -25,6 +25,7 @@ interface ApplicationFormTextInputProps {
   placeholder: string;
   inputType?: "text" | "number" | "textarea";
   register: UseFormRegister<ApplicationFormData>;
+  watch: UseFormWatch<ApplicationFormData>;
   errorMessage?: string;
 }
 
@@ -33,18 +34,11 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
   placeholder,
   inputType = "text",
   register,
+  watch,
   errorMessage,
 }) => {
-  const [inputValue, setInputValue] = useState("");
+  const inputValue = watch(name) || "";
   const [isFocused, setIsFocused] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const textWithoutSpaces = e.target.value.replace(/\s/g, ""); // 공백 제거
-    if (name === "coverLetter" && textWithoutSpaces.length > 100) return;
-    setInputValue(e.target.value);
-  };
 
   return (
     <div css={containerStyle}>
@@ -54,15 +48,17 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
       {inputType === "textarea" ? (
         <motion.textarea
           id={name}
-          {...register(
-            name,
-            name === "questions"
-              ? {}
-              : { required: `${placeholder}은(는) 필수입니다.` },
-          )}
+          {...register(name, {
+            ...(name !== "questions" && {
+              required: `${placeholder}은(는) 필수입니다.`,
+            }),
+            ...(name === "coverLetter" && {
+              validate: (value) =>
+                value.replace(/\s/g, "").length <= 100 ||
+                "최대 100자까지 입력할 수 있습니다.",
+            }),
+          })}
           placeholder=""
-          value={inputValue}
-          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           css={textareaStyle}
@@ -95,8 +91,6 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
             }),
           })}
           placeholder=""
-          value={inputValue}
-          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           css={inputStyle}

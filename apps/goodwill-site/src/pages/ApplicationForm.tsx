@@ -91,6 +91,7 @@ const ApplicationFormPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -122,7 +123,9 @@ const ApplicationFormPage = () => {
               <ApplicationFormTextInput
                 name="name"
                 placeholder="이름"
+                inputType="text"
                 register={register}
+                watch={watch}
                 errorMessage={errors.name?.message}
               />
               <div css={{ height: "24px" }}></div>
@@ -131,6 +134,7 @@ const ApplicationFormPage = () => {
                 placeholder="학번"
                 inputType="text"
                 register={register}
+                watch={watch}
                 errorMessage={errors.studentId?.message}
               />{" "}
               <div css={{ height: "24px" }}></div>
@@ -140,6 +144,7 @@ const ApplicationFormPage = () => {
                   placeholder="이메일"
                   inputType="text"
                   register={register}
+                  watch={watch}
                   errorMessage={errors.email?.message}
                 />{" "}
                 <div css={{ height: "11px" }}></div>
@@ -153,6 +158,7 @@ const ApplicationFormPage = () => {
                 placeholder="전화번호 (010-0000-0000)"
                 inputType="text"
                 register={register}
+                watch={watch}
                 errorMessage={errors.phone?.message}
               />
             </form>
@@ -163,6 +169,7 @@ const ApplicationFormPage = () => {
                 placeholder="자기소개서"
                 inputType="textarea"
                 register={register}
+                watch={watch}
                 errorMessage={errors.coverLetter?.message}
               />
             </form>
@@ -203,6 +210,7 @@ const ApplicationFormPage = () => {
                 placeholder="질문사항"
                 inputType="textarea"
                 register={register}
+                watch={watch}
                 errorMessage={errors.questions?.message}
               />
             </form>

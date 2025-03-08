@@ -24,6 +24,9 @@ const DocAdd = () => {
 
         if (savedContestFiles) setContestFiles(JSON.parse(savedContestFiles));
         if (savedPortfolioFiles) setPortfolioFiles(JSON.parse(savedPortfolioFiles));
+
+        console.log(contestFiles);
+        console.log(portfolioFiles);
     }, []);
 
     // 새로운 FileUpload 추가
