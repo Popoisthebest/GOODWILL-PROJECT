@@ -25,16 +25,16 @@ const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
 
   // 지원자가 입력한 제목 (쿠키에서 불러옴)
   const [title, setTitle] = useState(() => Cookies.get(titleCookieKey) || "");
-  // 업로드한 파일 이름 (쿠키에서 불러옴)
-  const [file, setFile] = useState(() => Cookies.get(fileCookieKey) || "");
+  // 업로드한 파일
+  const [file, setFile] = useState<File | null>(null); // 초기값은 null
+
+  console.log(file)
 
   // 쿠키에서 제목 및 파일 이름 불러오기
   useEffect(() => {
     const savedTitle = Cookies.get(titleCookieKey);
-    const savedFile = Cookies.get(fileCookieKey);
 
     if (savedTitle) setTitle(savedTitle);
-    if (savedFile) setFile(savedFile);
   }, [titleCookieKey, fileCookieKey]);
 
   // 제목 변경 (입력 시 쿠키에 저장)
@@ -47,9 +47,8 @@ const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
   // 파일 선택 (파일명 쿠키에 저장)
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const uploadedFileName = event.target.files[0].name;
-      setFile(uploadedFileName);
-      Cookies.set(fileCookieKey, uploadedFileName, { expires: 1 }); // 1일 동안 유지
+      const uploadedFile = event.target.files[0]; // 첫 번째 파일 객체 가져오기
+      setFile(uploadedFile); // 파일 자체를 상태로 저장
     }
   };
 
@@ -71,7 +70,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ id, removeFileUpload }) => {
 
           {/* 파일 업로드 */}
           <div css={uploadContainer}>
-            <div css={fileNameDisplay}>{file || "파일을 선택해주세요."}</div>
+            <div css={fileNameDisplay}>{file?.name || "파일을 선택해주세요."}</div>
             <input
               type="file"
               id={`fileUpload-${id}`}
