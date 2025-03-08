@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { collection, doc, setDoc, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig.ts";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -22,6 +24,7 @@ import DocAdd from "../components/ApplicationForm/DocAdd.tsx";
 import SpecialDocAdd from "../components/ApplicationForm/SpecialFileUpload/SpecialDoc.tsx";
 import EmailAuthenticationButton from "../components/ApplicationForm/EmailAuthentication/EmailAuthenticationButton.tsx";
 import AgreeButton from "../components/ApplicationForm/Agree/AgreeButton/AgreeButton.tsx";
+import { generateApplicationId } from "../hooks/generateApplicationId.ts";
 
 interface FormValues {
   name: string;
@@ -39,13 +42,13 @@ const getLittleProgramName = (jobGroup: string) => {
     Engineering: "리틀 빌게이츠 전형",
     Content: "리틀 도널드 노먼 전형",
   };
-  return jobGroupToProgramMap[jobGroup] || "리틀 특별 전형"; // 기본값
+  return jobGroupToProgramMap[jobGroup];
 };
 
 const ApplicationFormPage = () => {
   const location = useLocation();
-  const roleName = location.state?.roleName || "직군 선택 없음";
-  const jobGroup = location.state?.jobGroup || "기본 그룹"; // 기본 jobGroup 설정
+  const roleName = location.state?.roleName;
+  const jobGroup = location.state?.jobGroup;
   const littleProgramName = getLittleProgramName(jobGroup);
   const [isChecked, setIsChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
@@ -96,16 +99,38 @@ const ApplicationFormPage = () => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({});
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setIsSubmitting(true);
-    // 학번을 숫자로 변환하여 처리
-    const formattedData = {
-      ...data,
-      studentId: Number(data.studentId), // 문자열을 숫자로 변환
-    };
-    alert(JSON.stringify(formattedData, null, 2));
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      if (!requiredChecked) {
+        alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
+        return;
+      }
+
+      setIsSubmitting(true);
+
+      const applicationsRef = collection(db, littleProgramName);
+      const querySnapshot = await getDocs(applicationsRef);
+      const order = querySnapshot.size + 1;
+      const id = generateApplicationId(jobGroup, order);
+
+      const formattedData = {
+        ...data,
+        studentId: Number(data.studentId), // 문자열을 숫자로 변환
+        id,
+        order,
+        createdAt: new Date(),
+        application_status: "대기"
+      };
+
+      await setDoc(doc(db, littleProgramName, id), formattedData);
+
+      alert(JSON.stringify(formattedData, null, 2));
+    } catch (error) {
+      console.error("지원서 제출 실패:", error);
+      alert("지원서 제출 중 오류가 발생했습니다.");
+    }
   };
 
   return (

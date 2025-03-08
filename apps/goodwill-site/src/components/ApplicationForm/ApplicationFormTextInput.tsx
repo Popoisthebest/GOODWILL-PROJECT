@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState } from "react";
 import { UseFormRegister, UseFormWatch } from "react-hook-form";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import {
   containerStyle,
   labelStyle,
@@ -48,61 +48,62 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
       {inputType === "textarea" ? (
         <motion.textarea
           id={name}
-          {...register(name, {
-            ...(name !== "questions" && {
-              required: `${placeholder}은(는) 필수입니다.`,
-            }),
-            ...(name === "coverLetter" && {
-              validate: (value) =>
-                value.replace(/\s/g, "").length <= 100 ||
-                "최대 100자까지 입력할 수 있습니다.",
-            }),
-          })}
+          {...(name !== "questions"
+            ? register(name, {
+                required: `${placeholder}은(는) 필수입니다.`,
+                ...(name === "coverLetter" && {
+                  validate: (value) =>
+                    (value?.replace(/\s/g, "").length || 0) <= 100 ||
+                    "최대 100자까지 입력할 수 있습니다.",
+                }),
+              })
+            : register(name))} // 질문사항 필드는 검증 없이 등록
           placeholder=""
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           css={textareaStyle}
-          animate={isFocused ? { borderColor: "#05308C" } : {}}
-          whileHover={isFocused ? {} : { borderColor: "#6D80C5" }}
+          animate={isFocused ? { borderColor: "#05308C" } : undefined}
+          whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
         />
       ) : (
         <motion.input
           id={name}
           type={name === "studentId" || name === "phone" ? "text" : inputType}
-          {...register(name, {
-            ...(name !== "questions" && {
-              required: `${placeholder}은(는) 필수입니다.`,
-            }),
-            ...(name === "email" && {
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "올바른 이메일 형식을 입력하세요.",
-              },
-            }),
-            ...(name === "studentId" && {
-              validate: (value) =>
-                /^[0-9]+$/.test(value) || "학번은 숫자로 입력해야 합니다.",
-            }),
-            ...(name === "phone" && {
-              pattern: {
-                value: /^010-\d{4}-\d{4}$/,
-                message: "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
-              },
-            }),
-          })}
+          {...(name !== "questions"
+            ? register(name, {
+                required: `${placeholder}은(는) 필수입니다.`,
+                ...(name === "email" && {
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "올바른 이메일 형식을 입력하세요.",
+                  },
+                }),
+                ...(name === "studentId" && {
+                  validate: (value) =>
+                    /^[0-9]+$/.test(value) || "학번은 숫자로 입력해야 합니다.",
+                }),
+                ...(name === "phone" && {
+                  pattern: {
+                    value: /^010-\d{4}-\d{4}$/,
+                    message:
+                      "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
+                  },
+                }),
+              })
+            : register(name))} // 질문사항 필드는 검증 없이 등록
           placeholder=""
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           css={inputStyle}
-          animate={isFocused ? { borderColor: "#05308C" } : {}}
-          whileHover={isFocused ? {} : { borderColor: "#6D80C5" }}
+          animate={isFocused ? { borderColor: "#05308C" } : undefined}
+          whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
         />
       )}
       <div css={{ display: "flex", justifyContent: "space-between" }}>
         {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}
         {name === "coverLetter" && (
           <div css={letterCount}>
-            {inputValue.replace(/\s/g, "").length}/100
+            {inputValue?.replace(/\s/g, "").length || 0}/100
           </div>
         )}
       </div>

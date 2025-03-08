@@ -84,7 +84,8 @@ export const inputStyle = css`
   border: 2px solid #d9d9d9;
   outline: none;
   height: 20px;
-  padding: 10px 16px;
+  padding: 10px 12px;
+  font-family: Pretendard;
   font-size: 14px;
 `;
 
