@@ -12,7 +12,7 @@ import fileAddFormAdd from "../../assets/fileUpload/PlusCircle.svg";
 
 const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
 
-const DocAdd = () => {
+const DocAdd = ({ isSubmitting }: { isSubmitting: boolean }) => {
   const [isContest, setContest] = useState(true);
   const [contestFiles, setContestFiles] = useState<
     { id: number; name: string }[]
@@ -20,6 +20,13 @@ const DocAdd = () => {
   const [portfolioFiles, setPortfolioFiles] = useState<
     { id: number; name: string }[]
   >([]);
+
+  // isSubmitting 값이 변경될 때 업로드 실행
+  useEffect(() => {
+    if (isSubmitting) {
+      console.log("나 독인데 전달 받았다.");
+    }
+  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
 
   // 쿠키에서 파일 목록 불러오기
   useEffect(() => {
@@ -104,6 +111,7 @@ const DocAdd = () => {
                 id={file.id}
                 removeFileUpload={() => removeFileUpload(file.id, true)}
                 isContest={true}
+                isSubmitting={isSubmitting}
               />
             ))
           : portfolioFiles.map((file) => (
@@ -112,6 +120,7 @@ const DocAdd = () => {
                 id={file.id}
                 removeFileUpload={() => removeFileUpload(file.id, false)}
                 isContest={false}
+                isSubmitting={isSubmitting}
               />
             ))}
 

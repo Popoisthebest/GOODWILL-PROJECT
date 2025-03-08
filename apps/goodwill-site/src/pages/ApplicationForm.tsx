@@ -51,6 +51,10 @@ const ApplicationFormPage = () => {
   const [allChecked, setAllChecked] = useState(false);
   const [requiredChecked, setRequiredChecked] = useState(false);
   const [optionalChecked, setOptionalChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  console.log(`역할 이름: ${roleName}`);
+  console.log(`직군 이름: ${jobGroup}`);
 
   // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
   const handleAllCheck = () => {
@@ -95,6 +99,7 @@ const ApplicationFormPage = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    setIsSubmitting(true);
     // 학번을 숫자로 변환하여 처리
     const formattedData = {
       ...data,
@@ -176,7 +181,7 @@ const ApplicationFormPage = () => {
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>제출 서류</div>
             <div css={{ height: "32px" }}></div>
-            <DocAdd />
+            <DocAdd isSubmitting={isSubmitting} />
 
             <div css={{ height: "36px" }}></div>
             <div css={ApplicationInformation}>리틀 전형</div>

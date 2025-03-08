@@ -17,12 +17,14 @@ interface FileUploadProps {
   id: number;
   removeFileUpload: () => void;
   isContest: boolean;
+  isSubmitting: boolean;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
   id,
   removeFileUpload,
   isContest,
+  isSubmitting,
 }) => {
   const fileCookieKey = `file-${id}`;
   const titleCookieKey = `title-${id}`;
@@ -32,7 +34,14 @@ const FileUpload: React.FC<FileUploadProps> = ({
   // 지원자 파일 저장
   const [file, setFile] = useState<File | null>(null); // 초기값은 null
 
-  console.log(file)
+  console.log(file);
+
+  // isSubmitting 값이 변경될 때 업로드 실행
+  useEffect(() => {
+    if (isSubmitting) {
+      console.log("나 파일인데 전달 받았다.");
+    }
+  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
 
   // 쿠키에서 제목 및 파일 이름 불러오기
   useEffect(() => {
@@ -78,7 +87,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
           {/* 파일 업로드 */}
           <div css={uploadContainer}>
-            <div css={fileNameDisplay}>{file?.name || "파일을 선택해주세요."}</div>
+            <div css={fileNameDisplay}>
+              {file?.name || "파일을 선택해주세요."}
+            </div>
             <input
               type="file"
               id={`fileUpload-${id}`}
