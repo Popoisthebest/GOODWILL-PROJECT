@@ -26,20 +26,20 @@ const MenuItem: React.FC<MenuItemProps> = ({ onClick, children, path }) => {
       initial={{ backgroundColor: "#FFFFFF" }}
     >
       <div css={ItemText}>
-        <motion.span
+        <motion.div
           variants={{
             hover: { y: isActive ? 0 : -30 },
           }}
         >
           {children}
-        </motion.span>
-        <motion.span
+        </motion.div>
+        <motion.div
           variants={{
             hover: { y: isActive ? 0 : -30 },
           }}
         >
           {children}
-        </motion.span>
+        </motion.div>
       </div>
       <div css={IconDiv}>
         {isActive && (
