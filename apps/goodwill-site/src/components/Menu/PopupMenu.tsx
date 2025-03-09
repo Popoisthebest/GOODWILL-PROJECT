@@ -60,20 +60,36 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         <MenuItem onClick={() => navigate("/")} path="/">
           HOME
         </MenuItem>
-        <MenuItem onClick={() => navigate("/career")} path="/career">
+        <MenuItem
+          onClick={() =>
+            setTimeout(() => {
+              navigate("/role-select");
+            }, 500)
+          }
+          path="/role-select"
+        >
           CAREER
         </MenuItem>
-        <MenuItem
-          onClick={() => navigate("/team-and-culture")}
-          path="/team-and-culture"
-        >
+        <MenuItem onClick={() => navigate("/about")} path="/about">
+          ABOUT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/team-and-culture")} path="/team-and-culture">
           TEAM & CULTURE
         </MenuItem>
-        <MenuItem
-          onClick={() => navigate("/announcement")}
-          path="/announcement"
-        >
+        <MenuItem onClick={() => navigate("/project")} path="/project">
+          PROJECT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/announcement")} path="/announcement">
           ANNOUNCEMENT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/article")} path="/article">
+          ARTICLE
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/event")} path="/event">
+          EVENT
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/login")} path="/login">
+          LOGIN
         </MenuItem>
       </motion.div>
     </>

@@ -4,7 +4,7 @@ import {
   desktopButtonContainerStyle,
   headerLogoStyle,
 } from "./Header.style";
-import goodwillLogo from "../../assets/logo/GOODWILL-logo.svg";
+import goodwillLogo from "../../assets/logo/GOODWILL-black-logo.svg";
 import CareerButton from "./CareerButton.tsx";
 import MenuButton from "./MenuButton.tsx";
 import PopupMenu from "../Menu/PopupMenu.tsx";

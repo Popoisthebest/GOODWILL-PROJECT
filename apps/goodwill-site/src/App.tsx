@@ -11,6 +11,7 @@ import Article from "./pages/Article.tsx";
 import Project from "./pages/Project.tsx";
 import Main from "./pages/Main.tsx";
 import SubmissionFinished from "./pages/SubmissionFinished.tsx";
+import About from "./components/About/About.tsx";
 
 function App() {
   return (
@@ -18,21 +19,21 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/career" element={<RoleSelect />} />
+        <Route path="/about" element={<About />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
         <Route
-            path="/Back-End Engineer(BE)"
-            element={<RoleDetailBackEndEngineer />}
+          path="/Back-End Engineer(BE)"
+          element={<RoleDetailBackEndEngineer />}
         />
         <Route
-            path="/Front-End Engineer(FE)"
-            element={<RoleDetailFrontEndEngineer />}
+          path="/Front-End Engineer(FE)"
+          element={<RoleDetailFrontEndEngineer />}
         />
         <Route
-            path="/Full-Stack Engineer(FS)"
-            element={<RoleDetailFullStackEngineer />}
+          path="/Full-Stack Engineer(FS)"
+          element={<RoleDetailFullStackEngineer />}
         />
-        <Route path="/" element={<Main />} />
         <Route path="/team-and-culture" element={<TeamCulture />} />
         <Route path="/project" element={<Project />} />
         <Route path="/announcement" element={<Announcement />} />
