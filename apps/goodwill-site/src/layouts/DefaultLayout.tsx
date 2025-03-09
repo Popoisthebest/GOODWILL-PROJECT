@@ -11,7 +11,7 @@ const DefaultLayout: React.FC<LayoutProps> = ({ children }) => (
   <div css={globalStyle}>
     <Header/>
     <main>{children}</main>
-    <footer>© 2025 GOODWILL Corp. All rights reserved.</footer>
+    
   </div>
 );
 

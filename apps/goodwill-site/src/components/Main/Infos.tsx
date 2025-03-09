@@ -7,6 +7,13 @@ type FooterProps = {
 };
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <FooterContainer className={className}>
       <LeftSection>
@@ -41,17 +48,61 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         <ButtonsContainer>
           <ArticleButton>GO TO GOODWILL'S ARTICLE</ArticleButton>
           <InstagramLink>
-            <ArrowIcon>↗</ArrowIcon>
+            <DiagonalArrowIcon 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M7 17L17 7" 
+                stroke="black" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M7 7H17V17" 
+                stroke="black" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </DiagonalArrowIcon>
             GOODWILL Instagram
           </InstagramLink>
         </ButtonsContainer>
       </RightSection>
 
-      <Copyright>© 2025 GOODWILL Corp. All rights reserved.</Copyright>
+      
 
-      <ScrollTopButton>
-        <ArrowUp>↑</ArrowUp>
+      <ScrollTopButton onClick={scrollToTop}>
+        <ArrowIconSVG 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M12 18L12 6"
+            stroke="white" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          />
+          <path 
+            d="M6 12L12 6L18 12" 
+            stroke="white" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          />
+        </ArrowIconSVG>
       </ScrollTopButton>
+
+      <Copyright>© 2025 GOODWILL Corp. All rights reserved.</Copyright>
     </FooterContainer>
   );
 };
@@ -65,7 +116,19 @@ const FooterContainer = styled.footer`
   position: relative;
   background-color: #fff;
   color: #000;
+  margin: calc(-50vw + 50%);
+  width: 85vw;
+  height: 600px;
+  font-family: Pretendard;
+
 `;
+
+const DiagonalArrowIcon = styled.svg`
+  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+`;
+
 
 const LeftSection = styled.div`
   flex: 1;
@@ -86,6 +149,7 @@ const CenterSection = styled.div`
   flex: 1;
   min-width: 200px;
   margin-bottom: 30px;
+  
 `;
 
 const ContactInfo = styled.div`
@@ -111,6 +175,8 @@ const ContactDetail = styled.p`
 const RightSection = styled.div`
   flex: 1.5;
   min-width: 300px;
+  transform: translateX(100px);
+  
 `;
 
 const SectionTitle = styled.h2`
@@ -171,17 +237,17 @@ const ArrowIcon = styled.span`
 const Copyright = styled.div`
   width: 100%;
   font-size: 24px;
-  margin-top: 40px;
+  margin-top: 200px;
 `;
 
 const ScrollTopButton = styled.button`
   position: absolute;
   bottom: 40px;
   right: 60px;
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   display: flex;
   align-items: center;
@@ -189,14 +255,16 @@ const ScrollTopButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-bottom: 100px;
   
   &:hover {
-    background-color: #555;
+    background-color: #333;
   }
 `;
 
-const ArrowUp = styled.span`
-  font-size: 40px;
+const ArrowIconSVG = styled.svg`
+  width: 60px;
+  height: 70px;
 `;
 
 export default Footer;

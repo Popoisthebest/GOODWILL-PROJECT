@@ -132,6 +132,7 @@ const SVGContainer = styled(motion.div)`
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
+  
 `;
 
 const VideoContainer = styled(motion.div)`
@@ -262,108 +263,145 @@ const BetterWorldLanding: React.FC = () => {
   }, []);
 
   const AboutButton = () => {
-    const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const isMobile = window.innerWidth <= 768;
 
-    const handleMouseEnter = () => {
-      if (!isMobile) {
-        setIsHovered(true);
-      }
-    };
-
-    const handleMouseLeave = () => {
-      if (!isMobile) {
-        setIsHovered(false);
-      }
-    };
-
-    const handleTouchStart = () => {
-      if (isMobile) {
-        setIsHovered(true);
-        setTimeout(() => setIsHovered(false), 500);
-      }
-    };
-
-    return (
-      <div style={{ 
-        display: 'inline-block', 
-        position: 'relative',
-        zIndex: 50
-      }}>
-        <motion.button
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: isMobile ? '8px 16px' : '12px 24px',
-            backgroundColor: 'white',
-            borderRadius: '9999px',
-            border: 'none',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            position: 'relative',
-            overflow: 'hidden',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            fontSize: isMobile ? '16px' : '18px',
-            zIndex: 50
-          }}
-          whileTap={{ scale: 0.95 }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onTouchStart={handleTouchStart}
-        >
-          <div style={{ 
-            position: 'relative',
-            width: isMobile ? '20px' : '24px',
-            height: isMobile ? '20px' : '24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 52
-          }}>
-            <motion.div
-              initial={{ width: 8, height: 8, backgroundColor: '#000' }}
-              animate={{
-                width: isHovered ? (isMobile ? 300 : 500) : 8,
-                height: isHovered ? (isMobile ? 300 : 400) : 8,
-                x: isHovered ? (isMobile ? -50 : -70) : 0,
-                y: isHovered ? (isMobile ? -50 : -70) : 0,
-                backgroundColor: isHovered ? 'rgba(5, 48, 140, 1)' : '#000'
-              }}
-              transition={{ 
-                type: 'spring',
-                stiffness: 300,
-                damping: 20
-              }}
-              style={{
-                position: 'absolute',
-                borderRadius: '50%',
-                zIndex: 51
-              }}
-            />
-            <span style={{ 
-              zIndex: 52, 
-              position: 'relative',
-              opacity: isHovered ? 0 : 1,
-              transition: 'opacity 0.2s ease'
-            }}>•</span>
-          </div>
-          
-          <motion.span
-            animate={{
-              color: isHovered ? '#ffffff' : '#000000'
-            }}
-            transition={{ duration: 0.2 }}
-            style={{ 
-              position: 'relative',
-              zIndex: 52,
-              marginLeft: '8px'
-            }}
-          >
-            ABOUT US
-          </motion.span>
-        </motion.button>
-      </div>
-    );
+  const handleMouseEnter = () => {
+    if (!isMobile) setIsHovered(true);
   };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) setIsHovered(false);
+  };
+
+  const handleTouchStart = () => {
+    if (isMobile) {
+      setIsHovered(true);
+      setTimeout(() => setIsHovered(false), 500);
+    }
+  };
+
+  return (
+    <div style={{ display: "inline-block", position: "relative", zIndex: 50 }}>
+      <motion.button
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: isMobile ? "8px 16px" : "12px 24px",
+          backgroundColor: "white",
+          borderRadius: "9999px",
+          border: "none",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          position: "relative",
+          cursor: "pointer",
+          fontWeight: "bold",
+          fontSize: isMobile ? "16px" : "18px",
+          zIndex: 50,
+          width: "180px",
+          height: "50px",
+          overflow: "hidden",
+        }}
+        whileTap={{ scale: 0.95 }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+      >
+        {/* 점을 배경 원으로 활용 */}
+        <motion.div
+          initial={{
+            width: 8,
+            height: 8,
+            backgroundColor: "#000",
+            borderRadius: "50%",
+            left: "20px", // 초기 위치를 왼쪽으로 설정
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+          animate={{
+            width: isHovered ? "400px" : 8,
+            height: isHovered ? "400px" : 8,
+            left: isHovered ? "-50%" : "20px", // hover 시 중앙으로 이동
+            backgroundColor: isHovered ? "rgba(5, 48, 140, 1)" : "#000",
+            borderRadius: isHovered ? "9999px" : "50%",
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+          }}
+          style={{
+            position: "absolute",
+            zIndex: 51,
+            transformOrigin: "center",
+            top: "50%",
+          }}
+        />
+
+        {/* 텍스트 */}
+        <motion.span
+          animate={{
+            color: isHovered ? "#ffffff" : "#000000",
+            x: isHovered ? 0 : 10,
+          }}
+          transition={{ duration: 0.2 }}
+          style={{
+            position: "relative",
+            zIndex: 52,
+            whiteSpace: "nowrap",
+          }}
+        >
+          ABOUT US
+        </motion.span>
+
+        {/* 화살표 애니메이션 */}
+        <motion.div
+          initial={{
+            x: 20,
+            opacity: 0,
+            width: 0,
+          }}
+          animate={{
+            x: isHovered ? 0 : 20,
+            opacity: isHovered ? 1 : 0,
+            width: isHovered ? "auto" : 0,
+          }}
+          transition={{ duration: 0.2 }}
+          style={{
+            marginLeft: isHovered ? "12px" : "0px",
+            display: "flex",
+            alignItems: "center",
+            zIndex: 52,
+          }}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ color: "#ffffff" }}
+          >
+            <path
+              d="M5 12H19"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 5L19 12L12 19"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.div>
+      </motion.button>
+    </div>
+  );
+};
 
   // 스크롤 애니메이션을 위한 값 계산
   const { scrollYProgress } = useScroll({
@@ -372,7 +410,7 @@ const BetterWorldLanding: React.FC = () => {
   });
 
   // 모바일과 데스크탑을 위한 다른 애니메이션 값
-  const pathLength = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 3], [0, 3]);
   
   const videoWidth = useTransform(
     scrollYProgress, 
@@ -390,14 +428,20 @@ const BetterWorldLanding: React.FC = () => {
   const elementOpacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
   const elementX = useTransform(
     scrollYProgress, 
-    [0.85, 1], 
-    isMobile ? ["0%", "-50%"] : ["0%", "-100%"]
+    [0.5, 1], 
+    isMobile ? ["0%", "-5%"] : ["0%", "-20%"]
   );
   
   const topContentInitialX = useTransform(
     scrollYProgress, 
     [0, 0.85], 
     isMobile ? ["0%", "5%"] : ["0%", "10%"]
+  );
+
+  const videoY = useTransform(
+    scrollYProgress,
+    [0.6, 0.7, 1],
+    isMobile ? [100, 100, 140] : [200, 200, 360]
   );
 
   return (
@@ -415,7 +459,8 @@ const BetterWorldLanding: React.FC = () => {
               top: 0,
               left: 0,
               zIndex: 1,
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+      
             }}
           >
             <motion.path
@@ -449,6 +494,7 @@ const BetterWorldLanding: React.FC = () => {
           style={{ 
             width: videoWidth, 
             height: videoHeight,
+            y: videoY
           }}
         >
           <motion.video

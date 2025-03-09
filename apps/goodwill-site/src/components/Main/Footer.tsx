@@ -10,6 +10,8 @@ const FooterContainer = styled.footer`
   position: relative;
   overflow-x: hidden;
   box-sizing: border-box;
+  margin: calc(-50vw + 50%);
+  width: 100vw;
 `;
 
 // Inner container to control content positioning

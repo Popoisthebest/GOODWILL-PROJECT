@@ -154,7 +154,6 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [translateX, setTranslateX] = useState(0)
   const [startX, setStartX] = useState(0)
-  const [deltaX, setDeltaX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
 
   const images = [
@@ -164,9 +163,15 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-icZfS8M49wb1qSjA16ZcgJuk9E0b7r.png",
   ]
 
+  // Create a duplicate array that includes three sets of images for infinite scrolling
+  const extendedImages = [...images, ...images, ...images]
+  
+  // Initialize to the middle set of images
   useEffect(() => {
-    setTranslateX(-currentIndex * window.innerWidth)
-  }, [currentIndex])
+    if (typeof window !== 'undefined') {
+      setTranslateX(-images.length * window.innerWidth)
+    }
+  }, [images.length])
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setStartX(e.touches[0].clientX)
@@ -176,26 +181,49 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return
     const currentX = e.touches[0].clientX
-    setDeltaX(currentX - startX)
+    const diff = currentX - startX
+    setTranslateX(prev => prev + diff)
+    setStartX(currentX)
   }
 
   const handleTouchEnd = () => {
     setIsDragging(false)
+    handleInfiniteScroll()
   }
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    setStartX(e.clientX - translateX)
+    setStartX(e.clientX)
     setIsDragging(true)
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return
     const currentX = e.clientX
-    setTranslateX(currentX - startX)
+    const diff = currentX - startX
+    setTranslateX(prev => prev + diff)
+    setStartX(currentX)
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
+    handleInfiniteScroll()
+  }
+  
+  // Function to handle the "teleporting" for infinite scroll
+  const handleInfiniteScroll = () => {
+    if (typeof window === 'undefined') return
+    
+    const imageWidth = window.innerWidth
+    const totalImagesWidth = images.length * imageWidth
+    
+    // If scrolled too far right (past the beginning of middle set)
+    if (translateX > -totalImagesWidth + imageWidth) {
+      setTranslateX(prev => prev - totalImagesWidth)
+    }
+    // If scrolled too far left (past the end of middle set)
+    else if (translateX < -(totalImagesWidth * 2 - imageWidth)) {
+      setTranslateX(prev => prev + totalImagesWidth)
+    }
   }
 
   return (
@@ -210,7 +238,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
         onMouseLeave={handleMouseUp}
       >
         <ImagesContainer translateX={translateX}>
-          {images.map((src, index) => (
+          {extendedImages.map((src, index) => (
             <img key={index} src={src || "/placeholder.svg"} alt={`Hero background ${index + 1}`} />
           ))}
         </ImagesContainer>
