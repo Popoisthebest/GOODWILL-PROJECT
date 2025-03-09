@@ -15,6 +15,7 @@ export const roleItemButton = css`
     background: none;
     text-align: left;
     width: 100%;
+    height: 100px;
 `;
 
 export const roleTitle = css`

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import RoleSelect from "./pages/RoleSelect.tsx";
 import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetails/RoleDetailBackendEngineer.tsx";
@@ -16,12 +15,19 @@ function App() {
   return (
     <Router>
       <Routes>
-
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route
           path="/Back-End Engineer(BE)"
           element={<RoleDetailBackEndEngineer />}
+        />
+        <Route
+          path="/Back-End Engineer(BE)"
+          element={<RoleDetailFrontEndEngineer />}
+        />
+        <Route
+          path="/Back-End Engineer(BE)"
+          element={<RoleDetailFullStackEngineer />}
         />
         <Route path="/" element={<Main />} />
         <Route path="/team-and-culture" element={<TeamCulture />} />

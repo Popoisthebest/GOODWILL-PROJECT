@@ -47,9 +47,9 @@ export const RoleSelectContainer = css`
   width: 100%;
   max-width: 700px;
 
-    @media (max-width: 768px) {
-        padding: 67px 0px 0px 0px;
-    }
+  @media (max-width: 768px) {
+    padding: 67px 0px 0px 0px;
+  }
 `;
 
 export const RoleSearchSelectDiv = css`
