@@ -43,7 +43,7 @@ export const TextContainer = css`
 export const RoleSelectContainer = css`
   display: flex;
   justify-content: space-between;
-  padding: 67px 50px 0px 50px;
+  padding: 67px 0px;
   width: 100%;
   max-width: 700px;
 

@@ -71,17 +71,15 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <> 
-      
+    <>
       <DefaultLayout>
-        <HeadText/>
+        <HeadText />
         <HeroSection />
-        <AboutSection/>
+        <AboutSection />
         <FeaturedWork projects={projects} />
-        <InfosSection/>
+        <InfosSection />
         <Footer />
       </DefaultLayout>
-      
     </>
   );
 };

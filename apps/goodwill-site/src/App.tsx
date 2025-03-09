@@ -18,16 +18,16 @@ function App() {
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route
-          path="/Back-End Engineer(BE)"
-          element={<RoleDetailBackEndEngineer />}
+            path="/Back-End Engineer(BE)"
+            element={<RoleDetailBackEndEngineer />}
         />
         <Route
-          path="/Back-End Engineer(BE)"
-          element={<RoleDetailFrontEndEngineer />}
+            path="/Front-End Engineer(FE)"
+            element={<RoleDetailFrontEndEngineer />}
         />
         <Route
-          path="/Back-End Engineer(BE)"
-          element={<RoleDetailFullStackEngineer />}
+            path="/Full-Stack Engineer(FS)"
+            element={<RoleDetailFullStackEngineer />}
         />
         <Route path="/" element={<Main />} />
         <Route path="/team-and-culture" element={<TeamCulture />} />

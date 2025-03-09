@@ -4,7 +4,7 @@ export const searchContainer = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
+  height: 45px;
   padding: 10px 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
