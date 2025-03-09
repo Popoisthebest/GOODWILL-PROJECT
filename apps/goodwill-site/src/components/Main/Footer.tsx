@@ -1,47 +1,47 @@
 import React from "react";
 import { css } from "@emotion/react";
 
-const Container = css`
-  background: #181818;
-  color: white;
-  padding: 40px;
-  text-align: center;
-`;
+// const Container = css`
+//   background: #181818;
+//   color: white;
+//   padding: 40px;
+//   text-align: center;
+// `;
 
-const Title = css`
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 16px;
-`;
+// const Title = css`
+//   font-size: 36px;
+//   font-weight: bold;
+//   margin-bottom: 16px;
+// `;
 
-const Subtitle = css`
-  font-size: 14px;
-  margin-bottom: 24px;
-`;
+// const Subtitle = css`
+//   font-size: 14px;
+//   margin-bottom: 24px;
+// `;
 
-const ProgressContainer = css`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 14px;
-  margin-top: 16px;
-`;
+// const ProgressContainer = css`
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+//   font-size: 14px;
+//   margin-top: 16px;
+// `;
 
-const ProgressBar = css`
-  width: 100px;
-  height: 2px;
-  background: gray;
-  margin-left: 8px;
-  position: relative;
-  &:after {
-    content: "";
-    width: 30px;
-    height: 2px;
-    background: blue;
-    position: absolute;
-    left: 0;
-  }
-`;
+// const ProgressBar = css`
+//   width: 100px;
+//   height: 2px;
+//   background: gray;
+//   margin-left: 8px;
+//   position: relative;
+//   &:after {
+//     content: "";
+//     width: 30px;
+//     height: 2px;
+//     background: blue;
+//     position: absolute;
+//     left: 0;
+//   }
+// `;
 
 const FooterContainer = css`
   display: flex;
@@ -82,17 +82,17 @@ const LinkButton = css`
   margin-top: 8px;
 `;
 
-const GoodwillSection: React.FC = () => {
-  return (
-    <div css={Container}>
-      <p css={Subtitle}>KEEP SCROLLING TO LEARN MORE</p>
-      <h2 css={Title}>WE ARE GOODWILL</h2>
-      <div css={ProgressContainer}>
-        Next Page <span css={ProgressBar}></span> →
-      </div>
-    </div>
-  );
-};
+// const GoodwillSection: React.FC = () => {
+//   return (
+//     <div css={Container}>
+//       <p css={Subtitle}>KEEP SCROLLING TO LEARN MORE</p>
+//       <h2 css={Title}>WE ARE GOODWILL</h2>
+//       <div css={ProgressContainer}>
+//         Next Page <span css={ProgressBar}></span> →
+//       </div>
+//     </div>
+//   );
+// };
 
 const Footer: React.FC = () => {
   return (

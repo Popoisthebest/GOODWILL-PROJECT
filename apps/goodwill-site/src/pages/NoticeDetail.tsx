@@ -7,9 +7,9 @@ import copyIcon from "../icons/copy.svg";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
 const NoticeDetail = () => {
-  const { title, views, date, category, content } = useParams();
+  const { title, views, date, content } = useParams();
 
-  const [linkCopied, setLinkCopied] = useState(false);
+  const [setLinkCopied] = useState(false);
 
   // 각 소셜 미디어 링크를 클릭했을 때 호출할 함수
   const handleShare = (platform: string) => {
@@ -20,14 +20,18 @@ const NoticeDetail = () => {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
     } else if (platform === "instagram") {
       navigator.clipboard.writeText(currentUrl).then(() => {
+        // @ts-ignore
         setLinkCopied(true);
         alert("링크 복사됨!");
+        // @ts-ignore
         setTimeout(() => setLinkCopied(false), 2000); // 2초 후 복사 메시지 숨기기
       });
       return;
     } else if (platform === "copy") {
       navigator.clipboard.writeText(currentUrl).then(() => {
+        // @ts-ignore
         setLinkCopied(true);
+        // @ts-ignore
         setTimeout(() => setLinkCopied(false), 2000);
         alert("링크 복사됨!"); // 2초 후 복사 메시지 숨기기
       });
