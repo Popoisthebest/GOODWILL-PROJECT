@@ -72,7 +72,9 @@ const AwardsGrid = styled.div`
   display: grid;
   grid-template-columns: 150px 1fr;
   gap: 40px 0;
-`;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
+  `;
 
 const CategoryTitle = styled.div`
   font-size: 2rem;

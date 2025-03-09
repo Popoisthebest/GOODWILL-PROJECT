@@ -159,8 +159,8 @@ const InfiniteLogoScroll: React.FC = () => {
         </LogoTrack>
       </LogoMarquee>
       
-      <LogoMarquee direction="left">
-        <LogoTrack direction="left">
+      <LogoMarquee direction="right">
+        <LogoTrack direction="right">
           <LogoContainer>
             {duplicateLogos(logos.secondRow).map(logo => (
               <LogoItem key={logo.id}>

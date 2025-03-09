@@ -47,23 +47,26 @@ const ImageContainer = styled.div`
   aspect-ratio: 1 / 1;
   background-color: #e9e9e9;
   border-radius: 16px;
-  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 `;
 
-const Circle = styled.div`
-  width: 40%;
-  height: 40%;
-  background-color: #ccc;
-  border-radius: 50%;
+const ProfileImage = styled.div<{ imageUrl: string }>`
+  width: 250px;
+  height: 250px;
+  background-image: url(${props => props.imageUrl});
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
 `;
 
 const Name = styled.h3`
   font-size: 18px;
   font-weight: 600;
-  margin: 0 0 4px 0;
+  margin: 6px 0 4px 0;
 `;
 
 const Position = styled.p`
@@ -79,49 +82,49 @@ const TeamGridPage: React.FC = () => {
       id: 1,
       name: '김지태',
       position: 'Operation Manager',
-      imageUrl: '/images/profile1.jpg',
+      imageUrl: 'imgs/teamImg/jetae.jpeg',
     },
     {
       id: 2,
       name: '김지훈',
       position: 'Operation Manager',
-      imageUrl: '/images/profile2.jpg',
+      imageUrl: 'imgs/teamImg/jihoon.png',
     },
     {
       id: 3,
       name: '김용현',
       position: 'ML Assistant',
-      imageUrl: '/images/profile3.jpg',
+      imageUrl: '/imgs/teamImg/profile3.jpg',
     },
     {
       id: 4,
       name: '김수은',
       position: 'Visual Manager',
-      imageUrl: '/images/profile4.jpg',
+      imageUrl: 'imgs/teamImg/suen.jpeg',
     },
     {
       id: 5,
       name: '박현우',
       position: 'Mobile Engineer',
-      imageUrl: '/images/profile5.jpg',
+      imageUrl: 'imgs/teamImg/hyeonwoo.jpeg',
     },
     {
       id: 6,
       name: '이수호',
       position: 'Mobile Engineer',
-      imageUrl: '/images/profile6.jpg',
+      imageUrl: 'imgs/teamImg/suho.jpeg',
     },
     {
       id: 7,
       name: '백현빈',
       position: 'Full-Stack Engineer',
-      imageUrl: '/images/profile7.jpg',
+      imageUrl: 'imgs/teamImg/pack.png',
     },
     {
       id: 8,
       name: '김준모',
       position: 'Mechatronics Engineer',
-      imageUrl: '/images/profile8.jpg',
+      imageUrl: 'imgs/teamImg/junmo.jpg',
     },
   ];
 
@@ -131,7 +134,7 @@ const TeamGridPage: React.FC = () => {
         {teamMembers.map((member) => (
           <MemberCard key={member.id}>
             <ImageContainer>
-              <Circle />
+              <ProfileImage imageUrl={member.imageUrl} />
             </ImageContainer>
             <Name>{member.name}</Name>
             <Position>{member.position}</Position>
