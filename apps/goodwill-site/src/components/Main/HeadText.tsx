@@ -12,6 +12,7 @@ const HeadText: React.FC<HeadTextProps> = () => {
     left: -20px;
     width: 100%;
     background-color: transparent;
+    z-index: -1;
 
     @media (max-width: 768px) {
       top: -40px;
