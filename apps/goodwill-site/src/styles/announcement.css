@@ -1,5 +1,7 @@
-.announcemnet_box {
-  width: 900px;
+.announcement_box {
+  display: flex;
+  flex-direction: column;
+  height: 70vw;
   margin: 0 auto;
 }
 
@@ -69,7 +71,7 @@
 }
 
 .count {
-  color: var(--Gray-Scale-500, #7b7b7b);
+  color: #7b7b7b;
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -111,17 +113,20 @@ td {
   vertical-align: middle;
 }
 
-th:first-child, td:first-child {
+th:first-child,
+td:first-child {
   text-align: center;
   width: 20%;
 }
 
-th:nth-child(2), td:nth-child(2) {
+th:nth-child(2),
+td:nth-child(2) {
   text-align: center;
   width: 40%;
 }
 
-th:last-child, td:last-child {
+th:last-child,
+td:last-child {
   text-align: center;
   width: 20%;
 }

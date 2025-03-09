@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import "../styles/NoticeDetail.css";
-import { useState } from "react";
+import ReactMarkdown from "react-markdown"; // 마크다운 적용을 위해 추가
+import remarkGfm from "remark-gfm"; // GitHub Flavored Markdown 지원
 import facebookIcon from "../icons/facebook.svg";
 import instaIcon from "../icons/insta.svg";
 import copyIcon from "../icons/copy.svg";
@@ -8,8 +9,6 @@ import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
 const NoticeDetail = () => {
   const { title, views, date, content } = useParams();
-
-  const [setLinkCopied] = useState(false);
 
   // 각 소셜 미디어 링크를 클릭했을 때 호출할 함수
   const handleShare = (platform: string) => {
@@ -20,20 +19,12 @@ const NoticeDetail = () => {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
     } else if (platform === "instagram") {
       navigator.clipboard.writeText(currentUrl).then(() => {
-        // @ts-ignore
-        setLinkCopied(true);
         alert("링크 복사됨!");
-        // @ts-ignore
-        setTimeout(() => setLinkCopied(false), 2000); // 2초 후 복사 메시지 숨기기
       });
       return;
     } else if (platform === "copy") {
       navigator.clipboard.writeText(currentUrl).then(() => {
-        // @ts-ignore
-        setLinkCopied(true);
-        // @ts-ignore
-        setTimeout(() => setLinkCopied(false), 2000);
-        alert("링크 복사됨!"); // 2초 후 복사 메시지 숨기기
+        alert("링크 복사됨!");
       });
       return;
     }
@@ -50,12 +41,16 @@ const NoticeDetail = () => {
           <div className="notice_graytext">
             <div className="notice_date">{date}</div>
             <div className="dotdotdot">·</div>
-            <div className="notice_veiws">{views}회</div>
+            <div className="notice_views">{views}</div>
           </div>
           <div className="notice_border"></div>
         </div>
         <div className="notice_real_content">
-          <div className="content_text">{content}</div>
+          <div className="content_text">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {content || ""}
+            </ReactMarkdown>
+          </div>
         </div>
         <div className="notice_border1"></div>
         <div className="sharingsns">

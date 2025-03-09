@@ -205,7 +205,7 @@ const TeamCulture = () => {
   };
 
   const arrrrr = () => {
-    alert("아니 시발 너무많아아");
+    alert("공사중...")
   };
 
   return (

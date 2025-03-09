@@ -1,5 +1,5 @@
 // import { motion } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   // docAddButton,
   docAddContainer,
@@ -24,13 +24,6 @@ const DocAdd = ({
   const [portfolioFiles, setPortfolioFiles] = useState<
     { id: number; name: string }[]
   >([]);
-
-  // isSubmitting 값이 변경될 때 업로드 실행
-  useEffect(() => {
-    if (isSubmitting) {
-      console.log("나 독인데 전달 받았다.");
-    }
-  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
 
   // 새로운 FileUpload 추가
   const addFileUpload = (contest: boolean) => {

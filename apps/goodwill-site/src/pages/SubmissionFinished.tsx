@@ -1,8 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import InfoBox from "../components/SubmissionFinished/infobox.tsx";
 import MainButton from "../components/SubmissionFinished/to_main_button.tsx";
 
-const TextSection: React.FC = () => {
+const SubmissionFinished: React.FC = () => {
+  const location = useLocation();
+  const roleName = location.state?.roleName;
+  const applicationId = location.state?.newApplicationId;
+
   const containerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
@@ -37,38 +42,36 @@ const TextSection: React.FC = () => {
   };
 
   return (
-    <body>
-      <div style={containerStyle}>
-        <div style={contentStyle}>
-          <h1 style={titleStyle}>입사지원서 접수완료</h1>
+    <div style={containerStyle}>
+      <div style={contentStyle}>
+        <h1 style={titleStyle}>입사지원서 접수완료</h1>
+        <br />
+        <p style={textStyle}>
+          GOODWILL Corp.에 관심을 갖고 지원해주셔서 감사드립니다.
           <br />
-          <p style={textStyle}>
-            GOODWILL Corp.에 관심을 갖고 지원해주셔서 감사드립니다.
-            <br />
-            <br />
-            귀하께서 작성하신 지원서는 무사히 접수가 완료되었습니다.
-            <br />
-            내부에서 꼼꼼히 검토 후 결과를 안내드릴 예정입니다.
-            <br />
-            <br />
-            채용 진행과 관련하여 궁금하신 점이 있으시면 (전화번호)로 편하게 문의
-            주시길 바랍니다.
-            <br />
-            <br />
-            감사합니다.
-            <br />
-            GOODWILL Corp. 담당자 드림
-          </p>
+          <br />
+          귀하께서 작성하신 지원서는 무사히 접수가 완료되었습니다.
+          <br />
+          내부에서 꼼꼼히 검토 후 결과를 안내드릴 예정입니다.
+          <br />
+          <br />
+          채용 진행과 관련하여 궁금하신 점이 있으시면 (전화번호)로 편하게 문의
+          주시길 바랍니다.
+          <br />
+          <br />
+          감사합니다.
+          <br />
+          GOODWILL Corp. 담당자 드림
+        </p>
 
-          {/* InfoBox - 동적으로 값 전달 가능 */}
-          <InfoBox applicantNumber="1234567890" role="Visual Designer" />
+        {/* InfoBox - 동적으로 값 전달 가능 */}
+        <InfoBox applicantNumber={applicationId} role={roleName} />
 
-          {/* 하단 버튼 */}
-          <MainButton />
-        </div>
+        {/* 하단 버튼 */}
+        <MainButton />
       </div>
-    </body>
+    </div>
   );
 };
 
-export default TextSection;
+export default SubmissionFinished;

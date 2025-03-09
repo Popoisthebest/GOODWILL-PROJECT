@@ -144,7 +144,7 @@ const ApplicationFormPage = () => {
 
       alert("지원서가 성공적으로 제출되었습니다!");
       console.log("제출된 데이터:", formattedData);
-
+      navigate("/submission-finished", { state: {roleName, newApplicationId} });
     } catch (error) {
       console.error("지원서 제출 실패:", error);
       alert("지원서 제출 중 오류가 발생했습니다.");

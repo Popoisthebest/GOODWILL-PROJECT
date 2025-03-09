@@ -17,7 +17,7 @@ interface FeaturedWorkProps {
 }
 
 // Define isMobile
-const isMobile = window.innerWidth <= 768;
+// const isMobile = window.innerWidth <= 768;
 
 // Styled components using emotion
 const FeaturedWorkContainer = styled.section`

@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
   color: white;
   padding: 2rem 0;
   width: 100%;
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
   box-sizing: border-box;
   margin: calc(-50vw + 50%);
@@ -43,45 +43,45 @@ const BrandHeading = styled.h2`
 `;
 
 // Next page navigation
-const NextPageNav = styled.div`
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 2rem;
-  right: 5%;
-`;
+// const NextPageNav = styled.div`
+//   display: flex;
+//   align-items: center;
+//   position: absolute;
+//   top: 2rem;
+//   right: 5%;
+// `;
 
 // Next page text
-const NextPageText = styled.span`
-  margin-right: 50px;
-`;
+// const NextPageText = styled.span`
+//   margin-right: 50px;
+// `;
 
 // Progress bar container
-const ProgressBarContainer = styled.div`
-  width: 180px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin-right: 1rem;
-  position: relative;
-  border-radius: 10px;
-`;
+// const ProgressBarContainer = styled.div`
+//   width: 180px;
+//   height: 4px;
+//   background-color: rgba(255, 255, 255, 0.2);
+//   margin-right: 1rem;
+//   position: relative;
+//   border-radius: 10px;
+// `;
 
 // Progress bar fill with transition
-interface ProgressBarFillProps {
-  progress: number;
-}
+// interface ProgressBarFillProps {
+//   progress: number;
+// }
 
-const ProgressBarFill = styled.div<ProgressBarFillProps>`
-  height: 100%;
-  width: ${props => `${props.progress}%`};
-  background-color: #3b82f6;
-  transition: width ${props => props.progress >= 100 ? '0.3s' : '3s'} ease-out;
-`;
+// const ProgressBarFill = styled.div<ProgressBarFillProps>`
+//   height: 100%;
+//   width: ${props => `${props.progress}%`};
+//   background-color: #3b82f6;
+//   transition: width ${props => props.progress >= 100 ? '0.3s' : '3s'} ease-out;
+// `;
 
 // Arrow icon
-const ArrowIcon = styled.span`
-  font-size: 1.5rem;
-`;
+// const ArrowIcon = styled.span`
+//   font-size: 1.5rem;
+// `;
 
 // Plus sign buttons
 const PlusContainer = styled.div`
@@ -105,7 +105,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ 
   className, 
   onNavigateNext, 
-  nextPageUrl = '/next-page' 
+  // nextPageUrl = '/team-and-culture'
 }) => {
   const [progress, setProgress] = useState(0);
   const [isBottomReached, setIsBottomReached] = useState(false);
@@ -117,7 +117,7 @@ const Footer: React.FC<FooterProps> = ({
     if (onNavigateNext) {
       onNavigateNext();
     } else {
-      window.location.href = nextPageUrl;
+      // window.location.href = nextPageUrl;
     }
   };
 
@@ -254,7 +254,7 @@ const Footer: React.FC<FooterProps> = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isBottomReached, isOverscrolling, nextPageUrl, onNavigateNext, progress]);
+  }, [isBottomReached, isOverscrolling, onNavigateNext, progress]);
 
   return (
     <FooterContainer className={className}>
@@ -266,13 +266,13 @@ const Footer: React.FC<FooterProps> = ({
         
         <BrandHeading>WE ARE GOODWILL</BrandHeading>
         
-        <NextPageNav>
-          <NextPageText>Next Page</NextPageText>
-          <ProgressBarContainer>
-            <ProgressBarFill progress={progress} />
-          </ProgressBarContainer>
-          <ArrowIcon>→</ArrowIcon>
-        </NextPageNav>
+        {/*<NextPageNav>*/}
+        {/*  <NextPageText>Next Page</NextPageText>*/}
+        {/*  <ProgressBarContainer>*/}
+        {/*    <ProgressBarFill progress={progress} />*/}
+        {/*  </ProgressBarContainer>*/}
+        {/*  <ArrowIcon>→</ArrowIcon>*/}
+        {/*</NextPageNav>*/}
         
         <PlusContainer>
           <PlusButton>+</PlusButton>

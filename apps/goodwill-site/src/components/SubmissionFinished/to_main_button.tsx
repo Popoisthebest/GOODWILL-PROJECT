@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ToMainButton: React.FC = () => {
+  const navigate = useNavigate();
+
   const buttonStyle: React.CSSProperties = {
     width: "100%",
     backgroundColor: "#002F6C",
@@ -15,7 +18,16 @@ const ToMainButton: React.FC = () => {
     padding: "15px 0",
   };
 
-  return <button style={buttonStyle}>메인으로 돌아가기</button>;
+  return (
+    <button
+      onClick={() => {
+        navigate("/");
+      }}
+      style={buttonStyle}
+    >
+      메인으로 돌아가기
+    </button>
+  );
 };
 
 export default ToMainButton;

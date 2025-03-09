@@ -151,7 +151,7 @@ const NextPlus = styled.h2`
 `
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  // const [currentIndex, setCurrentIndex] = useState(0)
   const [translateX, setTranslateX] = useState(0)
   const [startX, setStartX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)

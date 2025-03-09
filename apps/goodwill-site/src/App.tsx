@@ -10,13 +10,16 @@ import NoticeDetail from "./pages/NoticeDetail.tsx";
 import Article from "./pages/Article.tsx";
 import Project from "./pages/Project.tsx";
 import Main from "./pages/Main.tsx";
+import SubmissionFinished from "./pages/SubmissionFinished.tsx";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
+        <Route path="/submission-finished" element={<SubmissionFinished />} />
         <Route
             path="/Back-End Engineer(BE)"
             element={<RoleDetailBackEndEngineer />}
