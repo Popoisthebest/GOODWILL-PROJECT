@@ -16,7 +16,7 @@ const CareerButton: React.FC = () => {
 
   const handleClick = () => {
     setTimeout(() => {
-      navigate("/role-select"); // 애니메이션이 끝난 후 페이지 이동
+      navigate("/career"); // 애니메이션이 끝난 후 페이지 이동
     }, 500); // 애니메이션 시간 (0.5초 후 이동)
   };
 

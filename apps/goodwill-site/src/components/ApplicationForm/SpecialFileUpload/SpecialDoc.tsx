@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import {
-  docAddContainer,
-  docAddContainerButton,
-} from "./SpecialDoc.style.ts";
+import { docAddContainer, docAddContainerButton } from "./SpecialDoc.style.ts";
 import FileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
 import fileAddFormAdd from "../../../assets/fileUpload/PlusCircle.svg";
 
 const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
 
-const SpecialDocAdd = () => {
+const SpecialDocAdd = ({
+  isSubmitting,
+  applicationId,
+}: {
+  isSubmitting: boolean;
+  applicationId: string;
+}) => {
   const [specialFiles, setSpecialFiles] = useState<
     { id: number; name: string }[]
   >([]);
@@ -49,7 +52,8 @@ const SpecialDocAdd = () => {
             key={file.id}
             id={file.id}
             removeFileUpload={() => removeFileUpload(file.id)}
-            isContest={true}
+            isSubmitting={isSubmitting}
+            applicationId={applicationId}
           />
         ))}
 
