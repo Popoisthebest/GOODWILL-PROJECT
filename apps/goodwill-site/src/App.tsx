@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Project />} />
+        <Route path="/" element={<Main />} />
         <Route path="/team-and-culture" element={<TeamCulture />} />
         <Route path="/project" element={<Project />} />
         <Route path="/announcement" element={<Announcement />} />
