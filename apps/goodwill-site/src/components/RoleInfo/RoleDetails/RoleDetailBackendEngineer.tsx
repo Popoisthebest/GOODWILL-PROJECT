@@ -1,5 +1,5 @@
-import RoleDetail from "./RoleDetail";
-import { RoleDetailProps } from "./RoleDetail.types";
+import RoleDetail from "../RoleDetail.tsx";
+import { RoleDetailProps } from "../RoleDetail.types.ts";
 
 const backendEngineerData: RoleDetailProps = {
   roleName: "Back-End Engineer(BE)",

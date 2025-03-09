@@ -2,16 +2,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import RoleSelect from "./pages/RoleSelect.tsx";
 import ApplicationFormPage from "./pages/ApplicationForm.tsx";
-import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetailBackendEngineer.tsx";
-import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetailFrontendEngineer.tsx";
-import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetailFullstackEngineer.tsx";
+import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetails/RoleDetailBackendEngineer.tsx";
+import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetails/RoleDetailFrontendEngineer.tsx";
+import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetails/RoleDetailFullstackEngineer.tsx";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/role-select" element={<RoleSelect />} />
+        <Route path="/career" element={<RoleSelect />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route
           path="/Back-End Engineer(BE)"
