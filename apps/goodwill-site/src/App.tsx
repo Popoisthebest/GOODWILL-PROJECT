@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RoleSelect from "./pages/RoleSelect.tsx";
 import RoleDetail from "./components/RoleInfo/RoleDetail.tsx";
-// import ApplicationFormPage from "./pages/ApplicationForm.tsx";
+import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 // import RoleDetailBackEndEngineer from "./components/RoleInfo/RoleDetails/RoleDetailBackendEngineer.tsx";
 // import RoleDetailFrontEndEngineer from "./components/RoleInfo/RoleDetails/RoleDetailFrontendEngineer.tsx";
 // import RoleDetailFullStackEngineer from "./components/RoleInfo/RoleDetails/RoleDetailFullstackEngineer.tsx";
@@ -11,7 +11,7 @@ import RoleDetail from "./components/RoleInfo/RoleDetail.tsx";
 // import Article from "./pages/Article.tsx";
 // import Project from "./pages/Project.tsx";
 // import Main from "./pages/Main.tsx";
-// import SubmissionFinished from "./pages/SubmissionFinished.tsx";
+import SubmissionFinished from "./pages/SubmissionFinished.tsx";
 // import About from "./components/About/About.tsx";
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/:roleName" element={<RoleDetail />} />
         {/*<Route path="/about" element={<About />} />*/}
-        {/*<Route path="/write-application" element={<ApplicationFormPage />} />*/}
-        {/*<Route path="/submission-finished" element={<SubmissionFinished />} />*/}
+        <Route path="/write-application" element={<ApplicationFormPage />} />
+        <Route path="/submission-finished" element={<SubmissionFinished />} />
         {/*<Route*/}
         {/*  path="/Back-End Engineer(BE)"*/}
         {/*  element={<RoleDetailBackEndEngineer />}*/}
