@@ -13,14 +13,17 @@ interface Award {
 
 // Sample data
 const awardsData: Award[] = [
-  { id: 1, type: 'External', name: '대전 공공데이터 활용 창업경진대회 대상', year: 2024 },
-  { id: 2, type: 'External', name: '대회 및 수상명을 입력해 주세요.', year: 2023 },
-  { id: 3, type: 'External', name: '대회 및 수상명을 입력해 주세요.', year: 2023 },
-  { id: 4, type: 'External', name: '대회 및 수상명을 입력해 주세요.', year: 2022 },
-  { id: 5, type: 'Internal', name: '대회 및 수상명을 입력해 주세요.', year: 2024 },
-  { id: 6, type: 'Internal', name: '대회 및 수상명을 입력해 주세요.', year: 2023 },
-  { id: 7, type: 'External', name: '대회 및 수상명을 입력해 주세요.', year: 2024 },
-  { id: 8, type: 'External', name: '대회 및 수상명을 입력해 주세요.', year: 2024 },
+  { id: 1, type: 'External', name: 'HSU(한남대) 창업경진대회 수상', year: 2022 },
+  { id: 2, type: 'External', name: '청소년 비즈쿨 페스티벌 모의창업부스 운영, 최고의 부스 수상', year: 2022 },
+  { id: 3, type: 'External', name: '청소년 비즈쿨 새싹캠프 파이널 진출', year: 2022 },
+  { id: 4, type: 'External', name: 'YEEP 청소년 창업경진대회 우수상', year: 2023 },
+  { id: 5, type: 'External', name: 'DSM Hackathon 한국소프트웨어산업협회장상 수상', year: 2023 },
+  { id: 6, type: 'External', name: 'JA Company Of The Year 2024 ', year: 2024 },
+  { id: 7, type: 'External', name: '한경 청소년 경제 체험 대회', year: 2024 },
+  { id: 8, type: 'External', name: '2024 대전광역시 공공데이터 활용 창업경진대회 제품 및 서비스 개발 부문 대상 (대전광역시장상).', year: 2024 },
+  { id: 9, type: 'External', name: '부산국제마케팅광고제 MAD STAR 2024 크리에이티브 캠프 크리에이티브상 (부산국제마케팅광고제 집행위원장상)', year: 2024 },
+  { id: 10, type: 'External', name: '2024 SW동행 스테이지 데모데이 장려상 수상', year: 2024 },
+  { id: 11, type: 'External', name: '2024 대전대학교 초중고대 연합 창업경진대회 장려상 수상', year: 2024 },
 ];
 
 // Styled components
@@ -86,8 +89,9 @@ const AwardsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: center;
+  text-align: left;
   font-size: 25px;
+  
 `;
 
 const AwardItem = styled.div`
@@ -101,7 +105,7 @@ const NavigationBar = styled.div`
   margin-top: 150px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  transform: translateY(140px);
+  transform: translateY(60px);
   
 `;
 

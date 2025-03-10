@@ -119,8 +119,13 @@ const Name = styled.h3`
 `;
 
 const Position = styled.span`
-  font-size: 50px;
-  color: #888;
+  color: #7b7b7b;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 120%; /* 48px */
+  transform: translateY(-11px);
 `;
 
 const Description = styled.p`

@@ -40,31 +40,31 @@ const roles: Role[] = [
   { id: 7, roleName: "Front-End Engineer", jobGroup: "Engineering" },
   { id: 8, roleName: "Back-End Engineer", jobGroup: "Engineering" },
   { id: 9, roleName: "Full-Stack Engineer", jobGroup: "Engineering" },
-  { id: 10, roleName: "Mobile Engineer(Android/iOS)", jobGroup: "Engineering" },
+  { id: 10, roleName: "Mobile(Android/iOS) Engineer", jobGroup: "Engineering" },
   {
     id: 11,
     roleName: "Exploring Engineer(탐색 엔지니어)",
-    jobGroup: "Hardware",
+    jobGroup: "Engineering",
   },
   {
     id: 12,
     roleName: "Mechatronics Engineer(메카트로닉스 엔지니어)",
-    jobGroup: "Hardware",
+    jobGroup: "Engineering",
   },
   {
     id: 13,
     roleName: "Head of Energy Systems Engineer(에너지 시스템 엔지니어)",
-    jobGroup: "Energy",
+    jobGroup: "Engineering",
   },
   {
     id: 14,
     roleName: "Grid Integration Engineer(전력망 통합 엔지니어)",
-    jobGroup: "Energy",
+    jobGroup: "Engineering",
   },
   {
     id: 15,
     roleName: "Sustainability Engineer(지속가능성 엔지니어)",
-    jobGroup: "Energy",
+    jobGroup: "Engineering",
   },
   {
     id: 16,

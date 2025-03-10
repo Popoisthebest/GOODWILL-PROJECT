@@ -1,4 +1,3 @@
-// src/layouts/DefaultLayout.tsx
 import React from "react";
 import { Header } from "../components";
 import Footer from "../components/Main/Footer.tsx";
