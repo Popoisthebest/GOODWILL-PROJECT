@@ -6,7 +6,7 @@ import {
   subText,
 } from "./About.style.ts";
 
-const imageUrl = "imgs/img/unsplash_3fPXt37X6UQ.png";
+const imageUrl = "../../imgs/img/unsplash_3fPXt37X6UQ.png";
 
 const About = () => {
   return (

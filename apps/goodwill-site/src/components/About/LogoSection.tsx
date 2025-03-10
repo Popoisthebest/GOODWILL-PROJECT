@@ -5,25 +5,25 @@ import { keyframes } from '@emotion/react';
 // 로고 데이터
 const logos = {
   firstRow: [
-    { id: 1, name: 'Google', imageUrl: 'imgs/logos/image 16.png' },
-    { id: 2, name: 'Microsoft', imageUrl: 'imgs/logos/image 17.png' },
-    { id: 3, name: 'AWS', imageUrl: 'imgs/logos/image 18.png' },
-    { id: 4, name: 'NC', imageUrl: 'imgs/logos/image 19.png' },
-    { id: 5, name: 'KSF', imageUrl: 'imgs/logos/image 20.png' },
+    { id: 1, name: 'Google', imageUrl: '../../imgs/logos/image 16.png' },
+    { id: 2, name: 'Microsoft', imageUrl: '../../imgs/logos/image 17.png' },
+    { id: 3, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
+    { id: 4, name: 'NC', imageUrl: '../../imgs/logos/image 19.png' },
+    { id: 5, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
   ],
   secondRow: [
-    { id: 6, name: 'NC', imageUrl: 'imgs/logos/image 21.png' },
-    { id: 7, name: 'STP', imageUrl: 'imgs/logos/image 22.png' },
-    { id: 8, name: 'Hunet', imageUrl: 'imgs/logos/image 23.png' },
-    { id: 9, name: 'YEEP', imageUrl: 'imgs/logos/image 24.png' },
-    { id: 10, name: 'JA Korea', imageUrl: 'imgs/logos/image 16.png' },
+    { id: 6, name: 'NC', imageUrl: '../../imgs/logos/image 21.png' },
+    { id: 7, name: 'STP', imageUrl: '../../imgs/logos/image 22.png' },
+    { id: 8, name: 'Hunet', imageUrl: '../../imgs/logos/image 23.png' },
+    { id: 9, name: 'YEEP', imageUrl: '../../imgs/logos/image 24.png' },
+    { id: 10, name: 'JA Korea', imageUrl: '../../imgs/logos/image 16.png' },
   ],
   thirdRow: [
-    { id: 11, name: 'Hunet', imageUrl: 'imgs/logos/image 17.png' },
-    { id: 12, name: 'AWS', imageUrl: 'imgs/logos/image 18.png' },
-    { id: 13, name: 'JA Korea', imageUrl: 'imgs/logos/image 19.png' },
-    { id: 14, name: 'KSF', imageUrl: 'imgs/logos/image 20.png' },
-    { id: 15, name: 'Microsoft', imageUrl: 'imgs/logos/image 21.png' },
+    { id: 11, name: 'Hunet', imageUrl: '../../imgs/logos/image 17.png' },
+    { id: 12, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
+    { id: 13, name: 'JA Korea', imageUrl: '../../imgs/logos/image 19.png' },
+    { id: 14, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
+    { id: 15, name: 'Microsoft', imageUrl: '../../imgs/logos/image 21.png' },
   ]
 };
 
