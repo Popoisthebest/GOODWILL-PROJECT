@@ -89,8 +89,9 @@ const AwardsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: center;
+  text-align: left;
   font-size: 25px;
+  
 `;
 
 const AwardItem = styled.div`

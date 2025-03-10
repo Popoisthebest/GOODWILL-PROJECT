@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 export const formContainerDiv = css`
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
 `;
 
 export const FormContainer = css`
@@ -75,7 +76,6 @@ export const labelStyle = css`
   font-weight: 400;
   line-height: 24px; /* 150% */
   letter-spacing: -0.048px;
-  
 `;
 
 export const inputStyle = css`
@@ -113,7 +113,7 @@ export const errorMessageStyle = css`
 `;
 
 export const letterCount = css`
-  color:  #7B7B7B;
+  color: #7b7b7b;
   text-align: right;
   font-family: Pretendard;
   font-size: 14px;

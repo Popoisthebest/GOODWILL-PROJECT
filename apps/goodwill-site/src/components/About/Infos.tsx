@@ -243,8 +243,9 @@ const Copyright = styled.div`
 
 const ScrollTopButton = styled.button`
   position: absolute;
+  
   bottom: -20px;
-  right: -200px;
+  right: 20px;
   width: 120px;
   height: 120px;
   border-radius: 50%;

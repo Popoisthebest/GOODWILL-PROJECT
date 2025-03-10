@@ -8,7 +8,7 @@ import NoticeDetail from "./pages/NoticeDetail.tsx";
 // import Article from "./pages/Article.tsx";
 // import Project from "./pages/Project.tsx";
 import SubmissionFinished from "./pages/SubmissionFinished.tsx";
-import MainAbout from "./pages/MainAbout.tsx";
+import MainAbout from "./pages/About.tsx";
 import Main from "./pages/Main.tsx";
 
 function App() {
