@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import "../styles/TeamCulture.css";
-import TeamCultrue from "../icons/Maskgroup.png";
-import clevel from "../icons/clevel.svg";
-import gm from "../icons/gm.svg";
-import rightarrow from "../icons/ArrowRight.svg";
-import squad from "../icons/squad.svg";
-import tf from "../icons/tf.svg";
-import wam from "../icons/wam.svg";
-import mam from "../icons/man.svg";
-import cal from "../icons/cal.svg";
-import warn from "../icons/warn.svg";
-import rail from "../icons/rail.svg";
-import bamboo from "../icons/bamboo.svg";
+import TeamCultrue from "../assets/icons/Maskgroup.png";
+import clevel from "../assets/icons/clevel.svg";
+import gm from "../assets/icons/gm.svg";
+import rightarrow from "../assets/icons/ArrowRight.svg";
+import squad from "../assets/icons/squad.svg";
+import tf from "../assets/icons/tf.svg";
+import wam from "../assets/icons/wam.svg";
+import mam from "../assets/icons/man.svg";
+import cal from "../assets/icons/cal.svg";
+import warn from "../assets/icons/warn.svg";
+import rail from "../assets/icons/rail.svg";
+import bamboo from "../assets/icons/bamboo.svg";
 
-import review from "../icons/review.svg";
-import uparrow from "../icons/uparrow.svg";
+import review from "../assets/icons/review.svg";
+import uparrow from "../assets/icons/uparrow.svg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 

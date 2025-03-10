@@ -7,10 +7,6 @@ import {
   roleItemButton,
 } from "./RoleSelectList.style.ts";
 import { useNavigate } from "react-router-dom";
-import { roleDetails } from "../../../data/roleData.ts";
-
-console.log(roleDetails["Front-End Engineer"]); // 해당 역할의 데이터가 정상적으로 출력되는지 확인
-
 
 interface Role {
   id: number;

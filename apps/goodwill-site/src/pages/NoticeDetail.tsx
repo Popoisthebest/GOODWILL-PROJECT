@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import "../styles/NoticeDetail.css";
 import ReactMarkdown from "react-markdown"; // 마크다운 적용을 위해 추가
 import remarkGfm from "remark-gfm"; // GitHub Flavored Markdown 지원
-import facebookIcon from "../icons/facebook.svg";
-import instaIcon from "../icons/insta.svg";
-import copyIcon from "../icons/copy.svg";
+import facebookIcon from "../assets/icons/facebook.svg";
+import instaIcon from "../assets/icons/insta.svg";
+import copyIcon from "../assets/icons/copy.svg";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
 const NoticeDetail = () => {
