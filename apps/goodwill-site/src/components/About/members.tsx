@@ -118,13 +118,13 @@ const TeamGridPage: React.FC = () => {
       id: 7,
       name: '백현빈',
       position: 'Full-Stack Engineer',
-      imageUrl: 'imgs/teamImg/pack.png',
+      imageUrl: 'imgs/teamImg/hyeonbeen.jpeg',
     },
     {
       id: 8,
       name: '김준모',
       position: 'Mechatronics Engineer',
-      imageUrl: 'imgs/teamImg/junmo.jpg',
+      imageUrl: 'imgs/teamImg/IMG_4185-removebg-preview.png',
     },
   ];
 console.log("Rendering Members component", teamMembers);
