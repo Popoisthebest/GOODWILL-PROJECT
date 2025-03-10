@@ -203,8 +203,9 @@
 
 .contetnt_wrapper {
   width: 85%;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 }
+
 
 .dri_title {
   color: #000;
@@ -255,15 +256,15 @@
   border-radius: var(--Spacing-spacing-20, 20px);
   border: 1px solid var(--Gray-Scale-300, #c4c4c4);
   background: var(--gray-scale-white-0, #fff);
-  width: 420px;
-  padding: 30px 0 40px 32px;
+  width: 100%;
+  padding: 30px 32px 40px 32px;
 }
 
 .main_val_box1 {
   border-radius: var(--Spacing-spacing-20, 20px);
   background: var(--brand-primary-primary-800, #05308c);
-  width: 420px;
-  padding: 49px 31px 49px 31px;
+  width: 100%;
+  padding: 30px 32px 40px 32px;
 }
 
 .val_box_num {
@@ -535,7 +536,7 @@
   border: 0.914px solid var(--Gray-Scale-300, #c4c4c4);
   background: var(--gray-scale-white-0, #fff);
   padding: 37px 34px 40px 22.3px;
-  width: 394px;
+  width: 100%;
 }
 
 .with_pic {

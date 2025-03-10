@@ -6,9 +6,9 @@ import {
   subText,
 } from "./About.style.ts";
 
-const imageUrl = "../../imgs/img/unsplash_3fPXt37X6UQ.png";
+import imageUrl from "../../../imgs/img/unsplash_3fPXt37X6UQ.png";
 
-const About = () => {
+const AboutImage = () => {
   return (
     <>
       <div>
@@ -45,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutImage;
