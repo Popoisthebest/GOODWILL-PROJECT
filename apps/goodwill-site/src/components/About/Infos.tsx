@@ -195,6 +195,7 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  
 `;
 
 const ArticleButton = styled.button`
@@ -242,8 +243,9 @@ const Copyright = styled.div`
 
 const ScrollTopButton = styled.button`
   position: absolute;
-  bottom: 40px;
-  right: 60px;
+  
+  bottom: -20px;
+  right: 20px;
   width: 120px;
   height: 120px;
   border-radius: 50%;
