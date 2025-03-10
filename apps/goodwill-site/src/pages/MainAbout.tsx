@@ -5,19 +5,19 @@ import Members from "../components/About/members";
 import LogoSection from "../components/About/LogoSection";
 import AwardsSection from "../components/About/AwardSection";
 import InfosSection from "../components/About/Infos";
-import DefaultLayout from "../layouts/DefaultLayout.tsx";
+import AboutDefaultLayout from "../layouts/AboutDefaultLayout.tsx";
 
 const App: React.FC = () => {
   return (
     <>
-      <DefaultLayout>
+      <AboutDefaultLayout>
         <About />
         <Leaders />
         <Members />
         <LogoSection />
         <AwardsSection />
         <InfosSection />
-      </DefaultLayout>
+      </AboutDefaultLayout>
     </>
   );
 };
