@@ -526,6 +526,7 @@
   display: flex;
   gap: 24px;
   margin-top: 72px;
+
 }
 
 .with_box {
@@ -533,6 +534,7 @@
   border: 0.914px solid var(--Gray-Scale-300, #c4c4c4);
   background: var(--gray-scale-white-0, #fff);
   padding: 37px 34px 40px 22.3px;
+  width: 394px;
 }
 
 .with_pic {

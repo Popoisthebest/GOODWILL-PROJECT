@@ -245,10 +245,10 @@ const TeamCulture = () => {
                 <br />
                 자세한 내용은 여기서 볼 수 있어요
               </div>
-              <button className="article_btn" onClick={()=>{navigator()}}>
+              <div className="article_btn" onClick={()=>{navigator()}}>
                 아티클 보기
                 <img src={rightarrow} className="article_pic" alt="" />
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -423,36 +423,21 @@ const TeamCulture = () => {
               <img src={warn} className="with_pic" alt="" />
               <div className="with_box_title">삐용삐용</div>
               <div className="with_box_content">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
-              </div>
-              <div className="with_box_content1">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
+                &middot; 카카오워크 내에 생성된 단톡방인 ‘삐용삐용’방에 회사에 대한 문제 상황을 알리는 사항이다.
               </div>
             </div>
             <div className="with_box">
               <img src={bamboo} alt="" className="with_pic" />
-              <div className="with_box_title">삐용삐용</div>
+              <div className="with_box_title">대나무 숲</div>
               <div className="with_box_content">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
-              </div>
-              <div className="with_box_content1">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
+                &middot; 카카오워크 내의 공지사항 시스템 중 생성된 대나무숲에 글을 남기는 시스템이며, 스쿼드 혹은 회사 내 활동 중에서 실수를 했거나 미안한 일이 생겼을 경우 대나무숲에 이를 알리고 팀원들을 실수한 팀원 당사자의 실수를 축하하고 응원해주는 문화이다.
               </div>
             </div>
             <div className="with_box">
               <img src={rail} alt="" className="with_pic" />
-              <div className="with_box_title">삐용삐용</div>
+              <div className="with_box_title">열차 기관사 되기</div>
               <div className="with_box_content">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
-              </div>
-              <div className="with_box_content1">
-                &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해 주세요.
+                &middot; 굿윌 사내 프로그램 및 서버 중 유일하게 정신줄 놓고 행동할 수 있는 단톡방 가끔 가다 인생이 피폐하거나 무료하고 따분해졌을 때 기관사가 되어 지랄 폭주를 시작하는 기관사가 되거나 정신을 놓고 하고 싶은것, 놀고싶은것 마음껏 이야기하고 메이트를 만드는 문화이다.
               </div>
             </div>
           </div>
