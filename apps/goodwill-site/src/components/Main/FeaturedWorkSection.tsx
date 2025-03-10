@@ -23,7 +23,7 @@ interface FeaturedWorkProps {
 const FeaturedWorkContainer = styled.section`
   max-width: 2000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 67px 0 67px;
   margin-bottom: 100px;
 `;
 
