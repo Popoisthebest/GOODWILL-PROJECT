@@ -305,6 +305,7 @@
 }
 
 .article_btn {
+  width: 100%;
   cursor: pointer;
   padding: 19px 0 19px 0;
   color: var(--gray-scale-white-0, #fff);
