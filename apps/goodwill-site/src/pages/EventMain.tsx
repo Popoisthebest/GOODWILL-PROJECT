@@ -3,12 +3,40 @@ import aws from "../icons/aws.svg";
 import google from "../icons/google.svg";
 import microsoft from "../icons/microsoft.svg";
 import ksf from "../icons/ksf.svg";
-import sparta from "../icons/sparta.svg"
-import startup from "../icons/startup.svg"
-import he from "../icons/he.svg"
-import React, { useState, useRef, useEffect } from 'react';
+import goodwillconcert from "../images/goodwillconert.png"
+import { useNavigate } from "react-router-dom";
+
 
 const EventMain = () => {
+
+  const navigate = useNavigate();
+
+  const events = [
+    {
+      id: 1,
+      title: "2025’ 제3회 GOODWILL CONCERT",
+      date: "미정(03/18 진행 목표, CIP 2~3차 동원 예정)",
+      apply: "미정(03/18 진행 목표, CIP 2~3차 동원 예정)",
+      expense: "미정",
+      place: "백암관",
+      image: goodwillconcert,
+    },
+    // {
+    //   id: 2,
+    //   title: "백현빈집 탐방하기기",
+    //   date: "중간고사 끝나고",
+    //   apply: "일주일간",
+    //   expense: "맥북 프로 한대 기본사양X (500만원)",
+    //   place: "현빈이 집",
+    //   image: goodwillconcert,
+    // },
+    
+  ];
+
+  const handleEventClick = (event: { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string }) => {
+    navigate(`/event/${event.id}`, { state: event });
+  };
+
 
   return (
     <div className="main_box">
@@ -26,16 +54,25 @@ const EventMain = () => {
           <img className="aws" src={aws} alt="" />
           <img className="ksf" src={ksf} alt="" />
         </div>
-        <div className="join_btn">GOODWILL CONCERT 신청하기</div>
       </div>
 
-      <div className="main_content"></div>
-
-      <div className="last_content">
-        <img className="content_iiiiii" src={he} alt="" />
-        <img className="content_iiiiii" src={sparta} alt="" />
-        <img className="content_iiiiii" src={startup} alt="" />
+      <div className="main_content">
+        <div className="main_content_title">적극 홍보 중인 행사</div>
+        <div className="event_boxes">
+          {events.map((event) => (
+            <div key={event.id} className="event_box" onClick={() => handleEventClick(event)}>
+              <img className="event_box_img" src={event.image} alt={event.title} />
+              <div className="event_box_date">{event.date}</div>
+              <div className="event_box_title">{event.title}</div>
+              <div className="hiddendiv">{event.apply}</div>
+              <div className="hiddendiv">{event.expense}</div>
+              <div className="hiddendiv">{event.place}</div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <div className="last_content"></div>
     </div>
   );
 };
