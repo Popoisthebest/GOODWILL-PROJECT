@@ -9,9 +9,10 @@ export const headerStyle = css`
   box-sizing: border-box;
   position: relative;
   width: 100%;
+  padding: 30px 72px;
 
   @media (max-width: 768px) {
-    padding: 0 0px;
+    padding: 20px;
   }
 `;
 
@@ -64,18 +65,18 @@ export const mobileButtonDotContainer = css`
 `;
 
 export const careerButtonStyle = css`
-    background-color: #262626;
-    border-radius: 100px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 10px 25px 10px 20px;
-    overflow: hidden;
+  background-color: #262626;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px 25px 10px 20px;
+  overflow: hidden;
 
-    @media (max-width: 768px) {
-        display: none; /* 모바일에서는 숨김 */
-    }
+  @media (max-width: 768px) {
+    display: none; /* 모바일에서는 숨김 */
+  }
 `;
 
 export const careerButtonTextContainerStyle = css`
