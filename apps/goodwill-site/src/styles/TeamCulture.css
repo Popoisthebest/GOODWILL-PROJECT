@@ -475,6 +475,7 @@
   background: var(--gray-scale-white-0, #fff);
   padding: 30px 40px 28px 30px;
   width: 50%;
+  visibility: hidden;
 }
 
 .benefit_box_numbering {
