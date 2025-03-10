@@ -32,14 +32,14 @@ const RoleDetail = () => {
   return (
     <>
       <DefaultLayout>
-        <div css={{ display: "flex", flexDirection: "row" }}>
+        <div className="role-detail-div">
           {/* 마크다운 역할 설명 */}
           <div className="markdown-body">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {roleData ? roleData.markdown : "# 해당 역할을 찾을 수 없습니다."}
             </ReactMarkdown>
           </div>
-          <div css={{ width: "24px" }}></div>
+          <div css={{ width: "100px" }}></div>
           {/* 지원하기 버튼 위 컨테이너 */}
           <div className="right-card">
             <div className="card">

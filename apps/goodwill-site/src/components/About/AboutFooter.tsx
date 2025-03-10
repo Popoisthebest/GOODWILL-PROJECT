@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 
-// Footer container with overflow control
+// AboutFooter container with overflow control
 const FooterContainer = styled.footer`
   background-color: #1a1a1a;
   color: white;
@@ -100,7 +100,7 @@ interface FooterProps {
   nextPageUrl?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({ 
+const AboutFooter: React.FC<FooterProps> = ({
   className, 
   onNavigateNext, 
   nextPageUrl = '/next-page' 
@@ -284,4 +284,4 @@ const Footer: React.FC<FooterProps> = ({
   );
 };
 
-export default Footer;
+export default AboutFooter;

@@ -1,7 +1,6 @@
 // src/layouts/DefaultLayout.tsx
 import React from "react";
 import { Header } from "../components";
-import { globalStyle } from "../styles/GlobalStyle";
 import Footer from "../components/Main/Footer.tsx";
 
 type LayoutProps = {
@@ -10,7 +9,7 @@ type LayoutProps = {
 
 const DefaultLayout: React.FC<LayoutProps> = ({ children }) => (
   <>
-    <div css={globalStyle}>
+    <div>
       <Header />
       <main>{children}</main>
     </div>

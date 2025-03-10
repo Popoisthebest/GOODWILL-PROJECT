@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 
-// Footer container with overflow control
+// AboutFooter container with overflow control
 const FooterContainer = styled.footer`
   background-color: #1a1a1a;
   color: white;

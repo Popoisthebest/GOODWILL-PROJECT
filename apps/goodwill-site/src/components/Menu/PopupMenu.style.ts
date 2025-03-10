@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 export const MenuContainer = css`
   position: absolute;
   width: 283px;
-  top: 70px;
-  right: 0;
+  top: 90px;
+  right: 67px;
   background: white;
   padding: 10px 10px;
   border-radius: 8px;

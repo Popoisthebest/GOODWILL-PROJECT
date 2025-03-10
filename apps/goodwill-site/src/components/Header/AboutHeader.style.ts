@@ -12,7 +12,7 @@ export const headerStyle = css`
   padding: 30px 72px;
 
   @media (max-width: 768px) {
-    padding-bottom: 30px;
+    padding: 30px;
   }
 `;
 

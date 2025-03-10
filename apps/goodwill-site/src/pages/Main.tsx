@@ -4,7 +4,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import HeroSection from '../components/Main/HeroSection';
 import AboutSection from '../components/Main/AboutSection';
 import HeadText from '../components/Main/HeadText';
-// import Footer from '../components/Main/Footer';
+// import AboutFooter from '../components/Main/AboutFooter';
 // import FeaturedWork from '../components/Main/FeaturedWorkSection';
 import InfosSection from '../components/Main/Infos'
 

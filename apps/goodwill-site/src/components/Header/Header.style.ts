@@ -9,10 +9,10 @@ export const headerStyle = css`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  padding-bottom: 30px;
+    padding: 30px 72px;
 
   @media (max-width: 768px) {
-    padding-bottom: 30px;
+    padding: 30px;
   }
 `;
 
