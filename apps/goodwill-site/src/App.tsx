@@ -10,6 +10,10 @@ import NoticeDetail from "./pages/NoticeDetail.tsx";
 import SubmissionFinished from "./pages/SubmissionFinished.tsx";
 import MainAbout from "./pages/About.tsx";
 import Main from "./pages/Main.tsx";
+import Event from "./pages/Event.tsx";
+import EventDetail from "./components/Event/EventDetail.tsx";
+import EventForm from "./components/Event/EventForm.tsx";
+import EventSubmissionFinish from "./components/Event/EventSubmissionFinish.tsx";
 
 function App() {
   return (
@@ -30,6 +34,10 @@ function App() {
           element={<NoticeDetail />}
         />
         {/*<Route path="/article" element={<Article />} />*/}
+        <Route path="/event" element={<Event />} />
+        <Route path="/event/:id" element={<EventDetail />} />
+        <Route path="/event/form/:id" element={<EventForm />} />
+        <Route path="/event-submission-finished" element={<EventSubmissionFinish />} />
       </Routes>
     </Router>
   );

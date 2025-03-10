@@ -29,7 +29,7 @@
 }
 
 .first_content_subtitlemini {
-  color: var(--Gray-Scale-600, #555);
+  color: #555;
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -57,14 +57,14 @@
 
 .join_btn {
   cursor: pointer;
-  color: var(--gray-scale-white-0, #fff);
+  color: #fff;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 25.2px */
-  border-radius: var(--Spacing-spacing-96, 96px);
-  background: var(--gray-scale-black-900, #000);
+  border-radius: 96px;
+  background: #000;
   display: flex;
   width: 330px;
   height: 32px;
@@ -93,8 +93,7 @@
 }
 
 .main_content_subtitle {
-  margin-top: 6px;
-  color: var(--Gray-Scale-600, #555);
+  color: #555;
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
@@ -121,13 +120,13 @@
   width: 100%;
   width: 358px;
   height: 199px;
-  border-radius: var(--Spacing-spacing-8, 8px);
-  border: 1px solid var(--Gray-Scale-300, #c4c4c4);
+  border-radius: 8px;
+  border: 1px solid #c4c4c4;
   background: url(<path-to-image>) lightgray 50% / cover no-repeat;
 }
 
 .event_box_date {
-  color: var(--Gray-Scale-400, #9d9d9d);
+  color: #9d9d9d;
   font-family: Pretendard;
   font-size: 13px;
   font-style: normal;
@@ -146,6 +145,6 @@
   margin-top: 10px;
 }
 
-.event_box{
+.event_box {
   cursor: pointer;
 }
