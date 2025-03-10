@@ -229,10 +229,10 @@ const InstagramLink = styled.a`
   }
 `;
 
-const ArrowIcon = styled.span`
-  margin-right: 10px;
-  font-size: 32px;
-`;
+// const ArrowIcon = styled.span`
+//   margin-right: 10px;
+//   font-size: 32px;
+// `;
 
 const Copyright = styled.div`
   width: 100%;

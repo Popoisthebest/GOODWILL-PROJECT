@@ -84,12 +84,12 @@ const ProfileImage = styled.div<{ imageUrl: string }>`
   background-position: center;
 `;
 
-const Circle = styled.div`
-  width: 120px;
-  height: 120px;
-  background-color: #ddd;
-  border-radius: 50%;
-`;
+// const Circle = styled.div`
+//   width: 120px;
+//   height: 120px;
+//   background-color: #ddd;
+//   border-radius: 50%;
+// `;
 
 const InfoContainer = styled.div<{ isEven: boolean }>`
   flex: 1;
