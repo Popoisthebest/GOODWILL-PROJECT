@@ -5,7 +5,7 @@ import share_icon from "../icons/share.svg"
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // URL에서 id 추출
   const location = useLocation();
-  const event = location.state as { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string } | undefined;
+  const event = location.state as { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string; name: string; } | undefined;
 
   if (!event) {
     return <div>이벤트 정보를 찾을 수 없습니다.</div>;
@@ -40,7 +40,7 @@ const EventDetail: React.FC = () => {
         <div className="apply_title">
           <div className="apply_title1">창업</div>
           <div className="apply_title2"></div>
-          <div className="apply_title3">데모데이</div>
+          <div className="apply_title3">{event.name}</div>
         </div>
         <div className="apply_main_title">{event.title}</div>
         <div className="apply_main_subtitle">{event.date}</div>

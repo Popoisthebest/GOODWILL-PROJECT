@@ -20,6 +20,7 @@ const EventMain = () => {
       expense: "미정",
       place: "백암관",
       image: goodwillconcert,
+      name: "콘서트"
     },
     // {
     //   id: 2,
@@ -33,7 +34,7 @@ const EventMain = () => {
     
   ];
 
-  const handleEventClick = (event: { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string }) => {
+  const handleEventClick = (event: { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string; name: string; }) => {
     navigate(`/event/${event.id}`, { state: event });
   };
 
@@ -67,6 +68,7 @@ const EventMain = () => {
               <div className="hiddendiv">{event.apply}</div>
               <div className="hiddendiv">{event.expense}</div>
               <div className="hiddendiv">{event.place}</div>
+              <div className="hiddendiv">{event.name}</div>
             </div>
           ))}
         </div>
