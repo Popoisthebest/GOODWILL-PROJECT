@@ -83,7 +83,7 @@ export const inputStyle = css`
   border-radius: 8px;
   border: 2px solid #d9d9d9;
   outline: none;
-  height: 40px;
+  height: 30px;
   padding: 10px 12px;
   font-family: Pretendard;
   font-size: 14px;

@@ -38,10 +38,13 @@ interface FormValues {
 // Collection names for Firestore without spaces
 const getLittleProgramName = (jobGroup: string) => {
   const jobGroupToProgramMap: Record<string, string> = {
-    "Business & Marketing": "리틀_정주영_전형",
+    "Business Operations": "리틀_정주영_전형",
+    "Finance & Marketing": "리틀_정주영_전형",
     Design: "리틀_도널드_노먼_전형",
-    Engineer: "리틀_빌게이츠_전형",
-    Content: "리틀_도널드_노먼_전형",
+    Engineering: "리틀_빌게이츠_전형",
+    "Economics & Data Science": "리틀_도널드_노먼_전형",
+    Legal: "리틀_정주영_전형",
+    Content: "리틀_정주영_전형",
   };
   return jobGroupToProgramMap[jobGroup];
 };
@@ -49,10 +52,13 @@ const getLittleProgramName = (jobGroup: string) => {
 // Display names for UI (keeping original format with spaces)
 const getLittleProgramDisplayName = (jobGroup: string) => {
   const jobGroupToProgramMap: Record<string, string> = {
-    "Business & Marketing": "리틀 정주영 전형",
+    "Business Operations": "리틀 정주영 전형",
+    "Finance & Marketing": "리틀 정주영 전형",
     Design: "리틀 도널드 노먼 전형",
-    Engineer: "리틀 빌게이츠 전형",
-    Content: "리틀 도널드 노먼 전형",
+    Engineering: "리틀 빌게이츠 전형",
+    "Economics & Data Science": "리틀 도널드 노먼 전형",
+    Legal: "리틀 정주영 전형",
+    Content: "리틀 정주영 전형",
   };
   return jobGroupToProgramMap[jobGroup];
 };
@@ -115,14 +121,15 @@ const ApplicationFormPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
+      if (isSubmitting) return; // 중복 제출 방지
       if (!requiredChecked) {
         alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
         return;
       }
 
-      setIsSubmitting(true);
+      setIsSubmitting(true); // 제출 중 상태 설정
 
-      // Use the safe collection name (without spaces)
+      // Firestore에 저장 로직
       const applicationsRef = collection(db, littleProgramName);
       const querySnapshot = await getDocs(applicationsRef);
       const order = querySnapshot.size + 1;
@@ -131,25 +138,24 @@ const ApplicationFormPage = () => {
 
       const formattedData = {
         ...data,
-        studentId: Number(data.studentId), // 문자열을 숫자로 변환
+        studentId: Number(data.studentId),
         applicationId: newApplicationId,
         order,
         createdAt: new Date(),
         application_status: "대기",
-        programType: littleProgramDisplayName, // Store the display name in the document
+        programType: littleProgramDisplayName,
       };
 
-      // Use the underscore collection name for Firestore
       await setDoc(doc(db, littleProgramName, newApplicationId), formattedData);
 
-      alert("지원서가 성공적으로 제출되었습니다!");
-      console.log("제출된 데이터:", formattedData);
-      navigate("/submission-finished", { state: {roleName, newApplicationId} });
+      navigate("/submission-finished", {
+        state: { roleName, newApplicationId },
+      });
     } catch (error) {
       console.error("지원서 제출 실패:", error);
       alert("지원서 제출 중 오류가 발생했습니다.");
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false); // 제출 완료 후 상태 초기화
     }
   };
 
@@ -294,8 +300,8 @@ const ApplicationFormPage = () => {
 
             <div css={{ height: "106px" }}></div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <button type="submit" css={summitButton}>
-                제출하기
+              <button type="submit" css={summitButton} disabled={isSubmitting}>
+                {isSubmitting ? "제출 중..." : "제출하기"}
               </button>
             </form>
           </div>

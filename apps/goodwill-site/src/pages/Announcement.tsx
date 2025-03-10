@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/announcement.css";
-import magnifyIcon from "../icons/MagnifyingGlass.svg";
+import magnifyIcon from "../assets/icons/MagnifyingGlass.svg";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
 const Announcement = () => {

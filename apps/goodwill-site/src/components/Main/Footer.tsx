@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from '@emotion/styled';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "@emotion/styled";
 
 // Footer container with overflow control
 const FooterContainer = styled.footer`
@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
   color: white;
   padding: 2rem 0;
   width: 100%;
-  position: absolute;
+  position: relative;
   overflow-x: hidden;
   box-sizing: border-box;
   margin: calc(-50vw + 50%);
@@ -28,7 +28,7 @@ const ScrollPrompt = styled.div`
   letter-spacing: 1px;
   position: relative;
   margin-bottom: 2rem;
-  
+
   p {
     margin: 0;
   }
@@ -102,16 +102,16 @@ interface FooterProps {
   nextPageUrl?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({ 
-  className, 
-  onNavigateNext, 
+const Footer: React.FC<FooterProps> = ({
+  className,
+  onNavigateNext,
   // nextPageUrl = '/team-and-culture'
 }) => {
   const [progress, setProgress] = useState(0);
   const [isBottomReached, setIsBottomReached] = useState(false);
   const [isOverscrolling, setIsOverscrolling] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+
   // 페이지 이동 함수
   const navigateToNextPage = () => {
     if (onNavigateNext) {
@@ -131,33 +131,33 @@ const Footer: React.FC<FooterProps> = ({
         document.body.offsetHeight,
         document.documentElement.clientHeight,
         document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
+        document.documentElement.offsetHeight,
       );
-      
+
       // 페이지 하단에 도달했는지 확인
       const reachedBottom = scrollTop + windowHeight >= documentHeight - 10;
-      
+
       if (reachedBottom && !isBottomReached) {
         setIsBottomReached(true);
         // 하단에 도달하면 3초 동안 바를 채움
         if (timeoutRef.current) {
           clearTimeout(timeoutRef.current);
         }
-        
+
         // 프로그레스 바 초기화
         setProgress(0);
-        
+
         // 3초 동안 서서히 100%까지 채움
         const startTime = Date.now();
         const duration = 3000; // 3초
-        
+
         const animateProgress = () => {
           const currentTime = Date.now();
           const elapsed = currentTime - startTime;
           const newProgress = Math.min((elapsed / duration) * 100, 100);
-          
+
           setProgress(newProgress);
-          
+
           if (newProgress < 100) {
             requestAnimationFrame(animateProgress);
           } else if (newProgress >= 100) {
@@ -167,7 +167,7 @@ const Footer: React.FC<FooterProps> = ({
             }, 300);
           }
         };
-        
+
         requestAnimationFrame(animateProgress);
       } else if (!reachedBottom && isBottomReached) {
         // 바닥에서 벗어나면 상태 초기화
@@ -178,17 +178,18 @@ const Footer: React.FC<FooterProps> = ({
           timeoutRef.current = null;
         }
       }
-      
+
       // 오버스크롤 감지 (하단에 도달한 상태에서 더 스크롤 하려는 시도)
       if (reachedBottom) {
         // 마지막 스크롤 위치와 현재 스크롤 위치를 비교
-        const isAttemptingOverscroll = scrollTop + windowHeight >= documentHeight;
-        
+        const isAttemptingOverscroll =
+          scrollTop + windowHeight >= documentHeight;
+
         if (isAttemptingOverscroll) {
           setIsOverscrolling(true);
           // 오버스크롤 시 더 빠르게 진행
           setProgress(Math.min(progress + 5, 100));
-          
+
           if (progress >= 100) {
             navigateToNextPage();
           }
@@ -199,15 +200,15 @@ const Footer: React.FC<FooterProps> = ({
     };
 
     // 스크롤 이벤트 리스너 등록
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     // 터치 이벤트로 오버스크롤 감지 (모바일)
     let touchStartY = 0;
-    
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
     };
-    
+
     const handleTouchMove = (e: TouchEvent) => {
       const touchY = e.touches[0].clientY;
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -217,39 +218,42 @@ const Footer: React.FC<FooterProps> = ({
         document.body.offsetHeight,
         document.documentElement.clientHeight,
         document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
+        document.documentElement.offsetHeight,
       );
-      
+
       // 바닥에 도달한 상태에서 위로 스와이프하는 경우
-      if (scrollTop + windowHeight >= documentHeight - 10 && touchY < touchStartY) {
+      if (
+        scrollTop + windowHeight >= documentHeight - 10 &&
+        touchY < touchStartY
+      ) {
         setIsOverscrolling(true);
         // 스와이프 거리에 비례하여 프로그레스 바 채움
         const swipeDistance = touchStartY - touchY;
-        const additionalProgress = Math.min(swipeDistance / 50 * 10, 30); // 최대 30% 추가
-        
+        const additionalProgress = Math.min((swipeDistance / 50) * 10, 30); // 최대 30% 추가
+
         setProgress(Math.min(progress + additionalProgress, 100));
-        
+
         if (progress >= 100) {
           navigateToNextPage();
         }
       }
     };
-    
+
     const handleTouchEnd = () => {
       setIsOverscrolling(false);
     };
-    
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
     // 클린업 함수
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-      
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -263,9 +267,9 @@ const Footer: React.FC<FooterProps> = ({
           <p>KEEP SCROLLING</p>
           <p>TO LEARN MORE</p>
         </ScrollPrompt>
-        
+
         <BrandHeading>WE ARE GOODWILL</BrandHeading>
-        
+
         {/*<NextPageNav>*/}
         {/*  <NextPageText>Next Page</NextPageText>*/}
         {/*  <ProgressBarContainer>*/}
@@ -273,7 +277,7 @@ const Footer: React.FC<FooterProps> = ({
         {/*  </ProgressBarContainer>*/}
         {/*  <ArrowIcon>→</ArrowIcon>*/}
         {/*</NextPageNav>*/}
-        
+
         <PlusContainer>
           <PlusButton>+</PlusButton>
           <PlusButton>+</PlusButton>

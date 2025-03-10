@@ -20,6 +20,8 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/about" element={<MainAbout />} />
+        <Route path="/:roleName" element={<RoleDetail />} />
+        {/*<Route path="/about" element={<About />} />*/}
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
         <Route

@@ -15,7 +15,7 @@ const Container = styled.div`
   max-width: 1500px;
   margin: 0 auto;
   padding: 40px 20px;
-  margin-top: 350px;
+  margin-top: 200px;
   font-family: Pretendard;
 `;
 
@@ -84,6 +84,12 @@ const ProfileImage = styled.div<{ imageUrl: string }>`
   background-position: center;
 `;
 
+// const Circle = styled.div`
+//   width: 120px;
+//   height: 120px;
+//   background-color: #ddd;
+//   border-radius: 50%;
+// `;
 
 const InfoContainer = styled.div<{ isEven: boolean }>`
   flex: 1;
@@ -109,14 +115,13 @@ const PositionTitle = styled.div<{ isEven: boolean }>`
 const Name = styled.h3`
   font-size: 70px;
   font-weight: 600;
-  transform: translateY(-50px);
+  top: 100px;
   
 `;
 
 const Position = styled.span`
   font-size: 50px;
   color: #888;
-  transform: translateY(-50px);
 `;
 
 const Description = styled.p`
