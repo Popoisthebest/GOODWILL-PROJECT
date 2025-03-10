@@ -4,6 +4,7 @@ export const aboutDiv = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateY(100px);
 `;
 
 export const backgroundImg = css`
