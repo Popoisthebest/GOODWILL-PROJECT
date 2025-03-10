@@ -7,7 +7,7 @@ export const headerStyle = css`
   justify-content: space-between;
   color: white;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
   width: 100%;
   padding: 30px 72px;
   z-index: 3;

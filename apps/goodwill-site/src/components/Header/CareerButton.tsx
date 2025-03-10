@@ -15,9 +15,7 @@ const CareerButton: React.FC = () => {
   const navigate = useNavigate(); // useNavigate를 컴포넌트 최상단에 배치
 
   const handleClick = () => {
-    setTimeout(() => {
-      navigate("/career"); // 애니메이션이 끝난 후 페이지 이동
-    }, 500); // 애니메이션 시간 (0.5초 후 이동)
+    navigate("/career");
   };
 
   return (

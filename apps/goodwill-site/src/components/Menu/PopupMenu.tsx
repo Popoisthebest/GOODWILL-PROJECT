@@ -60,26 +60,25 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         <MenuItem onClick={() => navigate("/")} path="/">
           HOME
         </MenuItem>
-        <MenuItem
-          onClick={() =>
-            setTimeout(() => {
-              navigate("/role-select");
-            }, 500)
-          }
-          path="/role-select"
-        >
+        <MenuItem onClick={() => navigate("/career")} path="/career">
           CAREER
         </MenuItem>
         <MenuItem onClick={() => navigate("/about")} path="/about">
           ABOUT
         </MenuItem>
-        <MenuItem onClick={() => navigate("/team-and-culture")} path="/team-and-culture">
+        <MenuItem
+          onClick={() => navigate("/team-and-culture")}
+          path="/team-and-culture"
+        >
           TEAM & CULTURE
         </MenuItem>
         <MenuItem onClick={() => navigate("/project")} path="/project">
           PROJECT
         </MenuItem>
-        <MenuItem onClick={() => navigate("/announcement")} path="/announcement">
+        <MenuItem
+          onClick={() => navigate("/announcement")}
+          path="/announcement"
+        >
           ANNOUNCEMENT
         </MenuItem>
         <MenuItem onClick={() => navigate("/article")} path="/article">
