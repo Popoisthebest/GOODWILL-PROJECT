@@ -1,5 +1,5 @@
 import React from "react";
-import About from "../components/About/About";
+import AboutImage from "../components/About/AboutImage.tsx";
 import Leaders from "../components/About/leaders";
 import Members from "../components/About/members";
 import LogoSection from "../components/About/LogoSection";
@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <>
       <AboutHeader />
-      <About />
+      <AboutImage />
       <Leaders />
       <Members />
       <LogoSection />

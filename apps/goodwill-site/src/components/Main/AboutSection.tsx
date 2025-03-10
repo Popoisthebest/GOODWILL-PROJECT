@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styled from '@emotion/styled';
+import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
 
 // 미디어 쿼리를 위한 브레이크포인트 정의
 const breakpoints = {
@@ -138,7 +139,6 @@ const SVGContainer = styled(motion.div)`
 const VideoContainer = styled(motion.div)`
   position: absolute;
   left: 10%;
-  background-color: #e5e7eb;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -498,7 +498,7 @@ const BetterWorldLanding: React.FC = () => {
           }}
         >
           <motion.video
-            src=""
+            src={Video}
             style={{ 
               width: "100%", 
               height: "100%", 

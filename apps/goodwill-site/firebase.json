@@ -6,6 +6,7 @@
   "hosting": {
     "site": "goodwill-site",
     "public": "dist",
+    "site": "goodwill-site",
     "ignore": [
       "firebase.json",
       "**/.*",

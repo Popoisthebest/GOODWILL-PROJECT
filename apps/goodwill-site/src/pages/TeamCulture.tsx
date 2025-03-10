@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "../styles/TeamCulture.css";
 import TeamCultrue from "../assets/icons/Maskgroup.png";
-import clevel from "../assets/icons/clevel.svg";
-import gm from "../assets/icons/gm.svg";
+// import clevel from "../assets/icons/clevel.svg";
+// import gm from "../assets/icons/gm.svg";
 import rightarrow from "../assets/icons/ArrowRight.svg";
 import squad from "../assets/icons/squad.svg";
 import tf from "../assets/icons/tf.svg";
@@ -15,171 +15,90 @@ import bamboo from "../assets/icons/bamboo.svg";
 
 import review from "../assets/icons/review.svg";
 import uparrow from "../assets/icons/uparrow.svg";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
-const roles = [
-  {
-    title: "C-Level",
-    img: clevel,
-    roles: [
-      {
-        title: "CEO(Chief Executive Officer)",
-        details: [
-          "스타트업의 최고 결정권자로 사업 전략 수립 및 의사 결정 담당",
-          "자금 확보 및 관리, 대외 활동에서 기업 대표 역할 수행",
-          "조직 문화 형성에 영향, 강한 리더십과 커뮤니케이션 능력 필요",
-          "경영자, 전략가, 실무자 역할을 겸하며 기업 성장 책임",
-        ],
-      },
-      {
-        title: "COO(Chief Operating Officer)",
-        details: [
-          "기업 운영 총괄, 내부 시스템 구축 및 관리",
-          "CEO가 설정한 방향을 실행으로 전환, 자원 배분 및 업무 과정 최적화",
-          "팀 간 협업 조율 및 운영 체계 정비, 강한 실행력 및 문제 해결 능력 필요",
-          "조직을 선도하며 생산성 극대화를 위한 전략 수립",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  // 여기에 추가적으로 role_detail_box 항목들을 더 넣을 수 있음
-];
+// const roles = [
+//   {
+//     title: "C-Level",
+//     img: clevel,
+//     roles: [
+//       {
+//         title: "CEO(Chief Executive Officer)",
+//         details: [
+//           "스타트업의 최고 결정권자로 사업 전략 수립 및 의사 결정 담당",
+//           "자금 확보 및 관리, 대외 활동에서 기업 대표 역할 수행",
+//           "조직 문화 형성에 영향, 강한 리더십과 커뮤니케이션 능력 필요",
+//           "경영자, 전략가, 실무자 역할을 겸하며 기업 성장 책임",
+//         ],
+//       },
+//       {
+//         title: "COO(Chief Operating Officer)",
+//         details: [
+//           "기업 운영 총괄, 내부 시스템 구축 및 관리",
+//           "CEO가 설정한 방향을 실행으로 전환, 자원 배분 및 업무 과정 최적화",
+//           "팀 간 협업 조율 및 운영 체계 정비, 강한 실행력 및 문제 해결 능력 필요",
+//           "조직을 선도하며 생산성 극대화를 위한 전략 수립",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     title: "Business Operations",
+//     img: gm,
+//     roles: [
+//       {
+//         title: "General Manager(총괄 관리자, GM)",
+//         details: [
+//           "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
+//           "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
+//           "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
+//           "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
+//         ],
+//       },
+//       {
+//         title: "Business Operations Manager(OM)",
+//         details: [
+//           "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
+//           "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
+//           "부서 간 협업 조정, 내부 정책 및 절차 최적화",
+//           "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     title: "Finance & Marketing",
+//     img: gm,
+//     roles: [
+//       {
+//         title: "Equity Plan Administrator(주식 보상 계획 관리자)",
+//         details: [
+//           "Equity Plan Administrator은 단순한 자금 운영을 넘어 재무 전략, 주식 보상, 경제 데이터 분석 및 시장 예측을 통해 조직의 지속적인 성장과 안정성을 지원하는 중요한 역할을 수행.",
+//           "GOODWILL이 올바른 방향으로 나아갈 수 있도록 재무 리스크를 관리하고, 투자 및 성장 전략을 수립하며, 경제 및 시장 분석을 통해 기업의 의사결정을 지원.",
+//           "특히, Equity Plan Administrator는 기업의 주식 기반 보상 체계를 설계할 뿐만 아니라, 경제 동향과 금융 데이터 분석을 통해 GOODWILL의 장기적인 성장 전략을 구축하는 핵심적인 역할을 수행.",
+//         ],
+//       },
+//     ],
+//   },
+//   // 여기에 추가적으로 role_detail_box 항목들을 더 넣을 수 있음
+// ];
 
 const TeamCulture = () => {
-  const [page, setPage] = useState(0);
-  const itemsPerPage = 2; // 한 페이지에 보일 항목 수
-  const totalPages = Math.ceil(roles.length / itemsPerPage);
+  // const [page, setPage] = useState(0);
+  // const itemsPerPage = 2; // 한 페이지에 보일 항목 수
+  // const totalPages = Math.ceil(roles.length / itemsPerPage);
 
-  const nextPage = () => {
-    if (page < totalPages - 1) setPage(page + 1);
-  };
-
-  const prevPage = () => {
-    if (page > 0) setPage(page - 1);
-  };
+  // const nextPage = () => {
+  //   if (page < totalPages - 1) setPage(page + 1);
+  // };
+  //
+  // const prevPage = () => {
+  //   if (page > 0) setPage(page - 1);
+  // };
 
   const [showButton, setShowButton] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -204,13 +123,9 @@ const TeamCulture = () => {
     });
   };
 
-  const arrrrr = () => {
-    alert("공사중...")
-  };
-
   return (
-    <DefaultLayout>
-      <div>
+    <div>
+      <DefaultLayout>
         <div className="start_box">
           <img className="start_img" src={TeamCultrue} alt="" />
           <div className="start_box_text">
@@ -219,52 +134,48 @@ const TeamCulture = () => {
             주요 역할을 소개합니다.
           </div>
         </div>
+        {/* <div className="content_wrapper">
 
-        <div className="content_wrapper">
-          <div className="content_box">
-            {roles
-              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
-              .map((role, index) => (
-                <div key={index} className="role_detail_box">
-                  <div className="title">{role.title}</div>
-                  <img src={role.img} alt={role.title} className="images" />
-                  <div className="content">
-                    {role.roles.map((r, i) => (
-                      <div key={i}>
-                        <div className="title_content_txt">{r.title}</div>
-                        {r.details.map((detail, j) => (
-                          <div key={j} className="content_content_txt">
-                            &middot; {detail}
-                          </div>
-                        ))}
+
+
+        <div className="content_box">
+          {roles.slice(page * itemsPerPage, (page + 1) * itemsPerPage).map((role, index) => (
+            <div key={index} className="role_detail_box">
+              <div className="title">{role.title}</div>
+              <img src={role.img} alt={role.title} className="images" />
+              <div className="content">
+                {role.roles.map((r, i) => (
+                  <div key={i}>
+                    <div className="title_content_txt">{r.title}</div>
+                    {r.details.map((detail, j) => (
+                      <div key={j} className="content_content_txt">
+                        &middot; {detail}
                       </div>
                     ))}
-                    <div className="morebtn">더보기</div>
                   </div>
-                </div>
-              ))}
-          </div>
+                ))}
+                <div className="morebtn">더보기</div>
+              </div>
+            </div>
+          ))}
+
         </div>
 
-        <div className="pagination-container">
-          <button
-            className="arrow left"
-            onClick={prevPage}
-            disabled={page === 0}
-          >
-            <FaChevronLeft />
-          </button>
-          <div className="pagination">
-            {page + 1} / {totalPages}
-          </div>
-          <button
-            className="arrow right"
-            onClick={nextPage}
-            disabled={page === totalPages - 1}
-          >
-            <FaChevronRight />
-          </button>
+      </div>
+
+
+      <div className="pagination-container">
+
+        <button className="arrow left" onClick={prevPage} disabled={page === 0}>
+          <FaChevronLeft />
+        </button>
+        <div className="pagination">
+          {page + 1} / {totalPages}
         </div>
+        <button className="arrow right" onClick={nextPage} disabled={page === totalPages - 1}>
+          <FaChevronRight />
+        </button>
+      </div> */}
 
         <div className="contetnt_wrapper">
           <div className="dri_culture">
@@ -338,7 +249,10 @@ const TeamCulture = () => {
                   <br />
                   자세한 내용은 여기서 볼 수 있어요
                 </div>
-                <div className="article_btn" onClick={arrrrr}>
+                <div
+                  className="article_btn"
+                  onClick={() => navigate("/article")}
+                >
                   아티클 보기
                   <img src={rightarrow} className="article_pic" alt="" />
                 </div>
@@ -495,10 +409,17 @@ const TeamCulture = () => {
               </div>
             </div>
             <div className="benefit_boxes">
-              <div className="benefit_box1">
+              <div className="benefit_box">
                 <div className="benefit_box_numbering">7</div>
                 <div className="benefit_box_title">
                   신규 입사자 웰컴키트 지급
+                </div>
+              </div>
+              <div className="benefit_box1">
+                <div className="benefit_box_numbering">6</div>
+                <div className="benefit_box_title">회의 및 개발공간</div>
+                <div className="benefit_box_content">
+                  창업 중심 대학 창업 보육 센터 이용 지원
                 </div>
               </div>
             </div>
@@ -511,42 +432,29 @@ const TeamCulture = () => {
                 <img src={warn} className="with_pic" alt="" />
                 <div className="with_box_title">삐용삐용</div>
                 <div className="with_box_content">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
-                </div>
-                <div className="with_box_content1">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
+                  &middot; 카카오워크 내에 생성된 단톡방인 ‘삐용삐용’방에 회사에
+                  대한 문제 상황을 알리는 사항이다.
                 </div>
               </div>
               <div className="with_box">
                 <img src={bamboo} alt="" className="with_pic" />
-                <div className="with_box_title">삐용삐용</div>
+                <div className="with_box_title">대나무 숲</div>
                 <div className="with_box_content">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
-                </div>
-                <div className="with_box_content1">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
+                  &middot; 카카오워크 내의 공지사항 시스템 중 생성된 대나무숲에
+                  글을 남기는 시스템이며, 스쿼드 혹은 회사 내 활동 중에서 실수를
+                  했거나 미안한 일이 생겼을 경우 대나무숲에 이를 알리고 팀원들을
+                  실수한 팀원 당사자의 실수를 축하하고 응원해주는 문화이다.
                 </div>
               </div>
               <div className="with_box">
                 <img src={rail} alt="" className="with_pic" />
-                <div className="with_box_title">삐용삐용</div>
+                <div className="with_box_title">열차 기관사 되기</div>
                 <div className="with_box_content">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
-                </div>
-                <div className="with_box_content1">
-                  &middot; 자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.자세한 내용을 입력해 주세요.자세한 내용을 입력해
-                  주세요.
+                  &middot; 굿윌 사내 프로그램 및 서버 중 유일하게 정신줄 놓고
+                  행동할 수 있는 단톡방 가끔 가다 인생이 피폐하거나 무료하고
+                  따분해졌을 때 기관사가 되어 지랄 폭주를 시작하는 기관사가
+                  되거나 정신을 놓고 하고 싶은것, 놀고싶은것 마음껏 이야기하고
+                  메이트를 만드는 문화이다.
                 </div>
               </div>
             </div>
@@ -556,8 +464,8 @@ const TeamCulture = () => {
         {showButton && (
           <img src={uparrow} className="scroll-to-top" onClick={scrollToTop} />
         )}
-      </div>
-    </DefaultLayout>
+      </DefaultLayout>
+    </div>
   );
 };
 
