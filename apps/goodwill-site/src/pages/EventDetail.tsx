@@ -1,11 +1,22 @@
 import { useLocation, useParams } from "react-router-dom";
-import "../styles/EventDetail.css"
-import share_icon from "../icons/share.svg"
+import "../styles/EventDetail.css";
+import share_icon from "../icons/share.svg";
 
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // URL에서 id 추출
   const location = useLocation();
-  const event = location.state as { id: number; title: string; date: string; image: string; apply: string; expense: string; place: string; name: string; } | undefined;
+  const event = location.state as
+    | {
+        id: number;
+        title: string;
+        date: string;
+        image: string;
+        apply: string;
+        expense: string;
+        place: string;
+        name: string;
+      }
+    | undefined;
 
   if (!event) {
     return <div>이벤트 정보를 찾을 수 없습니다.</div>;
@@ -36,6 +47,7 @@ const EventDetail: React.FC = () => {
         </div>
         <div className="bottom_border"></div>
       </div>
+
       <div className="apply">
         <div className="apply_title">
           <div className="apply_title1">창업</div>
@@ -53,7 +65,9 @@ const EventDetail: React.FC = () => {
           <div className="apply_ask_text_gray">CEO</div>
         </div>
         <div className="apply_ask_text">M. 010-4294-1083</div>
-        <div className="apply_ask_text">E. s.h.putrats@wearegoodwill.kro.kr</div>
+        <div className="apply_ask_text">
+          E. s.h.putrats@wearegoodwill.kro.kr
+        </div>
         <div className="apply_main_border"></div>
 
         <div className="apply_ask_text_box">
@@ -63,11 +77,18 @@ const EventDetail: React.FC = () => {
         <div className="apply_ask_text">M. 010-2993-2845</div>
         <div className="apply_ask_text">gw.hs@wearegoodwill.kro.kr</div>
 
-        <div className="apply_btn">지원하기</div>
-        <div className="apply_btn1_boxes">
+        <button
+          onClick={() => {
+            console.log("id: ", id);
+          }}
+          className="apply_btn"
+        >
+          지원하기
+        </button>
+        <button className="apply_btn1_boxes">
           <div className="apply_btn1">공유하기</div>
-          <img src={share_icon} alt="" className="share_icon" />
-        </div>
+          <img src={share_icon} alt="share-icon" className="share_icon" />
+        </button>
       </div>
     </div>
   );

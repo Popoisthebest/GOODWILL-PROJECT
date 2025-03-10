@@ -15,9 +15,9 @@ const EventMain = () => {
     {
       id: 1,
       title: "2025’ 제3회 GOODWILL CONCERT",
-      date: "미정(03/18 진행 목표, CIP 2~3차 동원 예정)",
-      apply: "미정(03/18 진행 목표, CIP 2~3차 동원 예정)",
-      expense: "미정",
+      date: "03/17 CIP 2~3차 진행",
+      apply: "03/11 ~ 03/16",
+      expense: "무료",
       place: "백암관",
       image: goodwillconcert,
       name: "콘서트"
