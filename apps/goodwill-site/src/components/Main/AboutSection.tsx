@@ -26,6 +26,7 @@ const TopContentWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   padding: 20px;
+
   position: relative;
   flex-direction: column;
   z-index: 10;
@@ -52,6 +53,7 @@ const TopTitle1 = styled.h1`
   line-height: 110%;
   letter-spacing: -3.2px;
   transform: translateX(-250px);
+  margin-bottom: 170px;
 
   @media (max-width: ${breakpoints.desktop}) {
     font-size: 100px;
