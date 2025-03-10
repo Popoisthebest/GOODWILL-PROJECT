@@ -127,6 +127,7 @@ const TeamGridPage: React.FC = () => {
       imageUrl: 'imgs/teamImg/junmo.jpg',
     },
   ];
+console.log("Rendering Members component", teamMembers);
 
   return (
     <Container>
