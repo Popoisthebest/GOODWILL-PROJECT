@@ -67,101 +67,19 @@ const roles = [
     ],
   },
   {
-    title: "Business Operations",
+    title: "Finance & Marketing",
     img: gm,
     roles: [
       {
-        title: "General Manager(총괄 관리자, GM)",
+        title:"Equity Plan Administrator(주식 보상 계획 관리자)",
         details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Business Operations",
-    img: gm,
-    roles: [
-      {
-        title: "General Manager(총괄 관리자, GM)",
-        details: [
-          "C-Level과 함께 GOODWILL 운영 총괄, 전략 수립 및 재무 관리 담당",
-          "목표 설정 및 스쿼드 구성, 시장 분석을 통한 비즈니스 방향 조정",
-          "조직 효율성 증대, 고객 및 파트너 관계 유지, 수익성 극대화 전략 수립",
-          "강한 리더십과 분석력을 바탕으로 의사결정 및 문제 해결 수행",
-        ],
-      },
-      {
-        title: "Business Operations Manager(OM)",
-        details: [
-          "조직 효율성 증대 및 운영 보조, 스쿼드의 PO 역할 수행",
-          "비즈니스 프로세스 개선, 비용 절감 전략 및 데이터 기반 의사결정 지원",
-          "부서 간 협업 조정, 내부 정책 및 절차 최적화",
-          "예산 관리, KPI 모니터링, 기술 및 자동화 도입으로 생산성 향상",
-        ],
-      },
-    ],
-  },
+          "Equity Plan Administrator은 단순한 자금 운영을 넘어 재무 전략, 주식 보상, 경제 데이터 분석 및 시장 예측을 통해 조직의 지속적인 성장과 안정성을 지원하는 중요한 역할을 수행.",
+          "GOODWILL이 올바른 방향으로 나아갈 수 있도록 재무 리스크를 관리하고, 투자 및 성장 전략을 수립하며, 경제 및 시장 분석을 통해 기업의 의사결정을 지원.",
+          "특히, Equity Plan Administrator는 기업의 주식 기반 보상 체계를 설계할 뿐만 아니라, 경제 동향과 금융 데이터 분석을 통해 GOODWILL의 장기적인 성장 전략을 구축하는 핵심적인 역할을 수행.",
+        ]
+      }
+    ]
+  }
   // 여기에 추가적으로 role_detail_box 항목들을 더 넣을 수 있음
 ];
 
@@ -203,10 +121,6 @@ const TeamCulture = () => {
     });
   };
 
-  const arrrrr = () => {
-    alert("아니 시발 너무많아아")
-  }
-
   return (
     <div>
       <div className="start_box">
@@ -215,8 +129,7 @@ const TeamCulture = () => {
           GOODWILL을 만들어가는<br />주요 역할을 소개합니다.
         </div>
       </div>
-
-      <div className="content_wrapper">
+      {/* <div className="content_wrapper">
 
 
 
@@ -257,7 +170,7 @@ const TeamCulture = () => {
         <button className="arrow right" onClick={nextPage} disabled={page === totalPages - 1}>
           <FaChevronRight />
         </button>
-      </div>
+      </div> */}
 
       <div className="contetnt_wrapper">
 
@@ -317,7 +230,7 @@ const TeamCulture = () => {
             </div>
             <div className="main_val_box1">
               <div className="detail_value">GOODWILL 핵심 가치에 대한<br />자세한 내용은 여기서 볼 수 있어요</div>
-              <div className="article_btn" onClick={arrrrr}>
+              <div className="article_btn">
                 아티클 보기
                 <img src={rightarrow} className="article_pic" alt="" />
               </div>
@@ -428,9 +341,14 @@ const TeamCulture = () => {
             </div>
           </div>
           <div className="benefit_boxes">
-            <div className="benefit_box1">
+            <div className="benefit_box">
               <div className="benefit_box_numbering">7</div>
               <div className="benefit_box_title">신규 입사자 웰컴키트 지급</div>
+            </div>
+            <div className="benefit_box1">
+              <div className="benefit_box_numbering">6</div>
+              <div className="benefit_box_title">회의 및 개발공간</div>
+              <div className="benefit_box_content">창업 중심 대학 창업 보육 센터 이용 지원</div>
             </div>
           </div>
         </div>
