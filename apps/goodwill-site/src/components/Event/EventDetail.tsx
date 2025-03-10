@@ -25,6 +25,16 @@ const EventDetail: React.FC = () => {
     return <div>이벤트 정보를 찾을 수 없습니다.</div>;
   }
 
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("URL이 복사되었습니다!");
+    } catch (err) {
+      console.error("URL 복사 실패:", err);
+      alert("URL 복사에 실패했습니다.");
+    }
+  };
+
   return (
     <DefaultLayout>
       <div className="event_detail">
@@ -94,7 +104,7 @@ const EventDetail: React.FC = () => {
           >
             지원하기
           </button>
-          <button className="apply_btn1_boxes">
+          <button className="apply_btn1_boxes" onClick={handleShare}>
             <div className="apply_btn1">공유하기</div>
             <img src={share_icon} alt="share-icon" className="share_icon" />
           </button>

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
 // Define types for our props
 type FooterProps = {
@@ -10,7 +10,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -44,29 +44,35 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
       <RightSection>
         <SectionTitle>Discover more</SectionTitle>
         <BrandName>About GOODWILL</BrandName>
-        
+
         <ButtonsContainer>
           <ArticleButton>GO TO GOODWILL'S ARTICLE</ArticleButton>
-          <InstagramLink>
-            <DiagonalArrowIcon 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
+          <InstagramLink
+            onClick={() =>
+              window.open(
+                "https://www.instagram.com/wearegoodwill?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+              )
+            }
+          >
+            <DiagonalArrowIcon
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path 
-                d="M7 17L17 7" 
-                stroke="black" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+              <path
+                d="M7 17L17 7"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path 
-                d="M7 7H17V17" 
-                stroke="black" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+              <path
+                d="M7 7H17V17"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </DiagonalArrowIcon>
@@ -75,28 +81,26 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         </ButtonsContainer>
       </RightSection>
 
-      
-
       <ScrollTopButton onClick={scrollToTop}>
-        <ArrowIconSVG 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
+        <ArrowIconSVG
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path 
+          <path
             d="M12 18L12 6"
-            stroke="white" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path 
-            d="M6 12L12 6L18 12" 
-            stroke="white" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+          <path
+            d="M6 12L12 6L18 12"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
         </ArrowIconSVG>
@@ -107,12 +111,11 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
   );
 };
 
-
 const FooterContainer = styled.footer`
   display: flex;
   flex-wrap: wrap;
   padding: 100px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   position: relative;
   background-color: #fff;
   color: #000;
@@ -120,7 +123,6 @@ const FooterContainer = styled.footer`
   width: 85vw;
   height: 600px;
   font-family: Pretendard;
-
 `;
 
 const DiagonalArrowIcon = styled.svg`
@@ -128,7 +130,6 @@ const DiagonalArrowIcon = styled.svg`
   width: 32px;
   height: 32px;
 `;
-
 
 const LeftSection = styled.div`
   flex: 1;
@@ -149,7 +150,6 @@ const CenterSection = styled.div`
   flex: 1;
   min-width: 200px;
   margin-bottom: 30px;
-  
 `;
 
 const ContactInfo = styled.div`
@@ -176,7 +176,6 @@ const RightSection = styled.div`
   flex: 1.5;
   min-width: 300px;
   transform: translateX(100px);
-  
 `;
 
 const SectionTitle = styled.h2`
@@ -195,7 +194,6 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  
 `;
 
 const ArticleButton = styled.button`
@@ -204,12 +202,14 @@ const ArticleButton = styled.button`
   padding: 15px 20px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   width: 100%;
   max-width: 350px;
   border-radius: 5px;
   text-align: left;
-  
+
   &:hover {
     background-color: #000;
     color: #fff;
@@ -224,7 +224,7 @@ const InstagramLink = styled.a`
   text-decoration: none;
   color: #000;
   margin-top: 10px;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -243,7 +243,7 @@ const Copyright = styled.div`
 
 const ScrollTopButton = styled.button`
   position: absolute;
-  
+
   bottom: -20px;
   right: 20px;
   width: 120px;
@@ -258,7 +258,7 @@ const ScrollTopButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s;
   margin-bottom: 100px;
-  
+
   &:hover {
     background-color: #333;
   }
