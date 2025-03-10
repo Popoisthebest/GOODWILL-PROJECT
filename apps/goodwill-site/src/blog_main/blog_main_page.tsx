@@ -3,26 +3,33 @@ import BlogCard from "./blog_card";
 import BlogIcon from "../assets/blog_icon/light_arrow-left.svg?react";
 import SearchIcon from "../assets/blog_icon/MagnifyingGlass.svg?react";
 
-const BlogMainTextSection: React.FC = () => {
+const BlogMainPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>("All"); 
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const blogCards = [
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
-    { title: "제목을 입력해 주세요.", date: "2025-02-18" },
+    { id: 1, title: "신입생들을 위한 동아리의 모든 것", date: "2025-02-18" },
+    { id: 2, title: "대신고 활동의 모든 것", date: "2025-02-18" },
+    { id: 3, title: "고등학교 첫 내신, 어떻게 준비할까요?", date: "2025-02-18" },
+    { id: 4, title: "더 이상 기술의 부재가 없는, 굿윌 프론트엔드의 성장 이야기", date: "2025-02-18" },
+    { id: 5, title: "제품의 성공을 이끄는 사람들, Product Owner", date: "2025-02-18" },
+    { id: 6, title: "좋은 사용자 경험을 만드는 굿윌의 Product Designer", date: "2025-02-18" },
+    { id: 7, title: "제품에 대한 전반적인 설계 및 개발을 이끄는 Hardware Engineer", date: "2025-02-18" },
+    { id: 8, title: "1년차 개발자의 훈수 두기", date: "2025-02-18" },
+    { id: 9, title: "DeepSeek Shock - 제본스의 역설과 AI 투자의 향방 - 1", date: "2025-02-18" },
+    { id: 10, title: "DeepSeek Shock - 제본스의 역설과 AI 투자의 향방 - 2", date: "2025-02-18" },
+    { id: 11, title: "자주 묻는 질문 : 프론트엔드 개발자 편", date: "2025-02-18" },
+    { id: 12, title: "말 한 마디로 천냥 빛 갚는 기획자", date: "2025-02-18" },
+    { id: 13, title: "인도의 유니콘 기업이 잘나가는 이유", date: "2025-02-18" },
+    { id: 14, title: "'일머리'란 무엇일까", date: "2025-02-18" },
+    { id: 15, title: "진지하지만 심각하진 않습니다", date: "2025-02-18" },
+    { id: 16, title: "김용현이 쓰는 계엄과 경제", date: "2025-02-18" },
+    { id: 17, title: "파이코인이란?", date: "2025-02-18" },
+    { id: 18, title: "마케팅과 3", date: "2025-02-18" },
+    { id: 19, title: "휴일과 경제", date: "2025-02-18" },
+
+    
+
   ];
 
   const categories = [
@@ -87,6 +94,7 @@ const BlogMainTextSection: React.FC = () => {
     fontSize: "16px",
     color: "#7B7B7B",
     marginTop: "15px",
+    marginBottom: "60px",
     lineHeight: "1.5",
   };
 
@@ -167,13 +175,13 @@ const BlogMainTextSection: React.FC = () => {
         트렌드, 디자인, 비즈니스 인사이트까지—놓치기 아까운 아티클을 소개합니다. 💡
       </p>
 
-      {/* 검색창 */}
+      {/*  
+
       <div style={searchContainerStyle}>
         <SearchIcon width={25} height={25} style={{ position: "absolute", left: "10px", zIndex: 1 }} />
         <input type="text" placeholder="GOODWILL 아티클 검색하기" style={searchInputStyle} />
       </div>
 
-      {/* 카테고리 버튼 리스트 */}
       <div style={categoryContainerStyle}>
         {categories.map((category) => (
           <button
@@ -188,10 +196,12 @@ const BlogMainTextSection: React.FC = () => {
         ))}
       </div>
 
+      */}
+
       {/* 블로그 카드 */}
       <div style={cardRowStyle}>
-        {blogCards.map((blog, index) => (
-          <BlogCard key={index} title={blog.title} date={blog.date} />
+        {blogCards.map((blog) => (
+          <BlogCard key={blog.id}  id={blog.id} title={blog.title} date={blog.date} />
         ))}
       </div>
 
@@ -199,4 +209,4 @@ const BlogMainTextSection: React.FC = () => {
   );
 };
 
-export default BlogMainTextSection;
+export default BlogMainPage;
