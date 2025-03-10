@@ -1,5 +1,7 @@
 .event_detail {
   display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
 }
 
 .event_detail_txts {
@@ -17,7 +19,6 @@
   display: flex;
   flex-direction: column;
   width: 860px;
-  margin-left: 111px;
 }
 
 .event_detail_title {
@@ -67,9 +68,7 @@
 .apply {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 0;
-  margin-right: 79px;
+  position: relative;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
   height: 478px;

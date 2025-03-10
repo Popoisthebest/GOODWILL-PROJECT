@@ -1,10 +1,12 @@
 import { useLocation, useParams } from "react-router-dom";
-import "../styles/EventDetail.css";
-import share_icon from "../icons/share.svg";
+import { useNavigate } from "react-router-dom";
+import "../../styles/EventDetail.css";
+import share_icon from "../../icons/share.svg";
 
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // URL에서 id 추출
   const location = useLocation();
+  const navigate = useNavigate();
   const event = location.state as
     | {
         id: number;
@@ -24,6 +26,7 @@ const EventDetail: React.FC = () => {
 
   return (
     <div className="event_detail">
+
       <div className="image_and_details">
         <img src={event.image} className="event_detail_image" alt="" />
         <div className="event_detail_txts">
@@ -58,7 +61,6 @@ const EventDetail: React.FC = () => {
         <div className="apply_main_subtitle">{event.date}</div>
         <div className="apply_main_subtitle1">{event.place}</div>
         <div className="apply_main_border"></div>
-
         <div className="apply_main_title">문의</div>
         <div className="apply_ask_text_box">
           <div className="apply_ask_text">고승한</div>
@@ -69,17 +71,15 @@ const EventDetail: React.FC = () => {
           E. s.h.putrats@wearegoodwill.kro.kr
         </div>
         <div className="apply_main_border"></div>
-
         <div className="apply_ask_text_box">
           <div className="apply_ask_text">이현서</div>
           <div className="apply_ask_text_gray">COO</div>
         </div>
         <div className="apply_ask_text">M. 010-2993-2845</div>
         <div className="apply_ask_text">gw.hs@wearegoodwill.kro.kr</div>
-
         <button
           onClick={() => {
-            console.log("id: ", id);
+            navigate(`/event/${event.id}`, { state: id });
           }}
           className="apply_btn"
         >

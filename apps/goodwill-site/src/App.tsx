@@ -1,6 +1,6 @@
 import EventMain from "./pages/EventMain"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import EventDetail from "./pages/EventDetail";
+import EventDetail from "./components/Event/EventDetail.tsx";
 
 function App() {
 
