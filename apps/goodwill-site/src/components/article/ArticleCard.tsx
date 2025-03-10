@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ArticleCard: React.FC<{ title: string; date: string }> = ({ title, date }) => {
+const BlogCard: React.FC<{ id: number; title: string; date: string }> = ({ id, title, date }) => {
   const cardStyle: React.CSSProperties = {
-    backgroundColor: "#f0f0f0",  // 카드 배경색
-    borderRadius: "10px",  // 카드 모서리 둥글게
-    width: "100%",  // 카드 너비를 부모 요소에 맞추기
-    maxWidth: "420px",  // 최대 너비 설정
-    height: "250px",  // 카드 높이
+    backgroundColor: "#f0f0f0",
+    borderRadius: "10px",
+    width: "100%",
+    maxWidth: "420px",
+    height: "250px",
     display: "flex",
   };
 
   const textContainerStyle: React.CSSProperties = {
     display: "flex",
-    flexDirection: "column",  // 텍스트를 세로로 배치
-    alignItems: "flex-start",  // 텍스트 왼쪽 정렬
+    flexDirection: "column",
+    alignItems: "flex-start",
     width: "100%",
   };
 
@@ -25,21 +26,21 @@ const ArticleCard: React.FC<{ title: string; date: string }> = ({ title, date })
 
   const dateStyle: React.CSSProperties = {
     fontSize: "14px",
-    color: "#777", 
+    color: "#777",
     marginBottom: "5px",
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "40px" }}>
-      <div style={cardStyle}>
-        {/* 카드 내용은 비워두기 */}
+    <Link to={`/article/${id}`} style={{ textDecoration: "none", color: "inherit" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: "40px", cursor: "pointer" }}>
+        <div style={cardStyle}></div>
+        <div style={textContainerStyle}>
+          <p style={dateStyle}>{date}</p>
+          <h2 style={titleStyle}>{title}</h2>
+        </div>
       </div>
-      <div style={textContainerStyle}>
-        <p style={dateStyle}>{date}</p>
-        <h2 style={titleStyle}>{title}</h2>
-      </div>
-    </div>
+    </Link>
   );
 };
 
-export default ArticleCard;
+export default BlogCard;
