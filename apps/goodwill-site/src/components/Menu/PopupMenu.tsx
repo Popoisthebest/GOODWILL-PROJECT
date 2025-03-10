@@ -57,15 +57,15 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
             <path d="m3.75 3.75 7.5 7.5" strokeWidth="1"></path>
           </motion.svg>
         </button>
-        {/*<MenuItem onClick={() => navigate("/")} path="/">*/}
-        {/*  HOME*/}
-        {/*</MenuItem>*/}
+        <MenuItem onClick={() => navigate("/")} path="/">
+          HOME
+        </MenuItem>
         <MenuItem onClick={() => navigate("/career")} path="/career">
           CAREER
         </MenuItem>
-        {/*<MenuItem onClick={() => navigate("/about")} path="/about">*/}
-        {/*  ABOUT*/}
-        {/*</MenuItem>*/}
+        <MenuItem onClick={() => navigate("/about")} path="/about">
+          ABOUT
+        </MenuItem>
         {/*<MenuItem onClick={() => navigate("/team-and-culture")} path="/team-and-culture">*/}
         {/*  TEAM & CULTURE*/}
         {/*</MenuItem>*/}
