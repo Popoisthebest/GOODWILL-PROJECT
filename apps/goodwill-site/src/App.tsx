@@ -12,6 +12,7 @@ import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 // import Project from "./pages/Project.tsx";
 // import Main from "./pages/Main.tsx";
 import SubmissionFinished from "./pages/SubmissionFinished.tsx";
+import MainAbout from "./pages/MainAbout.tsx";
 // import About from "./components/About/About.tsx";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Route index element={<RoleSelect />} />
         <Route path="/career" element={<RoleSelect />} />
         <Route path="/:roleName" element={<RoleDetail />} />
-        {/*<Route path="/about" element={<About />} />*/}
+        <Route path="/about" element={<MainAbout />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
         {/*<Route*/}

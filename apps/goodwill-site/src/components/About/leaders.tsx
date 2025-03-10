@@ -15,7 +15,7 @@ const Container = styled.div`
   max-width: 1500px;
   margin: 0 auto;
   padding: 40px 20px;
-  margin-top: 200px;
+  margin-top: 250px;
   font-family: Pretendard;
 `;
 
