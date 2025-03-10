@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Item, ItemText, IconDiv, Dot } from "./PopupMenu.style.ts";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 interface MenuItemProps {
   onClick?: () => void; // 클릭 이벤트 핸들러

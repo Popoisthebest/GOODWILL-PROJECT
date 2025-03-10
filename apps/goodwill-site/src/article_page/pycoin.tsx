@@ -65,10 +65,10 @@ const contentContainerStyle: React.CSSProperties = {
   gap: "10px",
 };
 
-const grayLineStyle: React.CSSProperties = {
-  borderBottom: "1px solid #ddd",
-  marginTop: "20px",
-  marginBottom: "20px",
-};
+// const grayLineStyle: React.CSSProperties = {
+//   borderBottom: "1px solid #ddd",
+//   marginTop: "20px",
+//   marginBottom: "20px",
+// };
 
 export default Pycoin;

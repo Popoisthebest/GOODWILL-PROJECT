@@ -2,7 +2,7 @@
 //.tsx
 import React, { useEffect } from "react";
 import Header from "../article_component/header";
-import ImageBox from "../article_component/imagebox";
+// import ImageBox from "../article_component/imagebox";
 import SectionTitle from "../article_component/section_title";
 import Content from "../article_component/content";
 import Author from "../article_component/author";
@@ -79,10 +79,10 @@ const contentContainerStyle: React.CSSProperties = {
   gap: "10px",
 };
 
-const grayLineStyle: React.CSSProperties = {
-  borderBottom: "1px solid #ddd",
-  marginTop: "20px",
-  marginBottom: "20px",
-};
+// const grayLineStyle: React.CSSProperties = {
+//   borderBottom: "1px solid #ddd",
+//   marginTop: "20px",
+//   marginBottom: "20px",
+// };
 
 export default EverythingDaeshin;
