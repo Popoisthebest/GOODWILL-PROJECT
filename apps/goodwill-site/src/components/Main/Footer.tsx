@@ -20,6 +20,14 @@ const InnerContainer = styled.div`
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 0 4%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 3%;
+  }
 `;
 
 // Top section with "KEEP SCROLLING" text
@@ -28,6 +36,16 @@ const ScrollPrompt = styled.div`
   letter-spacing: 1px;
   position: relative;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.65rem;
+    margin-bottom: 1.2rem;
+  }
 
   p {
     margin: 0;
@@ -40,48 +58,105 @@ const BrandHeading = styled.h2`
   font-weight: 500;
   margin: 0 0 3rem 0;
   letter-spacing: 1px;
+
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin: 0 0 2.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin: 0 0 2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem 0;
+  }
 `;
 
-// Next page navigation
-// const NextPageNav = styled.div`
-//   display: flex;
-//   align-items: center;
-//   position: absolute;
-//   top: 2rem;
-//   right: 5%;
-// `;
+// Next page navigation - 주석 처리된 부분도 반응형으로 수정
+/*
+const NextPageNav = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 2rem;
+  right: 5%;
+
+  @media (max-width: 768px) {
+    top: 1.5rem;
+    right: 4%;
+  }
+
+  @media (max-width: 480px) {
+    top: 1rem;
+    right: 3%;
+  }
+`;
 
 // Next page text
-// const NextPageText = styled.span`
-//   margin-right: 50px;
-// `;
+const NextPageText = styled.span`
+  margin-right: 50px;
+
+  @media (max-width: 768px) {
+    margin-right: 30px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-right: 15px;
+    font-size: 0.8rem;
+  }
+`;
 
 // Progress bar container
-// const ProgressBarContainer = styled.div`
-//   width: 180px;
-//   height: 4px;
-//   background-color: rgba(255, 255, 255, 0.2);
-//   margin-right: 1rem;
-//   position: relative;
-//   border-radius: 10px;
-// `;
+const ProgressBarContainer = styled.div`
+  width: 180px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-right: 1rem;
+  position: relative;
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 3px;
+    margin-right: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 2px;
+    margin-right: 0.5rem;
+  }
+`;
 
 // Progress bar fill with transition
-// interface ProgressBarFillProps {
-//   progress: number;
-// }
+interface ProgressBarFillProps {
+  progress: number;
+}
 
-// const ProgressBarFill = styled.div<ProgressBarFillProps>`
-//   height: 100%;
-//   width: ${props => `${props.progress}%`};
-//   background-color: #3b82f6;
-//   transition: width ${props => props.progress >= 100 ? '0.3s' : '3s'} ease-out;
-// `;
+const ProgressBarFill = styled.div<ProgressBarFillProps>`
+  height: 100%;
+  width: ${props => `${props.progress}%`};
+  background-color: #3b82f6;
+  transition: width ${props => props.progress >= 100 ? '0.3s' : '3s'} ease-out;
+`;
 
 // Arrow icon
-// const ArrowIcon = styled.span`
-//   font-size: 1.5rem;
-// `;
+const ArrowIcon = styled.span`
+  font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+`;
+*/
 
 // Plus sign buttons
 const PlusContainer = styled.div`
@@ -89,11 +164,31 @@ const PlusContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 1rem;
+  }
 `;
 
 const PlusButton = styled.div`
   font-size: 2rem;
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 interface FooterProps {
