@@ -27,12 +27,12 @@ export const fileSend = async (
     fileType: string,
     getApplicationId: () => string // ✅ applicationId를 직접 전달받지 않고, "가져오는 함수"를 받음
 ) => {
-  console.log("fileSend 호출됨");
+  // console.log("fileSend 호출됨");
 
   try {
     // ✅ applicationId가 설정될 때까지 기다림
     const applicationId = await waitForApplicationId(getApplicationId);
-    console.log("✅ applicationId 확인됨:", applicationId);
+    // console.log("✅ applicationId 확인됨:", applicationId);
 
     // ✅ applicationId가 준비된 후 업로드 진행
     const fileUrl = await uploadFileToStorage(

@@ -1,33 +1,44 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import Google from "../../../imgs/logos/image 16.png";
+import Microsoft from "../../../imgs/logos/image 17.png";
+import AWS from "../../../imgs/logos/image 18.png";
+import NC from "../../../imgs/logos/image 19.png";
+import KSF from "../../../imgs/logos/image 20.png";
+import STP from "../../../imgs/logos/image 22.png";
+import Hunet from "../../../imgs/logos/image 23.png";
+import YEEP from "../../../imgs/logos/image 24.png";
+import JAKorea1 from "../../../imgs/logos/image 16.png";
+import JAKorea2 from "../../../imgs/logos/image 19.png";
+import Microsoft2 from "../../../imgs/logos/image 21.png";
+
 
 // 로고 데이터
 const logos = {
   firstRow: [
-
-    { id: 1, name: 'Google', imageUrl: '../../imgs/logos/image 16.png' },
-    { id: 2, name: 'Microsoft', imageUrl: '../../imgs/logos/image 17.png' },
-    { id: 3, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
-    { id: 4, name: 'NC', imageUrl: '../../imgs/logos/image 19.png' },
-    { id: 5, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
+    { id: 1, name: "Google", imageUrl: Google },
+    { id: 2, name: "Microsoft", imageUrl: Microsoft },
+    { id: 3, name: "AWS", imageUrl: AWS },
+    { id: 4, name: "NC", imageUrl: NC },
+    { id: 5, name: "KSF", imageUrl: KSF },
   ],
   secondRow: [
-    { id: 6, name: 'NC', imageUrl: '../../imgs/logos/image 21.png' },
-    { id: 7, name: 'STP', imageUrl: '../../imgs/logos/image 22.png' },
-    { id: 8, name: 'Hunet', imageUrl: '../../imgs/logos/image 23.png' },
-    { id: 9, name: 'YEEP', imageUrl: '../../imgs/logos/image 24.png' },
-    { id: 10, name: 'JA Korea', imageUrl: '../../imgs/logos/image 16.png' },
+    { id: 6, name: "NC", imageUrl: NC },
+    { id: 7, name: "STP", imageUrl: STP },
+    { id: 8, name: "Hunet", imageUrl: Hunet },
+    { id: 9, name: "YEEP", imageUrl: YEEP },
+    { id: 10, name: "JA Korea", imageUrl: JAKorea1 },
   ],
   thirdRow: [
-    { id: 11, name: 'Hunet', imageUrl: '../../imgs/logos/image 17.png' },
-    { id: 12, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
-    { id: 13, name: 'JA Korea', imageUrl: '../../imgs/logos/image 19.png' },
-    { id: 14, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
-    { id: 15, name: 'Microsoft', imageUrl: '../../imgs/logos/image 21.png' },
-  ]
-
+    { id: 11, name: "Hunet", imageUrl: Hunet },
+    { id: 12, name: "AWS", imageUrl: AWS },
+    { id: 13, name: "JA Korea", imageUrl: JAKorea2 },
+    { id: 14, name: "KSF", imageUrl: KSF },
+    { id: 15, name: "Microsoft", imageUrl: Microsoft2 },
+  ],
 };
+
 
 // 애니메이션 키프레임
 const scrollLeft = keyframes`

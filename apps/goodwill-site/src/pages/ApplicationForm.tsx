@@ -138,6 +138,7 @@ const ApplicationFormPage = () => {
 
       const formattedData = {
         ...data,
+        roleName: roleName,
         studentId: Number(data.studentId),
         applicationId: newApplicationId,
         order,

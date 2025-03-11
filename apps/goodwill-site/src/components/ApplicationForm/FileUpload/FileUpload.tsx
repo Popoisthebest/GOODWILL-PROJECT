@@ -31,23 +31,29 @@ const FileUpload: React.FC<FileUploadProps> = ({
   // 지원자 파일 저장
   const [file, setFile] = useState<File>(); // 초기값은 null
 
-  console.log(applicationId);
-
-  // isSubmitting 값이 변경될 때 업로드 실행
   useEffect(() => {
     const uploadFile = async () => {
-      if (isSubmitting) {
-        const result = await fileSend(
+      // console.log("fileUpload 실행됨, 현재 applicationId:", applicationId);
+
+      if (!applicationId) {
+        // console.error("🚨 applicationId가 아직 설정되지 않음. 업로드 중단.");
+        return;
+      }
+
+      const result = await fileSend(
           file!,
           isContest ? "contest" : "portfolio",
-          () => applicationId,
-        );
-        console.log("파일 업로드", result);
-      }
+          () => applicationId
+      );
+
+      console.log("파일 업로드 결과:", result);
     };
 
-    uploadFile(); // 비동기 함수 실행
-  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
+    if (isSubmitting && applicationId) {
+      uploadFile();
+    }
+  }, [isSubmitting, applicationId]); // 🔥 applicationId가 변경될 때도 실행되도록 추가
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
