@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useNavigate } from "react-router-dom";
 
 // Define types for our props
 type FooterProps = {
@@ -7,6 +8,7 @@ type FooterProps = {
 };
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
+  const navigate = useNavigate();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -46,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         <BrandName>About GOODWILL</BrandName>
         
         <ButtonsContainer>
-          <ArticleButton>GO TO GOODWILL'S ARTICLE</ArticleButton>
+          <ArticleButton onClick={() => navigate("/article")}>GO TO GOODWILL'S ARTICLE</ArticleButton>
           <InstagramLink>
             <DiagonalArrowIcon 
               width="24" 

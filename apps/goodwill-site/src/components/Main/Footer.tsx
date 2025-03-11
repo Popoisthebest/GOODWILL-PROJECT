@@ -264,7 +264,7 @@ const Footer: React.FC<FooterProps> = ({
     <FooterContainer className={className}>
       <InnerContainer>
         <ScrollPrompt>
-          <p>KEEP SCROLLING</p>
+          <p>KEEP DISCOVERING</p>
           <p>TO LEARN MORE</p>
         </ScrollPrompt>
 

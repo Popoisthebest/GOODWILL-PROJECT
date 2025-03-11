@@ -1,11 +1,18 @@
 .role-detail-div {
   display: flex;
   flex-direction: row;
-  padding: 0px 67px 20px 67px;
+  padding: 0px 67px 50px 67px;
 
   @media (max-width: 768px) {
     flex-direction: column;
   }
+}
+
+.markdown-body {
+  color:  #000;
+  font-family: Pretendard;
+  font-size: 22px;
+  line-height: 45px;
 }
 
 .wrapper {
@@ -148,7 +155,7 @@
   align-items: center;
   border-bottom: 1px solid #d9d9d9;
   margin-left: 5px;
-  padding: 17px 0;
+  padding: 14px 0;
 
   @media (max-width: 768px) {
     justify-content: space-between;
@@ -166,17 +173,17 @@
 }
 
 .card-label {
-  width: 100px;
-  white-space: nowrap;
+  display: flex;
   color: #9d9d9d;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+
+  width: 50px;
 }
 
 .card-value {
-  width: 200px;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
