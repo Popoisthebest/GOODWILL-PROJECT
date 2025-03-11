@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox } from "./RoundedCheckbox.style";
 import checkbox from "../../../assets/fileUpload/checkBox.svg";
 
