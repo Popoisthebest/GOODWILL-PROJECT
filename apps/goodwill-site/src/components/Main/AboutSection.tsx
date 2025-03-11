@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import styled from '@emotion/styled';
-import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import styled from "@emotion/styled";
+import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4";
+import { useNavigate } from "react-router-dom";
 
 // 미디어 쿼리를 위한 브레이크포인트 정의
 const breakpoints = {
-  mobile: '480px',
-  tablet: '768px',
-  laptop: '1024px',
-  desktop: '1200px'
+  mobile: "480px",
+  tablet: "768px",
+  laptop: "1024px",
+  desktop: "1200px",
 };
 
 const LandingSection = styled.div`
@@ -33,7 +33,7 @@ const TopContentWrapper = styled(motion.div)`
   flex-direction: column;
   z-index: 10;
   top: 200px;
-  
+
   @media (max-width: ${breakpoints.tablet}) {
     top: 100px;
     height: 20vh;
@@ -136,7 +136,6 @@ const SVGContainer = styled(motion.div)`
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  
 `;
 
 const VideoContainer = styled(motion.div)`
@@ -147,7 +146,7 @@ const VideoContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  z-index: 5;
+  z-index: 1000;
   transform: translateY(200px);
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -238,60 +237,62 @@ const BetterWorldLanding: React.FC = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
-    fetch('assets/img/Vector 1.svg')
-      .then(response => response.text())
-      .then(svgText => {
+    fetch("assets/img/Vector 1.svg")
+      .then((response) => response.text())
+      .then((svgText) => {
         const parser = new DOMParser();
-        const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
-        
-        const firstPath = svgDoc.querySelector('path');
-        const svgElement = svgDoc.querySelector('svg');
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+
+        const firstPath = svgDoc.querySelector("path");
+        const svgElement = svgDoc.querySelector("svg");
 
         if (firstPath && svgElement) {
-          setPathData(firstPath.getAttribute('d'));
-          
-          const viewBoxAttr = svgElement.getAttribute('viewBox');
+          setPathData(firstPath.getAttribute("d"));
+
+          const viewBoxAttr = svgElement.getAttribute("viewBox");
           if (viewBoxAttr) {
             setViewBox(viewBoxAttr);
           }
         }
       })
-      .catch(error => console.error('Error fetching SVG:', error));
+      .catch((error) => console.error("Error fetching SVG:", error));
   }, []);
 
   const AboutButton: React.FC = () => {
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate(); // 페이지 이동을 위한 훅
-  
+
     const isMobile = window.innerWidth <= 768;
-  
+
     const handleMouseEnter = () => {
       if (!isMobile) setIsHovered(true);
     };
-  
+
     const handleMouseLeave = () => {
       if (!isMobile) setIsHovered(false);
     };
-  
+
     const handleTouchStart = () => {
       if (isMobile) {
         setIsHovered(true);
         setTimeout(() => setIsHovered(false), 500);
       }
     };
-  
+
     const handleClick = () => {
-      navigate('/about'); // About 페이지로 이동
+      navigate("/about"); // About 페이지로 이동
     };
-  
+
     return (
-      <div style={{ display: "inline-block", position: "relative", zIndex: 50 }}>
+      <div
+        style={{ display: "inline-block", position: "relative", zIndex: 50 }}
+      >
         <motion.button
           style={{
             display: "flex",
@@ -347,7 +348,7 @@ const BetterWorldLanding: React.FC = () => {
               top: "50%",
             }}
           />
-  
+
           {/* 텍스트 */}
           <motion.span
             animate={{
@@ -363,7 +364,7 @@ const BetterWorldLanding: React.FC = () => {
           >
             ABOUT US
           </motion.span>
-  
+
           {/* 화살표 애니메이션 */}
           <motion.div
             initial={{
@@ -421,56 +422,55 @@ const BetterWorldLanding: React.FC = () => {
 
   // 모바일과 데스크탑을 위한 다른 애니메이션 값
   const pathLength = useTransform(scrollYProgress, [0, 3], [0, 3]);
-  
+
   const videoWidth = useTransform(
-    scrollYProgress, 
-    [0.6, 1], 
-    isMobile ? ["90%", "90%"] : ["35%", "80%"]
+    scrollYProgress,
+    [0.6, 1],
+    isMobile ? ["90%", "90%"] : ["35%", "80%"],
   );
-  
+
   const videoHeight = useTransform(
-    scrollYProgress, 
-    [0.6, 1], 
-    isMobile ? ["40px", "40vh"] : ["40px", "75vh"]
+    scrollYProgress,
+    [0.6, 1],
+    isMobile ? ["40px", "40vh"] : ["40px", "75vh"],
   );
-  
+
   // 공통 애니메이션 컨트롤러
   const elementOpacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
   const elementX = useTransform(
-    scrollYProgress, 
-    [0.5, 1], 
-    isMobile ? ["0%", "-5%"] : ["0%", "-20%"]
+    scrollYProgress,
+    [0.5, 1],
+    isMobile ? ["0%", "-5%"] : ["0%", "-20%"],
   );
-  
+
   const topContentInitialX = useTransform(
-    scrollYProgress, 
-    [0, 0.85], 
-    isMobile ? ["0%", "5%"] : ["0%", "10%"]
+    scrollYProgress,
+    [0, 0.85],
+    isMobile ? ["0%", "5%"] : ["0%", "10%"],
   );
 
   const videoY = useTransform(
     scrollYProgress,
     [0.6, 0.7, 1],
-    isMobile ? [100, 100, 140] : [200, 200, 360]
+    isMobile ? [100, 100, 140] : [200, 200, 360],
   );
 
   return (
     <LandingSection ref={ref}>
       <SVGContainer>
         {pathData && (
-          <motion.svg 
+          <motion.svg
             viewBox={viewBox}
             xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none" 
-            style={{ 
-              width: '100%', 
-              height: '100%',
-              position: 'absolute',
+            preserveAspectRatio="none"
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
               top: 0,
               left: 0,
               zIndex: 1,
-              pointerEvents: 'none',
-      
+              pointerEvents: "none",
             }}
           >
             <motion.path
@@ -485,34 +485,30 @@ const BetterWorldLanding: React.FC = () => {
         )}
       </SVGContainer>
 
-      <TopContentWrapper 
+      <TopContentWrapper
         style={{
           x: topContentInitialX,
           opacity: elementOpacity,
         }}
       >
-        <TopTitle1>
-          Better World      
-        </TopTitle1>
-        <TopTitle2>
-          Brighter Tomorrow
-        </TopTitle2>
+        <TopTitle1>Better World</TopTitle1>
+        <TopTitle2>Brighter Tomorrow</TopTitle2>
       </TopContentWrapper>
 
       <MainContentWrapper>
-        <VideoContainer 
-          style={{ 
-            width: videoWidth, 
+        <VideoContainer
+          style={{
+            width: videoWidth,
             height: videoHeight,
-            y: videoY
+            y: videoY,
           }}
         >
           <motion.video
-            src={""}
-            style={{ 
-              width: "100%", 
-              height: "100%", 
-              objectFit: "cover"
+            src={Video}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
             }}
             autoPlay
             muted
@@ -523,10 +519,15 @@ const BetterWorldLanding: React.FC = () => {
 
         <TextSection style={{ opacity: elementOpacity, x: elementX }}>
           <Description>
-          GOODWILL(KE)은 Establishing a student-led company that cares for people and society(사람과 사회를 위한 학생 주도의 기업 운영)를 통해 Better World, Brighter Tomorrow(더 나은 세상, 더 나은 내일)를 만들어 가고 있습니다. 이를 바탕으로 GOODWILL만의 문화를 형성하고 능동적 기업 운영을 통해 2015년부터 대전대신고 내에서 꾸준히 최고의 실적을 도출해 내며 끊임없이 발전과 변화를 꾀하고 있습니다.
+            GOODWILL(KE)은 Establishing a student-led company that cares for
+            people and society(사람과 사회를 위한 학생 주도의 기업 운영)를 통해
+            Better World, Brighter Tomorrow(더 나은 세상, 더 나은 내일)를 만들어
+            가고 있습니다. 이를 바탕으로 GOODWILL만의 문화를 형성하고 능동적
+            기업 운영을 통해 2015년부터 대전대신고 내에서 꾸준히 최고의 실적을
+            도출해 내며 끊임없이 발전과 변화를 꾀하고 있습니다.
           </Description>
         </TextSection>
-        
+
         <ButtonContainer style={{ opacity: elementOpacity, x: elementX }}>
           <AboutButton />
         </ButtonContainer>

@@ -31,26 +31,26 @@ const InnerContainer = styled.div`
 `;
 
 // Top section with "KEEP SCROLLING" text
-const ScrollPrompt = styled.div`
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  position: relative;
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 0.7rem;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.65rem;
-    margin-bottom: 1.2rem;
-  }
-
-  p {
-    margin: 0;
-  }
-`;
+// const ScrollPrompt = styled.div`
+//   font-size: 0.75rem;
+//   letter-spacing: 1px;
+//   position: relative;
+//   margin-bottom: 2rem;
+//
+//   @media (max-width: 768px) {
+//     font-size: 0.7rem;
+//     margin-bottom: 1.5rem;
+//   }
+//
+//   @media (max-width: 480px) {
+//     font-size: 0.65rem;
+//     margin-bottom: 1.2rem;
+//   }
+//
+//   p {
+//     margin: 0;
+//   }
+// `;
 
 // Main heading
 const BrandHeading = styled.h2`
@@ -358,10 +358,10 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <FooterContainer className={className}>
       <InnerContainer>
-        <ScrollPrompt>
-          <p>KEEP SCROLLING</p>
-          <p>TO LEARN MORE</p>
-        </ScrollPrompt>
+        {/*<ScrollPrompt>*/}
+        {/*  <p>KEEP SCROLLING</p>*/}
+        {/*  <p>TO LEARN MORE</p>*/}
+        {/*</ScrollPrompt>*/}
 
         <BrandHeading>WE ARE GOODWILL</BrandHeading>
 

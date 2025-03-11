@@ -121,7 +121,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 100px 50px;
+  padding: 100px 50px 30px 50px;
   font-family: 'Pretendard', sans-serif;
   position: relative;
   background-color: #fff;
