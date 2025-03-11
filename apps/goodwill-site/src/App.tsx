@@ -27,7 +27,7 @@ import FrequentQuetionFE from "./article_page/frequent_question_fe";
 import EverythingDaeshin from "./article_page/everythig_daeshin";
 import TalkPlanner from "./article_page/talk_plaaner";
 import IndoEnterprise from "./article_page/indo_enterprise";
-import BlogMainPage from "./blog_main/blog_main_page";
+// import BlogMainPage from "./blog_main/blog_main_page";
 import WhatisWork from "./article_page/what_is_work";
 import SeriousNotSerious from "./article_page/serious_not_serious";
 import MartialLawEconomy from "./article_page/martial_law_economy";
@@ -63,7 +63,7 @@ function App() {
           element={<EventSubmissionFinish />}
         />
 
-        <Route path="/article" element={<BlogMainPage />} />
+        {/*<Route path="/article" element={<BlogMainPage />} />*/}
         <Route path="/article/1" element={<EverythingClub />} />
         <Route path="/article/2" element={<EverythingDaeshin />} />
         <Route path="/article/3" element={<FirstTest />} />

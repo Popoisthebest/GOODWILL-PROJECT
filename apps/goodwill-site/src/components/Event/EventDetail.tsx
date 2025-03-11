@@ -1,7 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../../styles/EventDetail.css";
-import share_icon from "../../icons/share.svg";
+// import share_icon from "../../icons/share.svg";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 
 const EventDetail: React.FC = () => {

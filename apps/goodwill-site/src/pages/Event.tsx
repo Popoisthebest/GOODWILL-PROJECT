@@ -1,11 +1,11 @@
 import "../styles/EventMain.css";
-import aws from "../icons/aws.svg";
-import google from "../icons/google.svg";
-import microsoft from "../icons/microsoft.svg";
-import ksf from "../icons/ksf.svg";
-import goodwillconcert from "../images/goodwillconert.png";
+// import aws from "../icons/aws.svg";
+// import google from "../icons/google.svg";
+// import microsoft from "../icons/microsoft.svg";
+// import ksf from "../icons/ksf.svg";
+// import goodwillconcert from "../images/goodwillconert.png";
 import { useNavigate } from "react-router-dom";
-import DefaultLayout from "../layouts/DefaultLayout.tsx";
+// import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
 const Event = () => {
   const navigate = useNavigate();
