@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Justin from "../../../imgs/teamImg/justin.png";
+import Hyeonseo from "../../../imgs/teamImg/hyeonseo.png";
+import Bse from "../../../imgs/teamImg/bae.png";
+import Jaemin from "../../../imgs/teamImg/jamin.png";
+import Saehun from "../../../imgs/teamImg/saehun.png";
 
 // Types
 interface TeamMember {
@@ -147,7 +152,7 @@ const TeamPage: React.FC = () => {
 모자이크 조직이 아름다운 그림으로 재탄생하는 것은 한 조각 한 조각 자신의 일이어 할 자리에 있기 때문입니다.
 수백 개의 조각 중에서 하나라도 틀리면 그림이 완성되지 않습니다.
 GOODWILL의 팀원들은 모두 자신의 자리를 굳건히 지켜, 하나의 그림으로 인식되었으면 합니다.`,
-      imageUrl: "../../../imgs/teamImg/justin.png",
+      imageUrl: Justin,
     },
     {
       id: 2,
@@ -158,7 +163,7 @@ GOODWILL의 팀원들은 모두 자신의 자리를 굳건히 지켜, 하나의 
 모든 팀원이 능동적으로 참여하고, 서로 신뢰하며 협력할 때 비로소 단단한 조직이 탄생합니다.
 GOODWILL이 하나의 목표를 향해 나아갈 수 있도록, 팀원들의 역량을 극대화하고
 유기적인 소통이 이루어지는 환경을 만들어가겠습니다.`,
-      imageUrl: "../../../imgs/teamImg/hyeonseo.png",
+      imageUrl: Hyeonseo,
     },
     {
       id: 3,
@@ -168,7 +173,7 @@ GOODWILL이 하나의 목표를 향해 나아갈 수 있도록, 팀원들의 역
 완성도 높은 디자인은 작은 디테일에서 시작됩니다.
 사용자의 경험을 깊이 고민하며, 미적 감각과 실용성을 동시에 고려하는 디자인을 추구합니다.
 GOODWILL이 만드는 모든 결과물에 감각적이고 기능적인 아름다움을 담아내겠습니다.`,
-      imageUrl: "../../../imgs/teamImg/bae.png",
+      imageUrl: Bse,
     },
     {
       id: 4,
@@ -179,7 +184,7 @@ GOODWILL이 만드는 모든 결과물에 감각적이고 기능적인 아름다
 안정적이면서도 유연한 기술 환경을 구축하는 것이 저의 역할입니다.
 빠르게 변화하는 기술 속에서 팀이 효율적으로 협업할 수 있도록 이끌고,
 최적의 기술적 방향성을 제시하여 GOODWILL의 성장을 뒷받침하겠습니다.`,
-      imageUrl: "../../../imgs/teamImg/jamin.PNG",
+      imageUrl: Jaemin,
     },
     {
       id: 5,
@@ -189,7 +194,7 @@ GOODWILL이 만드는 모든 결과물에 감각적이고 기능적인 아름다
 기술의 발전은 끊임없는 탐구와 실험에서 시작됩니다.
 새로운 가능성을 발견하고, 그것을 실제로 구현하는 과정 속에서 혁신이 탄생한다고 믿습니다.
 끊임없는 도전과 창의적인 접근을 통해 GOODWILL이 한 단계 더 성장할 수 있도록 기여하겠습니다.`,
-      imageUrl: "../../../imgs/teamImg/saehun.png",
+      imageUrl: Saehun,
     },
   ];
 

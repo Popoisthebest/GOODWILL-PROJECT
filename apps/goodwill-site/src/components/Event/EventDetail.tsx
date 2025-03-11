@@ -82,12 +82,6 @@ const EventDetail: React.FC = () => {
             E. s.h.putrats@wearegoodwill.kro.kr
           </div>
           <div className="apply_main_border"></div>
-          <div className="apply_ask_text_box">
-            <div className="apply_ask_text">이현서</div>
-            <div className="apply_ask_text_gray">COO</div>
-          </div>
-          <div className="apply_ask_text">M. 010-2993-2845</div>
-          <div className="apply_ask_text">gw.hs@wearegoodwill.kro.kr</div>
           <button
             onClick={() => {
               navigate(`/event/form/${event.id}`, {
@@ -102,7 +96,7 @@ const EventDetail: React.FC = () => {
             }}
             className="apply_btn"
           >
-            지원하기
+            참여하기
           </button>
           <button className="apply_btn1_boxes" onClick={handleShare}>
             <div className="apply_btn1">공유하기</div>

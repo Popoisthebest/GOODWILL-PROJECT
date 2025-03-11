@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/TeamCulture.css";
+import styles from "../styles/TeamCulture.module.css";
 import TeamCultrue from "../assets/icons/Maskgroup.png";
 // import clevel from "../assets/icons/clevel.svg";
 // import gm from "../assets/icons/gm.svg";
@@ -17,6 +17,8 @@ import review from "../assets/icons/review.svg";
 import uparrow from "../assets/icons/uparrow.svg";
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
+
+console.log("Styles:", styles);
 
 // const roles = [
 //   {
@@ -126,9 +128,9 @@ const TeamCulture = () => {
   return (
     <div>
       <DefaultLayout>
-        <div className="start_box">
-          <img className="start_img" src={TeamCultrue} alt="" />
-          <div className="start_box_text">
+        <div className={styles.start_box}>
+          <img className={styles.start_img} src={TeamCultrue} alt="" />
+          <div className={styles.start_box_text}>
             GOODWILL을 만들어가는
             <br />
             주요 역할을 소개합니다.
@@ -177,10 +179,10 @@ const TeamCulture = () => {
         </button>
       </div> */}
 
-        <div className="contetnt_wrapper">
-          <div className="dri_culture">
-            <div className="dri_title">DRI 문화로 일합니다</div>
-            <div className="dri_sub">
+        <div className={styles.contetnt_wrapper}>
+          <div className={styles.dri_culture}>
+            <div className={styles.dri_title}>DRI 문화로 일합니다</div>
+            <div className={styles.dri_sub}>
               GOODWILL은 '직급'의 개념이 없어요. Direct Responsible Individual.
               <br />
               일명 'DRI'라고 하는 업무의 담당자들이 자율적으로 프로젝트를
@@ -188,85 +190,89 @@ const TeamCulture = () => {
             </div>
           </div>
 
-          <div className="main_val">
-            <div className="main_val_text">GOODWILL의 핵심 가치</div>
-            <div className="main_val_boxes">
-              <div className="main_val_box">
-                <div className="val_box_num">01</div>
-                <div className="val_text">Mission over Individual</div>
-                <div className="val_content">
+          <div className={styles.main_val}>
+            <div className={styles.main_val_text}>GOODWILL의 핵심 가치</div>
+            <div className={styles.main_val_boxes}>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>01</div>
+                <div className={styles.val_text}>Mission over Individual</div>
+                <div className={styles.val_content}>
                   개인의 목표보다 GOODWILL팀의 미션을 우선하라
                 </div>
               </div>
-              <div className="main_val_box">
-                <div className="val_box_num">02</div>
-                <div className="val_text">Aim Higher</div>
-                <div className="val_content">더 높은 수준을 추구하라</div>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>02</div>
+                <div className={styles.val_text}>Aim Higher</div>
+                <div className={styles.val_content}>
+                  더 높은 수준을 추구하라
+                </div>
               </div>
-              <div className="main_val_box">
-                <div className="val_box_num">03</div>
-                <div className="val_text">Focus on Impact</div>
-                <div className="val_content">
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>03</div>
+                <div className={styles.val_text}>Focus on Impact</div>
+                <div className={styles.val_content}>
                   하면 좋을 10가지보다, 임팩트를 만드는데 집중하라
                 </div>
               </div>
             </div>
-            <div className="main_val_boxes">
-              <div className="main_val_box">
-                <div className="val_box_num">04</div>
-                <div className="val_text">Question Every Assumption</div>
-                <div className="val_content">
+            <div className={styles.main_val_boxes}>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>04</div>
+                <div className={styles.val_text}>Question Every Assumption</div>
+                <div className={styles.val_content}>
                   모든 기본 가정에 근원적 물음을 제기하라
                 </div>
               </div>
-              <div className="main_val_box">
-                <div className="val_box_num">05</div>
-                <div className="val_text">Execution over Perfection</div>
-                <div className="val_content">
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>05</div>
+                <div className={styles.val_text}>Execution over Perfection</div>
+                <div className={styles.val_content}>
                   완벽해지려 하기보다 실행에 집중하라
                 </div>
               </div>
-              <div className="main_val_box">
-                <div className="val_box_num">06</div>
-                <div className="val_text">Learn Proactively</div>
-                <div className="val_content">주도적으로 학습하라라</div>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>06</div>
+                <div className={styles.val_text}>Learn Proactively</div>
+                <div className={styles.val_content}>주도적으로 학습하라라</div>
               </div>
             </div>
-            <div className="main_val_boxes">
-              <div className="main_val_box">
-                <div className="val_box_num">07</div>
-                <div className="val_text">Move with Urgency</div>
-                <div className="val_content">신속한 속도로 움직이라라</div>
+            <div className={styles.main_val_boxes}>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>07</div>
+                <div className={styles.val_text}>Move with Urgency</div>
+                <div className={styles.val_content}>
+                  신속한 속도로 움직이라라
+                </div>
               </div>
-              <div className="main_val_box">
-                <div className="val_box_num">08</div>
-                <div className="val_text">Ask for Feedback</div>
-                <div className="val_content">피드백을 자주 구하라</div>
+              <div className={styles.main_val_box}>
+                <div className={styles.val_box_num}>08</div>
+                <div className={styles.val_text}>Ask for Feedback</div>
+                <div className={styles.val_content}>피드백을 자주 구하라</div>
               </div>
-              <div className="main_val_box1">
-                <div className="detail_value">
+              <div className={styles.main_val_box1}>
+                <div className={styles.detail_value}>
                   GOODWILL 핵심 가치에 대한
                   <br />
                   자세한 내용은 여기서 볼 수 있어요
                 </div>
                 <div
-                  className="article_btn"
+                  className={styles.article_btn}
                   onClick={() => navigate("/article")}
                 >
                   아티클 보기
-                  <img src={rightarrow} className="article_pic" alt="" />
+                  <img src={rightarrow} className={styles.article_pic} alt="" />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="work_struc">
-            <div className="work_struc_text">GOODWILL의 업무 구조</div>
-            <div className="struc_two_boxes">
-              <div className="struc_detail_box">
-                <div className="struc_title">스쿼드(Squad)</div>
-                <img src={squad} alt="squad" className="struc_pic" />
-                <div className="struc_main_content">
+          <div className={styles.work_struc}>
+            <div className={styles.work_struc_text}>GOODWILL의 업무 구조</div>
+            <div className={styles.struc_two_boxes}>
+              <div className={styles.struc_detail_box}>
+                <div className={styles.struc_title}>스쿼드(Squad)</div>
+                <img src={squad} alt="squad" className={styles.struc_pic} />
+                <div className={styles.struc_main_content}>
                   &middot; 특정 문제 해결을 위한 자율 조직으로, 목표와 핵심
                   결과(OKR)를 설정해 운영됨.
                   <br />
@@ -279,10 +285,10 @@ const TeamCulture = () => {
                   자율적이고 집중적인 방식으로 운영됨.
                 </div>
               </div>
-              <div className="struc_detail_box">
-                <div className="struc_title">TF(Task Force)</div>
-                <img src={tf} alt="squad" className="struc_pic" />
-                <div className="struc_main_content">
+              <div className={styles.struc_detail_box}>
+                <div className={styles.struc_title}>TF(Task Force)</div>
+                <img src={tf} alt="squad" className={styles.struc_pic} />
+                <div className={styles.struc_main_content}>
                   &middot; 특정 문제 해결을 위한 자율 조직으로, 목표와 핵심
                   결과(OKR)를 설정해 운영됨.
                   <br />
@@ -298,53 +304,60 @@ const TeamCulture = () => {
             </div>
           </div>
 
-          <div className="scrum">
-            <div className="scrum_text">GOODWILL SCRUM</div>
-            <div className="scrum_detail_boxes">
-              <div className="scrum_detail_box">
-                <div className="scrum_detail_title">
-                  <div className="scrum_detail_title_text">WAM</div>
+          <div className={styles.scrum}>
+            <div className={styles.scrum_text}>GOODWILL SCRUM</div>
+            <div className={styles.scrum_detail_boxes}>
+              <div className={styles.scrum_detail_box}>
+                <div className={styles.scrum_detail_title}>
+                  <div className={styles.scrum_detail_title_text}>WAM</div>
                   <img src={wam} alt="wam" className="scrum_img" />
                 </div>
-                <div className="scrum_detail_subtitle">
+                <div className={styles.scrum_detail_subtitle}>
                   Weekly Alignment Meeting
                 </div>
-                <div className="scrum_detail_content">
+                <div className={styles.scrum_detail_content}>
                   주간 목표와 진행 상황을 공유하며, 우선순위를 조정하고 팀 간
                   정렬을 맞추는 회의.
                 </div>
               </div>
-              <div className="scrum_detail_box">
-                <div className="scrum_detail_title">
-                  <div className="scrum_detail_title_text">MAM</div>
-                  <img src={mam} alt="wam" className="scrum_img" />
+
+              <div className={styles.scrum_detail_box}>
+                <div className={styles.scrum_detail_title}>
+                  <div className={styles.scrum_detail_title_text}>MAM</div>
+                  <img src={mam} alt="wam" className={styles.scrum_img} />
                 </div>
-                <div className="scrum_detail_subtitle">
+                <div className={styles.scrum_detail_subtitle}>
                   Monthly Alignment Meeting
                 </div>
-                <div className="scrum_detail_content">
+                <div className={styles.scrum_detail_content}>
                   월간 성과를 리뷰하고 다음 달 목표를 설정하며, 장기적인
                   방향성과 전략을 점검하는 회의.
                 </div>
               </div>
-              <div className="scrum_detail_box">
-                <div className="scrum_detail_title">
-                  <div className="scrum_detail_title_text">회고 미팅</div>
-                  <img src={cal} alt="wam" className="scrum_img" />
+              <div className={styles.scrum_detail_box}>
+                <div className={styles.scrum_detail_title}>
+                  <div className={styles.scrum_detail_title_text}>
+                    회고 미팅
+                  </div>
+                  <img src={cal} alt="wam" className={styles.scrum_img} />
                 </div>
-                <div className="scrum_detail_subtitle">Retrospective</div>
-                <div className="scrum_detail_content">
+                <div className={styles.scrum_detail_subtitle}>
+                  Retrospective
+                </div>
+                <div className={styles.scrum_detail_content}>
                   프로젝트나 업무 과정을 되돌아보며 성과와 개선점을 논의하고,
                   협업 방식과 프로세스를 개선하는 회의.
                 </div>
               </div>
-              <div className="scrum_detail_box">
-                <div className="scrum_detail_title">
-                  <div className="scrum_detail_title_text">코드 리뷰</div>
-                  <img src={review} alt="wam" className="scrum_img" />
+              <div className={styles.scrum_detail_box}>
+                <div className={styles.scrum_detail_title}>
+                  <div className={styles.scrum_detail_title_text}>
+                    코드 리뷰
+                  </div>
+                  <img src={review} alt="wam" className={styles.scrum_img} />
                 </div>
-                <div className="scrum_detail_subtitle">Code Review</div>
-                <div className="scrum_detail_content">
+                <div className={styles.scrum_detail_subtitle}>Code Review</div>
+                <div className={styles.scrum_detail_content}>
                   개발자가 작성한 코드를 동료가 검토하여 버그, 성능, 가독성을
                   점검하고 코드 품질을 유지하는 과정.
                 </div>
@@ -352,104 +365,106 @@ const TeamCulture = () => {
             </div>
           </div>
 
-          <div className="benefit">
-            <div className="benefit_title">GOODWILL BENEFIT</div>
-            <div className="benefit_boxes">
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">1</div>
-                <div className="benefit_box_title">
+          <div className={styles.benefit}>
+            <div className={styles.benefit_title}>GOODWILL BENEFIT</div>
+            <div className={styles.benefit_boxes}>
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>1</div>
+                <div className={styles.benefit_box_title}>
                   KENTECH 입학 시 고교 학년별 1학점 인정제
                 </div>
-                <div className="benefit_box_content">
+                <div className={styles.benefit_box_content}>
                   GOODWILL Corp.은 KENTECH과의 고교-대학 연계 에너지공학 탐구
                   연계 동아리로써 KENTECH 학생들과 긴밀한 협업을 통해 프로젝트를
                   진행하고, 학년 별로 1학점을 부여하여 KENTECH 입학 시 특전 제공
                 </div>
               </div>
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">2</div>
-                <div className="benefit_box_title">멘토링</div>
-                <div className="benefit_box_content">
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>2</div>
+                <div className={styles.benefit_box_title}>멘토링</div>
+                <div className={styles.benefit_box_content}>
                   GOODWILL CEO가 대학 석사 수준의 MBA, 컨설팅 등 ‘대학 석사 이상
                   ~ 현업 실무’ 수준의 경영학 교육 멘토링 제공
                 </div>
               </div>
             </div>
-            <div className="benefit_boxes">
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">3</div>
-                <div className="benefit_box_title">프로젝트 활동비</div>
-                <div className="benefit_box_content">
+            <div className={styles.benefit_boxes}>
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>3</div>
+                <div className={styles.benefit_box_title}>프로젝트 활동비</div>
+                <div className={styles.benefit_box_content}>
                   GOODWILL에서 진행하는 스쿼드, TF 결성 시 프로젝트 활동비
                   지급(한도 무제한)
                 </div>
               </div>
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">4</div>
-                <div className="benefit_box_title">자기주도형 학습비</div>
-                <div className="benefit_box_content">
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>4</div>
+                <div className={styles.benefit_box_title}>
+                  자기주도형 학습비
+                </div>
+                <div className={styles.benefit_box_content}>
                   프로젝트 수행 관련 강의 수강 등의 자기주도형 학습비 지원
                 </div>
               </div>
             </div>
-            <div className="benefit_boxes">
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">5</div>
-                <div className="benefit_box_title">지속성장지원</div>
-                <div className="benefit_box_content">
+            <div className={styles.benefit_boxes}>
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>5</div>
+                <div className={styles.benefit_box_title}>지속성장지원</div>
+                <div className={styles.benefit_box_content}>
                   인적 네트워킹, 기술교류 등 연계
                 </div>
               </div>
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">6</div>
-                <div className="benefit_box_title">회의 및 개발공간</div>
-                <div className="benefit_box_content">
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>6</div>
+                <div className={styles.benefit_box_title}>회의 및 개발공간</div>
+                <div className={styles.benefit_box_content}>
                   창업 중심 대학 창업 보육 센터 이용 지원
                 </div>
               </div>
             </div>
-            <div className="benefit_boxes">
-              <div className="benefit_box">
-                <div className="benefit_box_numbering">7</div>
-                <div className="benefit_box_title">
+            <div className={styles.benefit_boxes}>
+              <div className={styles.benefit_box}>
+                <div className={styles.benefit_box_numbering}>7</div>
+                <div className={styles.benefit_box_title}>
                   신규 입사자 웰컴키트 지급
                 </div>
               </div>
-              <div className="benefit_box1">
-                <div className="benefit_box_numbering">6</div>
-                <div className="benefit_box_title">회의 및 개발공간</div>
-                <div className="benefit_box_content">
+              <div className={styles.benefit_box1}>
+                <div className={styles.benefit_box_numbering}>6</div>
+                <div className={styles.benefit_box_title}>회의 및 개발공간</div>
+                <div className={styles.benefit_box_content}>
                   창업 중심 대학 창업 보육 센터 이용 지원
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="with">
-            <div className="with_title">GOODWILL 함께하기</div>
-            <div className="with_boxes">
-              <div className="with_box">
-                <img src={warn} className="with_pic" alt="" />
-                <div className="with_box_title">삐용삐용</div>
-                <div className="with_box_content">
+          <div className={styles.with}>
+            <div className={styles.with_title}>GOODWILL 함께하기</div>
+            <div className={styles.with_boxes}>
+              <div className={styles.with_box}>
+                <img src={warn} className={styles.with_pic} alt="" />
+                <div className={styles.with_box_title}>삐용삐용</div>
+                <div className={styles.with_box_content}>
                   &middot; 카카오워크 내에 생성된 단톡방인 ‘삐용삐용’방에 회사에
                   대한 문제 상황을 알리는 사항이다.
                 </div>
               </div>
-              <div className="with_box">
-                <img src={bamboo} alt="" className="with_pic" />
-                <div className="with_box_title">대나무 숲</div>
-                <div className="with_box_content">
+              <div className={styles.with_box}>
+                <img src={bamboo} alt="" className={styles.with_pic} />
+                <div className={styles.with_box_title}>대나무 숲</div>
+                <div className={styles.with_box_content}>
                   &middot; 카카오워크 내의 공지사항 시스템 중 생성된 대나무숲에
                   글을 남기는 시스템이며, 스쿼드 혹은 회사 내 활동 중에서 실수를
                   했거나 미안한 일이 생겼을 경우 대나무숲에 이를 알리고 팀원들을
                   실수한 팀원 당사자의 실수를 축하하고 응원해주는 문화이다.
                 </div>
               </div>
-              <div className="with_box">
-                <img src={rail} alt="" className="with_pic" />
-                <div className="with_box_title">열차 기관사 되기</div>
-                <div className="with_box_content">
+              <div className={styles.with_box}>
+                <img src={rail} alt="" className={styles.with_pic} />
+                <div className={styles.with_box_title}>열차 기관사 되기</div>
+                <div className={styles.with_box_content}>
                   &middot; 굿윌 사내 프로그램 및 서버 중 유일하게 정신줄 놓고
                   행동할 수 있는 단톡방 가끔 가다 인생이 피폐하거나 무료하고
                   따분해졌을 때 기관사가 되어 지랄 폭주를 시작하는 기관사가
@@ -462,7 +477,11 @@ const TeamCulture = () => {
         </div>
 
         {showButton && (
-          <img src={uparrow} className="scroll-to-top" onClick={scrollToTop} />
+          <img
+            src={uparrow}
+            className={styles.scroll_to_top}
+            onClick={scrollToTop}
+          />
         )}
       </DefaultLayout>
     </div>

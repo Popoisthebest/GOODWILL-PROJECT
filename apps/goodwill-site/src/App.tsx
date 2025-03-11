@@ -34,7 +34,7 @@ import MartialLawEconomy from "./article_page/martial_law_economy";
 import Pycoin from "./article_page/pycoin";
 import Marketing3 from "./article_page/marketing_3";
 import HolidayEconomy from "./article_page/holiday_economy";
-import TeamCulture from "./pages/TeamCulture.tsx";
+// import TeamCulture from "./pages/TeamCulture.tsx";
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
 
-        <Route path="/team-and-culture" element={<TeamCulture />} />
+        {/*<Route path="/team-and-culture" element={<TeamCulture />} />*/}
         {/*<Route path="/project" element={<Project />} />*/}
         <Route path="/announcement" element={<Announcement />} />
         <Route
