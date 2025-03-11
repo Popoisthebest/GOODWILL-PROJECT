@@ -53,8 +53,8 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
                 required: `${placeholder}은(는) 필수입니다.`,
                 ...(name === "coverLetter" && {
                   validate: (value) =>
-                    (value?.replace(/\s/g, "").length || 0) <= 100 ||
-                    "최대 100자까지 입력할 수 있습니다.",
+                    (value?.replace(/\s/g, "").length || 0) <= 1500 ||
+                    "최대 1500자까지 입력할 수 있습니다.",
                 }),
               })
             : register(name))} // 질문사항 필드는 검증 없이 등록
@@ -103,7 +103,7 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
         {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}
         {name === "coverLetter" && (
           <div css={letterCount}>
-            {inputValue?.replace(/\s/g, "").length || 0}/100
+            {inputValue?.replace(/\s/g, "").length || 0}/1500
           </div>
         )}
       </div>

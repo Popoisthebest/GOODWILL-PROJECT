@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "goodwill-a5928"
-  }
+    "default": "goodwill-a5928",
+    "product": "goodwill-a5928"
+  },
+  "targets": {},
+  "etags": {}
 }
