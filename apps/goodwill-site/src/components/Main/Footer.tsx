@@ -12,6 +12,7 @@ const FooterContainer = styled.footer`
   box-sizing: border-box;
   margin: calc(-50vw + 50%);
   width: 100vw;
+  
 `;
 
 // Inner container to control content positioning

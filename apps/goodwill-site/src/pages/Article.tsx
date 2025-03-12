@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import BlogCard from "../blog_main/blog_card.tsx";
 import BlogIcon from "../assets/blog_icon/light_arrow-left.svg?react";
 // import SearchIcon from "../assets/blog_icon/MagnifyingGlass.svg?react";
@@ -6,6 +7,10 @@ import BlogIcon from "../assets/blog_icon/light_arrow-left.svg?react";
 const BlogMainPage: React.FC = () => {
   // const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   // const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 페이지가 로드될 때 최상단으로 이동
+  }, []);
 
   const blogCards = [
     { id: 1, title: "신입생들을 위한 동아리의 모든 것", date: "2025-02-18" },
