@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion'; // framer-motion 추가
+import { itemDiv } from "../Project/Project.style.ts";
 
 // Define the project type
 interface Project {

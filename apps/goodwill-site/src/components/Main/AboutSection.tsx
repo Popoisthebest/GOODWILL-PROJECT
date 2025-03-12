@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styled from "@emotion/styled";
-import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4";
+
 import { useNavigate } from "react-router-dom";
 
 // 미디어 쿼리를 위한 브레이크포인트 정의
@@ -504,7 +504,7 @@ const BetterWorldLanding: React.FC = () => {
           }}
         >
           <motion.video
-            src={Video}
+            src={""}
             style={{
               width: "100%",
               height: "100%",
