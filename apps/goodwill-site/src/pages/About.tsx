@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import AboutImage from "../components/About/AboutImage.tsx";
 import Leaders from "../components/About/leaders";
 import Members from "../components/About/members";
@@ -9,6 +10,9 @@ import Footer from "../components/Main/Footer";
 import AboutHeader from "../components/Header/AboutHeader.tsx";
 
 const App: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
   return (
     <>
       <AboutHeader />

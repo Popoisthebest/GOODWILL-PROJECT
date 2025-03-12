@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           <Address>
             <AddressLine>대전광역시</AddressLine>
             <AddressLine>서구</AddressLine>
-            <AddressLine>오량길 98,</AddressLine>
+            <AddressLine>오량1길 98,</AddressLine>
             <AddressLine>대전대신고등학교</AddressLine>
           </Address>
         </LeftSection>
@@ -127,7 +127,8 @@ const FooterContainer = styled.footer`
   background-color: #fff;
   color: #000;
   width: 85vw;
-  min-height: 600px;
+  min-height: 400px;
+  left: 80px;
 
   @media (max-width: 1200px) {
     padding: 80px 40px;
@@ -196,6 +197,7 @@ const AddressLine = styled.p`
 const CenterSection = styled.div`
   flex: 1;
   min-width: 200px;
+  transform: translateX(-70px);
 
   @media (max-width: 1024px) {
     flex: 100%;
@@ -359,6 +361,7 @@ const BottomSection = styled.div`
 const Copyright = styled.div`
   font-size: 24px;
   margin-top: 100px;
+  transform: translateY(70px);
 
   @media (max-width: 1024px) {
     margin-top: 80px;
@@ -380,8 +383,8 @@ const ScrollTopButton = styled.button`
   z-index: 2;
   bottom: 0;
   right: 0;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background-color: #000;
   color: #fff;
@@ -413,8 +416,8 @@ const ScrollTopButton = styled.button`
 `;
 
 const ArrowIconSVG = styled.svg`
-  width: 60px;
-  height: 70px;
+  width: 50px;
+  height: 60px;
 
   @media (max-width: 1024px) {
     width: 50px;
