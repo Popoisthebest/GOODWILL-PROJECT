@@ -4,6 +4,7 @@ export const mainDiv = css`
   display: flex;
   flex-direction: row;
   align-items: center;
+  transform: translateX(70px);
 `;
 
 export const mainText = css`
@@ -26,6 +27,7 @@ export const subTitle = css`
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 33.6px */
+  transform: translateX(70px);
 `;
 
 export const subText = css`
@@ -35,6 +37,7 @@ export const subText = css`
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 28px */
+  transform: translateX(70px);
 `;
 
 export const itemDiv = css`
@@ -42,3 +45,6 @@ export const itemDiv = css`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
 `;
+
+
+

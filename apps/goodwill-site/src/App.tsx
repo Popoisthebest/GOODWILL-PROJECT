@@ -34,7 +34,9 @@ import MartialLawEconomy from "./article_page/martial_law_economy";
 import Pycoin from "./article_page/pycoin";
 import Marketing3 from "./article_page/marketing_3";
 import HolidayEconomy from "./article_page/holiday_economy";
+import ProjectDetailPage from "./components/Project/ProjectDetailPage.tsx";
 // import TeamCulture from "./pages/TeamCulture.tsx";
+
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
 
         {/*<Route path="/team-and-culture" element={<TeamCulture />} />*/}
         <Route path="/project" element={<Project />} />
+        <Route path="/project/:id" element={<ProjectDetailPage />} />
         <Route path="/announcement" element={<Announcement />} />
         <Route
           path="/notice/:category/:title/:date/:views/:content"
@@ -62,6 +65,7 @@ function App() {
           path="/event-submission-finished"
           element={<EventSubmissionFinish />}
         />
+      
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />

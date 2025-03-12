@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion'; // framer-motion 추가
-import { itemDiv } from "../Project/Project.style.ts";
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-// Define the project type
 interface Project {
   id: string;
   title: string;
@@ -12,15 +11,12 @@ interface Project {
   description?: string;
 }
 
-// Props for the FeaturedWork component
 interface FeaturedWorkProps {
   projects: Project[];
+  className?: string;
+  showButton?: boolean; // 버튼 표시 여부를 제어하는 prop 추가
 }
 
-// Define isMobile
-// const isMobile = window.innerWidth <= 768;
-
-// Styled components using emotion
 const FeaturedWorkContainer = styled.section`
   max-width: 2000px;
   margin: 0 auto;
@@ -33,7 +29,7 @@ const FeaturedWorkTitle = styled.h2`
   font-weight: 700;
   margin-bottom: 40px;
   font-family: sans-serif;
-  transform: translateY(120px);
+  transform: translateY(20px);
 `;
 
 const Subtitle = styled.h1`
@@ -58,12 +54,12 @@ const ProjectsGrid = styled.div`
   }
 `;
 
-const ProjectCard = styled(motion.div)` // motion.div로 변경
+const ProjectCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
   cursor: pointer;
-  transition:  0.3s ease;
+  transition: 0.3s ease;
 
   &:hover {
     scale: 1.03;
@@ -75,7 +71,7 @@ const ProjectCard = styled(motion.div)` // motion.div로 변경
 const ProjectImage = styled.div<{ imageUrl: string }>`
   height: 240px;
   border-radius: 20px;
-  background-color: #e0e0e0; /* Default gray background */
+  background-color: #e0e0e0;
   background-image: ${props => props.imageUrl ? `url(${props.imageUrl})` : 'none'};
   background-size: cover;
   background-position: center;
@@ -99,6 +95,11 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 40px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
 
 const AboutButton = () => {
@@ -146,21 +147,20 @@ const AboutButton = () => {
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouchStart}
       >
-        {/* 점을 배경 원으로 활용 */}
         <motion.div
           initial={{
             width: 8,
             height: 8,
             backgroundColor: "#000",
             borderRadius: "50%",
-            left: "20px", // 초기 위치를 왼쪽으로 설정
+            left: "20px",
             top: "50%",
             transform: "translateY(-50%)",
           }}
           animate={{
             width: isHovered ? "400px" : 8,
             height: isHovered ? "400px" : 8,
-            left: isHovered ? "-50%" : "20px", // hover 시 중앙으로 이동
+            left: isHovered ? "-50%" : "20px",
             backgroundColor: isHovered ? "rgba(5, 48, 140, 1)" : "#000",
             borderRadius: isHovered ? "9999px" : "50%",
           }}
@@ -176,8 +176,6 @@ const AboutButton = () => {
             top: "50%",
           }}
         />
-
-        {/* 텍스트 */}
         <motion.span
           animate={{
             color: isHovered ? "#ffffff" : "#000000",
@@ -192,8 +190,6 @@ const AboutButton = () => {
         >
           SEE ALL PROJECTS
         </motion.span>
-
-        {/* 화살표 애니메이션 */}
         <motion.div
           initial={{
             x: 20,
@@ -244,31 +240,32 @@ const AboutButton = () => {
 
 const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   projects,
+  className,
+  showButton = true, // 기본값은 true로 설정
 }) => {
   return (
-    <FeaturedWorkContainer>
+    <FeaturedWorkContainer className={className}>
       <FeaturedWorkTitle>Featured Work</FeaturedWorkTitle>
-      <Subtitle>내용을 입력해 주세요.내용을 입력해 주세요. <br />내용을 입력해 주세요.내용을 입력해 주세요. <br />내용을 입력해 주세요.내용을 입력해 주세요.</Subtitle>
-      
+      <Subtitle></Subtitle>
+
       <ProjectsGrid>
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            initial={{ scale:0.9, y: 50 }} // 초기 상태: 투명하고 아래로 이동
-            whileInView={{ scale:1, y: 0 }} // 화면에 보일 때: 투명도 1, 원래 위치로
-            viewport={{ once: false }} // 한 번만 애니메이션 실행
-            transition={{ duration: 0.1, delay: index * 0.1 }} // 지연 시간 추가
-          >
-            <ProjectImage imageUrl={project.imageUrl} />
-            <ProjectCategory>{project.category}</ProjectCategory>
-            <ProjectTitle>{project.title}</ProjectTitle>
-          </ProjectCard>
+        {projects.map((project) => (
+          <StyledLink to={`/project/${project.id}`} key={project.id}>
+            <ProjectCard>
+              <ProjectImage imageUrl={project.imageUrl} />
+              <ProjectCategory>{project.category}</ProjectCategory>
+              <ProjectTitle>{project.title}</ProjectTitle>
+            </ProjectCard>
+          </StyledLink>
         ))}
       </ProjectsGrid>
-      
-      <ButtonContainer>
-        <AboutButton />
-      </ButtonContainer>
+
+      {/* showButton이 true인 경우에만 버튼 표시 */}
+      {showButton && (
+        <ButtonContainer className="button-container">
+          <AboutButton />
+        </ButtonContainer>
+      )}
     </FeaturedWorkContainer>
   );
 };
