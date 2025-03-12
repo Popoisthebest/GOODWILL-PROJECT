@@ -13,8 +13,24 @@
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 200%; /* 50.4px */
+}
+
+.announcement-button {
+  display: flex;
+  height: 64px;
+  width: 340px;
+  border: 1px solid #000;
+  border-radius: 96px;
+  align-items: center;
+  justify-content: center;
+
+  color: #000;
+  font-family: "Pretendard";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .wrapper {
