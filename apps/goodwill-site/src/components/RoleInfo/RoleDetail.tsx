@@ -18,7 +18,7 @@ const RoleDetail = () => {
   const [roleData, setRoleData] = useState<RoleData | null>(null);
 
   useEffect(() => {
-    fetch("../../../public/data/roles.json") // JSON 데이터 불러오기
+    fetch("/data/roles.json") // JSON 데이터 불러오기
       .then((res) => res.json())
       .then((data: Record<string, RoleData>) => {
         if (roleName && data[roleName]) {
