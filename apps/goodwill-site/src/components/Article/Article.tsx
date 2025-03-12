@@ -1,10 +1,10 @@
 import React from "react";
-import BlogCard from "./blog_card";
-import BlogIcon from "../assets/blog_icon/light_arrow-left.svg?react";
-import DefaultLayout from "../layouts/DefaultLayout.tsx";
+import BlogCard from "./ArticleCard.tsx";
+import BlogIcon from "../../assets/blog_icon/light_arrow-left.svg?react";
+import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 // import SearchIcon from "../assets/blog_icon/MagnifyingGlass.svg?react";
 
-const BlogMainPage: React.FC = () => {
+const Article: React.FC = () => {
   // const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   // const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
@@ -254,4 +254,4 @@ const BlogMainPage: React.FC = () => {
   );
 };
 
-export default BlogMainPage;
+export default Article;
