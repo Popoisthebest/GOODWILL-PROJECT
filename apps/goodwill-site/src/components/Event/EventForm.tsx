@@ -21,6 +21,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { db } from "../../firebase/firebaseConfig.ts";
 import AgreeButton from "../ApplicationForm/Agree/AgreeButton/AgreeButton.tsx";
 import EventApplicationFormTextInput from "./EventApplicationFormTextInput.tsx";
+import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 
 const EventForm = () => {
   const location = useLocation();
@@ -128,114 +129,116 @@ const EventForm = () => {
 
   return (
     <>
-      <div
-        css={{
-          display: "flex",
-          justifyContent: "center",
-          paddingBottom: "50px",
-        }}
-      >
-        <div css={eventDiv}>
-          {/* 이벤트 정보 */}
-          <div css={eventTitleDiv}>
-            <div>
-              <div css={eventTitle}>{event.title}</div>
-              <div css={{ height: "16px" }}></div>
-              <div css={eventSubtitle}>{event.date}</div>
-              <div css={eventSubtitle}>{event.place}</div>
+      <DefaultLayout>
+        <div
+          css={{
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: "50px",
+          }}
+        >
+          <div css={eventDiv}>
+            {/* 이벤트 정보 */}
+            <div css={eventTitleDiv}>
+              <div>
+                <div css={eventTitle}>{event.title}</div>
+                <div css={{ height: "16px" }}></div>
+                <div css={eventSubtitle}>{event.date}</div>
+                <div css={eventSubtitle}>{event.place}</div>
+              </div>
+              <div css={{ width: "100px" }}></div>
+              <div>
+                <img src={event.image} alt="" css={eventImage} />
+              </div>
             </div>
-            <div css={{ width: "100px" }}></div>
-            <div>
-              <img src={event.image} alt="" css={eventImage} />
+
+            <div css={{ height: "48px" }}></div>
+
+            {/* 신청서 양식 */}
+            <div css={ApplicationInformation}>신청자 정보</div>
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>기본 정보</div>
+              <div css={{ width: "10px" }}></div>
+              <div css={BasicInformationText}>필수</div>
             </div>
-          </div>
-
-          <div css={{ height: "48px" }}></div>
-
-          {/* 신청서 양식 */}
-          <div css={ApplicationInformation}>신청자 정보</div>
-          <div css={{ height: "32px" }}></div>
-          <div css={BasicInformationContainer}>
-            <div css={BasicInformation}>기본 정보</div>
-            <div css={{ width: "10px" }}></div>
-            <div css={BasicInformationText}>필수</div>
-          </div>
-          <div css={{ height: "32px" }}></div>
-          <form>
-            <EventApplicationFormTextInput
-              name="name"
-              placeholder="이름"
-              inputType="text"
-              register={register}
-              errorMessage={errors.name?.message}
-            />
-            <div css={{ height: "24px" }}></div>
-            <EventApplicationFormTextInput
-              name="studentId"
-              placeholder="학번"
-              inputType="text"
-              register={register}
-              errorMessage={errors.studentId?.message}
-            />{" "}
-            <div css={{ height: "24px" }}></div>
-            <div css={emailDiv}>
+            <div css={{ height: "32px" }}></div>
+            <form>
               <EventApplicationFormTextInput
-                name="email"
-                placeholder="이메일"
+                name="name"
+                placeholder="이름"
                 inputType="text"
                 register={register}
-                errorMessage={errors.email?.message}
+                errorMessage={errors.name?.message}
+              />
+              <div css={{ height: "24px" }}></div>
+              <EventApplicationFormTextInput
+                name="studentId"
+                placeholder="학번"
+                inputType="text"
+                register={register}
+                errorMessage={errors.studentId?.message}
               />{" "}
-              {/*<div css={{ height: "11px" }}></div>*/}
-              {/*<div css={emailButtonDiv}>*/}
-              {/*  <EmailAuthenticationButton />*/}
-              {/*</div>*/}
-            </div>
-            <div css={{ height: "24px" }}></div>
-            {/*<div css={{ height: "60px" }}></div>*/}
-            <EventApplicationFormTextInput
-              name="phone"
-              placeholder="전화번호 (010-0000-0000)"
-              inputType="text"
-              register={register}
-              errorMessage={errors.phone?.message}
+              <div css={{ height: "24px" }}></div>
+              <div css={emailDiv}>
+                <EventApplicationFormTextInput
+                  name="email"
+                  placeholder="이메일"
+                  inputType="text"
+                  register={register}
+                  errorMessage={errors.email?.message}
+                />{" "}
+                {/*<div css={{ height: "11px" }}></div>*/}
+                {/*<div css={emailButtonDiv}>*/}
+                {/*  <EmailAuthenticationButton />*/}
+                {/*</div>*/}
+              </div>
+              <div css={{ height: "24px" }}></div>
+              {/*<div css={{ height: "60px" }}></div>*/}
+              <EventApplicationFormTextInput
+                name="phone"
+                placeholder="전화번호 (010-0000-0000)"
+                inputType="text"
+                register={register}
+                errorMessage={errors.phone?.message}
+              />
+            </form>
+
+            <div css={{ height: "100px" }}></div>
+
+            <AgreeButton
+              agreeType="전체 동의"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              isChecked={allChecked}
+              onToggle={handleAllCheck}
             />
-          </form>
+            <div css={{ height: "27px" }}></div>
+            <div css={greyLine}></div>
+            <div css={{ height: "40px" }}></div>
+            <AgreeButton
+              agreeType="필수"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              isChecked={requiredChecked}
+              onToggle={handleRequiredCheck}
+            />
+            <div css={{ height: "10px" }}></div>
+            <AgreeButton
+              agreeType="선택"
+              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              isChecked={optionalChecked}
+              onToggle={handleOptionalCheck}
+            />
 
-          <div css={{ height: "100px" }}></div>
+            <div css={{ height: "106px" }}></div>
 
-          <AgreeButton
-            agreeType="전체 동의"
-            agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-            isChecked={allChecked}
-            onToggle={handleAllCheck}
-          />
-          <div css={{ height: "27px" }}></div>
-          <div css={greyLine}></div>
-          <div css={{ height: "40px" }}></div>
-          <AgreeButton
-            agreeType="필수"
-            agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-            isChecked={requiredChecked}
-            onToggle={handleRequiredCheck}
-          />
-          <div css={{ height: "10px" }}></div>
-          <AgreeButton
-            agreeType="선택"
-            agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-            isChecked={optionalChecked}
-            onToggle={handleOptionalCheck}
-          />
-
-          <div css={{ height: "106px" }}></div>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <button type="submit" css={summitButton} disabled={isSubmitting}>
-              {isSubmitting ? "제출 중..." : "제출하기"}
-            </button>
-          </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <button type="submit" css={summitButton} disabled={isSubmitting}>
+                {isSubmitting ? "제출 중..." : "제출하기"}
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </DefaultLayout>
     </>
   );
 };
