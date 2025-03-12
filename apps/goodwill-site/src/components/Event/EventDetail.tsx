@@ -64,7 +64,7 @@ const EventDetail: React.FC = () => {
           <div className="bottom_border"></div>
         </div>
 
-        <div css={{width:"300px"}}></div>
+        <div css={{ width: "300px" }}></div>
 
         <div className="apply">
           <div className="apply_title">
@@ -72,19 +72,24 @@ const EventDetail: React.FC = () => {
             <div className="apply_title2"></div>
             <div className="apply_title3">{event.name}</div>
           </div>
-          <div className="apply_main_title">{event.title}</div>
-          <div className="apply_main_subtitle">{event.date}</div>
-          <div className="apply_main_subtitle1">{event.place}</div>
+          <div className="apply_subtitle_div">
+            <div className="apply_main_title">{event.title}</div>
+            <div className="apply_main_subtitle">{event.date}</div>
+            <div className="apply_main_subtitle1">{event.place}</div>
+          </div>
           <div className="apply_main_border"></div>
-          <div className="apply_main_title">문의</div>
-          <div className="apply_ask_text_box">
-            <div className="apply_ask_text">고승한</div>
-            <div className="apply_ask_text_gray">CEO</div>
+          <div className="apply_ask_div">
+            <div className="apply_main_title">문의</div>
+            <div className="apply_ask_text_box">
+              <div className="apply_ask_text">고승한</div>
+              <div className="apply_ask_text_gray">CEO</div>
+            </div>
+            <div className="apply_ask_text">M. 010-4294-1083</div>
+            <div className="apply_ask_text">
+              E. s.h.putrats@wearegoodwill.kro.kr
+            </div>
           </div>
-          <div className="apply_ask_text">M. 010-4294-1083</div>
-          <div className="apply_ask_text">
-            E. s.h.putrats@wearegoodwill.kro.kr
-          </div>
+
           <div className="apply_main_border"></div>
           <button
             onClick={() => {
