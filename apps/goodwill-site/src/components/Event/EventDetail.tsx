@@ -39,7 +39,9 @@ const EventDetail: React.FC = () => {
     <DefaultLayout>
       <div className="event_detail">
         <div className="image_and_details">
-          <img src={event.image} className="event_detail_image" alt="" />
+          <div className="event_detail_image_container">
+            <img src={event.image} className="event_detail_image" alt="" />
+          </div>
           <div className="event_detail_txts">
             <div className="event_detail_title">행사 상세 정보</div>
             <div className="event_detail_contents">
@@ -61,6 +63,8 @@ const EventDetail: React.FC = () => {
           </div>
           <div className="bottom_border"></div>
         </div>
+
+        <div css={{width:"300px"}}></div>
 
         <div className="apply">
           <div className="apply_title">
@@ -96,7 +100,7 @@ const EventDetail: React.FC = () => {
             }}
             className="apply_btn"
           >
-            참여하기
+            신청하기
           </button>
           <button className="apply_btn1_boxes" onClick={handleShare}>
             <div className="apply_btn1">공유하기</div>
