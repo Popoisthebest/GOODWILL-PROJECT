@@ -30,7 +30,7 @@ const RoleDetail = () => {
       });
   }, [roleName]);
 
-  const navigateAnnouncement = (jobGroup) => {
+  const navigateAnnouncement = (jobGroup: string | undefined) => {
     switch (jobGroup) {
       case "Business Operations":
         navigate(
