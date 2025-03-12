@@ -19,7 +19,7 @@ const Event = () => {
       expense: "무료",
       place: "대전대신고등학교 백암관",
       image: goodwillconcert,
-      name: "콘서트",
+      name: "토크 콘서트",
     },
   ];
 
