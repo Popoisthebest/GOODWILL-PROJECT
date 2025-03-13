@@ -7,8 +7,12 @@ import AwardsSection from "../components/About/AwardSection";
 import InfosSection from "../components/About/Infos";
 import Footer from "../components/Main/Footer";
 import AboutHeader from "../components/Header/AboutHeader.tsx";
+import { useEffect } from "react";
 
 const App: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <AboutHeader />

@@ -226,9 +226,11 @@ const ButtonContainer = styled(motion.div)`
 
 const BetterWorldLanding: React.FC = () => {
   const ref = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [pathData, setPathData] = useState<string | null>(null);
   const [viewBox, setViewBox] = useState<string>("0 0 500 500");
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     // 반응형을 위한 윈도우 크기 감지
@@ -426,13 +428,13 @@ const BetterWorldLanding: React.FC = () => {
   const videoWidth = useTransform(
     scrollYProgress,
     [0.6, 1],
-    isMobile ? ["90%", "90%"] : ["35%", "80%"],
+    isMobile ? ["90%", "90%"] : ["35%", "80%"]
   );
 
   const videoHeight = useTransform(
     scrollYProgress,
     [0.6, 1],
-    isMobile ? ["40px", "40vh"] : ["40px", "75vh"],
+    isMobile ? ["40px", "40vh"] : ["40px", "75vh"]
   );
 
   // 공통 애니메이션 컨트롤러
@@ -440,20 +442,43 @@ const BetterWorldLanding: React.FC = () => {
   const elementX = useTransform(
     scrollYProgress,
     [0.5, 1],
-    isMobile ? ["0%", "-5%"] : ["0%", "-20%"],
+    isMobile ? ["0%", "-5%"] : ["0%", "-20%"]
   );
 
   const topContentInitialX = useTransform(
     scrollYProgress,
     [0, 0.85],
-    isMobile ? ["0%", "5%"] : ["0%", "10%"],
+    isMobile ? ["0%", "5%"] : ["0%", "10%"]
   );
 
   const videoY = useTransform(
     scrollYProgress,
     [0.6, 0.7, 1],
-    isMobile ? [100, 100, 140] : [200, 200, 360],
+    isMobile ? [100, 100, 140] : [200, 200, 360]
   );
+  
+  // 동영상이 커졌는지 확인하는 값 (예: 스크롤 프로그레스가 0.85 이상일 때)
+  const isVideoFullSize = useTransform(
+    scrollYProgress,
+    (value) => value >= 0.85
+  );
+
+  // 동영상 크기 변화 감지 및 재생 제어
+  useEffect(() => {
+    const unsubscribe = isVideoFullSize.onChange((isFullSize) => {
+      if (videoRef.current) {
+        if (isFullSize && videoReady) {
+          videoRef.current.play().catch(err => {
+            console.error("비디오 재생 실패:", err);
+          });
+        } else {
+          videoRef.current.pause();
+        }
+      }
+    });
+
+    return unsubscribe;
+  }, [isVideoFullSize, videoReady]);
 
   return (
     <LandingSection ref={ref}>
@@ -504,16 +529,18 @@ const BetterWorldLanding: React.FC = () => {
           }}
         >
           <motion.video
+            ref={videoRef}
             src={""}
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
             }}
-            autoPlay
             muted
             loop
             playsInline // 모바일에서 인라인 재생을 위해 추가
+            preload="auto"
+            onLoadedData={() => setVideoReady(true)}
           />
         </VideoContainer>
 

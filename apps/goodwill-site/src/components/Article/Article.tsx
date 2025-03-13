@@ -2,11 +2,16 @@ import React from "react";
 import BlogCard from "./ArticleCard.tsx";
 import BlogIcon from "../../assets/blog_icon/light_arrow-left.svg?react";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
+import { useEffect } from "react";
 // import SearchIcon from "../assets/blog_icon/MagnifyingGlass.svg?react";
 
 const Article: React.FC = () => {
   // const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   // const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const blogCards = [
     { id: 1, title: "신입생들을 위한 동아리의 모든 것", date: "2025-02-18" },
