@@ -19,92 +19,103 @@ interface FileUploadProps {
   isContest: boolean;
   isSubmitting: boolean;
   applicationId: string;
+  onFileUpload: (fileData: { title: string; fileUrl: string; fileType: string }) => void; // 🔥 부모에게 업로드된 파일 정보 전달
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
-  id,
-  removeFileUpload,
-  isContest,
-  isSubmitting,
-  applicationId,
-}) => {
+                                                 id,
+                                                 removeFileUpload,
+                                                 isContest,
+                                                 isSubmitting,
+                                                 applicationId,
+                                                 onFileUpload, // ✅ 업로드된 파일 데이터를 부모로 전달하는 함수
+                                               }) => {
   // 지원자 파일 저장
-  const [file, setFile] = useState<File>(); // 초기값은 null
+  const [file, setFile] = useState<File>();
+  const [fileTitle, setFileTitle] = useState(""); // 🔥 지원자가 입력한 제목 저장
 
   useEffect(() => {
     const uploadFile = async () => {
-      // console.log("fileUpload 실행됨, 현재 applicationId:", applicationId);
-
-      if (!applicationId) {
-        // console.error("🚨 applicationId가 아직 설정되지 않음. 업로드 중단.");
+      if (!applicationId || !file || !fileTitle.trim()) {
+        console.warn(
+            "🚨 applicationId, file 또는 fileTitle이 설정되지 않음. 업로드 중단.",
+        );
         return;
       }
 
       const result = await fileSend(
-          file!,
+          file,
           isContest ? "contest" : "portfolio",
-          () => applicationId
+          () => applicationId,
+          fileTitle, // 🔥 지원자가 입력한 제목 전달
       );
 
-      console.log("파일 업로드 결과:", result);
+      if (result.fileUrl) {
+        onFileUpload({
+          title: fileTitle,
+          fileUrl: result.fileUrl,
+          fileType: isContest ? "contest" : "portfolio",
+        }); // 🔥 업로드된 파일 정보를 부모 컴포넌트로 전달
+      }
     };
 
     if (isSubmitting && applicationId) {
       uploadFile();
     }
-  }, [isSubmitting, applicationId]); // 🔥 applicationId가 변경될 때도 실행되도록 추가
-
+  }, [isSubmitting, applicationId]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const uploadedFile = event.target.files[0]; // 첫 번째 파일 객체 가져오기
-      setFile(uploadedFile); // 파일 자체를 상태로 저장
+      const uploadedFile = event.target.files[0];
+      setFile(uploadedFile);
     }
   };
 
   return (
-    <div css={docAddContainerList}>
-      <div css={{ display: "flex", alignItems: "space-between" }}>
-        <div css={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <div css={fileNameContainer}>
-            {/* 지원자가 직접 입력하는 제목 (쿠키에 저장됨) */}
-            <input
-              placeholder={
-                isContest
-                  ? "대회 이름을 입력해 주세요."
-                  : "프로젝트 이름을 입력해 주세요."
-              }
-              css={fileUploadNameInput}
-            />
-          </div>
-
-          <div css={{ height: "10px" }}></div>
-
-          {/* 파일 업로드 */}
-          <div css={uploadContainer}>
-            <div css={fileNameDisplay}>
-              {file?.name || "파일을 선택해주세요."}
+      <div css={docAddContainerList}>
+        <div css={{ display: "flex", alignItems: "space-between" }}>
+          <div css={{ display: "flex", flexDirection: "column", width: "100%" }}>
+            <div css={fileNameContainer}>
+              {/* 🔥 지원자가 입력한 제목을 상태로 저장 */}
+              <input
+                  placeholder={
+                    isContest
+                        ? "대회 이름을 입력해 주세요."
+                        : "프로젝트 이름을 입력해 주세요."
+                  }
+                  css={fileUploadNameInput}
+                  value={fileTitle}
+                  onChange={(e) => setFileTitle(e.target.value)}
+              />
             </div>
-            <input
-              type="file"
-              id={`fileUpload-${id}`}
-              css={fileInput}
-              onChange={handleFileChange}
-            />
-            <label htmlFor={`fileUpload-${id}`} css={uploadButton}>
-              파일 선택
-            </label>
+
+            <div css={{ height: "10px" }}></div>
+
+            {/* 파일 업로드 */}
+            <div css={uploadContainer}>
+              <div css={fileNameDisplay}>
+                {file?.name || "파일을 선택해주세요."}
+              </div>
+              <input
+                  type="file"
+                  id={`fileUpload-${id}`}
+                  css={fileInput}
+                  onChange={handleFileChange}
+              />
+              <label htmlFor={`fileUpload-${id}`} css={uploadButton}>
+                파일 선택
+              </label>
+            </div>
           </div>
+
+          <div css={{ width: "50px" }}></div>
+
+          {/* 삭제 버튼 */}
+          <button onClick={removeFileUpload} css={fileDeleteButton}>
+            <img src={fileDeleteIcon} alt="fileDeleteIcon" />
+          </button>
         </div>
-
-        <div css={{ width: "50px" }}></div>
-
-        {/* 삭제 버튼 */}
-        <button onClick={removeFileUpload} css={fileDeleteButton}>
-          <img src={fileDeleteIcon} alt="fileDeleteIcon" />
-        </button>
       </div>
-    </div>
   );
 };
 
