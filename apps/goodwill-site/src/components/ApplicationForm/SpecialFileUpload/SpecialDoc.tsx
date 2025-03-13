@@ -1,47 +1,51 @@
 import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 import { docAddContainer, docAddContainerButton } from "./SpecialDoc.style.ts";
 import FileUpload from "../SpecialFileUpload/SpecialFileUpload.tsx";
 import fileAddFormAdd from "../../../assets/fileUpload/PlusCircle.svg";
 
-const COOKIE_EXPIRATION_DAYS = 1; // 쿠키 유효기간 1일
-
 const SpecialDocAdd = ({
-  isSubmitting,
-  applicationId,
+  onFilesUpdate,
 }: {
-  isSubmitting: boolean;
-  applicationId: string;
+  onFilesUpdate: (
+    files: { file: File; fileType: string; title: string }[],
+  ) => void;
 }) => {
   const [specialFiles, setSpecialFiles] = useState<
     { id: number; name: string }[]
   >([]);
+  const [uploadedFiles, setUploadedFiles] = useState<
+    { file: File; fileType: string; title: string }[]
+  >([]);
 
-  // 쿠키에서 파일 목록 불러오기
+  // 🔥 uploadedFiles가 변경될 때마다 `onFilesUpdate` 실행
   useEffect(() => {
-    const savedSpecialFiles = Cookies.get("specialFiles");
+    onFilesUpdate(uploadedFiles);
+  }, [uploadedFiles]);
 
-    if (savedSpecialFiles) setSpecialFiles(JSON.parse(savedSpecialFiles));
-  }, []);
+  // 🔥 FileUpload에서 받은 파일 데이터를 추가
+  const handleFileUpload = (fileData: {
+    file: File;
+    fileType: string;
+    title: string;
+  }) => {
+    setUploadedFiles((prevFiles) => [...prevFiles, fileData]);
+  };
 
   // 새로운 FileUpload 추가
   const addFileUpload = () => {
     const newFile = { id: Date.now(), name: "" };
 
-    const updatedFiles = [...specialFiles, newFile];
-    setSpecialFiles(updatedFiles);
-    Cookies.set("specialFiles", JSON.stringify(updatedFiles), {
-      expires: COOKIE_EXPIRATION_DAYS,
-    });
+    setSpecialFiles((prevFiles) => [...prevFiles, newFile]);
   };
 
   // 특정 FileUpload 삭제
   const removeFileUpload = (id: number) => {
-    const updatedFiles = specialFiles.filter((file) => file.id !== id);
-    setSpecialFiles(updatedFiles);
-    Cookies.set("contestFiles", JSON.stringify(updatedFiles), {
-      expires: COOKIE_EXPIRATION_DAYS,
-    });
+    setSpecialFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
+
+    // 🔥 uploadedFiles에서도 해당 파일 삭제
+    setUploadedFiles((prevFiles) =>
+      prevFiles.filter((file) => file.file.name !== id.toString()),
+    );
   };
 
   return (
@@ -52,8 +56,7 @@ const SpecialDocAdd = ({
             key={file.id}
             id={file.id}
             removeFileUpload={() => removeFileUpload(file.id)}
-            isSubmitting={isSubmitting}
-            applicationId={applicationId}
+            onFileUpload={handleFileUpload} // 🔥 파일 업로드 후 처리
           />
         ))}
 

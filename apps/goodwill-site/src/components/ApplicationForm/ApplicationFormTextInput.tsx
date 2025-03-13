@@ -59,13 +59,13 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
                   required: `${placeholder}은(는) 필수입니다.`,
                   ...(name === "motivation" || name === "additional_comments") && {
                     validate: (value) =>
-                        (value?.replace(/\s/g, "").length || 0) <= 150 ||
-                        "최대 150자까지 입력할 수 있습니다.",
+                        (value?.replace(/\s/g, "").length || 0) <= 300 ||
+                        "최대 300자까지 입력할 수 있습니다.",
                   },
                   ...(name !== "motivation" && name !== "additional_comments") && {
                     validate: (value) =>
-                        (value?.replace(/\s/g, "").length || 0) <= 300 ||
-                        "최대 300자까지 입력할 수 있습니다.",
+                        (value?.replace(/\s/g, "").length || 0) <= 1000 ||
+                        "최대 1000자까지 입력할 수 있습니다.",
                   },
                 })}
                 placeholder=""
@@ -121,7 +121,7 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
           ].includes(name) && (
               <div css={letterCount}>
                 {inputValue?.replace(/\s/g, "").length || 0}/
-                {name === "motivation" || name === "additional_comments" ? 150 : 300}
+                {name === "motivation" || name === "additional_comments" ? 300 : 1000}
               </div>
           )}
         </div>
