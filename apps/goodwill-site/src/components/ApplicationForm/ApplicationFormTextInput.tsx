@@ -13,11 +13,18 @@ import {
 
 interface ApplicationFormData {
   name: string;
-  studentId: string;
+  student_id: string;
   email: string;
   phone: string;
-  coverLetter: string;
-  questions: string;
+  career_aspiration: string;
+  motivation: string;
+  entrepreneurship_thoughts: string;
+  strengths_skills: string;
+  leadership_experience: string;
+  goodwill_plan: string;
+  team_conflict_resolution: string;
+  club_activity_thoughts: string;
+  additional_comments: string;
 }
 
 interface ApplicationFormTextInputProps {
@@ -30,84 +37,95 @@ interface ApplicationFormTextInputProps {
 }
 
 const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
-  name,
-  placeholder,
-  inputType = "text",
-  register,
-  watch,
-  errorMessage,
-}) => {
+                                                                       name,
+                                                                       placeholder,
+                                                                       inputType = "text",
+                                                                       register,
+                                                                       watch,
+                                                                       errorMessage,
+                                                                     }) => {
   const inputValue = watch(name) || "";
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div css={containerStyle}>
-      <label htmlFor={name} css={labelStyle}>
-        {placeholder}
-      </label>
-      {inputType === "textarea" ? (
-        <motion.textarea
-          id={name}
-          {...(name !== "questions"
-            ? register(name, {
-                required: `${placeholder}은(는) 필수입니다.`,
-                ...(name === "coverLetter" && {
-                  validate: (value) =>
-                    (value?.replace(/\s/g, "").length || 0) <= 100 ||
-                    "최대 100자까지 입력할 수 있습니다.",
-                }),
-              })
-            : register(name))} // 질문사항 필드는 검증 없이 등록
-          placeholder=""
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          css={textareaStyle}
-          animate={isFocused ? { borderColor: "#05308C" } : undefined}
-          whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
-        />
-      ) : (
-        <motion.input
-          id={name}
-          type={name === "studentId" || name === "phone" ? "text" : inputType}
-          {...(name !== "questions"
-            ? register(name, {
-                required: `${placeholder}은(는) 필수입니다.`,
-                ...(name === "email" && {
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: "올바른 이메일 형식을 입력하세요.",
+      <div css={containerStyle}>
+        <label htmlFor={name} css={labelStyle}>
+          {placeholder}
+        </label>
+        {inputType === "textarea" ? (
+            <motion.textarea
+                id={name}
+                {...register(name, {
+                  required: `${placeholder}은(는) 필수입니다.`,
+                  ...(name === "motivation" || name === "additional_comments") && {
+                    validate: (value) =>
+                        (value?.replace(/\s/g, "").length || 0) <= 150 ||
+                        "최대 150자까지 입력할 수 있습니다.",
                   },
-                }),
-                ...(name === "studentId" && {
-                  validate: (value) =>
-                    /^[0-9]+$/.test(value) || "학번은 숫자로 입력해야 합니다.",
-                }),
-                ...(name === "phone" && {
-                  pattern: {
-                    value: /^010-\d{4}-\d{4}$/,
-                    message:
-                      "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
+                  ...(name !== "motivation" && name !== "additional_comments") && {
+                    validate: (value) =>
+                        (value?.replace(/\s/g, "").length || 0) <= 300 ||
+                        "최대 300자까지 입력할 수 있습니다.",
                   },
-                }),
-              })
-            : register(name))} // 질문사항 필드는 검증 없이 등록
-          placeholder=""
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          css={inputStyle}
-          animate={isFocused ? { borderColor: "#05308C" } : undefined}
-          whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
-        />
-      )}
-      <div css={{ display: "flex", justifyContent: "space-between" }}>
-        {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}
-        {name === "coverLetter" && (
-          <div css={letterCount}>
-            {inputValue?.replace(/\s/g, "").length || 0}/100
-          </div>
+                })}
+                placeholder=""
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                css={textareaStyle}
+                animate={isFocused ? { borderColor: "#05308C" } : undefined}
+                whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
+            />
+        ) : (
+            <motion.input
+                id={name}
+                type={name === "student_id" || name === "phone" ? "text" : inputType}
+                {...register(name, {
+                  required: `${placeholder}은(는) 필수입니다.`,
+                  ...(name === "email" && {
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "올바른 이메일 형식을 입력하세요.",
+                    },
+                  }),
+                  ...(name === "student_id" && {
+                    validate: (value) =>
+                        /^[0-9]+$/.test(value) || "학번은 숫자로 입력해야 합니다.",
+                  }),
+                  ...(name === "phone" && {
+                    pattern: {
+                      value: /^010-\d{4}-\d{4}$/,
+                      message: "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
+                    },
+                  }),
+                })}
+                placeholder=""
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                css={inputStyle}
+                animate={isFocused ? { borderColor: "#05308C" } : undefined}
+                whileHover={isFocused ? undefined : { borderColor: "#6D80C5" }}
+            />
         )}
+        <div css={{ display: "flex", justifyContent: "space-between" }}>
+          {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}
+          {[
+            "motivation",
+            "career_aspiration",
+            "entrepreneurship_thoughts",
+            "strengths_skills",
+            "leadership_experience",
+            "goodwill_plan",
+            "team_conflict_resolution",
+            "club_activity_thoughts",
+            "additional_comments",
+          ].includes(name) && (
+              <div css={letterCount}>
+                {inputValue?.replace(/\s/g, "").length || 0}/
+                {name === "motivation" || name === "additional_comments" ? 150 : 300}
+              </div>
+          )}
+        </div>
       </div>
-    </div>
   );
 };
 

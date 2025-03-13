@@ -242,12 +242,12 @@ const Copyright = styled.div`
 `;
 
 const ScrollTopButton = styled.button`
-  position: absolute;
+  position: fixed;
 
   bottom: -20px;
   right: 20px;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background-color: #000;
   color: #fff;
@@ -258,6 +258,8 @@ const ScrollTopButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s;
   margin-bottom: 100px;
+  transform: translateY(10px) translateX(-30px);
+  t
 
   &:hover {
     background-color: #333;
@@ -265,8 +267,8 @@ const ScrollTopButton = styled.button`
 `;
 
 const ArrowIconSVG = styled.svg`
-  width: 60px;
-  height: 70px;
+  width: 50px;
+  height: 60px;
 `;
 
 export default Footer;

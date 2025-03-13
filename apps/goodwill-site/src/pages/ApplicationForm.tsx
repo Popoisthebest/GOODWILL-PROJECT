@@ -28,11 +28,18 @@ import { generateApplicationId } from "../hooks/generateApplicationId.ts";
 
 interface FormValues {
   name: string;
-  studentId: string;
+  student_id: string;
   email: string;
   phone: string;
-  coverLetter: string;
-  questions: string;
+  career_aspiration: string;
+  motivation: string;
+  entrepreneurship_thoughts: string;
+  strengths_skills: string;
+  leadership_experience: string;
+  goodwill_plan: string;
+  team_conflict_resolution: string;
+  club_activity_thoughts: string;
+  additional_comments: string;
 }
 
 // Collection names for Firestore without spaces
@@ -76,6 +83,16 @@ const ApplicationFormPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [applicationId, setApplicationId] = useState<string>("");
   const navigate = useNavigate();
+
+  const [uploadedFiles, setUploadedFiles] = useState<
+    { title: string; fileUrl: string; fileType: string }[]
+  >([]);
+
+  const handleFilesUpdate = (
+    files: { title: string; fileUrl: string; fileType: string }[],
+  ) => {
+    setUploadedFiles(files);
+  };
 
   // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
   const handleAllCheck = () => {
@@ -138,12 +155,13 @@ const ApplicationFormPage = () => {
 
       const formattedData = {
         ...data,
-        studentId: Number(data.studentId),
+        roleName: roleName,
         applicationId: newApplicationId,
         order,
         createdAt: new Date(),
         application_status: "대기",
         programType: littleProgramDisplayName,
+        uploadedFiles,
       };
 
       await setDoc(doc(db, littleProgramName, newApplicationId), formattedData);
@@ -186,12 +204,12 @@ const ApplicationFormPage = () => {
               />
               <div css={{ height: "24px" }}></div>
               <ApplicationFormTextInput
-                name="studentId"
+                name="student_id"
                 placeholder="학번"
                 inputType="text"
                 register={register}
                 watch={watch}
-                errorMessage={errors.studentId?.message}
+                errorMessage={errors.student_id?.message}
               />{" "}
               <div css={{ height: "24px" }}></div>
               <div css={emailDiv}>
@@ -220,24 +238,166 @@ const ApplicationFormPage = () => {
               />
             </form>
             <div css={{ height: "48px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={ApplicationInformation}>지원서 질문</div>
+              <div css={{ width: "10px" }}></div>
+              <div css={BasicInformationText}>필수</div>
+            </div>
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                자신의 희망 진로(분야)를 작성해주세요.
+              </div>
+            </div>
             <form>
               <ApplicationFormTextInput
-                name="coverLetter"
-                placeholder="자기소개서"
+                name="career_aspiration"
+                placeholder=""
                 inputType="textarea"
                 register={register}
                 watch={watch}
-                errorMessage={errors.coverLetter?.message}
+                errorMessage={errors.career_aspiration?.message}
               />
             </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                GOODWILL에 지원하게 된 동기를 설명해주세요.(150자 이내)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="motivation"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.motivation?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                ‘창업’에 대한 자신생각을 자유롭게 작성해주세요.(300자 이내)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="entrepreneurship_thoughts"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.entrepreneurship_thoughts?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                자신이 지닌 장점, 역량, 특기를 설명해주세요.(300자 이내)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="strengths_skills"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.strengths_skills?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                중학교 시절 리더십 역량을 드러낼 수 있는 활동 경험을
+                기재해주세요.(반장, 동아리 회장 등)(300자 이내)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="leadership_experience"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.leadership_experience?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                GOODWILL에 입사하여 하고 싶은 활동을 계획해서
+                작성해주세요.(300자 이내)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="goodwill_plan"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.goodwill_plan?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                GOODWILL 내에서 활동을 진행하던 중 팀원 1명이 비협조적인 태도를
+                지속적으로 보인다면 본인은 어떻게 대처할 것인지
+                작성해주세요.(300자 이내)
+              </div>
+              <div css={{ width: "10px" }}></div>
+              <div css={BasicInformationText}>필수</div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="team_conflict_resolution"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.team_conflict_resolution?.message}
+              />
+            </form>
+
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                자신이 생각하는 동아리 활동이란 무엇인지 본인의 생각과 가치관을
+                담아서 작성해주세요.(300자 이내)
+              </div>
+              <div css={{ width: "10px" }}></div>
+              <div css={BasicInformationText}>필수</div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="club_activity_thoughts"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.club_activity_thoughts?.message}
+              />
+            </form>
+
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>제출 서류</div>
             <div css={{ height: "32px" }}></div>
-            <DocAdd isSubmitting={isSubmitting} applicationId={applicationId} />
+            <DocAdd
+              isSubmitting={isSubmitting}
+              applicationId={applicationId}
+              onFilesUpdate={handleFilesUpdate}
+            />
 
             <div css={{ height: "36px" }}></div>
-            <div css={ApplicationInformation}>리틀 전형</div>
-            <div css={{ height: "32px" }}></div>
             <div
               css={{
                 display: "flex",
@@ -245,7 +405,7 @@ const ApplicationFormPage = () => {
                 alignItems: "center",
               }}
             >
-              <div css={BasicInformation}>{littleProgramDisplayName}</div>
+              <div css={ApplicationInformation}>{littleProgramDisplayName}</div>
               <RoundedCheckbox
                 checked={true}
                 onChange={(checked) => {
@@ -266,12 +426,12 @@ const ApplicationFormPage = () => {
             <div css={{ height: "32px" }}></div>
             <form>
               <ApplicationFormTextInput
-                name="questions"
-                placeholder="질문사항"
+                name="additional_comments"
+                placeholder="추가로 더 하고 싶은 말을 작성해주세요.(150자 이내)"
                 inputType="textarea"
                 register={register}
                 watch={watch}
-                errorMessage={errors.questions?.message}
+                errorMessage={errors.additional_comments?.message}
               />
             </form>
             <div css={{ height: "100px" }}></div>

@@ -1,5 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Jetae from "../../../imgs/teamImg/jetae.jpeg";
+import Jihoon from "../../../imgs/teamImg/jihoon.png";
+// import Profile3 from "../../../imgs/teamImg/profile3.jpg";
+import Suen from "../../../imgs/teamImg/suen.jpeg";
+import Hyeonwoo from "../../../imgs/teamImg/hyeonwoo.jpeg";
+import Suho from "../../../imgs/teamImg/suho.jpeg";
+import Pack from "../../../imgs/teamImg/pack.png";
+import Junmo from "../../../imgs/teamImg/junmo.jpg";
+
 
 // Types
 interface TeamMember {
@@ -82,49 +91,49 @@ const TeamGridPage: React.FC = () => {
       id: 1,
       name: '김지태',
       position: 'Operation Manager',
-      imageUrl: '../../../imgs/teamImg/jetae.jpeg',
+      imageUrl: Jetae,
     },
     {
       id: 2,
       name: '김지훈',
       position: 'Operation Manager',
-      imageUrl: '../../../imgs/teamImg/jihoon.png',
+      imageUrl: Jihoon,
     },
     {
       id: 3,
       name: '김용현',
       position: 'ML Assistant',
-      imageUrl: '../../../imgs/teamImg/profile3.jpg',
+      imageUrl: "",
     },
     {
       id: 4,
       name: '김수은',
       position: 'Visual Manager',
-      imageUrl: '../../../imgs/teamImg/suen.jpeg',
+      imageUrl: Suen,
     },
     {
       id: 5,
       name: '박현우',
       position: 'Mobile Engineer',
-      imageUrl: '../../../imgs/teamImg/hyeonwoo.jpeg',
+      imageUrl: Hyeonwoo,
     },
     {
       id: 6,
       name: '이수호',
       position: 'Mobile Engineer',
-      imageUrl: '../../../imgs/teamImg/suho.jpeg',
+      imageUrl: Suho,
     },
     {
       id: 7,
       name: '백현빈',
       position: 'Full-Stack Engineer',
-      imageUrl: '../../../imgs/teamImg/pack.png',
+      imageUrl: Pack,
     },
     {
       id: 8,
       name: '김준모',
       position: 'Mechatronics Engineer',
-      imageUrl: '../../imgs/teamImg/junmo.jpg',
+      imageUrl: Junmo,
     },
   ];
 

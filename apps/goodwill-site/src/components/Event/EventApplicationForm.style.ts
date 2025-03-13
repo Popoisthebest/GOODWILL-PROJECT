@@ -63,7 +63,6 @@ export const BasicInformationText = css`
 
 export const containerStyle = css`
   display: flex;
-  position: relative;
   display: flex;
   flex-direction: column;
 `;

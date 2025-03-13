@@ -47,21 +47,21 @@ const SubmissionFinished: React.FC = () => {
         <h1 style={titleStyle}>입사지원서 접수완료</h1>
         <br />
         <p style={textStyle}>
-          GOODWILL Corp.에 관심을 갖고 지원해주셔서 감사드립니다.
+          GOODWILL(KE) Inc.에 관심을 갖고 지원해주셔서 감사드립니다.
           <br />
           <br />
           귀하께서 작성하신 지원서는 무사히 접수가 완료되었습니다.
           <br />
-          내부에서 꼼꼼히 검토 후 결과를 안내드릴 예정입니다.
+          GOODWILL HR팀 내부에서 지원서 내용을 꼼꼼히 검토 후 결과를 안내드리겠습니다.
           <br />
           <br />
-          채용 진행과 관련하여 궁금하신 점이 있으시면 (전화번호)로 편하게 문의
+          채용 진행과 관련하여 궁금하신 점이 있으시면 010-4294-1083 / s.h.putrats@wearegoodwill.kro.kr로 편하게 문의
           주시길 바랍니다.
           <br />
           <br />
           감사합니다.
           <br />
-          GOODWILL Corp. 담당자 드림
+          GOODWILL(KE) Inc. HR 담당자 드림
         </p>
 
         {/* InfoBox - 동적으로 값 전달 가능 */}

@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from "react";
+// import { useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import HeroSection from "../components/Main/HeroSection";
 import AboutSection from "../components/Main/AboutSection";
@@ -18,7 +18,7 @@ import InfosSection from "../components/Main/Infos";
 const App: React.FC = () => {
   // const [projects, setProjects] = useState<Project[]>([]);
 
-  // 예제 데이터 (API 호출이 없을 경우 기본값 설정)
+  //예제 데이터 (API 호출이 없을 경우 기본값 설정)
   // useEffect(() => {
   //   const sampleProjects: Project[] = [
   //     {
@@ -61,7 +61,7 @@ const App: React.FC = () => {
   //   ];
   //
   //   //상태 업데이트
-  //   setProjects(sampleProjects);
+  //   // setProjects(sampleProjects);
   // }, []);
 
   return (

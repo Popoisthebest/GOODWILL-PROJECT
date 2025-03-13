@@ -28,20 +28,32 @@ const FileUpload: React.FC<FileUploadProps> = ({
 }) => {
   // 업로드한 파일
   const [file, setFile] = useState<File | null>(null); // 초기값은 null
-
-  console.log(file);
+  const [fileTitle, setFileTitle] = useState(""); // 🔥 지원자가 입력한 제목 저장
 
   // isSubmitting 값이 변경될 때 업로드 실행
   useEffect(() => {
     const uploadFile = async () => {
-      if (isSubmitting) {
-        const result = await fileSend(file!, "special", () => applicationId);
-        console.log("파일 업로드", result);
+      if (!applicationId || !file || !fileTitle.trim()) {
+        console.warn(
+          "🚨 applicationId, file 또는 fileTitle이 설정되지 않음. 업로드 중단.",
+        );
+        return;
       }
+
+      const result = await fileSend(
+        file,
+        "special",
+        () => applicationId,
+        fileTitle, // 🔥 지원자가 입력한 제목 전달
+      );
+
+      console.log("파일 업로드", result);
     };
 
-    uploadFile(); // 비동기 함수 실행
-  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
+    if (isSubmitting && applicationId) {
+      uploadFile();
+    }
+  }, [isSubmitting, applicationId]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -59,6 +71,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
             <input
               placeholder="추천인 이름을 입력해 주세요."
               css={fileUploadNameInput}
+              value={fileTitle}
+              onChange={(e) => setFileTitle(e.target.value)}
             />
           </div>
 

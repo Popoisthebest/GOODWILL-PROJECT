@@ -266,6 +266,8 @@ const BetterWorldLanding: React.FC = () => {
 
   const AboutButton = () => {
   const [isHovered, setIsHovered] = useState(false);
+    const navigate = useNavigate(); // 페이지 이동을 위한 훅
+
   const isMobile = window.innerWidth <= 768;
 
   const handleMouseEnter = () => {
@@ -282,6 +284,10 @@ const BetterWorldLanding: React.FC = () => {
       setTimeout(() => setIsHovered(false), 500);
     }
   };
+
+    const handleClick = () => {
+      navigate("/about"); // About 페이지로 이동
+    };
 
   return (
     <div style={{ display: "inline-block", position: "relative", zIndex: 50 }}>
@@ -443,7 +449,7 @@ const BetterWorldLanding: React.FC = () => {
   const videoY = useTransform(
     scrollYProgress,
     [0.6, 0.7, 1],
-    isMobile ? [100, 100, 140] : [200, 200, 360]
+    isMobile ? [100, 100, 140] : [200, 200, 360],
   );
 
   return (
@@ -515,7 +521,12 @@ const BetterWorldLanding: React.FC = () => {
 
         <TextSection style={{ opacity: elementOpacity, x: elementX }}>
           <Description>
-            내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.
+            GOODWILL(KE)은 Establishing a student-led company that cares for
+            people and society(사람과 사회를 위한 학생 주도의 기업 운영)를 통해
+            Better World, Brighter Tomorrow(더 나은 세상, 더 나은 내일)를 만들어
+            가고 있습니다. 이를 바탕으로 GOODWILL만의 문화를 형성하고 능동적
+            기업 운영을 통해 2015년부터 대전대신고 내에서 꾸준히 최고의 실적을
+            도출해 내며 끊임없이 발전과 변화를 꾀하고 있습니다.
           </Description>
         </TextSection>
         
