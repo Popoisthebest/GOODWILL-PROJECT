@@ -51,8 +51,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           <SectionTitle>Discover more</SectionTitle>
           <BrandName>About GOODWILL</BrandName>
           
-          <ButtonsContainer onClick={handleClick}>
-            <ArticleButton>GO TO GOODWILL'S ARTICLE</ArticleButton>
+          <ButtonsContainer>
+            <ArticleButton onClick={handleClick}>GO TO GOODWILL'S ARTICLE</ArticleButton>
             <InstagramLink
             href="https://www.instagram.com/wearegoodwill/?__pwa=1" 
             target="_blank" 

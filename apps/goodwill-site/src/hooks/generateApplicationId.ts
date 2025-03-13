@@ -1,8 +1,11 @@
 const jobTypeMap: Record<string, number> = {
-    "Business & Marketing": 1,
-    Design: 2,
-    Engineering: 3,
-    Content: 4,
+  "Business Operations": 1,
+  "Finance & Marketing": 2,
+  Design: 3,
+  Engineering: 4,
+  "Economics & Data Science": 5,
+  Legal: 6,
+  Content: 7,
 };
 
 export const generateApplicationId = (jobType: string, order: number) => {

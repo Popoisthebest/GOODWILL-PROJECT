@@ -5,6 +5,7 @@ import { db } from "../firebase/firebaseConfig.ts";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import RoundedCheckbox from "../components/ApplicationForm/RoundedCheckbox/RoundedCheckbox.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { fileSend } from "../hooks/fileSend.ts";
 import {
   ApplicationInformation,
   BasicInformation,
@@ -39,7 +40,7 @@ interface FormValues {
   goodwill_plan: string;
   team_conflict_resolution: string;
   club_activity_thoughts: string;
-  additional_comments: string;
+  additional_comments?: string;
 }
 
 // Collection names for Firestore without spaces
@@ -81,18 +82,10 @@ const ApplicationFormPage = () => {
   const [requiredChecked, setRequiredChecked] = useState(false);
   const [optionalChecked, setOptionalChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [applicationId, setApplicationId] = useState<string>("");
   const navigate = useNavigate();
-
-  const [uploadedFiles, setUploadedFiles] = useState<
-    { title: string; fileUrl: string; fileType: string }[]
+  const [files, setFiles] = useState<
+    { file: File; fileType: string; title: string }[]
   >([]);
-
-  const handleFilesUpdate = (
-    files: { title: string; fileUrl: string; fileType: string }[],
-  ) => {
-    setUploadedFiles(files);
-  };
 
   // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
   const handleAllCheck = () => {
@@ -125,6 +118,7 @@ const ApplicationFormPage = () => {
       setAllChecked(true);
     }
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -136,44 +130,99 @@ const ApplicationFormPage = () => {
     watch,
   } = useForm<FormValues>({});
 
+  // 🔥 `DocAdd.tsx`에서 전달받은 파일 데이터를 저장
+  const handleFilesUpdate = (
+    newFiles: { file: File; fileType: string; title: string }[],
+  ) => {
+    setFiles(newFiles);
+  };
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      if (isSubmitting) return; // 중복 제출 방지
+      if (isSubmitting) return;
       if (!requiredChecked) {
         alert("필수 동의 항목을 체크해야 지원서를 제출할 수 있습니다.");
         return;
       }
 
-      setIsSubmitting(true); // 제출 중 상태 설정
+      setIsSubmitting(true);
+      console.log("📂 파일 업로드 시작...");
 
-      // Firestore에 저장 로직
+      // Firestore에 저장할 새로운 지원서 ID 생성
       const applicationsRef = collection(db, littleProgramName);
       const querySnapshot = await getDocs(applicationsRef);
       const order = querySnapshot.size + 1;
       const newApplicationId = generateApplicationId(jobGroup, order);
-      setApplicationId(newApplicationId);
 
+      let uploadedFiles: {
+        title: string;
+        fileUrl: string;
+        fileType: string;
+      }[] = [];
+
+      // ✅ 파일이 있을 경우 `fileSend` 실행 후 업로드 완료까지 대기
+      if (files.length > 0) {
+        uploadedFiles = await Promise.all(
+          files.map(async (fileData) => {
+            const result = await fileSend(
+              fileData.file,
+              fileData.fileType,
+              () => newApplicationId,
+              fileData.title,
+            );
+            console.log("📂 개별 파일 업로드 결과:", result);
+            return {
+              title: fileData.title,
+              fileUrl: result.fileUrl, // 🔥 파일 다운로드 URL 저장
+              fileType: fileData.fileType,
+            };
+          }),
+        );
+      }
+
+      console.log("✅ 모든 파일 업로드 완료, 최종 데이터:", uploadedFiles);
+
+      // ✅ 파일 데이터를 카테고리별로 정리
+      const categorizedFiles = {
+        contest_files: uploadedFiles.filter(
+          (file) => file.fileType === "contest",
+        ),
+        portfolio_files: uploadedFiles.filter(
+          (file) => file.fileType === "portfolio",
+        ),
+        special_files: uploadedFiles.filter(
+          (file) => file.fileType === "special",
+        ),
+      };
+
+      console.log("🚀 Firestore 저장 데이터:", {
+        ...data,
+        ...categorizedFiles,
+      });
+
+      // ✅ Firestore에 저장할 데이터 구성
       const formattedData = {
         ...data,
-        roleName: roleName,
         applicationId: newApplicationId,
+        roleName: roleName,
         order,
         createdAt: new Date(),
         application_status: "대기",
         programType: littleProgramDisplayName,
-        uploadedFiles,
+        ...categorizedFiles, // 🔥 Firestore에 파일 데이터 저장
       };
 
       await setDoc(doc(db, littleProgramName, newApplicationId), formattedData);
 
+      console.log("✅ Firestore 저장 완료");
       navigate("/submission-finished", {
         state: { roleName, newApplicationId },
       });
     } catch (error) {
-      console.error("지원서 제출 실패:", error);
+      console.error("🚨 지원서 제출 실패:", error);
       alert("지원서 제출 중 오류가 발생했습니다.");
     } finally {
-      setIsSubmitting(false); // 제출 완료 후 상태 초기화
+      setIsSubmitting(false);
     }
   };
 
@@ -263,7 +312,7 @@ const ApplicationFormPage = () => {
             <div css={{ height: "32px" }}></div>
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
-                GOODWILL에 지원하게 된 동기를 설명해주세요.(150자 이내)
+                GOODWILL에 지원하게 된 동기를 설명해주세요.(300자 이내)
               </div>
             </div>
             <form>
@@ -280,7 +329,7 @@ const ApplicationFormPage = () => {
             <div css={{ height: "32px" }}></div>
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
-                ‘창업’에 대한 자신생각을 자유롭게 작성해주세요.(300자 이내)
+                ‘창업’에 대한 자신생각을 자유롭게 작성해주세요.(1000자 이내)
               </div>
             </div>
             <form>
@@ -297,7 +346,7 @@ const ApplicationFormPage = () => {
             <div css={{ height: "32px" }}></div>
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
-                자신이 지닌 장점, 역량, 특기를 설명해주세요.(300자 이내)
+                자신이 지닌 장점, 역량, 특기를 설명해주세요.(1000자 이내)
               </div>
             </div>
             <form>
@@ -315,7 +364,7 @@ const ApplicationFormPage = () => {
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
                 중학교 시절 리더십 역량을 드러낼 수 있는 활동 경험을
-                기재해주세요.(반장, 동아리 회장 등)(300자 이내)
+                기재해주세요.(반장, 동아리 회장 등)(1000자 이내)
               </div>
             </div>
             <form>
@@ -333,7 +382,7 @@ const ApplicationFormPage = () => {
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
                 GOODWILL에 입사하여 하고 싶은 활동을 계획해서
-                작성해주세요.(300자 이내)
+                작성해주세요.(1000자 이내)
               </div>
             </div>
             <form>
@@ -352,10 +401,8 @@ const ApplicationFormPage = () => {
               <div css={BasicInformation}>
                 GOODWILL 내에서 활동을 진행하던 중 팀원 1명이 비협조적인 태도를
                 지속적으로 보인다면 본인은 어떻게 대처할 것인지
-                작성해주세요.(300자 이내)
+                작성해주세요.(1000자 이내)
               </div>
-              <div css={{ width: "10px" }}></div>
-              <div css={BasicInformationText}>필수</div>
             </div>
             <form>
               <ApplicationFormTextInput
@@ -372,10 +419,8 @@ const ApplicationFormPage = () => {
             <div css={BasicInformationContainer}>
               <div css={BasicInformation}>
                 자신이 생각하는 동아리 활동이란 무엇인지 본인의 생각과 가치관을
-                담아서 작성해주세요.(300자 이내)
+                담아서 작성해주세요.(1000자 이내)
               </div>
-              <div css={{ width: "10px" }}></div>
-              <div css={BasicInformationText}>필수</div>
             </div>
             <form>
               <ApplicationFormTextInput
@@ -391,11 +436,7 @@ const ApplicationFormPage = () => {
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>제출 서류</div>
             <div css={{ height: "32px" }}></div>
-            <DocAdd
-              isSubmitting={isSubmitting}
-              applicationId={applicationId}
-              onFilesUpdate={handleFilesUpdate}
-            />
+            <DocAdd onFilesUpdate={handleFilesUpdate} />
 
             <div css={{ height: "36px" }}></div>
             <div
@@ -415,10 +456,7 @@ const ApplicationFormPage = () => {
             </div>
             {isChecked ? (
               <div css={{ paddingTop: "32px" }}>
-                <SpecialDocAdd
-                  isSubmitting={isSubmitting}
-                  applicationId={applicationId}
-                />
+                <SpecialDocAdd onFilesUpdate={handleFilesUpdate} />
               </div>
             ) : null}
             <div css={{ height: "48px" }}></div>
@@ -427,7 +465,7 @@ const ApplicationFormPage = () => {
             <form>
               <ApplicationFormTextInput
                 name="additional_comments"
-                placeholder="추가로 더 하고 싶은 말을 작성해주세요.(150자 이내)"
+                placeholder="추가로 더 하고 싶은 말을 작성해주세요.(300자 이내)"
                 inputType="textarea"
                 register={register}
                 watch={watch}
