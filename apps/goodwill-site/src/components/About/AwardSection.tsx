@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-
 // Types
 interface Award {
   id: number;
@@ -26,7 +25,14 @@ const awardsData: Award[] = [
   { id: 11, type: 'External', name: '2024 대전대학교 초중고대 연합 창업경진대회 장려상 수상', year: 2024 },
 ];
 
-// Styled components
+// Media query breakpoints
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+};
+
+// Styled components with responsive design
 const Container = styled.div`
   background-color: black;
   color: white;
@@ -35,7 +41,14 @@ const Container = styled.div`
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  position: relative;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 30px 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 20px 10px;
+  }
 `;
 
 const BackgroundImage = styled.div`
@@ -45,7 +58,7 @@ const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('imgs/img/backgroundtext.png'); /* Replace with your actual image path */
+  background-image: url('imgs/img/backgroundtext.png');
   background-size: cover;
   background-position: center;
   opacity: 1;
@@ -55,6 +68,13 @@ const BackgroundImage = styled.div`
 const TopWrapper = styled.div`
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -63,12 +83,30 @@ const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 100px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding-bottom: 70px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-bottom: 50px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 4rem;
   font-weight: bold;
   margin-bottom: 60px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
 `;
 
 const AwardsGrid = styled.div`
@@ -77,12 +115,33 @@ const AwardsGrid = styled.div`
   gap: 40px 0;
   border-bottom: 3px solid rgba(255, 255, 255, 0.1);
   border-top: 3px solid rgba(255, 255, 255, 0.1);
-  `;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 120px 1fr;
+    gap: 30px 0;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+`;
 
 const CategoryTitle = styled.div`
   font-size: 2rem;
   font-weight: 300;
   padding-top: 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.5rem;
+    padding-top: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+  }
 `;
 
 const AwardsList = styled.div`
@@ -92,10 +151,29 @@ const AwardsList = styled.div`
   text-align: left;
   font-size: 25px;
   
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+    gap: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+    gap: 10px;
+  }
 `;
 
 const AwardItem = styled.div`
   padding: 20px 0;
+  word-break: keep-all;
+  line-height: 1.4;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 15px 0;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 12px 0;
+  }
 `;
 
 const NavigationBar = styled.div`
@@ -107,18 +185,41 @@ const NavigationBar = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   transform: translateY(60px);
   
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 100px;
+    transform: translateY(40px);
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-top: 70px;
+    padding-top: 15px;
+    transform: translateY(30px);
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
 `;
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 15px;
+    order: 1;
+  }
 `;
 
 const RightSection = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    order: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 const NavDot = styled.div<{ active?: boolean }>`
@@ -135,19 +236,48 @@ const NavDot = styled.div<{ active?: boolean }>`
     background-color: white;
     color: black;
   `}
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const NavText = styled.div`
   font-size: 1rem;
   margin: 0 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 0.9rem;
+    margin: 0 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 0.8rem;
+    margin: 0 10px;
+  }
 `;
 
 const BrandLogo = styled.img`
   position: absolute;
   top: 15px;
   right: 25px;
-  height: 25px; /* 로고 크기 조정 */
+  height: 25px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 22px;
+    right: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    position: relative;
+    height: 20px;
+    margin-top: 15px;
+    top: 0;
+    right: 0;
+  }
 `;
+
 const AwardsSection: React.FC = () => {
   const [currentYear, setCurrentYear] = useState<number>(2024);
   

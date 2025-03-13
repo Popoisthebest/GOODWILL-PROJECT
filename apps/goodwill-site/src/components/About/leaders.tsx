@@ -22,11 +22,34 @@ const Container = styled.div`
   padding: 40px 20px;
   margin-top: 200px;
   font-family: Pretendard;
+  
+  @media (max-width: 1024px) {
+    margin-top: 150px;
+    padding: 30px 15px;
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 100px;
+    padding: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 80px;
+    padding: 15px;
+  }
 `;
 
 const Header = styled.div`
   text-align: center;
   margin-bottom: 60px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const Title = styled.h1`
@@ -34,19 +57,42 @@ const Title = styled.h1`
   font-weight: 600;
   margin-bottom: 1px;
   font-family: Pretendard;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 const Subtitle = styled.h2`
   font-size: 28px;
   font-weight: 600;
-
   font-family: Pretendard;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 const TeamGrid = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
+  
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `;
 
 const MemberCard = styled.div`
@@ -58,9 +104,14 @@ const MemberCard = styled.div`
     flex-direction: row-reverse;
   }
 
+  @media (max-width: 1024px) {
+    gap: 30px;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
 
     &:nth-of-type(even) {
       flex-direction: column;
@@ -76,6 +127,24 @@ const ImageContainer = styled.div`
   border-radius: 32px;
   overflow: hidden;
   flex-shrink: 0;
+  
+  @media (max-width: 1024px) {
+    width: 280px;
+    height: 280px;
+    border-radius: 28px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+  }
 `;
 
 const ProfileImage = styled.div<{ imageUrl: string }>`
@@ -89,19 +158,15 @@ const ProfileImage = styled.div<{ imageUrl: string }>`
   background-position: center;
 `;
 
-// const Circle = styled.div`
-//   width: 120px;
-//   height: 120px;
-//   background-color: #ddd;
-//   border-radius: 50%;
-// `;
-
 const InfoContainer = styled.div<{ isEven: boolean }>`
   flex: 1;
   text-align: ${(props) => (props.isEven ? "right" : "left")};
 
   @media (max-width: 768px) {
     text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
   }
 `;
 
@@ -115,12 +180,30 @@ const PositionTitle = styled.div<{ isEven: boolean }>`
   @media (max-width: 768px) {
     justify-content: center;
   }
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
 `;
 
 const Name = styled.h3`
   font-size: 70px;
   font-weight: 600;
   top: 100px;
+  
+  @media (max-width: 1024px) {
+    font-size: 60px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
 `;
 
 const Position = styled.span`
@@ -131,6 +214,20 @@ const Position = styled.span`
   font-weight: 200;
   line-height: 120%; /* 48px */
   transform: translateY(-11px);
+  
+  @media (max-width: 1024px) {
+    font-size: 34px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    transform: translateY(-8px);
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 22px;
+    transform: translateY(0);
+  }
 `;
 
 const Description = styled.p`
@@ -139,6 +236,21 @@ const Description = styled.p`
   color: #555;
   white-space: pre-line;
   margin-top: -50px;
+  
+  @media (max-width: 1024px) {
+    margin-top: -40px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 0;
+    font-size: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 1.5;
+  }
 `;
 
 // Component
