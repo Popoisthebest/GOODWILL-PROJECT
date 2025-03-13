@@ -500,7 +500,7 @@ const BetterWorldLanding: React.FC = () => {
           }}
         >
           <motion.video
-            src={Video}
+            src={""}
             style={{ 
               width: "100%", 
               height: "100%", 
