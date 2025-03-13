@@ -76,6 +76,7 @@ export const labelStyle = css`
   font-weight: 400;
   line-height: 24px; /* 150% */
   letter-spacing: -0.048px;
+  margin: 0px 0px 2px 3px;
 `;
 
 export const inputStyle = css`
@@ -102,7 +103,7 @@ export const emailButtonDiv = css`
 
 export const textareaStyle = css`
   ${inputStyle};
-  height: 80px;
+  height: 100px;
   resize: vertical;
 `;
 

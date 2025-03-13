@@ -1,83 +1,70 @@
-// import { motion } from "motion/react";
-import { useState } from "react";
-import {
-  // docAddButton,
-  docAddContainer,
-  docAddContainerButton,
-  // docButtonContainer,
-} from "./DocAdd.style.ts";
+import { useState, useEffect } from "react";
+import { docAddContainer, docAddContainerButton } from "./DocAdd.style.ts";
 import FileUpload from "./FileUpload/FileUpload.tsx";
 import fileAddFormAdd from "../../assets/fileUpload/PlusCircle.svg";
 import { BasicInformation } from "./ApplicationForm.style.ts";
 
 const DocAdd = ({
-  isSubmitting,
-  applicationId,
+  onFilesUpdate,
 }: {
-  isSubmitting: boolean;
-  applicationId: string;
+  onFilesUpdate: (
+    files: { file: File; fileType: string; title: string }[],
+  ) => void;
 }) => {
-  // const [isContest, setContest] = useState(true);
   const [contestFiles, setContestFiles] = useState<
     { id: number; name: string }[]
   >([]);
   const [portfolioFiles, setPortfolioFiles] = useState<
     { id: number; name: string }[]
   >([]);
+  const [uploadedFiles, setUploadedFiles] = useState<
+    { file: File; fileType: string; title: string }[]
+  >([]);
+
+  // 🔥 uploadedFiles가 변경될 때마다 `onFilesUpdate` 실행
+  useEffect(() => {
+    onFilesUpdate(uploadedFiles);
+  }, [uploadedFiles]);
+
+  // 🔥 FileUpload에서 받은 파일 데이터를 추가
+  const handleFileUpload = (fileData: {
+    file: File;
+    fileType: string;
+    title: string;
+  }) => {
+    setUploadedFiles((prevFiles) => [...prevFiles, fileData]);
+  };
 
   // 새로운 FileUpload 추가
   const addFileUpload = (contest: boolean) => {
     const newFile = { id: Date.now(), name: "" };
     if (contest) {
-      const updatedFiles = [...contestFiles, newFile];
-      setContestFiles(updatedFiles);
+      setContestFiles((prevFiles) => [...prevFiles, newFile]);
     } else {
-      const updatedFiles = [...portfolioFiles, newFile];
-      setPortfolioFiles(updatedFiles);
+      setPortfolioFiles((prevFiles) => [...prevFiles, newFile]);
     }
   };
 
   // 특정 FileUpload 삭제
   const removeFileUpload = (id: number, isContestType: boolean) => {
     if (isContestType) {
-      const updatedFiles = contestFiles.filter((file) => file.id !== id);
-      setContestFiles(updatedFiles);
+      setContestFiles((prevFiles) =>
+        prevFiles.filter((file) => file.id !== id),
+      );
     } else {
-      const updatedFiles = portfolioFiles.filter((file) => file.id !== id);
-      setPortfolioFiles(updatedFiles);
+      setPortfolioFiles((prevFiles) =>
+        prevFiles.filter((file) => file.id !== id),
+      );
     }
+
+    // 🔥 uploadedFiles에서도 해당 파일 삭제
+    setUploadedFiles((prevFiles) =>
+      prevFiles.filter((file) => file.file.name !== id.toString()),
+    );
   };
 
   return (
     <div>
-      {/*<div css={docButtonContainer}>*/}
-      {/*  /!* 대회 수상 내역 / 개인 포트폴리오 버튼 *!/*/}
-      {/*  <motion.button*/}
-      {/*    css={docAddButton}*/}
-      {/*    onTap={() => setContest(true)}*/}
-      {/*    animate={*/}
-      {/*      isContest*/}
-      {/*        ? { backgroundColor: "#262626", color: "#ffffff" }*/}
-      {/*        : { backgroundColor: "rgba(0, 0, 0, 0)", color: "#000000" }*/}
-      {/*    }*/}
-      {/*  >*/}
-      {/*    대회 수상 내역*/}
-      {/*  </motion.button>*/}
-      {/*  <motion.button*/}
-      {/*    css={docAddButton}*/}
-      {/*    onTap={() => setContest(false)}*/}
-      {/*    animate={*/}
-      {/*      isContest*/}
-      {/*        ? { backgroundColor: "rgba(0, 0, 0, 0)", color: "#000000" }*/}
-      {/*        : { backgroundColor: "#262626", color: "#ffffff" }*/}
-      {/*    }*/}
-      {/*  >*/}
-      {/*    개인 포트폴리오*/}
-      {/*  </motion.button>*/}
-      {/*</div>*/}
-
-      {/*<div css={{ height: "25px" }}></div>*/}
-
       <div css={BasicInformation}>대회 수상 내역</div>
       <div css={docAddContainer}>
         <div>
@@ -87,19 +74,12 @@ const DocAdd = ({
               id={file.id}
               removeFileUpload={() => removeFileUpload(file.id, true)}
               isContest={true}
-              isSubmitting={isSubmitting}
-              applicationId={applicationId}
+              onFileUpload={handleFileUpload} // 🔥 파일 업로드 후 처리
             />
           ))}
         </div>
 
-        {/* 추가 버튼 */}
-        <button
-          onClick={() => {
-            addFileUpload(true);
-          }}
-          css={docAddContainerButton}
-        >
+        <button onClick={() => addFileUpload(true)} css={docAddContainerButton}>
           <img src={fileAddFormAdd} alt="fileAdd" />
         </button>
       </div>
@@ -115,17 +95,13 @@ const DocAdd = ({
               id={file.id}
               removeFileUpload={() => removeFileUpload(file.id, false)}
               isContest={false}
-              isSubmitting={isSubmitting}
-              applicationId={applicationId}
+              onFileUpload={handleFileUpload} // 🔥 파일 업로드 후 처리
             />
           ))}
         </div>
 
-        {/* 추가 버튼 */}
         <button
-          onClick={() => {
-            addFileUpload(false);
-          }}
+          onClick={() => addFileUpload(false)}
           css={docAddContainerButton}
         >
           <img src={fileAddFormAdd} alt="fileAdd" />

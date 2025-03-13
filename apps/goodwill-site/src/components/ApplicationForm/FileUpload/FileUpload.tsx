@@ -11,54 +11,42 @@ import {
 } from "./FileUpload.style.ts";
 import fileDeleteIcon from "../../../assets/fileUpload/fileUploadDelete.svg";
 import { docAddContainerList } from "../DocAdd.style.ts";
-import { fileSend } from "../../../hooks/fileSend.ts";
 
 interface FileUploadProps {
   id: number;
   removeFileUpload: () => void;
   isContest: boolean;
-  isSubmitting: boolean;
-  applicationId: string;
+  onFileUpload: (fileData: {
+    file: File;
+    fileType: string;
+    title: string;
+  }) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
   id,
   removeFileUpload,
   isContest,
-  isSubmitting,
-  applicationId,
+  onFileUpload,
 }) => {
   // 지원자 파일 저장
-  const [file, setFile] = useState<File>(); // 초기값은 null
+  const [file, setFile] = useState<File | null>(null);
+  const [fileTitle, setFileTitle] = useState("");
 
+  // 🔥 파일과 제목이 입력되면 즉시 `DocAdd.tsx`로 데이터 전달
   useEffect(() => {
-    const uploadFile = async () => {
-      // console.log("fileUpload 실행됨, 현재 applicationId:", applicationId);
-
-      if (!applicationId) {
-        // console.error("🚨 applicationId가 아직 설정되지 않음. 업로드 중단.");
-        return;
-      }
-
-      const result = await fileSend(
-          file!,
-          isContest ? "contest" : "portfolio",
-          () => applicationId
-      );
-
-      console.log("파일 업로드 결과:", result);
-    };
-
-    if (isSubmitting && applicationId) {
-      uploadFile();
+    if (file && fileTitle.trim()) {
+      onFileUpload({
+        file,
+        fileType: isContest ? "contest" : "portfolio",
+        title: fileTitle,
+      });
     }
-  }, [isSubmitting, applicationId]); // 🔥 applicationId가 변경될 때도 실행되도록 추가
-
+  }, [file, fileTitle]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const uploadedFile = event.target.files[0]; // 첫 번째 파일 객체 가져오기
-      setFile(uploadedFile); // 파일 자체를 상태로 저장
+      setFile(event.target.files[0]);
     }
   };
 
@@ -67,7 +55,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       <div css={{ display: "flex", alignItems: "space-between" }}>
         <div css={{ display: "flex", flexDirection: "column", width: "100%" }}>
           <div css={fileNameContainer}>
-            {/* 지원자가 직접 입력하는 제목 (쿠키에 저장됨) */}
+            {/* 🔥 지원자가 입력한 제목을 상태로 저장 */}
             <input
               placeholder={
                 isContest
@@ -75,6 +63,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
                   : "프로젝트 이름을 입력해 주세요."
               }
               css={fileUploadNameInput}
+              value={fileTitle}
+              onChange={(e) => setFileTitle(e.target.value)}
             />
           </div>
 

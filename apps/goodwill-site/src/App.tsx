@@ -6,7 +6,7 @@ import ApplicationFormPage from "./pages/ApplicationForm.tsx";
 import Announcement from "./pages/Announcement.tsx";
 import NoticeDetail from "./pages/NoticeDetail.tsx";
 // import Article from "./pages/Article.tsx";
-// import Project from "./pages/Project.tsx";
+import Project from "./pages/Project.tsx";
 import SubmissionFinished from "./pages/SubmissionFinished.tsx";
 import MainAbout from "./pages/About.tsx";
 import Main from "./pages/Main.tsx";
@@ -27,7 +27,7 @@ import FrequentQuetionFE from "./article_page/frequent_question_fe";
 import EverythingDaeshin from "./article_page/everythig_daeshin";
 import TalkPlanner from "./article_page/talk_plaaner";
 import IndoEnterprise from "./article_page/indo_enterprise";
-import BlogMainPage from "./blog_main/blog_main_page";
+import Article from "./components/Article/Article.tsx";
 import WhatisWork from "./article_page/what_is_work";
 import SeriousNotSerious from "./article_page/serious_not_serious";
 import MartialLawEconomy from "./article_page/martial_law_economy";
@@ -48,7 +48,7 @@ function App() {
         <Route path="/submission-finished" element={<SubmissionFinished />} />
 
         {/*<Route path="/team-and-culture" element={<TeamCulture />} />*/}
-        {/*<Route path="/project" element={<Project />} />*/}
+        <Route path="/project" element={<Project />} />
         <Route path="/announcement" element={<Announcement />} />
         <Route
           path="/notice/:category/:title/:date/:views/:content"
@@ -63,7 +63,7 @@ function App() {
           element={<EventSubmissionFinish />}
         />
 
-        <Route path="/article" element={<BlogMainPage />} />
+        <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />
         <Route path="/article/2" element={<EverythingDaeshin />} />
         <Route path="/article/3" element={<FirstTest />} />

@@ -149,7 +149,7 @@ const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url("../../../imgs/img/Group 624.png"); /* Replace with your actual image path */
+  background-image: url("../../imgs/img/Group 624.png"); /* Replace with your actual image path */
   background-size: cover;
   background-position: center;
   opacity: 1;

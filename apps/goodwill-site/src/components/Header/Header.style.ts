@@ -9,7 +9,8 @@ export const headerStyle = css`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-    padding: 30px 72px;
+  padding: 30px 72px;
+  z-index: 3;
 
   @media (max-width: 768px) {
     padding: 30px;

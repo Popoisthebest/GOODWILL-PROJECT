@@ -45,10 +45,10 @@ export const RoleSelectContainer = css`
   justify-content: space-between;
   padding: 67px 0px;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
 
   @media (max-width: 768px) {
-    padding: 67px 0px 0px 0px;
+    padding: 67px 0 0 0;
   }
 `;
 

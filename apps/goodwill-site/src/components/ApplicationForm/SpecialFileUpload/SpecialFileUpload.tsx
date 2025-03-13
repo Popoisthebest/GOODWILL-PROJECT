@@ -11,42 +11,40 @@ import {
 } from "./SpecialFileUpload.style.ts";
 import fileDeleteIcon from "../../../assets/fileUpload/fileUploadDelete.svg";
 import { docAddContainerList } from "../DocAdd.style.ts";
-import { fileSend } from "../../../hooks/fileSend.ts";
 
 interface FileUploadProps {
   id: number;
   removeFileUpload: () => void;
-  isSubmitting: boolean;
-  applicationId: string;
+  onFileUpload: (fileData: {
+    file: File;
+    fileType: string;
+    title: string;
+  }) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
   id,
   removeFileUpload,
-  isSubmitting,
-  applicationId,
+  onFileUpload,
 }) => {
   // 업로드한 파일
   const [file, setFile] = useState<File | null>(null); // 초기값은 null
+  const [fileTitle, setFileTitle] = useState(""); // 🔥 지원자가 입력한 제목 저장
 
-  console.log(file);
-
-  // isSubmitting 값이 변경될 때 업로드 실행
+  // 🔥 파일과 제목이 입력되면 즉시 `SpecialDocAdd.tsx`로 데이터 전달
   useEffect(() => {
-    const uploadFile = async () => {
-      if (isSubmitting) {
-        const result = await fileSend(file!, "special", () => applicationId);
-        console.log("파일 업로드", result);
-      }
-    };
-
-    uploadFile(); // 비동기 함수 실행
-  }, [isSubmitting]); // isSubmitting이 변경될 때 실행
+    if (file && fileTitle.trim()) {
+      onFileUpload({
+        file,
+        fileType: "special",
+        title: fileTitle,
+      });
+    }
+  }, [file, fileTitle]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const uploadedFile = event.target.files[0]; // 첫 번째 파일 객체 가져오기
-      setFile(uploadedFile); // 파일 자체를 상태로 저장
+      setFile(event.target.files[0]);
     }
   };
 
@@ -59,6 +57,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
             <input
               placeholder="추천인 이름을 입력해 주세요."
               css={fileUploadNameInput}
+              value={fileTitle}
+              onChange={(e) => setFileTitle(e.target.value)}
             />
           </div>
 

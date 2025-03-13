@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styled from '@emotion/styled';
 import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
@@ -32,7 +33,7 @@ const TopContentWrapper = styled(motion.div)`
   flex-direction: column;
   z-index: 10;
   top: 200px;
-  
+
   @media (max-width: ${breakpoints.tablet}) {
     top: 100px;
     height: 20vh;
@@ -238,7 +239,7 @@ const BetterWorldLanding: React.FC = () => {
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -248,13 +249,13 @@ const BetterWorldLanding: React.FC = () => {
       .then(svgText => {
         const parser = new DOMParser();
         const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
-        
+
         const firstPath = svgDoc.querySelector('path');
         const svgElement = svgDoc.querySelector('svg');
 
         if (firstPath && svgElement) {
           setPathData(firstPath.getAttribute('d'));
-          
+
           const viewBoxAttr = svgElement.getAttribute('viewBox');
           if (viewBoxAttr) {
             setViewBox(viewBoxAttr);
@@ -265,145 +266,152 @@ const BetterWorldLanding: React.FC = () => {
   }, []);
 
   const AboutButton = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const isMobile = window.innerWidth <= 768;
+    const [isHovered, setIsHovered] = useState(false);
+    const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
-  const handleMouseEnter = () => {
-    if (!isMobile) setIsHovered(true);
-  };
+    const isMobile = window.innerWidth <= 768;
 
-  const handleMouseLeave = () => {
-    if (!isMobile) setIsHovered(false);
-  };
+    const handleMouseEnter = () => {
+      if (!isMobile) setIsHovered(true);
+    };
 
-  const handleTouchStart = () => {
-    if (isMobile) {
-      setIsHovered(true);
-      setTimeout(() => setIsHovered(false), 500);
-    }
-  };
+    const handleMouseLeave = () => {
+      if (!isMobile) setIsHovered(false);
+    };
 
-  return (
+    const handleTouchStart = () => {
+      if (isMobile) {
+        setIsHovered(true);
+        setTimeout(() => setIsHovered(false), 500);
+      }
+    };
+
+    const handleClick = () => {
+      navigate("/about"); // About 페이지로 이동
+    };
+
+    return (
     <div style={{ display: "inline-block", position: "relative", zIndex: 50 }}>
-      <motion.button
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: isMobile ? "8px 16px" : "12px 24px",
-          backgroundColor: "white",
-          borderRadius: "9999px",
-          border: "none",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          position: "relative",
-          cursor: "pointer",
-          fontWeight: "bold",
-          fontSize: isMobile ? "16px" : "18px",
-          zIndex: 50,
-          width: "180px",
-          height: "50px",
-          overflow: "hidden",
-        }}
-        whileTap={{ scale: 0.95 }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-      >
-        {/* 점을 배경 원으로 활용 */}
-        <motion.div
-          initial={{
-            width: 8,
-            height: 8,
-            backgroundColor: "#000",
-            borderRadius: "50%",
-            left: "20px", // 초기 위치를 왼쪽으로 설정
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-          animate={{
-            width: isHovered ? "400px" : 8,
-            height: isHovered ? "400px" : 8,
-            left: isHovered ? "-50%" : "20px", // hover 시 중앙으로 이동
-            backgroundColor: isHovered ? "rgba(5, 48, 140, 1)" : "#000",
-            borderRadius: isHovered ? "9999px" : "50%",
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          }}
+        <motion.button
           style={{
-            position: "absolute",
-            zIndex: 51,
-            transformOrigin: "center",
-            top: "50%",
-          }}
-        />
-
-        {/* 텍스트 */}
-        <motion.span
-          animate={{
-            color: isHovered ? "#ffffff" : "#000000",
-            x: isHovered ? 0 : 10,
-          }}
-          transition={{ duration: 0.2 }}
-          style={{
-            position: "relative",
-            zIndex: 52,
-            whiteSpace: "nowrap",
-          }}
-        >
-          ABOUT US
-        </motion.span>
-
-        {/* 화살표 애니메이션 */}
-        <motion.div
-          initial={{
-            x: 20,
-            opacity: 0,
-            width: 0,
-          }}
-          animate={{
-            x: isHovered ? 0 : 20,
-            opacity: isHovered ? 1 : 0,
-            width: isHovered ? "auto" : 0,
-          }}
-          transition={{ duration: 0.2 }}
-          style={{
-            marginLeft: isHovered ? "12px" : "0px",
             display: "flex",
             alignItems: "center",
-            zIndex: 52,
+            justifyContent: "center",
+            padding: isMobile ? "8px 16px" : "12px 24px",
+            backgroundColor: "white",
+            borderRadius: "9999px",
+            border: "none",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            position: "relative",
+            cursor: "pointer",
+            fontWeight: "bold",
+            fontSize: isMobile ? "16px" : "18px",
+            zIndex: 50,
+            width: "180px",
+            height: "50px",
+            overflow: "hidden",
           }}
+          whileTap={{ scale: 0.95 }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onClick={handleClick} // 클릭 시 페이지 이동
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ color: "#ffffff" }}
+          {/* 점을 배경 원으로 활용 */}
+          <motion.div
+            initial={{
+              width: 8,
+              height: 8,
+              backgroundColor: "#000",
+              borderRadius: "50%",
+              left: "20px", // 초기 위치를 왼쪽으로 설정
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+            animate={{
+              width: isHovered ? "400px" : 8,
+              height: isHovered ? "400px" : 8,
+              left: isHovered ? "-50%" : "20px", // hover 시 중앙으로 이동
+              backgroundColor: isHovered ? "rgba(5, 48, 140, 1)" : "#000",
+              borderRadius: isHovered ? "9999px" : "50%",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+            }}
+            style={{
+              position: "absolute",
+              zIndex: 51,
+              transformOrigin: "center",
+              top: "50%",
+            }}
+          />
+
+          {/* 텍스트 */}
+          <motion.span
+            animate={{
+              color: isHovered ? "#ffffff" : "#000000",
+              x: isHovered ? 0 : 10,
+            }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: "relative",
+              zIndex: 52,
+              whiteSpace: "nowrap",
+            }}
           >
-            <path
-              d="M5 12H19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M12 5L19 12L12 19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
-      </motion.button>
-    </div>
-  );
-};
+            ABOUT US
+          </motion.span>
+
+          {/* 화살표 애니메이션 */}
+          <motion.div
+            initial={{
+              x: 20,
+              opacity: 0,
+              width: 0,
+            }}
+            animate={{
+              x: isHovered ? 0 : 20,
+              opacity: isHovered ? 1 : 0,
+              width: isHovered ? "auto" : 0,
+            }}
+            transition={{ duration: 0.2 }}
+            style={{
+              marginLeft: isHovered ? "12px" : "0px",
+              display: "flex",
+              alignItems: "center",
+              zIndex: 52,
+            }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ color: "#ffffff" }}
+            >
+              <path
+                d="M5 12H19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 5L19 12L12 19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+        </motion.button>
+      </div>
+    );
+  };
 
   // 스크롤 애니메이션을 위한 값 계산
   const { scrollYProgress } = useScroll({
@@ -413,48 +421,48 @@ const BetterWorldLanding: React.FC = () => {
 
   // 모바일과 데스크탑을 위한 다른 애니메이션 값
   const pathLength = useTransform(scrollYProgress, [0, 3], [0, 3]);
-  
+
   const videoWidth = useTransform(
-    scrollYProgress, 
-    [0.6, 1], 
+    scrollYProgress,
+    [0.6, 1],
     isMobile ? ["90%", "90%"] : ["35%", "80%"]
   );
-  
+
   const videoHeight = useTransform(
-    scrollYProgress, 
-    [0.6, 1], 
+    scrollYProgress,
+    [0.6, 1],
     isMobile ? ["40px", "40vh"] : ["40px", "75vh"]
   );
-  
+
   // 공통 애니메이션 컨트롤러
   const elementOpacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
   const elementX = useTransform(
-    scrollYProgress, 
-    [0.5, 1], 
+    scrollYProgress,
+    [0.5, 1],
     isMobile ? ["0%", "-5%"] : ["0%", "-20%"]
   );
-  
+
   const topContentInitialX = useTransform(
-    scrollYProgress, 
-    [0, 0.85], 
+    scrollYProgress,
+    [0, 0.85],
     isMobile ? ["0%", "5%"] : ["0%", "10%"]
   );
 
   const videoY = useTransform(
     scrollYProgress,
     [0.6, 0.7, 1],
-    isMobile ? [100, 100, 140] : [200, 200, 360]
+    isMobile ? [100, 100, 140] : [200, 200, 360],
   );
 
   return (
     <LandingSection ref={ref}>
       <SVGContainer>
         {pathData && (
-          <motion.svg 
+          <motion.svg
             viewBox={viewBox}
             xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none" 
-            style={{ 
+            preserveAspectRatio="none"
+            style={{
               width: '100%', 
               height: '100%',
               position: 'absolute',
@@ -477,7 +485,7 @@ const BetterWorldLanding: React.FC = () => {
         )}
       </SVGContainer>
 
-      <TopContentWrapper 
+      <TopContentWrapper
         style={{
           x: topContentInitialX,
           opacity: elementOpacity,
@@ -492,18 +500,20 @@ const BetterWorldLanding: React.FC = () => {
       </TopContentWrapper>
 
       <MainContentWrapper>
-        <VideoContainer 
-          style={{ 
-            width: videoWidth, 
+        <VideoContainer
+          style={{
+            width: videoWidth,
             height: videoHeight,
             y: videoY
           }}
         >
           <motion.video
             src={""}
+
             style={{ 
               width: "100%", 
               height: "100%", 
+
               objectFit: "cover"
             }}
             autoPlay
@@ -515,10 +525,15 @@ const BetterWorldLanding: React.FC = () => {
 
         <TextSection style={{ opacity: elementOpacity, x: elementX }}>
           <Description>
-            내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.내용을 입력해 주세요.
+            GOODWILL(KE)은 Establishing a student-led company that cares for
+            people and society(사람과 사회를 위한 학생 주도의 기업 운영)를 통해
+            Better World, Brighter Tomorrow(더 나은 세상, 더 나은 내일)를 만들어
+            가고 있습니다. 이를 바탕으로 GOODWILL만의 문화를 형성하고 능동적
+            기업 운영을 통해 2015년부터 대전대신고 내에서 꾸준히 최고의 실적을
+            도출해 내며 끊임없이 발전과 변화를 꾀하고 있습니다.
           </Description>
         </TextSection>
-        
+
         <ButtonContainer style={{ opacity: elementOpacity, x: elementX }}>
           <AboutButton />
         </ButtonContainer>

@@ -1,21 +1,17 @@
 // ApplyButton.tsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ApplyButtonProps {
   onClick?: () => void; // onClick prop을 전달받을 수 있도록 타입 정의
 }
 
-const ApplyButton: React.FC<ApplyButtonProps> = ({ onClick }) => {
-  // handleApplyClick 함수 내부 정의
-  const handleApplyClick = () => {
-    if (onClick) {
-      onClick(); // 부모 컴포넌트로 전달된 onClick 호출
-    }
-  };
+const ApplyButton: React.FC<ApplyButtonProps> = () => {
+  const navigate = useNavigate();
 
   return (
     <div style={buttonContainerStyle}>
-      <button style={buttonStyle} onClick={handleApplyClick}>
+      <button style={buttonStyle} onClick={()=>{navigate("/career")}}>
         입사 신청하기
       </button>
     </div>

@@ -8,20 +8,25 @@ const HeadText: React.FC<HeadTextProps> = () => {
     position: relative;
     display: flex;
     justify-content: center;
-    top: -80px;
-    left: -20px;
+    align-items: center;
+    top: -110px;
+    left: 0;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     background-color: transparent;
-    z-index: -1;
+    z-index: 1;
+    text-align: left;
 
     @media (max-width: 768px) {
       top: -40px;
-      left: -10px;
+      padding: 0 15px;
     }
 
     @media (max-width: 480px) {
       top: -20px;
-      left: 0;
+      padding: 0 10px;
     }
   `;
 
@@ -31,13 +36,18 @@ const HeadText: React.FC<HeadTextProps> = () => {
     line-height: 1.3;
     color: black;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    text-align: left;
+
+    @media (max-width: 1024px) {
+      font-size: 52px;
+    }
 
     @media (max-width: 768px) {
-      font-size: 48px;
+      font-size: 42px;
     }
 
     @media (max-width: 480px) {
-      font-size: 36px;
+      font-size: 32px;
     }
   `;
 

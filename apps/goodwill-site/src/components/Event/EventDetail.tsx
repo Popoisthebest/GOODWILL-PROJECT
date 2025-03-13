@@ -39,7 +39,9 @@ const EventDetail: React.FC = () => {
     <DefaultLayout>
       <div className="event_detail">
         <div className="image_and_details">
-          <img src={event.image} className="event_detail_image" alt="" />
+          <div className="event_detail_image_container">
+            <img src={event.image} className="event_detail_image" alt="" />
+          </div>
           <div className="event_detail_txts">
             <div className="event_detail_title">행사 상세 정보</div>
             <div className="event_detail_contents">
@@ -62,25 +64,32 @@ const EventDetail: React.FC = () => {
           <div className="bottom_border"></div>
         </div>
 
+        <div css={{ width: "300px" }}></div>
+
         <div className="apply">
           <div className="apply_title">
             <div className="apply_title1">창업</div>
             <div className="apply_title2"></div>
             <div className="apply_title3">{event.name}</div>
           </div>
-          <div className="apply_main_title">{event.title}</div>
-          <div className="apply_main_subtitle">{event.date}</div>
-          <div className="apply_main_subtitle1">{event.place}</div>
+          <div className="apply_subtitle_div">
+            <div className="apply_main_title">{event.title}</div>
+            <div className="apply_main_subtitle">{event.date}</div>
+            <div className="apply_main_subtitle1">{event.place}</div>
+          </div>
           <div className="apply_main_border"></div>
-          <div className="apply_main_title">문의</div>
-          <div className="apply_ask_text_box">
-            <div className="apply_ask_text">고승한</div>
-            <div className="apply_ask_text_gray">CEO</div>
+          <div className="apply_ask_div">
+            <div className="apply_main_title">문의</div>
+            <div className="apply_ask_text_box">
+              <div className="apply_ask_text">고승한</div>
+              <div className="apply_ask_text_gray">CEO</div>
+            </div>
+            <div className="apply_ask_text">M. 010-4294-1083</div>
+            <div className="apply_ask_text">
+              E. s.h.putrats@wearegoodwill.kro.kr
+            </div>
           </div>
-          <div className="apply_ask_text">M. 010-4294-1083</div>
-          <div className="apply_ask_text">
-            E. s.h.putrats@wearegoodwill.kro.kr
-          </div>
+
           <div className="apply_main_border"></div>
           <button
             onClick={() => {
@@ -96,7 +105,7 @@ const EventDetail: React.FC = () => {
             }}
             className="apply_btn"
           >
-            참여하기
+            신청하기
           </button>
           <button className="apply_btn1_boxes" onClick={handleShare}>
             <div className="apply_btn1">공유하기</div>

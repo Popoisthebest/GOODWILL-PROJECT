@@ -13,11 +13,18 @@ import {
 
 interface ApplicationFormData {
   name: string;
-  studentId: string;
+  student_id: string;
   email: string;
   phone: string;
-  coverLetter: string;
-  questions: string;
+  career_aspiration: string;
+  motivation: string;
+  entrepreneurship_thoughts: string;
+  strengths_skills: string;
+  leadership_experience: string;
+  goodwill_plan: string;
+  team_conflict_resolution: string;
+  club_activity_thoughts: string;
+  additional_comments?: string; // 🔥 선택 입력 필드로 변경
 }
 
 interface ApplicationFormTextInputProps {
@@ -48,16 +55,28 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
       {inputType === "textarea" ? (
         <motion.textarea
           id={name}
-          {...(name !== "questions"
-            ? register(name, {
-                required: `${placeholder}은(는) 필수입니다.`,
-                ...(name === "coverLetter" && {
-                  validate: (value) =>
-                    (value?.replace(/\s/g, "").length || 0) <= 1500 ||
-                    "최대 1500자까지 입력할 수 있습니다.",
-                }),
-              })
-            : register(name))} // 질문사항 필드는 검증 없이 등록
+          {...register(name, {
+            ...(name !== "additional_comments" && {
+              required: `${placeholder || "이 항목"}은(는) 필수입니다.`,
+            }), // 🔥 additional_comments는 필수 X
+            ...(name === "motivation" && {
+              validate: (value) =>
+                (value?.replace(/\s/g, "").length || 0) <= 300 ||
+                "최대 300자까지 입력할 수 있습니다.",
+            }),
+            ...(name === "additional_comments" && {
+              validate: (value) =>
+                !value ||
+                value.replace(/\s/g, "").length <= 300 ||
+                "최대 300자까지 입력할 수 있습니다.", // 🔥 입력했을 때만 유효성 검사 적용
+            }),
+            ...(name !== "motivation" &&
+              name !== "additional_comments" && {
+                validate: (value) =>
+                  (value?.replace(/\s/g, "").length || 0) <= 1000 ||
+                  "최대 1000자까지 입력할 수 있습니다.",
+              }),
+          })}
           placeholder=""
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -68,29 +87,28 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
       ) : (
         <motion.input
           id={name}
-          type={name === "studentId" || name === "phone" ? "text" : inputType}
-          {...(name !== "questions"
-            ? register(name, {
-                required: `${placeholder}은(는) 필수입니다.`,
-                ...(name === "email" && {
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: "올바른 이메일 형식을 입력하세요.",
-                  },
-                }),
-                ...(name === "studentId" && {
-                  validate: (value) =>
-                    /^[0-9]+$/.test(value) || "학번은 숫자로 입력해야 합니다.",
-                }),
-                ...(name === "phone" && {
-                  pattern: {
-                    value: /^010-\d{4}-\d{4}$/,
-                    message:
-                      "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
-                  },
-                }),
-              })
-            : register(name))} // 질문사항 필드는 검증 없이 등록
+          type={name === "student_id" || name === "phone" ? "text" : inputType}
+          {...register(name, {
+            ...(name !== "additional_comments" && {
+              required: `${placeholder}은(는) 필수입니다.`,
+            }), // 🔥 additional_comments는 필수 X
+            ...(name === "email" && {
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "올바른 이메일 형식을 입력하세요.",
+              },
+            }),
+            ...(name === "student_id" && {
+              validate: (value) =>
+                /^[0-9]+$/.test(value!) || "학번은 숫자로 입력해야 합니다.",
+            }),
+            ...(name === "phone" && {
+              pattern: {
+                value: /^010-\d{4}-\d{4}$/,
+                message: "올바른 전화번호 형식(010-0000-0000)으로 입력하세요.",
+              },
+            }),
+          })}
           placeholder=""
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -101,9 +119,22 @@ const ApplicationFormTextInput: FC<ApplicationFormTextInputProps> = ({
       )}
       <div css={{ display: "flex", justifyContent: "space-between" }}>
         {errorMessage && <p css={errorMessageStyle}>{errorMessage}</p>}
-        {name === "coverLetter" && (
+        {[
+          "motivation",
+          "career_aspiration",
+          "entrepreneurship_thoughts",
+          "strengths_skills",
+          "leadership_experience",
+          "goodwill_plan",
+          "team_conflict_resolution",
+          "club_activity_thoughts",
+          "additional_comments",
+        ].includes(name) && (
           <div css={letterCount}>
-            {inputValue?.replace(/\s/g, "").length || 0}/1500
+            {inputValue?.replace(/\s/g, "").length || 0}/
+            {name === "motivation" || name === "additional_comments"
+              ? 300
+              : 1000}
           </div>
         )}
       </div>

@@ -14,12 +14,12 @@ const Event = () => {
     {
       id: 1,
       title: "2025’ 제3회 GOODWILL CONCERT",
-      date: "03/17 CIP 2~3차 진행",
-      apply: "03/11 ~ 03/16",
+      date: "03월 19일(수), 16:50 ~ 18:00 (CIP 1차 ~ 석식시간 일부)",
+      apply: "03월 11일(화) ~ 03월 19일(수) 16:00",
       expense: "무료",
-      place: "백암관",
+      place: "대전대신고등학교 백암관",
       image: goodwillconcert,
-      name: "콘서트",
+      name: "토크 콘서트",
     },
   ];
 
