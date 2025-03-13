@@ -40,7 +40,7 @@ interface FormValues {
   goodwill_plan: string;
   team_conflict_resolution: string;
   club_activity_thoughts: string;
-  additional_comments: string;
+  additional_comments?: string;
 }
 
 // Collection names for Firestore without spaces
