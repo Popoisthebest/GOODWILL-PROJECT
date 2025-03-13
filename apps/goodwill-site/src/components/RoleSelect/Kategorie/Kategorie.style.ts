@@ -2,13 +2,13 @@ import {css} from "@emotion/react";
 
 export const KategorieSelectContainer = css`
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 12px;
 `;
 
 export const RoleSelectTitleContainer = css`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 `;
 
 export const KategorieContainer = css`
@@ -41,6 +41,6 @@ export const KategorieRoleText = css`
 export const CheckBox = css`
   border: 1px solid #000000;
   border-radius: 5px;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
 `;
