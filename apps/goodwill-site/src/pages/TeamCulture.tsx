@@ -245,10 +245,10 @@ const TeamCulture = () => {
                 <br />
                 자세한 내용은 여기서 볼 수 있어요
               </div>
-              <button className="article_btn" onClick={()=>{navigator()}}>
+              <div className="article_btn" onClick={()=>{navigator()}}>
                 아티클 보기
                 <img src={rightarrow} className="article_pic" alt="" />
-              </button>
+              </div>
             </div>
           </div>
         </div>
