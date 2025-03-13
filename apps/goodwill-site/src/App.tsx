@@ -35,7 +35,7 @@ import Pycoin from "./article_page/pycoin";
 import Marketing3 from "./article_page/marketing_3";
 import HolidayEconomy from "./article_page/holiday_economy";
 import ProjectDetailPage from "./components/Project/ProjectDetailPage.tsx";
-// import TeamCulture from "./pages/TeamCulture.tsx";
+import TeamCulture from "./pages/TeamCulture.tsx";
 
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
         <Route path="/write-application" element={<ApplicationFormPage />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
 
-        {/*<Route path="/team-and-culture" element={<TeamCulture />} />*/}
+        <Route path="/team-and-culture" element={<TeamCulture />} />
         <Route path="/project" element={<Project />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
         <Route path="/announcement" element={<Announcement />} />
