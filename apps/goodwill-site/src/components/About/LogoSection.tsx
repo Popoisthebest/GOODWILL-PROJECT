@@ -127,6 +127,20 @@ const Logo = styled.img`
   }
 `;
 
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url('../../imgs/img/ddddddddd.png'); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  pointer-events: none;
+`;
+
 
 
 // 로고 슬라이더 컴포넌트
@@ -144,6 +158,8 @@ const InfiniteLogoScroll: React.FC = () => {
 
   return (
     <Container>
+
+      <BackgroundImage />
       <Title>CLIENTS WE WORK WITH</Title>
       
       

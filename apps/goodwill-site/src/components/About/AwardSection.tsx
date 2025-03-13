@@ -45,7 +45,7 @@ const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('imgs/img/backgroundtext.png'); /* Replace with your actual image path */
+  background-image: url('../../imgs/img/backgroundtext.png'); /* Replace with your actual image path */
   background-size: cover;
   background-position: center;
   opacity: 1;
@@ -167,7 +167,7 @@ const AwardsSection: React.FC = () => {
       <ContentWrapper>
         <TopWrapper>
           <Title>AWARDS</Title>
-          <BrandLogo src="imgs/WEAREGOODWILL.svg" alt="WEAREGOODWILL Logo" />
+          <BrandLogo src="../../imgs/WEAREGOODWILL.svg" alt="WEAREGOODWILL Logo" />
         </TopWrapper>
         
         <AwardsGrid>
