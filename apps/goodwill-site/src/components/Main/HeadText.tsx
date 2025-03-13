@@ -9,7 +9,7 @@ const HeadText: React.FC<HeadTextProps> = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -80px;
+    top: -110px;
     left: 0;
     width: 100%;
     max-width: 1200px;
@@ -36,7 +36,7 @@ const HeadText: React.FC<HeadTextProps> = () => {
     line-height: 1.3;
     color: black;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-    text-align: center;
+    text-align: left;
 
     @media (max-width: 1024px) {
       font-size: 52px;
