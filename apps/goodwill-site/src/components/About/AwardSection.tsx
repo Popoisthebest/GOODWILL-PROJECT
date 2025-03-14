@@ -80,7 +80,7 @@ const TopWrapper = styled.div`
 const ContentWrapper = styled.div`
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1550px;
   margin: 0 auto;
   padding-bottom: 100px;
 
