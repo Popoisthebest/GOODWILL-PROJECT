@@ -46,70 +46,68 @@ const TopContentWrapper = styled(motion.div)`
 `;
 
 const TopTitle1 = styled.h1`
-  font-size: 128px;
-  font-family: "Aeonik TRIAL";
-  font-weight: 400;
-  font-weight: bold;
-  color: black;
-  text-align: right;
-  line-height: 110%;
-  letter-spacing: -3.2px;
-  transform: translateX(-250px);
-  margin-bottom: 170px;
+    font-size: 128px;
+    font-family: "Aeonik TRIAL", sans-serif;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    line-height: 110%;
+    letter-spacing: -3.2px;
+    transform: translateX(-250px);
+    margin-bottom: 170px;
 
-  @media (max-width: ${breakpoints.desktop}) {
-    font-size: 100px;
-    transform: translateX(-150px);
-  }
+    @media (max-width: ${breakpoints.desktop}) {
+        font-size: 100px;
+        transform: translateX(-150px);
+    }
 
-  @media (max-width: ${breakpoints.laptop}) {
-    font-size: 80px;
-    transform: translateX(-100px);
-  }
+    @media (max-width: ${breakpoints.laptop}) {
+        font-size: 80px;
+        transform: translateX(-100px);
+    }
 
-  @media (max-width: ${breakpoints.tablet}) {
-    font-size: 60px;
-    transform: translateX(-50px);
-  }
+    @media (max-width: ${breakpoints.tablet}) {
+        font-size: 60px;
+        transform: translateX(-50px);
+    }
 
-  @media (max-width: ${breakpoints.mobile}) {
-    font-size: 36px;
-    transform: translateX(-20px);
-    letter-spacing: -1.5px;
-  }
+    @media (max-width: ${breakpoints.mobile}) {
+        font-size: 36px;
+        transform: translateX(-20px);
+        letter-spacing: -1.5px;
+    }
 `;
 
 const TopTitle2 = styled.h2`
-  font-size: 128px;
-  font-family: "Aeonik TRIAL";
-  font-weight: 400;
-  font-weight: bold;
-  color: black;
-  text-align: left;
-  line-height: 110%;
-  letter-spacing: -3.2px;
-  transform: translateX(100px) translateY(-270px);
+    font-size: 128px;
+    font-family: "Aeonik TRIAL", sans-serif;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    line-height: 110%;
+    letter-spacing: -3.2px;
+    transform: translateX(100px) translateY(-270px);
 
-  @media (max-width: ${breakpoints.desktop}) {
-    font-size: 100px;
-    transform: translateX(80px) translateY(-150px);
-  }
+    @media (max-width: ${breakpoints.desktop}) {
+        font-size: 100px;
+        transform: translateX(80px) translateY(-150px);
+    }
 
-  @media (max-width: ${breakpoints.laptop}) {
-    font-size: 80px;
-    transform: translateX(60px) translateY(-120px);
-  }
+    @media (max-width: ${breakpoints.laptop}) {
+        font-size: 80px;
+        transform: translateX(60px) translateY(-120px);
+    }
 
-  @media (max-width: ${breakpoints.tablet}) {
-    font-size: 60px;
-    transform: translateX(40px) translateY(-80px);
-  }
+    @media (max-width: ${breakpoints.tablet}) {
+        font-size: 60px;
+        transform: translateX(40px) translateY(-80px);
+    }
 
-  @media (max-width: ${breakpoints.mobile}) {
-    font-size: 36px;
-    transform: translateX(20px) translateY(-50px);
-    letter-spacing: -1.5px;
-  }
+    @media (max-width: ${breakpoints.mobile}) {
+        font-size: 36px;
+        transform: translateX(20px) translateY(-50px);
+        letter-spacing: -1.5px;
+    }
 `;
 
 const MainContentWrapper = styled.div`
