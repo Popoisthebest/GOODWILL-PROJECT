@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import styles from "../styles/TeamCulture.module.css";
+import styled from "@emotion/styled";
 import TeamCultrue from "../assets/icons/Maskgroup.png";
 // import clevel from "../assets/icons/clevel.svg";
 // import gm from "../assets/icons/gm.svg";
@@ -14,7 +15,7 @@ import rail from "../assets/icons/rail.svg";
 import bamboo from "../assets/icons/bamboo.svg";
 
 import review from "../assets/icons/review.svg";
-import uparrow from "../assets/icons/uparrow.svg";
+// import uparrow from "../assets/icons/uparrow.svg";
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
@@ -99,24 +100,24 @@ const TeamCulture = () => {
   //   if (page > 0) setPage(page - 1);
   // };
 
-  const [showButton, setShowButton] = useState(false);
+  // const [showButton, setShowButton] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 100) {
+  //       setShowButton(true);
+  //     } else {
+  //       setShowButton(false);
+  //     }
+  //   };
+  //
+  //   window.addEventListener("scroll", handleScroll);
+  //
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -124,6 +125,48 @@ const TeamCulture = () => {
       behavior: "smooth",
     });
   };
+
+  const ScrollTopButton = styled.button`
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: translateY(-50px) translateX(-50px);
+    &:hover {
+      background-color: #333;
+    }
+  `;
+
+  const ArrowIconSVG = styled.svg`
+    width: 50px;
+    height: 60px;
+
+    @media (max-width: 1024px) {
+      width: 50px;
+      height: 60px;
+    }
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 50px;
+    }
+
+    @media (max-width: 480px) {
+      width: 30px;
+      height: 40px;
+    }
+  `;
 
   return (
     <div>
@@ -476,13 +519,30 @@ const TeamCulture = () => {
           </div>
         </div>
 
-        {showButton && (
-          <img
-            src={uparrow}
-            className={styles.scroll_to_top}
-            onClick={scrollToTop}
-          />
-        )}
+        <ScrollTopButton onClick={scrollToTop}>
+          <ArrowIconSVG
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 18L12 6"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 12L12 6L18 12"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </ArrowIconSVG>
+        </ScrollTopButton>
       </DefaultLayout>
     </div>
   );

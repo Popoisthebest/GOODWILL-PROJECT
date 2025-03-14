@@ -2,7 +2,7 @@ import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 import FeaturedWork from "../components/Main/FeaturedWorkSection";
 import { mainDiv, mainText, subText, subTitle } from "../components/Project/Project.style.ts";
-import { Global, css } from "@emotion/react";
+import { css } from "@emotion/react";
 
 // FeaturedWork 컴포넌트에 대한 스타일 오버라이드 - 필요한 것만 숨기고 버튼은 유지
 const featuredWorkOverride = css`

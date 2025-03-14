@@ -88,7 +88,7 @@ const TopTitle2 = styled.h2`
   text-align: left;
   line-height: 110%;
   letter-spacing: -3.2px;
-  transform: translateX(100px) translateY(-200px);
+  transform: translateX(100px) translateY(-270px);
 
   @media (max-width: ${breakpoints.desktop}) {
     font-size: 100px;
@@ -147,7 +147,7 @@ const VideoContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  z-index: 5;
+  z-index: 1000;
   transform: translateY(200px);
 
   @media (max-width: ${breakpoints.tablet}) {

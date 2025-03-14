@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+// import { css } from "@emotion/react";
 
 // Styled components for the project detail page
 const ProjectContainer = styled.div`
