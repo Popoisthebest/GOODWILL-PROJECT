@@ -9,7 +9,7 @@ const logos = {
     { id: 1, name: 'Google', imageUrl: '../../imgs/logos/image 16.png' },
     { id: 2, name: 'Microsoft', imageUrl: '../../imgs/logos/image 17.png' },
     { id: 3, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
-    { id: 4, name: 'NC', imageUrl: '../../imgs/logos/image 19.png' },
+    { id: 4, name: 'NC', imageUrl: '../../imgs/logos/image 28.png' },
     { id: 5, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
   ],
   secondRow: [
@@ -22,7 +22,7 @@ const logos = {
   thirdRow: [
     { id: 11, name: 'Hunet', imageUrl: '../../imgs/logos/image 17.png' },
     { id: 12, name: 'AWS', imageUrl: '../../imgs/logos/image 18.png' },
-    { id: 13, name: 'JA Korea', imageUrl: '../../imgs/logos/image 19.png' },
+    { id: 13, name: 'JA Korea', imageUrl: '../../imgs/logos/image 28.png' },
     { id: 14, name: 'KSF', imageUrl: '../../imgs/logos/image 20.png' },
     { id: 15, name: 'Microsoft', imageUrl: '../../imgs/logos/image 21.png' },
   ]
