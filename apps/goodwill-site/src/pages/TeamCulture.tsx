@@ -316,32 +316,33 @@ const TeamCulture = () => {
                 <div className={styles.struc_title}>스쿼드(Squad)</div>
                 <img src={squad} alt="squad" className={styles.struc_pic} />
                 <div className={styles.struc_main_content}>
-                  &middot; 특정 문제 해결을 위한 자율 조직으로, 목표와 핵심
-                  결과(OKR)를 설정해 운영됨.
+                  &middot; 해결할 문제를 중심으로 목적 조직인 스쿼드를 운영해요.
                   <br />
-                  &middot; PO, DA, 디자이너, 개발자로 구성되며, 문제에 따라 팀
-                  구성이 유동적으로 변화할 수 있음. <br />
-                  &middot; 주기적인 회고(Retrospective)를 통해 협업 방식과 업무
-                  프로세스를 지속적으로 개선.
+                  &middot; 각 스쿼드는 가슴 설레는 OKR을 수립하고, 오직 이를
+                  달성하기 위해 달려가요. <br />
+                  &middot; 스쿼드에는 PO, DA, Designer, Developer 등 다양한
+                  직무의 동료들이 소속되어 있으며, 해결하고자 하는 문제에 따라
+                  구성은 달라져요.
                   <br />
-                  &middot; 효과적인 문제 해결과 성과 창출을 목표로 하며,
-                  자율적이고 집중적인 방식으로 운영됨.
+                  &middot; 스쿼드를 운영하며 주기적으로 회고를 통해 동료와
+                  손발을 맞추고 일하는 방식을 개선해요.
                 </div>
               </div>
               <div className={styles.struc_detail_box}>
                 <div className={styles.struc_title}>TF(Task Force)</div>
                 <img src={tf} alt="squad" className={styles.struc_pic} />
                 <div className={styles.struc_main_content}>
-                  &middot; 특정 문제 해결을 위한 자율 조직으로, 목표와 핵심
-                  결과(OKR)를 설정해 운영됨.
+                  &middot; 스쿼드 단위에서 해결할 수준의 문제 및 아이템은
+                  아니지만, 필요하거나 시도해 보고 싶은 일은 TF를 만들어
+                  진행해요.
                   <br />
-                  &middot; PO, DA, 디자이너, 개발자로 구성되며, 문제에 따라 팀
-                  구성이 유동적으로 변화할 수 있음. <br />
-                  &middot; 주기적인 회고(Retrospective)를 통해 협업 방식과 업무
-                  프로세스를 지속적으로 개선.
+                  &middot; 스쿼드와 병렬적으로 진행되며, GOODWILL에 도움이
+                  된다면 누구나 TF를 만들거나 참여할 수 있어요. <br />
+                  &middot; TF를 만들 때에는 CEO에게 이를 알리고, OKR을 직접
+                  수립하여 전달하고 실행할 수 있어요.
                   <br />
-                  &middot; 효과적인 문제 해결과 성과 창출을 목표로 하며,
-                  자율적이고 집중적인 방식으로 운영됨.
+                  &middot; 기본적으로 스쿼드 업무의 우선순위가 더 높지만, 남은
+                  리소스와 시간을 활용하여 TF를 진행해요.
                 </div>
               </div>
             </div>

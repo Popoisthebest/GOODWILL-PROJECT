@@ -202,7 +202,6 @@
   margin: 0 auto 50px;
 }
 
-
 .dri_title {
   color: #000;
   font-family: Pretendard;
@@ -340,10 +339,11 @@
 
 .struc_detail_box {
   margin-top: 72px;
-  border-radius: var(--Spacing-spacing-20, 20px);
-  border: 1px solid var(--Gray-Scale-300, #c4c4c4);
-  background: var(--gray-scale-white-0, #fff);
+  border-radius: 20px;
+  border: 1px solid #c4c4c4;
+  background: #fff;
   padding: 36px 38px 40px 38px;
+  width: 100%;
 }
 
 .struc_title {
@@ -524,7 +524,6 @@
   display: flex;
   gap: 24px;
   margin-top: 72px;
-
 }
 
 .with_box {
@@ -572,7 +571,7 @@
 .scroll-to-top {
   position: fixed;
   bottom: 20px; /* 화면 하단에서 20px 만큼 떨어짐 */
-  right: 20px;  /* 화면 오른쪽에서 20px 만큼 떨어짐 */
+  right: 20px; /* 화면 오른쪽에서 20px 만큼 떨어짐 */
   width: 80px;
   height: 80px;
   background-color: #000; /* 검은색 배경 */
@@ -592,4 +591,3 @@
 .scroll-to-top:active {
   transform: scale(0.95); /* 클릭 시 약간 축소 */
 }
-
