@@ -36,6 +36,7 @@ import Marketing3 from "./article_page/marketing_3";
 import HolidayEconomy from "./article_page/holiday_economy";
 import ProjectDetailPage from "./components/Project/ProjectDetailPage.tsx";
 import TeamCulture from "./pages/TeamCulture.tsx";
+import AdminLogin from "./pages/AdminLogin.tsx";
 
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
           path="/event-submission-finished"
           element={<EventSubmissionFinish />}
         />
-      
+        <Route path="/login" element={<AdminLogin />} />
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />
