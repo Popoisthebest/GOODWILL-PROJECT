@@ -14,13 +14,20 @@ export const loginDiv = css`
   width: 650px;
   height: 414px;
 
-  background-color: red;
+  border: 1px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+`;
+
+export const loginImgDiv = css`
+  display: flex;
+  width: 50%;
+  overflow: hidden;
 `;
 
 export const loginImg = css`
   display: flex;
-
-  width: 50%;
+  object-fit: cover;
 `;
 
 export const loginFormDiv = css`
@@ -85,7 +92,8 @@ export const loginInput = css`
   height: 100%;
   border: none;
   outline: none;
-    
+  margin-left: 10px;
+
   background: transparent;
 
   font-family: Pretendard;
@@ -94,4 +102,32 @@ export const loginInput = css`
   font-weight: 600;
   line-height: 140%; /* 16.8px */
   letter-spacing: -0.3px;
+`;
+
+export const loginButton = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #05308c;
+  padding: 18px;
+  border: none;
+  border-radius: 1000px;
+  cursor: pointer;
+
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+`;
+
+export const errorMessageStyle = css`
+  color: #f02f30;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+
+  margin-top: 4px;
 `;

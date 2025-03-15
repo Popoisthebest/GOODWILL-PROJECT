@@ -204,11 +204,13 @@ const ApplicationFormPage = () => {
       const formattedData = {
         ...data,
         applicationId: newApplicationId,
+        jobGroup: jobGroup,
         roleName: roleName,
         order,
         createdAt: new Date(),
         application_status: "대기",
         programType: littleProgramDisplayName,
+        is_special: isChecked,
         ...categorizedFiles, // 🔥 Firestore에 파일 데이터 저장
       };
 

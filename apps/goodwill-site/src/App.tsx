@@ -37,7 +37,10 @@ import HolidayEconomy from "./article_page/holiday_economy";
 import ProjectDetailPage from "./components/Project/ProjectDetailPage.tsx";
 import TeamCulture from "./pages/TeamCulture.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
-
+import AdminDashboard from "./pages/AdminDashboard.tsx";
+import ProtectedRoute from "./components/AdminLogin/ProtectedRoute.tsx";
+import ApplicationList from "./components/AdminDashboard/ApplicationList.tsx";
+import ApplicantDetail from "./components/AdminDashboard/ApplicantDetail.tsx";
 
 function App() {
   return (
@@ -66,7 +69,15 @@ function App() {
           path="/event-submission-finished"
           element={<EventSubmissionFinish />}
         />
-        <Route path="/login" element={<AdminLogin />} />
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+        {/* 보호된 경로 */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
+
+        <Route path="/admin/applicants" element={<ApplicationList />} />
+        <Route path="/admin/applicants/:id" element={<ApplicantDetail />} />
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />
