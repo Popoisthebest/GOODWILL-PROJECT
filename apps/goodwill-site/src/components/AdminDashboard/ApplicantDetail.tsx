@@ -36,11 +36,12 @@ const ApplicantDetail = () => {
             <strong>지원분야:</strong> {applicant.roleName}
           </p>
           <p>
-            <strong>지원일자:</strong> {applicant.createdAt}
+            <strong>지원일자:</strong>{" "}
+            {applicant.createdAt ? applicant.createdAt.toDate().toLocaleString("ko-KR") : "정보 없음"}
           </p>
           <p>
             <strong>리틀 전형 여부:</strong>{" "}
-            {applicant.is_special ? "O" : "X"}
+            <input type="checkbox" checked={applicant.is_special} readOnly />
           </p>
 
           <h3>지원서 내용</h3>
@@ -51,8 +52,7 @@ const ApplicantDetail = () => {
             <strong>지원 동기:</strong> {applicant.motivation}
           </p>
           <p>
-            <strong>창업에 대한 생각:</strong>{" "}
-            {applicant.entrepreneurshipThoughts}
+            <strong>창업에 대한 생각:</strong> {applicant.entrepreneurshipThoughts}
           </p>
           <p>
             <strong>본인의 강점 및 기술:</strong> {applicant.strengthsSkills}
@@ -67,8 +67,7 @@ const ApplicantDetail = () => {
             <strong>팀 갈등 해결 경험:</strong> {applicant.teamConflictResolution}
           </p>
           <p>
-            <strong>동아리 활동에 대한 생각:</strong>{" "}
-            {applicant.clubActivityThoughts}
+            <strong>동아리 활동에 대한 생각:</strong> {applicant.clubActivityThoughts}
           </p>
 
           {applicant.additionalComments && (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig.ts"; // Firebase 설정 파일
-import { Timestamp } from "firebase/firestore"; // 🔹 Timestamp 가져오기
+import { Timestamp } from "firebase/firestore"; // 🔹 Firestore Timestamp 가져오기
 
 const COLLECTIONS = [
   "리틀_정주영_전형",
@@ -16,9 +16,9 @@ interface FileData {
 }
 
 interface Application {
-  docId: string; // Firestore 문서의 고유 ID
+  docId: string;
   name: string;
-  studentId: string; // 구버전 studentId
+  studentId: string;
   email: string;
   phone: string;
   careerAspiration: string;
@@ -32,10 +32,10 @@ interface Application {
   additionalComments?: string;
   roleName: string;
   is_special: boolean;
-  createdAt: string;
-  contestFiles: FileData[]; // 🔹 공모전 관련 파일
-  portfolioFiles: FileData[]; // 🔹 포트폴리오 파일
-  specialFiles: FileData[]; // 🔹 스페셜 전형 파일
+  createdAt: Timestamp | null; // 🔹 Firestore Timestamp로 저장
+  contestFiles: FileData[];
+  portfolioFiles: FileData[];
+  specialFiles: FileData[];
 }
 
 const useApplicationStats = () => {
@@ -58,20 +58,10 @@ const useApplicationStats = () => {
           querySnapshot.forEach((doc) => {
             const data = doc.data();
 
-            // 🔹 Firestore Timestamp 변환
-            const formattedDate =
-              data.createdAt instanceof Timestamp
-                ? data.createdAt.toDate().toLocaleDateString("ko-KR")
-                : data.createdAt || "";
-
             allApplications.push({
               docId: doc.id,
               name: data.name || "",
-              studentId: data.studentId
-                ? String(data.studentId) // ✅ studentId가 있으면 사용
-                : data.student_id
-                  ? String(data.student_id) // ✅ 없으면 student_id 사용
-                  : "", // 없으면 빈 문자열
+              studentId: data.studentId ? String(data.studentId) : data.student_id ? String(data.student_id) : "",
               email: data.email || "",
               phone: data.phone || "",
               careerAspiration: data.career_aspiration || "",
@@ -85,28 +75,22 @@ const useApplicationStats = () => {
               additionalComments: data.additional_comments || "",
               roleName: data.roleName || "",
               is_special: Boolean(data.is_special),
-              createdAt: formattedDate, // 변환된 날짜 저장
-              contestFiles: data.contest_files
-                ? data.contest_files.map((file: any) => ({
-                    fileType: file.fileType || "",
-                    fileUrl: file.fileUrl || "",
-                    title: file.title || "",
-                  }))
-                : [], // 🔹 공모전 파일 목록 추가
-              portfolioFiles: data.portfolio_files
-                ? data.portfolio_files.map((file: any) => ({
-                    fileType: file.fileType || "",
-                    fileUrl: file.fileUrl || "",
-                    title: file.title || "",
-                  }))
-                : [], // 🔹 포트폴리오 파일 목록 추가
-              specialFiles: data.special_files
-                ? data.special_files.map((file: any) => ({
-                    fileType: file.fileType || "",
-                    fileUrl: file.fileUrl || "",
-                    title: file.title || "",
-                  }))
-                : [], // 🔹 스페셜 전형 파일 목록 추가
+              createdAt: data.createdAt instanceof Timestamp ? data.createdAt : null, // 🔹 Timestamp 유지
+              contestFiles: data.contest_files ? data.contest_files.map((file: any) => ({
+                fileType: file.fileType || "",
+                fileUrl: file.fileUrl || "",
+                title: file.title || "",
+              })) : [],
+              portfolioFiles: data.portfolio_files ? data.portfolio_files.map((file: any) => ({
+                fileType: file.fileType || "",
+                fileUrl: file.fileUrl || "",
+                title: file.title || "",
+              })) : [],
+              specialFiles: data.special_files ? data.special_files.map((file: any) => ({
+                fileType: file.fileType || "",
+                fileUrl: file.fileUrl || "",
+                title: file.title || "",
+              })) : [],
             });
 
             const role = data.roleName;
