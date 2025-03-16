@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import GoodwillLogo from "../../../imgs/WEAREGOODWILL.svg";
 
 // Types
 interface Award {
@@ -298,7 +299,7 @@ const AwardsSection: React.FC = () => {
       <ContentWrapper>
         <TopWrapper>
           <Title>AWARDS</Title>
-          <BrandLogo src="imgs/WEAREGOODWILL.svg" alt="WEAREGOODWILL Logo" />
+          <BrandLogo src={GoodwillLogo} alt="WEAREGOODWILL Logo" />
         </TopWrapper>
         
         <AwardsGrid>
