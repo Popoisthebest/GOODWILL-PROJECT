@@ -50,7 +50,7 @@ const getLittleProgramName = (jobGroup: string) => {
     "Finance & Marketing": "리틀_정주영_전형",
     Design: "리틀_도널드_노먼_전형",
     Engineering: "리틀_빌게이츠_전형",
-    "Economics & Data Science": "리틀_도널드_노먼_전형",
+    "Economics & Data Science": "리틀_빌게이츠_전형",
     Legal: "리틀_정주영_전형",
     Content: "리틀_정주영_전형",
   };
@@ -64,7 +64,7 @@ const getLittleProgramDisplayName = (jobGroup: string) => {
     "Finance & Marketing": "리틀 정주영 전형",
     Design: "리틀 도널드 노먼 전형",
     Engineering: "리틀 빌게이츠 전형",
-    "Economics & Data Science": "리틀 도널드 노먼 전형",
+    "Economics & Data Science": "리틀 빌게이츠 전형",
     Legal: "리틀 정주영 전형",
     Content: "리틀 정주영 전형",
   };
