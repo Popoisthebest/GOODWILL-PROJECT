@@ -41,7 +41,7 @@ const ApplicantDetail = () => {
           </p>
           <p>
             <strong>리틀 전형 여부:</strong>{" "}
-            <input type="checkbox" checked={applicant.is_special} readOnly />
+            {applicant.is_special ? "O" : "X"}
           </p>
 
           <h3>지원서 내용</h3>
