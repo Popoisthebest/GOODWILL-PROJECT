@@ -81,9 +81,9 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ isOpen, setIsOpen }) => {
         <MenuItem onClick={() => navigate("/event")} path="/event">
           EVENT
         </MenuItem>
-        {/*<MenuItem onClick={() => navigate("/login")} path="/login">*/}
-        {/*  LOGIN*/}
-        {/*</MenuItem>*/}
+        <MenuItem onClick={() => navigate("/admin/login")} path="/admin/login">
+          LOGIN
+        </MenuItem>
       </motion.div>
     </>
   );
