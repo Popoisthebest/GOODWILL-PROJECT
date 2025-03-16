@@ -40,7 +40,7 @@ const ApplicantDetail = () => {
         </p>
         <p>
           <strong>리틀 전형 여부:</strong>{" "}
-          {applicant.specialApplication ? "O" : "X"}
+          {applicant.is_special ? "O" : "X"}
         </p>
 
         <h3>지원서 내용</h3>

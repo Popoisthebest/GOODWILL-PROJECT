@@ -28,7 +28,8 @@ interface FormValue {
 
 // 사전 등록된 관리자 계정
 const adminUsers = [
-  { id: "admin", password: "admin" },
+  { id: "2402010116e8485", password: "admin" },
+  { id: "2402030716e8553", password: "admin" },
 ];
 
 const AdminLogin = () => {
@@ -66,64 +67,67 @@ const AdminLogin = () => {
     navigate("/admin/dashboard");
   };
 
-
   return (
-      <div css={login}>
-        <div css={loginDiv}>
-          <div css={loginImgDiv}>
-            <img src={LoginImg} alt="LoginImg" css={loginImg} />
+    <div css={login}>
+      <div css={loginDiv}>
+        <div css={loginImgDiv}>
+          <img src={LoginImg} alt="LoginImg" css={loginImg} />
+        </div>
+        <div css={loginFormDiv}>
+          <div css={loginFormTitleDiv}>
+            <div css={loginFormTitle1}>GOODWILL</div>
+            <div css={loginFormTitle2}>관리자용 로그인</div>
           </div>
-          <div css={loginFormDiv}>
-            <div css={loginFormTitleDiv}>
-              <div css={loginFormTitle1}>GOODWILL</div>
-              <div css={loginFormTitle2}>관리자용 로그인</div>
-            </div>
-            <div css={{ height: "36px" }}></div>
-            <div css={loginFormInputDiv}>
-              <form onSubmit={handleSubmit(onSubmitHandler)} css={loginForms}>
-                {/* 사번 입력 필드 */}
-                <div css={loginInputWrapper}>
-                  <img src={EmailIcon} alt="email-icon" />
-                  <input
-                      type="text"
-                      {...register("id", { required: "사번을 입력해 주세요." })}
-                      placeholder="사번을 입력해 주세요."
-                      css={loginInput}
-                  />
-                </div>
-                {/* 사번 에러 메시지 (하나만 출력) */}
-                {!errors.id && idError && <div css={errorMessageStyle}>{idError}</div>}
-                {errors.id && <div css={errorMessageStyle}>{errors.id.message}</div>}
+          <div css={{ height: "36px" }}></div>
+          <div css={loginFormInputDiv}>
+            <form onSubmit={handleSubmit(onSubmitHandler)} css={loginForms}>
+              {/* 사번 입력 필드 */}
+              <div css={loginInputWrapper}>
+                <img src={EmailIcon} alt="email-icon" />
+                <input
+                  type="text"
+                  {...register("id", { required: "사번을 입력해 주세요." })}
+                  placeholder="사번을 입력해 주세요."
+                  css={loginInput}
+                />
+              </div>
+              {/* 사번 에러 메시지 (하나만 출력) */}
+              {!errors.id && idError && (
+                <div css={errorMessageStyle}>{idError}</div>
+              )}
+              {errors.id && (
+                <div css={errorMessageStyle}>{errors.id.message}</div>
+              )}
 
-                <div css={{ height: "10px" }}></div>
+              <div css={{ height: "10px" }}></div>
 
-                {/* 비밀번호 입력 필드 */}
-                <div css={loginInputWrapper}>
-                  <img src={PasswordIcon} alt="password-icon" />
-                  <input
-                      type="password"
-                      {...register("password", {
-                        required: "비밀번호를 입력해 주세요.",
-                      })}
-                      placeholder="비밀번호를 입력해 주세요."
-                      css={loginInput}
-                  />
-                </div>
-                {/* 비밀번호 에러 메시지 (하나만 출력) */}
-                {!errors.password && passwordError && (
-                    <div css={errorMessageStyle}>{passwordError}</div>
-                )}
-                {errors.password && (
-                    <div css={errorMessageStyle}>{errors.password.message}</div>
-                )}
+              {/* 비밀번호 입력 필드 */}
+              <div css={loginInputWrapper}>
+                <img src={PasswordIcon} alt="password-icon" />
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: "비밀번호를 입력해 주세요.",
+                  })}
+                  placeholder="비밀번호를 입력해 주세요."
+                  css={loginInput}
+                />
+              </div>
+              {/* 비밀번호 에러 메시지 (하나만 출력) */}
+              {!errors.password && passwordError && (
+                <div css={errorMessageStyle}>{passwordError}</div>
+              )}
+              {errors.password && (
+                <div css={errorMessageStyle}>{errors.password.message}</div>
+              )}
 
-                <div css={{ height: "36px" }}></div>
-                <button css={loginButton}>LOGIN</button>
-              </form>
-            </div>
+              <div css={{ height: "36px" }}></div>
+              <button css={loginButton}>LOGIN</button>
+            </form>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
