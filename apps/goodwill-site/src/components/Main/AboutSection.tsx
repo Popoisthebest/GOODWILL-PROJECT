@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styled from '@emotion/styled';
-import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
+import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
 
 // 미디어 쿼리를 위한 브레이크포인트 정의
 const breakpoints = {
