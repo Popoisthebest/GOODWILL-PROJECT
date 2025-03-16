@@ -25,7 +25,7 @@ interface Application {
     clubActivityThoughts: string;
     additionalComments?: string;
     roleName: string;
-    specialApplication: boolean;
+    is_special: boolean;
     createdAt: string;
 }
 
@@ -75,7 +75,7 @@ const useApplicationStats = () => {
                             clubActivityThoughts: data.club_activity_thoughts || "",
                             additionalComments: data.additional_comments || "",
                             roleName: data.roleName || "",
-                            specialApplication: Boolean(data.specialApplication),
+                            is_special: Boolean(data.is_special),
                             createdAt: formattedDate, // 변환된 날짜 저장
                         });
 

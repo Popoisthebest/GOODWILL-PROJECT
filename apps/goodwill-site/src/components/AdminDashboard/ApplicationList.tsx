@@ -87,7 +87,7 @@ const ApplicationList = () => {
                             <span css={phoneColumn}>{app.phone}</span>
                             <span css={roleColumn}>{app.roleName}</span>
                             <span css={specialApplicationColumn}>
-                {app.specialApplication ? "O" : "X"}
+                {app.is_special ? "O" : "X"}
               </span>
                             <span css={dateColumn}>{app.createdAt}</span>
                         </div>
