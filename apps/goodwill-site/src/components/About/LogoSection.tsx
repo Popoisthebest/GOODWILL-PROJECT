@@ -20,6 +20,7 @@ const logos = {
     { id: 3, name: 'AWS', imageUrl: AWS },
     { id: 4, name: 'NC', imageUrl: NC },
     { id: 5, name: 'KSF', imageUrl: KSF },
+
   ],
   secondRow: [
     { id: 6, name: 'NC', imageUrl: NC },
@@ -34,6 +35,7 @@ const logos = {
     { id: 13, name: 'JA Korea', imageUrl: JAKorea },
     { id: 14, name: 'KSF', imageUrl: KSF },
     { id: 15, name: 'Microsoft', imageUrl: Microsoft },
+
   ]
 
 };
