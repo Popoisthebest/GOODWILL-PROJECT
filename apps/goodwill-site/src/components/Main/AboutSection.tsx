@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import { motion, useScroll, useTransform } from 'framer-motion';
-import styled from '@emotion/styled';
-import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4"
+import Video from "../../assets/video/2025_GOODWILL_홍보영상.mp4";
 
 // 미디어 쿼리를 위한 브레이크포인트 정의
 const breakpoints = {
-  mobile: '480px',
-  tablet: '768px',
-  laptop: '1024px',
-  desktop: '1200px'
+  mobile: "480px",
+  tablet: "768px",
+  laptop: "1024px",
+  desktop: "1200px",
 };
 
 const LandingSection = styled.div`
@@ -46,68 +46,70 @@ const TopContentWrapper = styled(motion.div)`
 `;
 
 const TopTitle1 = styled.h1`
-    font-size: 128px;
-    font-family: "Aeonik TRIAL", sans-serif;
-    font-weight: bold;
-    color: black;
-    text-align: right;
-    line-height: 110%;
-    letter-spacing: -3.2px;
-    transform: translateX(-250px);
-    margin-bottom: 170px;
+  font-size: 128px;
+  font-family: "Aeonik TRIAL";
+  font-weight: 400;
+  font-weight: bold;
+  color: black;
+  text-align: right;
+  line-height: 110%;
+  letter-spacing: -3.2px;
+  transform: translateX(-250px);
+  margin-bottom: 70px;
 
-    @media (max-width: ${breakpoints.desktop}) {
-        font-size: 100px;
-        transform: translateX(-150px);
-    }
+  @media (max-width: ${breakpoints.desktop}) {
+    font-size: 100px;
+    transform: translateX(-150px);
+  }
 
-    @media (max-width: ${breakpoints.laptop}) {
-        font-size: 80px;
-        transform: translateX(-100px);
-    }
+  @media (max-width: ${breakpoints.laptop}) {
+    font-size: 80px;
+    transform: translateX(-100px);
+  }
 
-    @media (max-width: ${breakpoints.tablet}) {
-        font-size: 60px;
-        transform: translateX(-50px);
-    }
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 60px;
+    transform: translateX(-50px);
+  }
 
-    @media (max-width: ${breakpoints.mobile}) {
-        font-size: 36px;
-        transform: translateX(-20px);
-        letter-spacing: -1.5px;
-    }
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 36px;
+    transform: translateX(-20px);
+    letter-spacing: -1.5px;
+  }
 `;
 
 const TopTitle2 = styled.h2`
-    font-size: 128px;
-    font-family: "Aeonik TRIAL", sans-serif;
-    font-weight: bold;
-    color: black;
-    text-align: left;
-    line-height: 110%;
-    letter-spacing: -3.2px;
-    transform: translateX(100px) translateY(-270px);
+  font-size: 128px;
+  font-family: "Aeonik TRIAL";
+  font-weight: 400;
+  font-weight: bold;
+  color: black;
+  text-align: left;
+  line-height: 110%;
+  letter-spacing: -3.2px;
+  transform: translateX(100px) translateY(-200px);
 
-    @media (max-width: ${breakpoints.desktop}) {
-        font-size: 100px;
-        transform: translateX(80px) translateY(-150px);
-    }
+  @media (max-width: ${breakpoints.desktop}) {
+    font-size: 100px;
+    transform: translateX(80px) translateY(-150px);
+  }
 
-    @media (max-width: ${breakpoints.laptop}) {
-        font-size: 80px;
-        transform: translateX(60px) translateY(-120px);
-    }
+  @media (max-width: ${breakpoints.laptop}) {
+    font-size: 80px;
+    transform: translateX(60px) translateY(-120px);
+  }
 
-    @media (max-width: ${breakpoints.tablet}) {
-        font-size: 60px;
-        transform: translateX(40px) translateY(-80px);
-    }
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 60px;
+    transform: translateX(40px) translateY(-80px);
+  }
 
-    @media (max-width: ${breakpoints.mobile}) {
-        font-size: 36px;
-        transform: translateX(20px) translateY(-50px);
-        letter-spacing: -1.5px;
-    }
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 36px;
+    transform: translateX(20px) translateY(-50px);
+    letter-spacing: -1.5px;
+  }
 `;
 
 const MainContentWrapper = styled.div`
@@ -134,7 +136,6 @@ const SVGContainer = styled(motion.div)`
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  
 `;
 
 const VideoContainer = styled(motion.div)`
@@ -225,9 +226,11 @@ const ButtonContainer = styled(motion.div)`
 
 const BetterWorldLanding: React.FC = () => {
   const ref = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [pathData, setPathData] = useState<string | null>(null);
   const [viewBox, setViewBox] = useState<string>("0 0 500 500");
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     // 반응형을 위한 윈도우 크기 감지
@@ -236,34 +239,34 @@ const BetterWorldLanding: React.FC = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
-    fetch('assets/img/Vector 1.svg')
-      .then(response => response.text())
-      .then(svgText => {
+    fetch("assets/img/Vector 1.svg")
+      .then((response) => response.text())
+      .then((svgText) => {
         const parser = new DOMParser();
-        const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
 
-        const firstPath = svgDoc.querySelector('path');
-        const svgElement = svgDoc.querySelector('svg');
+        const firstPath = svgDoc.querySelector("path");
+        const svgElement = svgDoc.querySelector("svg");
 
         if (firstPath && svgElement) {
-          setPathData(firstPath.getAttribute('d'));
+          setPathData(firstPath.getAttribute("d"));
 
-          const viewBoxAttr = svgElement.getAttribute('viewBox');
+          const viewBoxAttr = svgElement.getAttribute("viewBox");
           if (viewBoxAttr) {
             setViewBox(viewBoxAttr);
           }
         }
       })
-      .catch(error => console.error('Error fetching SVG:', error));
+      .catch((error) => console.error("Error fetching SVG:", error));
   }, []);
 
-  const AboutButton = () => {
+  const AboutButton: React.FC = () => {
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
@@ -289,7 +292,9 @@ const BetterWorldLanding: React.FC = () => {
     };
 
     return (
-    <div style={{ display: "inline-block", position: "relative", zIndex: 50 }}>
+      <div
+        style={{ display: "inline-block", position: "relative", zIndex: 50 }}
+      >
         <motion.button
           style={{
             display: "flex",
@@ -423,13 +428,13 @@ const BetterWorldLanding: React.FC = () => {
   const videoWidth = useTransform(
     scrollYProgress,
     [0.6, 1],
-    isMobile ? ["90%", "90%"] : ["35%", "80%"]
+    isMobile ? ["90%", "90%"] : ["35%", "80%"],
   );
 
   const videoHeight = useTransform(
     scrollYProgress,
     [0.6, 1],
-    isMobile ? ["40px", "40vh"] : ["40px", "75vh"]
+    isMobile ? ["40px", "40vh"] : ["40px", "75vh"],
   );
 
   // 공통 애니메이션 컨트롤러
@@ -437,13 +442,13 @@ const BetterWorldLanding: React.FC = () => {
   const elementX = useTransform(
     scrollYProgress,
     [0.5, 1],
-    isMobile ? ["0%", "-5%"] : ["0%", "-20%"]
+    isMobile ? ["0%", "-5%"] : ["0%", "-20%"],
   );
 
   const topContentInitialX = useTransform(
     scrollYProgress,
     [0, 0.85],
-    isMobile ? ["0%", "5%"] : ["0%", "10%"]
+    isMobile ? ["0%", "5%"] : ["0%", "10%"],
   );
 
   const videoY = useTransform(
@@ -451,6 +456,29 @@ const BetterWorldLanding: React.FC = () => {
     [0.6, 0.7, 1],
     isMobile ? [100, 100, 140] : [200, 200, 360],
   );
+
+  // 동영상이 커졌는지 확인하는 값 (예: 스크롤 프로그레스가 0.85 이상일 때)
+  const isVideoFullSize = useTransform(
+    scrollYProgress,
+    (value) => value >= 0.85,
+  );
+
+  // 동영상 크기 변화 감지 및 재생 제어
+  useEffect(() => {
+    const unsubscribe = isVideoFullSize.onChange((isFullSize) => {
+      if (videoRef.current) {
+        if (isFullSize && videoReady) {
+          videoRef.current.play().catch((err) => {
+            console.error("비디오 재생 실패:", err);
+          });
+        } else {
+          videoRef.current.pause();
+        }
+      }
+    });
+
+    return unsubscribe;
+  }, [isVideoFullSize, videoReady]);
 
   return (
     <LandingSection ref={ref}>
@@ -461,14 +489,13 @@ const BetterWorldLanding: React.FC = () => {
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
             style={{
-              width: '100%', 
-              height: '100%',
-              position: 'absolute',
+              width: "100%",
+              height: "100%",
+              position: "absolute",
               top: 0,
               left: 0,
               zIndex: 1,
-              pointerEvents: 'none',
-      
+              pointerEvents: "none",
             }}
           >
             <motion.path
@@ -489,12 +516,8 @@ const BetterWorldLanding: React.FC = () => {
           opacity: elementOpacity,
         }}
       >
-        <TopTitle1>
-          Better World      
-        </TopTitle1>
-        <TopTitle2>
-          Brighter Tomorrow
-        </TopTitle2>
+        <TopTitle1>Better World</TopTitle1>
+        <TopTitle2>Brighter Tomorrow</TopTitle2>
       </TopContentWrapper>
 
       <MainContentWrapper>
@@ -502,22 +525,22 @@ const BetterWorldLanding: React.FC = () => {
           style={{
             width: videoWidth,
             height: videoHeight,
-            y: videoY
+            y: videoY,
           }}
         >
           <motion.video
+            ref={videoRef}
             src={Video}
-
-            style={{ 
-              width: "100%", 
-              height: "100%", 
-
-              objectFit: "cover"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
             }}
-            autoPlay
             muted
             loop
             playsInline // 모바일에서 인라인 재생을 위해 추가
+            preload="auto"
+            onLoadedData={() => setVideoReady(true)}
           />
         </VideoContainer>
 
