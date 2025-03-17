@@ -203,9 +203,9 @@ const TeamGridPage: React.FC = () => {
     },
     {
       id: 7,
-      name: '백현빈',
-      position: 'Full-Stack Engineer',
-      imageUrl: '../../../imgs/teamImg/pack.png',
+      name: '',
+      position: '',
+      imageUrl: '',
     },
     {
       id: 8,
