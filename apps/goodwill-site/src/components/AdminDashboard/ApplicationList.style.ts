@@ -80,7 +80,9 @@ export const specialApplicationColumn = css`
 export const dateColumn = css`
   flex: 1.5;
   min-width: 120px;
-  text-align: center;
+    margin-left: 50px;
+    
+  text-align: left;
 `;
 
 export const applicationStatus = css`

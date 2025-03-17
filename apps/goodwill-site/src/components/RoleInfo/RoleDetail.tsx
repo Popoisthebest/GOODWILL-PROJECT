@@ -83,7 +83,7 @@ const RoleDetail = () => {
                 navigateAnnouncement(roleData?.jobGroup);
               }}
             >
-              채용공고 보러가기
+              {"필독!! " + roleData?.jobGroup + " 직군 채용공고 보러가기"}
               <div css={{ width: "10px" }}></div>
               <img src={RightArrow} />
             </button>
