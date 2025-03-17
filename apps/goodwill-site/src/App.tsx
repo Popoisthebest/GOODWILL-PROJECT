@@ -40,7 +40,7 @@ import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import ProtectedRoute from "./components/AdminLogin/ProtectedRoute.tsx";
 import ApplicationList from "./components/AdminDashboard/ApplicationList.tsx";
-import ApplicantDetail from "./components/AdminDashboard/ApplicantDetail.tsx";
+import ApplicationDetail from "./components/AdminDashboard/ApplicationDetail.tsx";
 
 function App() {
   return (
@@ -77,7 +77,7 @@ function App() {
         </Route>
 
         <Route path="/admin/applicants" element={<ApplicationList />} />
-        <Route path="/admin/applicants/:id" element={<ApplicantDetail />} />
+        <Route path="/admin/applicants/:id" element={<ApplicationDetail />} />
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />

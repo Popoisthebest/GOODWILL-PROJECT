@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import useApplicationStats from "../../hooks/useApplicationStats";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
 
-const ApplicantDetail = () => {
+const ApplicationDetail = () => {
   const { id } = useParams();
   const { applications } = useApplicationStats();
 
@@ -130,9 +130,13 @@ const ApplicantDetail = () => {
                 </ul>
               </>
           )}
+        {/* 서류 전형 합격, 불합격 버튼 추가 */}
+          <>
+            <h2>서류 전형 </h2>
+          </>
         </div>
       </DefaultLayout>
   );
 };
 
-export default ApplicantDetail;
+export default ApplicationDetail;
