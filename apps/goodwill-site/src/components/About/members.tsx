@@ -1,14 +1,12 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 import Jetae from "../../../imgs/teamImg/jetae.jpeg";
 import Jihoon from "../../../imgs/teamImg/jihoon.png";
 // import Profile3 from "../../../imgs/teamImg/profile3.jpg";
 import Suen from "../../../imgs/teamImg/suen.jpeg";
 import Hyeonwoo from "../../../imgs/teamImg/hyeonwoo.jpeg";
 import Suho from "../../../imgs/teamImg/suho.jpeg";
-import Pack from "../../../imgs/teamImg/pack.png";
 import Junmo from "../../../imgs/teamImg/junmo.jpg";
-
 
 // Types
 interface TeamMember {
@@ -23,16 +21,16 @@ const Container = styled.div`
   max-width: 1500px;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: 'Noto Sans KR', sans-serif;
-  
+  font-family: "Noto Sans KR", sans-serif;
+
   @media (max-width: 1024px) {
     padding: 30px 15px;
   }
-  
+
   @media (max-width: 768px) {
     padding: 25px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 20px 15px;
   }
@@ -43,12 +41,12 @@ const Title = styled.h2`
   font-weight: 600;
   text-align: center;
   margin-bottom: 40px;
-  
+
   @media (max-width: 768px) {
     font-size: 24px;
     margin-bottom: 30px;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 22px;
     margin-bottom: 25px;
@@ -59,17 +57,17 @@ const TeamGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  
+
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-  
+
   @media (max-width: 480px) {
     grid-template-columns: repeat(1, 1fr);
     gap: 25px;
@@ -81,11 +79,11 @@ const MemberCard = styled.div`
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
-  
+
   @media (max-width: 768px) {
     align-items: center;
   }
@@ -103,18 +101,18 @@ const ImageContainer = styled.div`
   justify-content: center;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
   @media (max-width: 1200px) {
     max-width: 250px;
     border-radius: 14px;
   }
-  
+
   @media (max-width: 768px) {
     max-width: 230px;
     border-radius: 12px;
   }
-  
+
   @media (max-width: 480px) {
     max-width: 80%;
   }
@@ -123,15 +121,15 @@ const ImageContainer = styled.div`
 const ProfileImage = styled.div<{ imageUrl: string }>`
   width: 92%;
   height: 92%;
-  background-image: url(${props => props.imageUrl});
+  background-image: url(${(props) => props.imageUrl});
   background-size: cover;
   background-position: center;
   border-radius: 12px;
-  
+
   @media (max-width: 768px) {
     border-radius: 10px;
   }
-  
+
   @media (max-width: 480px) {
     border-radius: 8px;
   }
@@ -147,11 +145,11 @@ const Name = styled.h3`
   font-size: 18px;
   font-weight: 600;
   margin: 6px 0 4px 0;
-  
+
   @media (max-width: 768px) {
     font-size: 17px;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 16px;
   }
@@ -161,11 +159,11 @@ const Position = styled.p`
   font-size: 16px;
   color: #777;
   margin: 0;
-  
+
   @media (max-width: 768px) {
     font-size: 15px;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 14px;
   }
@@ -176,50 +174,50 @@ const TeamGridPage: React.FC = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: '김지태',
-      position: 'Operation Manager',
+      name: "김지태",
+      position: "Operation Manager",
       imageUrl: Jetae,
     },
     {
       id: 2,
-      name: '김지훈',
-      position: 'Operation Manager',
+      name: "김지훈",
+      position: "Operation Manager",
       imageUrl: Jihoon,
     },
     {
       id: 3,
-      name: '김용현',
-      position: 'ML Assistant',
+      name: "김용현",
+      position: "ML Assistant",
       imageUrl: "",
     },
     {
       id: 4,
-      name: '김수은',
-      position: 'Visual Manager',
+      name: "김수은",
+      position: "Visual Manager",
       imageUrl: Suen,
     },
     {
       id: 5,
-      name: '박현우',
-      position: 'Mobile Engineer',
+      name: "박현우",
+      position: "Mobile Engineer",
       imageUrl: Hyeonwoo,
     },
     {
       id: 6,
-      name: '이수호',
-      position: 'Mobile Engineer',
+      name: "이수호",
+      position: "Mobile Engineer",
       imageUrl: Suho,
     },
     {
       id: 7,
-      name: '백현빈',
-      position: 'Full-Stack Engineer',
-      imageUrl: Pack,
+      name: "",
+      position: "",
+      imageUrl: "",
     },
     {
       id: 8,
-      name: '김준모',
-      position: 'Mechatronics Engineer',
+      name: "김준모",
+      position: "Mechatronics Engineer",
       imageUrl: Junmo,
     },
   ];
