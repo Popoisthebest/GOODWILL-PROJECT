@@ -4,7 +4,7 @@ import { keyframes } from "@emotion/react";
 import Google from '../../../imgs/logos/image 16.png';
 import Microsoft from '../../../imgs/logos/image 17.png'
 import AWS from '../../../imgs/logos/image 18.png';
-import NC from '../../../imgs/logos/image 19.png'
+import NC from '../../../imgs/logos/image 28.png'
 import KSF from '../../../imgs/logos/image 20.png'
 import STP from '../../../imgs/logos/image 22.png'
 import Hunet from '../../../imgs/logos/image 23.png'
