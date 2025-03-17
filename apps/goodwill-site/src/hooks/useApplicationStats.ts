@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig.ts"; // Firebase 설정 파일
-import { Timestamp } from "firebase/firestore"; // 🔹 Firestore Timestamp 가져오기
+import { db } from "../firebase/firebaseConfig.ts";
+import { Timestamp } from "firebase/firestore";
 
 const COLLECTIONS = [
   "리틀_정주영_전형",
@@ -19,6 +19,7 @@ interface Application {
   docId: string;
   name: string;
   studentId: string;
+  application_status: string;
   email: string;
   phone: string;
   careerAspiration: string;
@@ -32,7 +33,8 @@ interface Application {
   additionalComments?: string;
   roleName: string;
   is_special: boolean;
-  createdAt: Timestamp | null; // 🔹 Firestore Timestamp로 저장
+  createdAt: Timestamp | null;
+  programType: string; // 🔹 programType 추가
   contestFiles: FileData[];
   portfolioFiles: FileData[];
   specialFiles: FileData[];
@@ -62,6 +64,7 @@ const useApplicationStats = () => {
               docId: doc.id,
               name: data.name || "",
               studentId: data.studentId ? String(data.studentId) : data.student_id ? String(data.student_id) : "",
+              application_status: data.application_status,
               email: data.email || "",
               phone: data.phone || "",
               careerAspiration: data.career_aspiration || "",
@@ -75,7 +78,8 @@ const useApplicationStats = () => {
               additionalComments: data.additional_comments || "",
               roleName: data.roleName || "",
               is_special: Boolean(data.is_special),
-              createdAt: data.createdAt instanceof Timestamp ? data.createdAt : null, // 🔹 Timestamp 유지
+              createdAt: data.createdAt instanceof Timestamp ? data.createdAt : null,
+              programType: data.programType ? data.programType.replace(/\s+/g, "_") : "", // 🔹 띄어쓰기(_) 변환
               contestFiles: data.contest_files ? data.contest_files.map((file: any) => ({
                 fileType: file.fileType || "",
                 fileUrl: file.fileUrl || "",

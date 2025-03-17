@@ -74,10 +74,11 @@ function App() {
         {/* 보호된 경로 */}
         <Route element={<ProtectedRoute />}>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/applicants" element={<ApplicationList />} />
+          <Route path="/admin/applicants/:id" element={<ApplicationDetail />} />
         </Route>
 
-        <Route path="/admin/applicants" element={<ApplicationList />} />
-        <Route path="/admin/applicants/:id" element={<ApplicationDetail />} />
+
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />

@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig"; // Firestore 설정 가져오기
 import useApplicationStats from "../../hooks/useApplicationStats";
 import DefaultLayout from "../../layouts/DefaultLayout.tsx";
+import {buttonDiv, passButton, rejectButton} from "./ApplicationDetail.style.ts";
 
 const ApplicationDetail = () => {
   const { id } = useParams();
@@ -10,6 +13,21 @@ const ApplicationDetail = () => {
   const applicant = applications.find((app) => app.docId === id);
 
   if (!applicant) return <p>지원자 정보를 찾을 수 없습니다.</p>;
+
+  // 🔹 Firestore에서 지원 상태 업데이트 함수
+  const updateApplicationStatus = async (status: "합격" | "대기" | "불합격") => {
+    if (!id) return;
+
+    try {
+      const applicantRef = doc(db, applicant.programType, id); // Firestore 문서 참조
+      await updateDoc(applicantRef, { application_status: status }); // 🔹 상태 변경
+
+      alert(`지원자 상태가 '${status}'(으)로 변경되었습니다.`);
+    } catch (error) {
+      console.error("지원자 상태 업데이트 중 오류 발생:", error);
+      alert("상태 업데이트 중 오류가 발생했습니다.");
+    }
+  };
 
   return (
       <DefaultLayout>
@@ -132,7 +150,11 @@ const ApplicationDetail = () => {
           )}
         {/* 서류 전형 합격, 불합격 버튼 추가 */}
           <>
-            <h2>서류 전형 </h2>
+            <h2>서류 전형 합격 여부</h2>
+            <div css={buttonDiv}>
+              <button css={passButton} onClick={() => updateApplicationStatus("합격")}>합격</button>
+              <button css={rejectButton} onClick={() => updateApplicationStatus("불합격")}>불합격</button>
+            </div>
           </>
         </div>
       </DefaultLayout>

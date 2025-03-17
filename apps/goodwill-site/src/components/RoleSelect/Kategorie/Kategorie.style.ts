@@ -1,4 +1,4 @@
-import {css} from "@emotion/react";
+import { css } from "@emotion/react";
 
 export const KategorieSelectContainer = css`
   flex-direction: column;
@@ -36,6 +36,7 @@ export const KategorieRoleText = css`
   font-weight: 200;
   line-height: 24px; /* 120% */
   letter-spacing: -0.06px;
+  cursor: pointer;
 `;
 
 export const CheckBox = css`
@@ -43,4 +44,5 @@ export const CheckBox = css`
   border-radius: 5px;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 `;

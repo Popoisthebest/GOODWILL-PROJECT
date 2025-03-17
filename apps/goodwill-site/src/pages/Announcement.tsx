@@ -11,7 +11,7 @@ const Announcement = () => {
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Business Operations 창업 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc. Business Operations 창업 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 남다른 도전정신과 열정으로 **스타트업 DNA**를 가진 차세대 비즈니스 리더를 찾습니다! 🌎
 
 단순한 운영이 아닌, **전략적 사고와 창의적인 문제 해결 능력**을 통해 회사를 함께 성장시킬 **Business Operation Manager, Executive Assistant, Biz Dev** 포지션을 모집합니다.
@@ -159,7 +159,7 @@ GOODWILL(KE) Inc.는 효과적인 인재 영입을 위하여 아래의 우대사
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Finance & Marketing 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc.  Finance & Marketing 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 **새로운 금융 전략을 설계하고, 브랜드를 성장시킬 주인공**을 찾습니다! 🎯
 
 💰 **Finance** – 단순한 숫자 관리가 아닌, **회사의 가치를 극대화할 전략적 금융 설계**
@@ -452,7 +452,7 @@ GOODWILL(KE) Inc.는 효과적인 인재 영입을 위하여 아래의 우대사
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Engineering & Data 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc. Engineering 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 **기술로 세상을 바꿀 엔지니어**를 찾습니다! ⚡
 
 💻 **Software Engineer** – **코드를 통해 세상을 혁신할 개발자**
@@ -626,7 +626,7 @@ GOODWILL Inc.는 효과적인 인재 영입을 위하여 아래의 우대사항�
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Economics & Data Science 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc. Economics & Data Science 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 **데이터와 경제적 통찰력으로 새로운 기회를 발굴할 인재**를 찾습니다! 🌍
 
 **단순한 데이터 분석이 아닌, 시장을 읽고 전략을 설계하며, 스타트업의 속도로 도전하는 GOODWILL에 지원하세요!**
@@ -775,7 +775,7 @@ GOODWILL(KE) Inc.는 효과적인 인재 영입을 위하여 아래의 우대사
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Legal 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc. Legal 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 **법과 비즈니스를 연결하여 새로운 패러다임을 만들 인재**를 찾습니다! 💼
 
 우리는 **스타트업의 빠른 성장 속에서 법적 리스크를 관리하고, 창업과 법무를 융합해 혁신적인 법률 전략을 수립하는 곳**입니다.
@@ -920,7 +920,7 @@ GOODWILL(KE) Inc.는 효과적인 인재 영입을 위하여 아래의 우대사
     {
       category: "채용공고",
       classific: "채용공고",
-      title: "GOODWILL(KE) Inc. Content 직군 인재 채용",
+      title: "2025년도 GOODWILL(KE) Inc. Content 직군 인재 채용 공고",
       content: `GOODWILL(KE) Inc.에서 **창의적인 콘텐츠로 세상을 움직일 인재**를 찾습니다! 🎥✨
 
 우리는 **단순한 영상 제작이 아닌, 기획부터 촬영, 편집까지 직접 참여하며 브랜드 스토리를 만들어가는 곳**입니다.
@@ -1172,7 +1172,7 @@ GOODWILL(KE) Inc.는 효과적인 인재 영입을 위하여 아래의 우대사
           </div>
 
           {/* 테이블 */}
-          <table>
+          <table css={{width: "100%"}}>
             <thead>
               <tr>
                 <th scope="col">분류</th>

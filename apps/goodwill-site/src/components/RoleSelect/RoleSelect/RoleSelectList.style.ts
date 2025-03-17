@@ -11,11 +11,12 @@ export const roleListContainer = css`
 `;
 
 export const roleItemButton = css`
-    border: none;
-    background: none;
-    text-align: left;
-    width: 100%;
-    height: 100px;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  height: 100px;
+  cursor: pointer;
 `;
 
 export const roleTitle = css`

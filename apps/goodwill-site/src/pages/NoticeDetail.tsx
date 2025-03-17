@@ -35,7 +35,6 @@ const NoticeDetail = () => {
   return (
     <DefaultLayout>
       <div className="notice">
-        <div className="header_text">ANNOUNCEMENT</div>
         <div className="notice_header">
           <div className="title">{title}</div>
           <div className="notice_graytext">
