@@ -262,7 +262,7 @@ const NavText = styled.div`
 
 const BrandLogo = styled.img`
   position: absolute;
-  top: 15px;
+  top: 60px;
   right: 25px;
   height: 25px;
 
