@@ -34,21 +34,17 @@ export const applicantCard = css`
   }
 `;
 
-export const checkbox = css`
-  margin: 0 40px 0 5px;
-`;
-
-export const columnStyle = css`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* ✅ 항목별 너비 설정 */
+export const docIdColumn = css`
+  flex: 1;
+  min-width: 120px;
   text-align: left;
 `;
 
-/* ✅ 항목별 너비 설정 */
 export const nameColumn = css`
-  flex: 1;
+  flex: 0.5;
   min-width: 120px;
+  text-align: left;
 `;
 
 export const studentIdColumn = css`
@@ -80,13 +76,13 @@ export const specialApplicationColumn = css`
 export const dateColumn = css`
   flex: 1.5;
   min-width: 120px;
-    margin-left: 50px;
-    
+  margin-left: 50px;
+
   text-align: left;
 `;
 
 export const applicationStatus = css`
-    flex: 1;
-    min-width: 120px;
-    text-align: center;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
 `;

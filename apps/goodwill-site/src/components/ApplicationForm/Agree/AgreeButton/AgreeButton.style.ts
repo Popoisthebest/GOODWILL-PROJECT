@@ -16,8 +16,8 @@ export const checkBox = css`
   border-radius: 5px;
   width: 20px;
   height: 20px;
-    color:  #7B7B7B;
-    background-color:  #7B7B7B;
+  color: #7b7b7b;
+  background-color: #7b7b7b;
 `;
 
 export const checkItemDiv = css`
@@ -34,12 +34,12 @@ export const checkItemTitleRequired = css`
 `;
 
 export const checkItemTitleOption = css`
-    color:  #7B7B7B;
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%; /* 28px */
+  color: #7b7b7b;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 28px */
 `;
 
 export const checkItemDescription = css`
@@ -65,4 +65,8 @@ export const moreDetailButton = css`
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;

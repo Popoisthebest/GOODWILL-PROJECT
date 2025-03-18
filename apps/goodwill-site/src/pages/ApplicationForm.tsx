@@ -41,6 +41,7 @@ interface FormValues {
   team_conflict_resolution: string;
   club_activity_thoughts: string;
   additional_comments?: string;
+  portfolio_link?: string;
 }
 
 // Collection names for Firestore without spaces
@@ -78,9 +79,9 @@ const ApplicationFormPage = () => {
   const littleProgramName = getLittleProgramName(jobGroup); // For Firestore (no spaces)
   const littleProgramDisplayName = getLittleProgramDisplayName(jobGroup); // For display
   const [isChecked, setIsChecked] = useState(false);
-  const [allChecked, setAllChecked] = useState(false);
+  // const [allChecked, setAllChecked] = useState(false);
   const [requiredChecked, setRequiredChecked] = useState(false);
-  const [optionalChecked, setOptionalChecked] = useState(false);
+  // const [optionalChecked, setOptionalChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const [files, setFiles] = useState<
@@ -88,36 +89,36 @@ const ApplicationFormPage = () => {
   >([]);
 
   // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
-  const handleAllCheck = () => {
-    const newCheckState = !allChecked;
-    setAllChecked(newCheckState);
-    setRequiredChecked(newCheckState);
-    setOptionalChecked(newCheckState);
-  };
+  // const handleAllCheck = () => {
+  //   const newCheckState = !allChecked;
+  //   setAllChecked(newCheckState);
+  //   setRequiredChecked(newCheckState);
+  //   setOptionalChecked(newCheckState);
+  // };
 
   // 필수 동의 체크박스 변경 시 처리
   const handleRequiredCheck = () => {
     const newRequiredState = !requiredChecked;
     setRequiredChecked(newRequiredState);
 
-    if (!newRequiredState || !optionalChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
+    // if (!newRequiredState || !optionalChecked) {
+    //   setAllChecked(false);
+    // } else {
+    //   setAllChecked(true);
+    // }
   };
 
   // 선택 동의 체크박스 변경 시 처리
-  const handleOptionalCheck = () => {
-    const newOptionalState = !optionalChecked;
-    setOptionalChecked(newOptionalState);
-
-    if (!newOptionalState || !requiredChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
-  };
+  // const handleOptionalCheck = () => {
+  //   const newOptionalState = !optionalChecked;
+  //   setOptionalChecked(newOptionalState);
+  //
+  //   if (!newOptionalState || !requiredChecked) {
+  //     setAllChecked(false);
+  //   } else {
+  //     setAllChecked(true);
+  //   }
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -435,6 +436,23 @@ const ApplicationFormPage = () => {
               />
             </form>
 
+            <div css={{ height: "32px" }}></div>
+            <div css={BasicInformationContainer}>
+              <div css={BasicInformation}>
+                첨부하고 싶은 링크가 있다면 첨부해 주세요.(Github, Youtube 등)
+              </div>
+            </div>
+            <form>
+              <ApplicationFormTextInput
+                name="portfolio_link"
+                placeholder=""
+                inputType="textarea"
+                register={register}
+                watch={watch}
+                errorMessage={errors.portfolio_link?.message}
+              />
+            </form>
+
             <div css={{ height: "48px" }}></div>
             <div css={ApplicationInformation}>제출 서류</div>
             <div css={{ height: "32px" }}></div>
@@ -475,27 +493,14 @@ const ApplicationFormPage = () => {
               />
             </form>
             <div css={{ height: "100px" }}></div>
-            <AgreeButton
-              agreeType="전체 동의"
-              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-              isChecked={allChecked}
-              onToggle={handleAllCheck}
-            />
             <div css={{ height: "27px" }}></div>
             <div css={greyLine}></div>
             <div css={{ height: "40px" }}></div>
             <AgreeButton
               agreeType="필수"
-              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
+              agreeDescription="개인정보 수신 및 이용 제공 동의 사항"
               isChecked={requiredChecked}
               onToggle={handleRequiredCheck}
-            />
-            <div css={{ height: "10px" }}></div>
-            <AgreeButton
-              agreeType="선택"
-              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-              isChecked={optionalChecked}
-              onToggle={handleOptionalCheck}
             />
 
             <div css={{ height: "106px" }}></div>

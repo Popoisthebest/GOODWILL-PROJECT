@@ -12,7 +12,7 @@ import {
     phoneColumn,
     roleColumn,
     specialApplicationColumn,
-    dateColumn, applicationStatus,
+    dateColumn, applicationStatus, docIdColumn,
 } from "./ApplicationList.style";
 
 const ApplicationList = () => {
@@ -52,6 +52,7 @@ const ApplicationList = () => {
             {/* 지원자 목록 */}
             <div css={listContainer}>
                 <div css={[applicantCard, { fontWeight: "bold", backgroundColor: "#f5f5f5" }]}>
+                    <span css={docIdColumn}>지원서 ID</span>
                     <span css={nameColumn}>지원자</span>
                     <span css={studentIdColumn}>학번</span>
                     <span css={emailColumn}>이메일</span>
@@ -65,6 +66,7 @@ const ApplicationList = () => {
                 {filteredApplications.length > 0 ? (
                     filteredApplications.map((app) => (
                         <div key={app.docId} css={applicantCard} onClick={() => navigate(`/admin/applicants/${app.docId}`)}>
+                            <span css={docIdColumn}>{app.docId}</span>
                             <span css={nameColumn}>{app.name}</span>
                             <span css={studentIdColumn}>{app.studentId}</span>
                             <span css={emailColumn}>{app.email}</span>

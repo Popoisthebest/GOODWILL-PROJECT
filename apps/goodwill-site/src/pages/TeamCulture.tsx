@@ -19,8 +19,6 @@ import review from "../assets/icons/review.svg";
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 
-console.log("Styles:", styles);
-
 // const roles = [
 //   {
 //     title: "C-Level",

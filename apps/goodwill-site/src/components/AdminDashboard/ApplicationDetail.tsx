@@ -42,6 +42,9 @@ const ApplicationDetail = () => {
 
           <h3>기본 정보</h3>
           <p>
+            <strong>지원서 ID:</strong> {applicant.docId}
+          </p>
+          <p>
             <strong>학번:</strong> {applicant.studentId}
           </p>
           <p>

@@ -41,6 +41,7 @@ import AdminDashboard from "./pages/AdminDashboard.tsx";
 import ProtectedRoute from "./components/AdminLogin/ProtectedRoute.tsx";
 import ApplicationList from "./components/AdminDashboard/ApplicationList.tsx";
 import ApplicationDetail from "./components/AdminDashboard/ApplicationDetail.tsx";
+import AgreeSection from "./components/Agree/AgreeSection.tsx";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path="/:roleName" element={<RoleDetail />} />
         <Route path="/about" element={<MainAbout />} />
         <Route path="/write-application" element={<ApplicationFormPage />} />
+        <Route path="/agree" element={<AgreeSection />} />
         <Route path="/submission-finished" element={<SubmissionFinished />} />
 
         <Route path="/team-and-culture" element={<TeamCulture />} />
@@ -77,8 +79,6 @@ function App() {
           <Route path="/admin/applicants" element={<ApplicationList />} />
           <Route path="/admin/applicants/:id" element={<ApplicationDetail />} />
         </Route>
-
-
 
         <Route path="/article" element={<Article />} />
         <Route path="/article/1" element={<EverythingClub />} />

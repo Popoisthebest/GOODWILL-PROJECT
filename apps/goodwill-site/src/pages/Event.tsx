@@ -3,7 +3,7 @@ import aws from "../icons/aws.svg";
 import google from "../icons/google.svg";
 import microsoft from "../icons/microsoft.svg";
 import ksf from "../icons/ksf.svg";
-import goodwillconcert from "../images/goodwillconert.png";
+import goodwillconcert from "../assets/event/GOODWILL CONCERT_Event.png";
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout.tsx";
 

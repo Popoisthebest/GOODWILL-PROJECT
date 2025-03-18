@@ -27,9 +27,9 @@ const EventForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [allChecked, setAllChecked] = useState(false);
+  // const [allChecked, setAllChecked] = useState(false);
   const [requiredChecked, setRequiredChecked] = useState(false);
-  const [optionalChecked, setOptionalChecked] = useState(false);
+  // const [optionalChecked, setOptionalChecked] = useState(false);
 
   const event = location.state as {
     id: number;
@@ -53,36 +53,37 @@ const EventForm = () => {
   } = useForm<FormValues>({});
 
   // 전체 동의 체크 시 필수 및 선택 체크박스도 변경
-  const handleAllCheck = () => {
-    const newCheckState = !allChecked;
-    setAllChecked(newCheckState);
-    setRequiredChecked(newCheckState);
-    setOptionalChecked(newCheckState);
-  };
+  // const handleAllCheck = () => {
+  //   const newCheckState = !allChecked;
+  //   setAllChecked(newCheckState);
+  //   setRequiredChecked(newCheckState);
+  //   setOptionalChecked(newCheckState);
+  // };
 
   // 필수 동의 체크박스 변경 시 처리
   const handleRequiredCheck = () => {
     const newRequiredState = !requiredChecked;
     setRequiredChecked(newRequiredState);
 
-    if (!newRequiredState || !optionalChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
+    // if (!newRequiredState || !optionalChecked) {
+    //   setAllChecked(false);
+    // } else {
+    //   setAllChecked(true);
+    // }
   };
 
   // 선택 동의 체크박스 변경 시 처리
-  const handleOptionalCheck = () => {
-    const newOptionalState = !optionalChecked;
-    setOptionalChecked(newOptionalState);
+  // const handleOptionalCheck = () => {
+  //   const newOptionalState = !optionalChecked;
+  //   setOptionalChecked(newOptionalState);
+  //
+  //   if (!newOptionalState || !requiredChecked) {
+  //     setAllChecked(false);
+  //   } else {
+  //     setAllChecked(true);
+  //   }
+  // };
 
-    if (!newOptionalState || !requiredChecked) {
-      setAllChecked(false);
-    } else {
-      setAllChecked(true);
-    }
-  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -205,14 +206,6 @@ const EventForm = () => {
             </form>
 
             <div css={{ height: "100px" }}></div>
-
-            <AgreeButton
-              agreeType="전체 동의"
-              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-              isChecked={allChecked}
-              onToggle={handleAllCheck}
-            />
-            <div css={{ height: "27px" }}></div>
             <div css={greyLine}></div>
             <div css={{ height: "40px" }}></div>
             <AgreeButton
@@ -220,13 +213,6 @@ const EventForm = () => {
               agreeDescription="개인정보 필수항목 수집 및 이용 동의"
               isChecked={requiredChecked}
               onToggle={handleRequiredCheck}
-            />
-            <div css={{ height: "10px" }}></div>
-            <AgreeButton
-              agreeType="선택"
-              agreeDescription="개인정보 필수항목 수집 및 이용 동의"
-              isChecked={optionalChecked}
-              onToggle={handleOptionalCheck}
             />
 
             <div css={{ height: "106px" }}></div>
