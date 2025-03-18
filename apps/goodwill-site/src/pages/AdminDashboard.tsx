@@ -6,7 +6,7 @@ const AdminDashboard = () => {
   return (
     <DefaultLayout>
       <div css={{display: "flex", flexDirection: "column", padding: "0 72px 50px 72px"}}>
-        <h1>관리자 대시보드</h1>
+        <div css={{textAlign:"center", fontSize:"64px", fontWeight:"bold"}}>관리자 대시보드</div>
         <ApplicationSummary />
         <ApplicationList />
       </div>

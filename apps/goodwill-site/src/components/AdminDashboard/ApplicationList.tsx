@@ -40,6 +40,7 @@ const ApplicationList = () => {
 
     return (
         <div>
+            <h1>지원자 목록</h1>
             {/* 검색 입력창 */}
             <input
                 type="text"

@@ -116,13 +116,17 @@
   display: none; /* Chrome, Safari, Edge에서 스크롤바 숨김 */
 }
 
-.event_box_img {
-  width: 100%;
+.event_box_img_div {
   width: 358px;
   height: 199px;
   border-radius: 8px;
-  border: 1px solid #c4c4c4;
-  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+  overflow: hidden;
+}
+
+.event_box_img {
+  width: 100%;
+  background: lightgray 50% / cover no-repeat;
+  object-fit: cover;
 }
 
 .event_box_date {

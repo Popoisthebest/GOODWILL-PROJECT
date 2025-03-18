@@ -212,6 +212,9 @@ const ApplicationFormPage = () => {
         application_status: "대기",
         programType: littleProgramDisplayName,
         is_special: isChecked,
+        portfolio_link: data.portfolio_link
+            ? encodeURI(data.portfolio_link.trim())
+            : "",
         ...categorizedFiles, // 🔥 Firestore에 파일 데이터 저장
       };
 

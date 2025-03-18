@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import AboutImage from "../components/About/AboutImage.tsx";
 import Leaders from "../components/About/leaders";
 import Members from "../components/About/members";

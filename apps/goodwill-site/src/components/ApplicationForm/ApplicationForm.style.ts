@@ -143,6 +143,7 @@ export const summitButton = css`
   background-color: #05308c;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 
   display: flex;
   justify-content: center;

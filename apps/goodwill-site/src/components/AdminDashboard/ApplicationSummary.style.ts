@@ -1,18 +1,28 @@
 import { css } from "@emotion/react";
 
-
-
 export const barChart = css`
-    display: flex;
-    margin: 0 300px 0 300px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const roleDiv = css`
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const roleChart = css`
-    display: flex;
-    max-height: 50%;
+  max-width: 60%;
+  height: 50vh;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

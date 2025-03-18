@@ -15,7 +15,7 @@ const Event = () => {
       id: 1,
       title: "2025’ 제3회 GOODWILL CONCERT",
       date: "03월 19일(수), 16:50 ~ 18:00 (CIP 1차 ~ 석식시간 일부)",
-      apply: "03월 11일(화) ~ 03월 19일(수) 16:00",
+      apply: "이미 종료된 행사입니다.",
       expense: "무료",
       place: "대전대신고등학교 백암관",
       image: goodwillconcert,
@@ -79,11 +79,13 @@ const Event = () => {
                   className="event_box"
                   onClick={() => handleEventClick(event)}
                 >
-                  <img
-                    className="event_box_img"
-                    src={event.image}
-                    alt={event.title}
-                  />
+                  <div className="event_box_img_div">
+                    <img
+                      className="event_box_img"
+                      src={event.image}
+                      alt={event.title}
+                    />
+                  </div>
                   <div className="event_box_date">{event.date}</div>
                   <div className="event_box_title">{event.title}</div>
                 </div>

@@ -30,6 +30,7 @@ interface Application {
   goodwillPlan: string;
   teamConflictResolution: string;
   clubActivityThoughts: string;
+  portfolio_link: string;
   additionalComments?: string;
   roleName: string;
   is_special: boolean;
@@ -75,6 +76,7 @@ const useApplicationStats = () => {
               goodwillPlan: data.goodwill_plan || "",
               teamConflictResolution: data.team_conflict_resolution || "",
               clubActivityThoughts: data.club_activity_thoughts || "",
+              portfolio_link: data.portfolio_link || "",
               additionalComments: data.additional_comments || "",
               roleName: data.roleName || "",
               is_special: Boolean(data.is_special),
