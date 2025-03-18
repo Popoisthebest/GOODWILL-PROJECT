@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GoodwillLogo from "../../../imgs/WEAREGOODWILL.svg";
+import Background from '../../../imgs/img/backgroundtext.png'
 
 // Types
 interface Award {
@@ -59,7 +60,7 @@ const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('imgs/img/backgroundtext.png');
+  background-image: url(${Background});
   background-size: cover;
   background-position: center;
   opacity: 1;
